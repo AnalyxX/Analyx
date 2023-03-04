@@ -5,12 +5,20 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
 .header {
   width: 100%;
   /* border: solid 3px red; */
   margin: auto;
   position: fixed;
   z-index: 1000000000000;
+  transition: .5s;
+}
+
+
+.header.active {
+  background-color: rgba(0, 0, 0, 0.65);
+  transition: .5s;
 }
 
 .container {
@@ -31,7 +39,7 @@
 .navbar li {
   list-style-type: none;
   margin-left: 4%;
-  font-size: 13pt;
+  font-size: 1.08em;
 }
 
 .navbar li a {
@@ -51,7 +59,7 @@
   border-radius: 10px;
   border: solid #FEFEFE 1px;
   background: none;
-  font-size: 11.5pt;
+  font-size: 0.96em;
   font-weight: 300;
   cursor: pointer;
 }
@@ -60,6 +68,7 @@
   background-color: rgb(123, 123, 233);
   color: #FEFEFE;
   transition: .3s;
+  transform: scale(1.05);
 }
 
 #logo {
@@ -87,14 +96,14 @@
   justify-content: center;
 }
 
-.title {
+.home-title {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10%;
 }
 
-.title h1 {
+.home-title h1 {
   color: white;
   font-size: 2.5em;
   width: 90%;
@@ -107,6 +116,7 @@
   justify-content: space-between;
   align-items: center;
   color: white;
+  margin-bottom: 2%;
   /* border: solid 3px red; */
 }
 
@@ -143,13 +153,13 @@
 
 .presentation-text h1 {
   text-align: center;
-  font-size: 20pt;
+  font-size: 1.67em;
   margin-bottom: 3%;
 }
 
 .presentation-text p {
   margin-bottom: 2%;
-  font-size: 14pt;
+  font-size: 1.17em;
 }
 
 .presentation-text button {
@@ -159,9 +169,177 @@
   background-color: #274360;
   color: white;
   cursor: pointer;
-  font-size: 12pt;
+  font-size: 1em;
 }
 
 .presentation-text button:hover {
   background-color: rgb(123, 123, 233);
+  transform: scale(1.05);
+  transition: .3s;
+}
+
+
+
+/* contact planes */
+.contact-planes .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10%;
+}
+
+.planes-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5% 0% 1% 0%;
+  color: #274360;
+}
+
+.planes-title h1 {
+  font-size: 2.5em;
+}
+
+.planes-title h3 {
+  font-size: 1.5em;
+}
+
+.card-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  /* border: solid red 3px; */
+}
+
+.card-basic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #D6DAED;
+  margin-top: 6%;
+  padding: 2% 9% 3% 9%;
+  border-radius: 15px;
+  color: #274360;
+}
+
+.card-essencial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #D6DAED;
+  margin-top: 6%;
+  padding: 2% 8% 3% 8%;
+  border-radius: 15px;
+  color: #274360;
+}
+
+.card-essencial:hover, .card-basic:hover {
+  transform: scale(1.05);
+  transition: .3s;
+  background-color: #bbbfcf;
+}
+
+.btn-basic {
+  background-color: #232E69;
+  border-radius: 10px;
+  padding: 4% 50%;
+  color: white;
+  margin-top: 10em;
+  font-size: 1.25em;
+  cursor: pointer;
+}
+
+.btn-essencial {
+  background-color: #232E69;
+  border-radius: 10px;
+  padding: 3% 40%;
+  color: white;
+  margin-top: 10em;
+  font-size: 1.25em;
+  cursor: pointer;
+}
+
+.btn-essencial:hover, .btn-basic:hover  {
+  background-color: rgb(123, 123, 233);
+  transform: scale(1.05);
+  transition: .3s;
+}
+
+.card-premium {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #232E69;
+  padding: 2% 8% 3% 8%;
+  border-radius: 15px;
+  color: white;
+}
+
+.card-premium:hover {
+  background-color: #33439b;
+  transform: scale(1.05);
+  transition: .3s;
+}
+
+.btn-premium {
+  background-color: #FF7B00;
+  border-radius: 10px;
+  padding: 5% 40%;
+  font-size: 1.25em;
+  color: white;
+  margin-top: 10em;
+  cursor: pointer;
+}
+
+.btn-premium:hover {
+  background-color: #c76205;
+  transform: scale(1.05);
+  transition: .3s;
+}
+
+.about-title {
+  background-image: linear-gradient(0deg, white 3%, transparent 30%), url(../images/colegas-dando-uma-colisao-de-punho\ 1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 80vh;
+}
+
+.about-title h1 {
+  color: white;
+  font-size: 7em;
+  /* color: rgb(123, 123, 233); */
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 20px 30px 50px rgb(123, 123, 233),
+    -15px -30px 50px #274360;   
+}
+
+
+.about-text .container{
+  display: flex;
+  flex-direction: column;
+} 
+
+.about-text h1 {
+  margin-top: 4%;
+  color: #274360;
+  font-size: 3em;
+}
+
+.about-text p {
+  color: #274360;
+  font-size: 1.5em;
+  text-align: justify;
+  width: 50%;
+  text-indent: 1em;
 }
