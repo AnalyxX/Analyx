@@ -1,7 +1,8 @@
 const effect = document.getElementById('header')
 
 function changeColorHeader() {
-    effect.classList.toggle('active', scrollY > 450)
+    effect.classList.toggle('active', scrollY > 1)
+   
 }
 
 
