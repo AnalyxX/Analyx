@@ -5,6 +5,4 @@ function changeColorHeader() {
    
 }
 
-
-
 window.addEventListener('scroll', changeColorHeader)
