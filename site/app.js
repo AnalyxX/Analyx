@@ -12,7 +12,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var empresaRouter = require("./src/routes/empresa");
 // var funcionarioRouter = require("./src/routes/funcionario");
-// var maquinaRouter = require("./src/routes/maquina");
+var maquinaRouter = require("./src/routes/maquina");
 var medidasRouter = require("./src/routes/medidas");
 
 app.use(express.json());
@@ -24,7 +24,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/empresa", empresaRouter);
-// app.use("/maquina", maquinaRouter);
+app.use("/maquina", maquinaRouter);
 // app.use("/funcionario", funcionarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter)

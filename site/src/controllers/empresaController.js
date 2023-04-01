@@ -1,7 +1,7 @@
-var avisoModel = require("../models/empresaModel");
+var empresaModel = require("../models/empresaModel");
 
 function listar(req, res) {
-    usuarioModel.listar()
+    empresaModel.listar()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -55,7 +55,7 @@ function cadastrar(req, res) {
         res.status(400).send("Sua telefone está undefined!");
     } else {
         
-        usuarioModel.cadastrar(cnpj, razaoSocial, responsavel, email, telefone)
+        empresaModel.cadastrar(cnpj, razaoSocial, responsavel, email, telefone)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -96,7 +96,7 @@ function alterar(req, res) {
         res.status(400).send("Sua telefone está undefined!");
     } else {
         
-        usuarioModel.alterar(cnpj, razaoSocial, responsavel, email, telefone, id)
+        empresaModel.alterar(cnpj, razaoSocial, responsavel, email, telefone, id)
             .then(
                 function (resultado) {
                     res.json(resultado);

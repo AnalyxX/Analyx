@@ -23,3 +23,4 @@ router.delete("/deletar/:id", function (req, res) {
     empresaController.deletar(req, res);
 });
 
+module.exports = router;
