@@ -22,8 +22,7 @@ a {
 }
 
 
-.header.active {
-
+.header.active, #header-login {
   background-color: rgba(0, 0, 0, 0.65);
   transition: .25s;
 }

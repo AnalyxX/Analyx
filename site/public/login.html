@@ -1,17 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/func.js" defer></script>
-    <title>Login </title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=80307728-deba-46b0-896c-3db8e9d0c692"> 
+    </script>
+    <title>Login</title>
 </head>
 <body>
-    <span>Login</span>
-    <input type="text" name="" id="login">
-    <span>Senha</span>
-    <input type="password" name="" id="senha">
-    <button onclick="entrar()">Entrar</button>
+
+    <div class="header" id="header-login">
+        <div class="container">
+            <!-- logo -->
+            <img id="logo" src="images/logo-analyx.svg" alt="">
+
+            <div class="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="">Serviços</a></li>
+                <li><a href="">Sobre</a></li>
+                <li><a href="">Contatos</a></li>
+
+                <button class="login-button">Log In</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form">
+        <div class="login-user">
+            <span id="login-title">Login</span>
+
+            <div class="input" id="ipt1">
+                Email:
+                <input type="email" name="email" id="ipt_email">
+            </div>
+
+            <div class="input" id="ipt2">
+                Senha:
+                <input type="password" name="senha" id="ipt_senha">
+            </div>
+
+            <button id="btn_entrar">Conectar</button>
+        </div>
+    </div>
+    
 </body>
+
+<script src="js/index.js"></script>
 </html>
