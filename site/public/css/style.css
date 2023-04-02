@@ -5,6 +5,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 
 .header {
   width: 100%;
@@ -17,8 +22,7 @@
 }
 
 
-.header.active {
-
+.header.active, #header-login {
   background-color: rgba(0, 0, 0, 0.65);
   transition: .25s;
 }

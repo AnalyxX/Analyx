@@ -1,5 +1,5 @@
-// process.env.AMBIENTE_PROCESSO = "desenvolvimento";
-process.env.AMBIENTE_PROCESSO = "producao";
+process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+// process.env.AMBIENTE_PROCESSO = "producao";
 
 var express = require("express");
 var cors = require("cors");
@@ -10,7 +10,9 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var avisosRouter = require("./src/routes/avisos");
+var empresaRouter = require("./src/routes/empresa");
+// var funcionarioRouter = require("./src/routes/funcionario");
+var maquinaRouter = require("./src/routes/maquina");
 var medidasRouter = require("./src/routes/medidas");
 
 app.use(express.json());
@@ -21,6 +23,9 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/empresa", empresaRouter);
+app.use("/maquina", maquinaRouter);
+// app.use("/funcionario", funcionarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter)
 
