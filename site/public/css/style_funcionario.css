@@ -55,8 +55,6 @@ ul {
   grid-row: 1/ 2;
 }
 .cadastro-func {
-  grid-area: cadastro;
-
   border-radius: 15px;
   background-color: #d7d1d1;
   display: flex;
