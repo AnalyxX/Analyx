@@ -1,215 +1,155 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 * {
-    margin: 0;
-    border: 0;
-    padding: 0;
-font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: inherit;
+}
 
-/* font-size: 40px; */
+section {
+  display: grid;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  width: 89vw;
+  height: 12vh;
+  background-color: #e5e2e2;
+  justify-content: center;
+
+  grid-column: 2 / 2;
+  grid-row: 1/ 1;
+}
+
+nav {
+  display: flex;
+  width: 89vw;
+  height: 12vh;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  width: 70vw;
+  height: 19vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navBarLateral {
+  /* border: solid 3px red; */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 18vw;
+  background-color: #dcd8d8;
+
+  grid-column: 1 / 1;
+  grid-row: 1/ 2;
+}
+.user{
+  /* border: solid 3px yellow; */
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.user .fotoUser{
+  height: 40%;
+  width: 30%;
+  margin-left: 20%;
+  border: solid 3px red;
+  border-radius: 50%;
+}
+
+.user h2{
+  margin-top: 20px;
+  margin-left: 20%;
+}
+
+.navegarLeteral{
+  /* border: solid 3px blue; */
+  display: flex;
+  width: 60%;
+  height: 40%;
+  margin-left: 30%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.navegarLeteral li{
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.navegarLeteral #aqui{
+  font-weight: bolder;
+  
+}
+#aqui2{
+  font-weight: bolder;
+  text-decoration: underline;
+  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-thickness: 3px;
 }
 
 
-
-body{
-    background-color: rgba(39, 67, 96, 1);
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden; 
-    margin:0; height:100%;
-    padding: 0;
-
-  }
-
-  .header{
-    /* border: solid 3px green; */
-    height: 5rem;
-    width: 100%;
-    display: flex;
-    font-size: 50px;
-    justify-content: end;
-    background-color: rgba(39, 67, 96, 1);
-  
-  }
-
-
-  
-  .header img{
-    margin-right: 100px;
-    width: 90px;
-    height: 70px;
-  }
-
-  .banner{
-    /* border: solid 5px red; */
-    height:100 rem;
-    width: 100%;
-    display: flex;
-    /* position: fixed; */
-    background-color: rgba(39, 67, 96, 1);
-  }
-
-  .imagem{
-      /* border: solid 3px purple; */
-      height: 100%;
-      width: 45%;
-}
-.imagemPosition{
-    height: 80%;
-    width: 90%;
-    margin-left: 10%;
-    background-image: url("../../images/logo-main.png");
-    /* border:  solid 3px white; */
-    background-size: 120% 80%;
-    background-position: left;
-    background-repeat: no-repeat;
-    display: flex;
-  justify-content: end;
-  align-items: end;
-    
-  }
-
-  .imagemPosition h2{
-    color: white;
-    display: flex;
-    justify-content: unset;
-
-  }
-
-  /* .lema {
-    border: solid 3px yellow;
-    height: 100%;
-    width: 15%;
-    justify-content: center;
-    align-items: end;
-    
+.sair {
+  /* border: solid 5px purple; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-left: 30%;
+  margin-top: 30%;
+  height: 70px;
+  width: 60%;
 }
 
-.lema h2{
-    font-size: 400%; 
-    margin-top: 180%;
-    color: white ;
-    font-family: 'Roboto', sans-serif;
+.titulo{
+  font-size: 30px;
+  display:flex
 
-  } */
+}
 
-  .lema3{
-    margin-top: 450px;
-    width: 60%;
-    margin-left: 200px;
-   height: 250px;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    font-weight: 900;
-    font-size: 2rem;
-    padding-left: 20px;
-    /* border: solid 3px red; */
-  }
 
-  .container{
-    /* border: solid 3px orange; */
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    padding: 30px;
+.cadastro-func {
+  grid-area: cadastro;
 
-  }
+  border-radius: 7px;
+  background-color: #d7d1d1;
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  width: 80vh;
+  justify-content: center;
 
-  .contCadastro{
-    border: solid 7px black;
-    width: 80%;
-    height: 90%;
-    margin-top: 10%;
-    margin-left:30%;
-    border-radius: 30px;
-    background-color: rgba(217, 217, 217, 1)
-    ;
-  }
+  padding: 55px;
 
-  
-  .textos{
-      /* border: solid 2px purple; */
-      flex-direction: column;
-      display: flex;
-      height: 400px;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .textosJuntos{
-      /* border: solid 3px green; */
-      width: 40%;
-      height: 90%;
-      display: flex;
-      flex-direction: column;
-      margin: 5px;
+  grid-column: 2 / 2;
+  grid-row: 1/ 2;
 
-      
-    }
-
-    .textosJuntos2{
-      /* border: solid 3px green; */
-      width: 40%;
-      height: 90%;
-      display: flex;
-      flex-direction: column;
-      margin: 5px;
-
-    }
-
-  .textos li{
-    font-size: 1.6rem;
-    text-decoration: none;
-    list-style-type: none;
-    margin-top: 25%;
-    font-weight: bold;
-  }
-
-  .textos input{
-    border: solid 2px black;
-    width: 80%;
-    height: 7%;
-  }
-
-  .botao{
-    /* border: solid 3px red; */
-    height: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .botao button{
-    border: solid 3px black;
-    width: 50%;
-    height: 100%;
-    border-radius: 30px;
-    font-size: 30px;
-    font-weight: bolder;
-  }
-
-  .esqueceu{
-    height: 10%;
-    display: flex;
-    justify-content: center;
-  }
-  .titulo{
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    font-size: 0.8rem;
-    align-items: center;
-  }
-
-  .footer{
-    height: 80px;
-    background-color: rgba(39, 67, 96, 1);
-    margin:0;
-			left: 0;
-			bottom: 0;
-			width: 100%;
-  }
+  margin: auto;
+  margin-top: 150px;
+}
+.cadastro-func button {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 7px;
+  background-color: #858585;
+}
+input {
+  padding: 10px;
+  margin-bottom: 5px;
+}
