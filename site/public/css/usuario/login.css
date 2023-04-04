@@ -4,24 +4,26 @@
     margin: 0;
     border: 0;
     font-family: 'Roboto', sans-serif;
-  }
+}
 
-.form{
-    /* border: red solid 2px; */ 
+.form {
+    /* border: red solid 2px; */
     display: flex;
     justify-content: center;
     text-align: left;
 }
 
-#login-title{
+#login-title {
     font-size: 24px;
 }
 
-#login-title, .input, button{
+#login-title,
+.input,
+button {
     font-weight: 700;
 }
 
-.login-user{
+.login-user {
     border-radius: 15px;
     background-color: #D7D1D1;
     display: flex;
@@ -32,31 +34,30 @@
     padding: 55px;
 }
 
-input{
+input {
     background-color: #BEBABA;
     border-radius: 5px;
     height: 30px;
     margin-top: 10px;
 }
 
-.input{
+.input {
     display: flex;
     flex-direction: column;
     /* border: red 3px solid ;*/
     width: 60vh;
 }
 
-#ipt1{
+#ipt1 {
     margin: 50px 0 10px 0;
 }
 
-#ipt2{
+#ipt2 {
     margin-bottom: 50px;
 }
 
-.form button{
+.form button {
     width: 20%;
     padding: 7px;
     background-color: #858585;
 }
-
