@@ -50,6 +50,7 @@ header nav ul li {
 
 #selected {
     font-weight: bold;
+    border-bottom: solid 5px #69B0D9;
 }
 
 .leftSideBar {
@@ -78,7 +79,7 @@ header nav ul li {
     background-color: #D7D1D1;
     width: 70%;
     height: 80%;
-    border-radius: 5px;
+    border-radius: 20px;
     /* border: solid 3px red; */
 }
 
