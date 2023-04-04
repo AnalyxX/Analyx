@@ -23,7 +23,7 @@ body{
   }
 
   .header{
-    border: solid 3px green;
+    /* border: solid 3px green; */
     height: 5rem;
     width: 100%;
     display: flex;
@@ -42,7 +42,7 @@ body{
   }
 
   .banner{
-    border: solid 5px red;
+    /* border: solid 5px red; */
     height:100 rem;
     width: 100%;
     display: flex;
@@ -59,8 +59,8 @@ body{
     height: 80%;
     width: 90%;
     margin-left: 10%;
-    background-image: url("Assets/logo-main.png");
-    border:  solid 3px white;
+    background-image: url("../../images/logo-main.png");
+    /* border:  solid 3px white; */
     background-size: 120% 80%;
     background-position: left;
     background-repeat: no-repeat;
@@ -105,11 +105,11 @@ body{
     font-weight: 900;
     font-size: 2rem;
     padding-left: 20px;
-    border: solid 3px red;
+    /* border: solid 3px red; */
   }
 
   .container{
-    border: solid 3px orange;
+    /* border: solid 3px orange; */
     width: 50%;
     display: flex;
     justify-content: center;
@@ -130,18 +130,18 @@ body{
 
   
   .textos{
-      border: solid 2px purple;
+      /* border: solid 2px purple; */
       flex-direction: column;
       display: flex;
       height: 400px;
-      width: ;
+      width: 100%;
       justify-content: center;
       align-items: center;
       display: flex;
       flex-wrap: wrap;
     }
     .textosJuntos{
-      border: solid 3px green;
+      /* border: solid 3px green; */
       width: 40%;
       height: 90%;
       display: flex;
@@ -152,7 +152,7 @@ body{
     }
 
     .textosJuntos2{
-      border: solid 3px green;
+      /* border: solid 3px green; */
       width: 40%;
       height: 90%;
       display: flex;
@@ -176,7 +176,7 @@ body{
   }
 
   .botao{
-    border: solid 3px red;
+    /* border: solid 3px red; */
     height: 15%;
     display: flex;
     justify-content: center;
