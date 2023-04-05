@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: inherit;
+  }
+  
+  section {
+    display: grid;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    overflow-x: hidden;
+  }
+  
+  header {
+    display: flex;
+    width: 89vw;
+    height: 12vh;
+    background-color: #e5e2e2;
+    justify-content: center;
+  
+    grid-column: 2 / 2;
+    grid-row: 1/ 1;
+  }
+  
+  nav {
+    display: flex;
+    width: 89vw;
+    height: 12vh;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ul {
+    display: flex;
+    width: 70vw;
+    height: 19vh;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .navBarLateral {
+    /* border: solid 3px red; */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 18vw;
+    background-color: #dcd8d8;
+  
+    grid-column: 1 / 1;
+    grid-row: 1/ 2;
+  }
+  .user{
+    /* border: solid 3px yellow; */
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+  }
+  .user .fotoUser{
+    height: 40%;
+    width: 30%;
+    margin-left: 20%;
+    border: solid 3px red;
+    border-radius: 50%;
+  }
+  
+  .user h2{
+    margin-top: 20px;
+    margin-left: 20%;
+  }
+  
+  .navegarLeteral{
+    /* border: solid 3px blue; */
+    display: flex;
+    width: 60%;
+    height: 40%;
+    margin-left: 30%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .navegarLeteral li{
+    font-size: 22px;
+    margin-top: 20px;
+  }
+  
+  .navegarLeteral #aqui{
+    font-weight: bolder;
+    
+  }
+  #aqui2{
+    font-weight: bolder;
+    text-decoration: underline;
+    text-decoration-color: rgb(76, 76, 240);
+    text-decoration-thickness: 3px;
+  }
+  
+  
+  .sair {
+    /* border: solid 5px purple; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-left: 30%;
+    margin-top: 30%;
+    height: 70px;
+    width: 60%;
+  }
+  
+  .titulo{
+    font-size: 30px;
+    display:flex
+  
+  }
+  
+  .cadastro-func {
+    grid-area: cadastro;
+  
+    border-radius: 7px;
+    background-color: #d7d1d1;
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    width: 85vh;
+    justify-content: center;
+  
+    padding: 55px;
+  
+    grid-column: 2 / 2;
+    grid-row: 1/ 2;
+  
+    margin: auto;
+    margin-top: 150px;
+  }
+  .cadastro-func button {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    padding: 7px;
+    background-color: #858585;
+  }
+
+  .alterar-func {
+    border-radius: 7px;
+    background-color: #d7d1d1;
+    display: flex;
+    flex-direction: column;
+    height: 37vh;
+    width: 85vh;
+    justify-content: center;
+  
+    padding: 55px;
+  
+    grid-column: 2 / 2;
+    grid-row: 1/ 2;
+  
+    margin: auto;
+    margin-top: 350px;
+  }
+  .alterar-func button {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    padding: 7px;
+    background-color: #858585;
+  }
+
+  input {
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+
+.ipt_alt{
+    width: 400px;
+}
+
+.ipt_alt input{
+    width: 300px;
+}
+
+.ipt_alt a{
+    font-size: 12px;
+    color: red;
+    margin-left: 50px;
+}
+
+#procuraUser{
+    height: 25%;
+    display: flex;
+}
+
+#procuraUser button{
+    margin-right: 48vh;
+    margin-top: 5px;
+}

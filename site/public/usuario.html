@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usuário</title>
+    <link rel="stylesheet" href="css/usuario/login.css" />
+    <link rel="stylesheet" href="css/usuario/usuario.css">
+</head>
+
+<body>
+    <!--Sessão Cadastro-->
+
+    <section id="section_cadastro" style="display: none;">
+        <header>
+            <nav>
+                <ul>
+                    <li id="aqui2"><a href="http://">Cadastrar Usuário</a></li>
+                    <li><a href="http://">Alterar Usuário</a></li>
+                    <li><a href="http://">Listar Usuários</a></li>
+                    <li><a href="http://">Deletar Usuário</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="navBarLateral">
+
+            <div class="user">
+                <div class="fotoUser">
+                </div>
+                <h2>Nome Usuário</h2>
+            </div>
+            <div class="navegarLeteral">
+                <li>EMPRESA</li>
+                <li>MÁQUINA</li>
+                <li>FUNCIONÁRIO</li>
+                <li id="aqui">USUÁRIO</li>
+            </div>
+            <div class="sair">Sair</div>
+        </div>
+
+        <!-- <div class="titulo">Cadastrar Usuário</div> -->
+        <div class="cadastro-func">
+
+            <div class="input" id="ipt-1">
+                Email:
+                <input type="text" name="nome" id="ipt_nome" />
+            </div>
+
+            <div class="input" id="ipt-2">
+                Matrícula:
+                <input type="text" name="matricula" id="ipt_matricula" />
+            </div>
+
+            <div class="input" id="ipt-3">
+                Senha:
+                <input type="password" name="senha" id="ipt_senha" />
+            </div>
+
+            <div class="input" id="ipt-4">
+                Confirmar Senha:
+                <input type="password" name="confirmaSenha" id="ipt_confirma" />
+            </div>
+
+            <button id="btn_entrar">Enviar</button>
+        </div>      
+    </section>
+    <!--Fim da sessão Cadastro-->
+    
+
+    <!--Início da Sessão alterar-->
+
+    <section id="section_alterar">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="http://">Cadastrar Usuário</a></li>
+                    <li id="aqui2"><a href="http://">Alterar Usuário</a></li>
+                    <li><a href="http://">Listar Usuários</a></li>
+                    <li><a href="http://">Deletar Usuário</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="navBarLateral">
+
+            <div class="user">
+                <div class="fotoUser">
+                </div>
+                <h2>Nome Usuário</h2>
+            </div>
+            <div class="navegarLeteral">
+                <li>EMPRESA</li>
+                <li>MÁQUINA</li>
+                <li>FUNCIONÁRIO</li>
+                <li id="aqui">USUÁRIO</li>
+            </div>
+            <div class="sair">Sair</div>
+        </div>
+
+        <!--Alterar Usuário-->>
+            <div class="cadastro-func" id="procuraUser">
+                <div class="input" id="ipt-1">
+                    Matrícula
+                    <input type="number" name="matricula" id="ipt_matriculaAlt" />
+                    <button id="btn_procuraMatricula">Procurar</button>
+                </div>
+            </div>
+
+            <div class="alterar-func" id="alterar-usuario">
+                <div class="input" id="ipt-1">
+                    Nome:
+                    <!--<input type="text" name="nome" id="ipt_nomeAlt" /><-->
+
+                    <div class="ipt_alt">
+                        <input type="text" name="nome" id="ipt_nomeAlt"/>
+                        <a href="">Alterar</a>
+                    </div>
+                </div>
+    
+                <div class="input" id="ipt-2">
+                    Email:
+
+                    <div class="ipt_alt">
+                        <input type="email" name="email" id="ipt_emailAltUser"/>
+                        <a href="/">Alterar</a>
+                    </div>                
+                </div>
+
+            </div>
+        
+    </section>
+
+</body>
+</html>
