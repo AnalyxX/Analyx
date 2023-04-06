@@ -5,6 +5,7 @@
     text-decoration: none;
     box-sizing: border-box;
     color: inherit;
+    font-family: 'Poppins', sans-serif;
   }
   
   section {
@@ -178,6 +179,7 @@
   input {
     padding: 10px;
     margin-bottom: 5px;
+    outline: 0;
   }
 
 .ipt_alt{
@@ -202,4 +204,22 @@
 #procuraUser button{
     margin-right: 48vh;
     margin-top: 5px;
+}
+
+#listarUser{
+  height: 70vh;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  
+}
+input[type=number] { 
+ -moz-appearance: textfield;
+ appearance: textfield;
+
+}
+
+li a{
+  transition: 2s;
 }
