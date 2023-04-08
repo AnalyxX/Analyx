@@ -18,4 +18,23 @@
     padding: 2%;
 }
 
-.
+.list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+
+.maquina {
+    font-size: 1.5rem;
+    padding: 1% 0 1% 0;
+    text-decoration: underline;
+    color: #0101ef;
+    cursor: pointer;
+    width: auto;
+}
+
+.input {
+    color: black;
+    font-weight: bolder;
+    font-size: 1rem;
+}
