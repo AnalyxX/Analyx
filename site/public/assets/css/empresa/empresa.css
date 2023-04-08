@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +6,36 @@
   text-decoration: none;
   box-sizing: border-box;
   color: inherit;
+  border: 0;
+  font-family: 'Poppins', sans-serif;
 }
+
+.form {
+  /* border: red solid 2px; */
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+.input,
+button {
+  font-weight: 700;
+  font-size: 1.1vw;
+}
+
+
+input {
+  /* background-color: #BEBABA; */
+  background-color: rgb(242, 241, 241);
+  border-radius: 2px;
+  height: 5vh;
+  font-size: 0.9rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  outline: 0;
+}
+
 
 section {
   display: grid;
@@ -22,10 +52,9 @@ header {
   display: flex;
   width: 89vw;
   height: 12vh;
-  background-color: #274360;
+  background-color: #496B8E;
   justify-content: center;
   color: white;
-
   grid-column: 2 / 2;
   grid-row: 1/ 1;
 }
@@ -63,8 +92,8 @@ ul {
   flex-direction: column;
   height: 100%;
   width: 18vw;
-  background-color: #496B8E;
-
+  background-color: #274360;
+color: white;
   grid-column: 1 / 1;
   grid-row: 1/ 2;
 }
@@ -80,7 +109,7 @@ ul {
 }
 
 .user .fotoUser {
-  height: 40%;
+  height: 50%;
   width: 30%;
   margin-left: 20%;
   border: solid 3px red;
@@ -140,12 +169,15 @@ ul {
 
 
 #tituloCAD {
-  font-size: 15px;
+  /* border: solid 3px red; */
+  font-size: 1.8rem;
   display: flex;
   justify-content: center;
-  width: 300px;
-  margin-top: 115px;
-  margin-left: 28%;
+  align-items: center;
+  width: 23vw;
+  height: 10vh;
+  margin-top: 8vw;
+  margin-left: 37%;
 
   grid-column: 2 / 2;
   grid-row: 1/ 1;
@@ -153,13 +185,14 @@ ul {
 
 
 .cadastro-emp {
+  /* border: solid 3px green; */
   grid-area: cadastro;
 
   border-radius: 7px;
   background-color: #274360;
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  height: 65vh;
   width: 80vh;
   justify-content: center;
   color: white;
@@ -169,28 +202,30 @@ ul {
   grid-row: 1/ 2;
 
   margin: auto;
-  margin-top: 150px;
+  margin-top: 14%;
 }
 
 .cadastro-emp button {
-  width: 20%;
+  /* border: solid 3px pink; */
+
+  width: 30%;
   display: flex;
   justify-content: center;
   align-self: center;
-  padding: 7px;
+  padding: 1rem;
   background-color: #858585;
-  margin: 0 auto;
+  margin:  3% auto;
+  padding: 2% 6% 2% 6%
 }
 
 .input{
+  /* border: solid 3px yellow; */
   width: 100%;
   margin: 0 auto;
-}
-
-input {
-  padding: 10px;
-  margin-bottom: 10px;
-
+  display: flex;
+  flex-direction: column;
+  width: 60vh;
+  margin-bottom: 1vh;
 }
 
 
@@ -204,12 +239,14 @@ input {
 }
 
 #tituloALT {
-  font-size: 15px;
+  /* border: solid 3px green; */
+  font-size: 1.8rem;
   display: flex;
   justify-content: center;
-  width: 300px;
-  margin-top: 115px;
-  margin-left: 29%;
+  height: 20vh;
+  width: 22vw;
+  margin-top: 9vw;
+  margin-left: 37%;
 
   grid-column: 2 / 2;
   grid-row: 1/ 1;
@@ -227,6 +264,7 @@ input {
   justify-content: center;
   color: white;
   font-weight: bolder;
+  font-size: 1.4vw;
 
   padding: 33px;
 
@@ -251,7 +289,6 @@ input {
   color: white;
 
   padding: 33px;
-  padding-left: 70px;
 
   grid-column: 2 / 2;
   grid-row: 1/ 2;
@@ -266,7 +303,6 @@ input {
   margin-left: 5%;
   width: 20%;
   padding: 7px;
-  height: 30px;
   background-color: #858585;
   justify-content: center;
   cursor: pointer;
@@ -278,7 +314,6 @@ input {
   margin-left: 5%;
   width: 20%;
   padding: 7px;
-  height: 30px;
   background-color: #858585;
   justify-content: center;
   cursor: pointer;
@@ -299,6 +334,18 @@ input {
 
 input {
   padding: 20px;
+  /* border: solid 3px magenta; */
+  margin-bottom: 5vh;
+  width: 100%;
+}
+
+.input3{
+  /* border: solid 3px magenta; */
+  margin-bottom: 2.5vh;
+  font-size: 1.1vw;
+  padding: 0 2vw 0 2vw;
+  font-weight: bolder;
+  
 }
 
 #ipt_nome2 {
@@ -321,12 +368,12 @@ input {
 }
 
 #tituloLIST {
-  font-size: 15px;
+  font-size: 1.4vw;
   display: flex;
   justify-content: center;
-  width: 300px;
-  margin-top: 115px;
-  margin-left: 22%;
+  width: 30vw;
+  margin-top: 12vw;
+  margin-left: 24%;
 
   grid-column: 2 / 2;
   grid-row: 1/ 1;
@@ -340,7 +387,7 @@ input {
   display: flex;
   flex-direction: column;
   height: 65vh;
-  width: 40vh;
+  width: 50vh;
   justify-content: center;
   color: white;
 
@@ -350,7 +397,7 @@ input {
   grid-row: 1/ 2;
 
   margin-left: 22%;
-  margin-top: 150px;
+  margin-top: 30vh;
 }
 
 .listar-emp button {
@@ -358,7 +405,6 @@ input {
   margin-left: 40px;
   width: 20%;
   padding: 7px;
-  height: 30px;
   background-color: #858585;
   justify-content: center;
   cursor: pointer;
@@ -367,6 +413,13 @@ input {
 input {
   padding: 10px;
   margin-bottom: 5px;
+  font-size: 2rem;
+  
+}
+
+input::placeholder{
+  color: rgb(0, 0, 0,0.5);
+  font-size: 1.4rem;
 }
 
 
@@ -382,12 +435,14 @@ input {
 }
 
 #tituloDELET {
-  font-size: 15px;
+  font-size: 1.8vw;
   display: flex;
   justify-content: center;
-  width: 300px;
-  margin-top: 115px;
-  margin-left: 24%;
+  width: 40vw;
+  margin-top: 20vh;
+  margin-left: 9%;
+  font-size: 1.4vw;
+
 
   grid-column: 2 / 2;
   grid-row: 1/ 1;
@@ -401,7 +456,7 @@ input {
   display: flex;
   flex-direction: column;
   height: 65vh;
-  width: 100vh;
+  width: 130vh;
   justify-content: center;
   color: white;
 
@@ -411,31 +466,41 @@ input {
   grid-row: 1/ 2;
 
   margin: auto;
-  margin-top: 150px;
+  margin-top: 28vh;
 }
 
 .deletar-emp button {
   display: flex;
   width: 20%;
   padding: 7px;
-  height: 30px;
   background-color: #858585;
   justify-content: center;
   cursor: pointer;
   margin-left: 35%;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 .deletar-emp .input {
+  /* border:  solid 3px green; */
   display: flex;
+  width: 70%;
   justify-content: center;
   margin-left: 10%;
-  margin-top: 20%;
+  margin-top: 10vw;
+  font-size:2rem;
 }
 
-input {
+.deletar-emp input {
   padding: 10px;
   margin-bottom: 5px;
+  height: 4rem;
+  font-size: 2rem;
+}
+button {
+  font-size: 1.5vw;
+  border-radius: 15px;
+  padding: 2% 6% 2% 6%
+
 }
 
 .deletarEmp2{
@@ -456,74 +521,4 @@ input {
   justify-content: center;
   align-items: center;
 
-}
-
-
-
-/*  Do Css login */
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-* {
-  margin: 0;
-  border: 0;
-  font-family: 'Poppins', sans-serif;
-}
-
-.form {
-  /* border: red solid 2px; */
-  display: flex;
-  justify-content: center;
-  text-align: left;
-}
-
-#login-title {
-  font-size: 24px;
-}
-
-#login-title,
-.input,
-button {
-  font-weight: 700;
-}
-
-.login-user {
-  border-radius: 15px;
-  background-color: #D7D1D1;
-  display: flex;
-  flex-direction: column;
-  margin: 160px 0 70px 0;
-  height: 45vh;
-  width: 80vh;
-  padding: 55px;
-}
-
-input {
-  background-color: #BEBABA;
-  border-radius: 5px;
-  height: 30px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  outline: 0;
-}
-
-.input {
-  display: flex;
-  flex-direction: column;
-  /* border: red 3px solid ;*/
-  width: 60vh;
-}
-
-#ipt1 {
-  margin: 50px 0 10px 0;
-}
-
-#ipt2 {
-  margin-bottom: 50px;
-}
-
-.form button {
-  width: 20%;
-  padding: 7px;
-  background-color: #858585;
 }
