@@ -1,0 +1,21 @@
+.columns {
+    display: flex;
+    width: 80%;
+    height: 100%;
+    margin-left: 10%;
+}
+
+.search {
+    margin-right: 3%;
+}
+
+.text {
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.form {
+    padding: 2%;
+}
+
+.

@@ -44,15 +44,15 @@
                     <div class="form search">
                         <div class="form-align">
                             <label for="serial-search">Número Serial</label>
-                            <input type="text" name="serial-search" id="serial-search">
+                            <input class="input" type="text" name="serial-search" id="serial_search">
                         </div>
 
                         <div class="button button-search">
-                            <button onclick="buscarMaquina()">Buscar</button>
+                            <button onclick="buscarMaquina(this)">Buscar</button>
                         </div>
                     </div>
 
-                    <div class="form">
+                    <div class="form result" id="result">
                         <div class="form-align">
                             <label for="cpu">CPU</label>
                             <input class="input" type="text" name="cpu" id="cpu">
@@ -91,3 +91,15 @@
 </body>
 
 </html>
+
+<script>
+
+    function buscarMaquina(input) {
+
+        var serial_search = input.value;
+
+        result.style.display = "block";        
+        
+    }
+
+</script>
