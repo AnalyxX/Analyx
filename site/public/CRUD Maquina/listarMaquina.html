@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/maquina/maquina.css">
+    <link rel="stylesheet" href="../assets/css/maquina/listarMaquina.css">
+    <title>CRUD Máquina</title>
+</head>
+
+<body onload="listarMaquina()">
+
+    <div class="body-align">
+        <div class="left">
+            <div class="container">
+                <div class="title-align">
+                    <h1> Empresa </h1>
+                    <h1> Funcionário </h1>
+                    <h1> Usuário </h1>
+                    <h1> Máquina </h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="header">
+                <div class="container">
+                    <div class="navbar">
+                        <li><a href="cadastrarMaquina.html">Cadastrar Máquina</a></li>
+                        <li><a href="alterarMaquina.html">Alterar Máquina</a></li>
+                        <li><a href="listarMaquina.html" id="selected">Listar Máquinas</a></li>
+                        <li><a href="deletarMaquina.html">Deletar Máquinas</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="formulary">
+                <div class="container">
+                    <h1 class="title">Listagem de Máquinas</h1>
+                    <div class="columns">
+                        <div class="form search">
+                            <div class="form-align">
+
+                                <p class="text">Máquinas encontradas: <span class="text">5</span></p>
+                                <span class="list">
+                                    <span class="maquina">N12684MGFSD864</span>
+                                    <span class="maquina">N12684MGFSD864</span>
+                                    <span class="maquina">N12684MGFSD864</span>
+                                    <span class="maquina">N12684MGFSD864</span>
+                                    <span class="maquina">N12684MGFSD864</span>
+                                    
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form result" id="result">
+                            <div class="form-align">
+                                <label for="cpu">CPU</label>
+                                <input class="input" type="text" name="cpu" id="cpu" disabled>
+                            </div>
+
+                            <div class="form-align">
+                                <label for="ram">Ram</label>
+                                <input class="input" type="text" name="ram" id="ram" disabled>
+                            </div>
+
+                            <div class="form-align">
+                                <label for="disco">Disco</label>
+                                <input class="input" type="text" name="disco" id="disco" disabled>
+                            </div>
+
+                            <div class="form-align">
+                                <label for="serial">Número Serial</label>
+                                <input class="input" type="text" name="serial" id="serial" disabled>
+                            </div>
+
+                            <!-- <div class="button">
+                                <button onclick="alterarMaquina()">Alterar</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
+
+<script>
+
+    cpu.value = "i5-7400";
+    ram.value = "8GB";
+    disco.value = "1TB HD";
+    serial.value = "N12684MGFSD864";
+
+    function listarMaquina(input) {
+
+        fetch(`/maquina/listar`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(resposta);
+                    if (resposta.length == 1) {
+                        plotarLista(resposta);
+                    }
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`#Erro: ${error.message}`);
+            });
+
+    }
+
+    function plotarLista(resposta) {
+
+        var maquinas = [resposta[0].cpu, resposta[0].ram, resposta[0].disco, resposta[0].numeroSerial];
+
+        for (let index = 0; index < images.length; index++) {
+            cards.innerHTML += `
+            <span class="maquina">CPU: ${maquinas[index].cpu}
+                RAM: ${maquinas[index].ram}
+                Disco: ${maquinas[index].disco} 
+                Número Serial: ${maquinas.numeroSerial}
+            </span>`;
+        }
+    }
+
+</script>

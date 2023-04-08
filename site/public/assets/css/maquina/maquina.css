@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 * {
     margin: 0;
     border: 0;
-    font-family: 'Fredoka', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header {
@@ -36,11 +38,15 @@ li a {
     transition: 1s;
 }
 
+#selected {
+    font-weight: bold;
+    border-bottom: solid 5px #69B0D9;
+}
+
 
 /* body */
 .body-align {
     display: flex;
-
 }
 
 /* left */
@@ -109,6 +115,8 @@ li a {
 label {
     font-size: 18px;
     margin-bottom: 1%;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
 .input {
@@ -123,8 +131,15 @@ label {
 }
 
 button {
-    padding: 3% 8% 3% 8%;
+    padding: 2% 6% 2% 6%;
     border-radius: 15px;
     background-color: #858585;
     cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
 }
