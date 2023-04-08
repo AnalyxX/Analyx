@@ -13,43 +13,76 @@
 </head>
 
 <body>
-    <div class="header">
-        <div class="container">
-            <div class="navbar">
-                <i id="bars" onclick="showMenu()" class="fa-solid fa-bars"></i>
 
-                <div class="logo">
-                    <img src="../assets/images/logo-analyx.svg" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="align">
-        <div id="left_menu">
-            <div class="container">
-                <div class="icons">
-                    <i id="settings_menu" class="fa-solid fa-gear"></i>
-                    <i id="exit_menu" onclick="hideMenu()" class="fa-solid fa-xmark"></i>
-                </div>
 
+        <div id="menu" class="menu">
+            <i id="bars" onclick="showMenu()" class="fa-solid fa-bars" title="Abrir menu lateral"></i>
+        </div>
 
-
-                <h1>ygdasygdas</h1>
-                <h1>ygdasygdas</h1>
-                <h1>ygdasygdas</h1>
+        <div id="left_menu" class="left-menu">
+            <div class="icons">
+                <i id="settings_menu" class="fa-solid fa-gear" title="Abrir configurações"></i>
+                <i id="exit_menu" onclick="hideMenu()" class="fa-solid fa-xmark" title="Fechar menu lateral"></i>
             </div>
+
+            <div class="profile">
+                <!-- <div class="profile-align">
+                    <i id="edit" class="fa-solid fa-pen-to-square"></i>
+                </div> -->
+
+                <img class="profile-img" src="../assets/images/fotor_2023-4-8_2_11_54.png" alt="">
+
+                <!-- nome do storage -->
+                <h1> <b id="b_usuario">Example</b> </h1>
+            </div>
+
+            <div class="machines">
+                <h2>Machine 001</h2>
+                <h2>Machine 002</h2>
+                <h2>Machine 003</h2>
+                <h2>Machine 004</h2>
+            </div>
+
+            <div class="exit">
+                <button> Sair </button>
+            </div>
+
         </div>
 
 
-        <div class="example">
 
-            <h1>exemplo</h1>
-            <h1>exemplo</h1>
-            <h1>exemplo</h1>
-            <h1>exemplo</h1>
+        <div class="right">
+            <div class="header">
+                <div class="container">
+                    <div class="navbar">
+                        <img src="../assets/images/logo-analyx.svg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!-- teste, usar modelo -->
+            <div class="analytics">
+                <div class="container">
+
+                    <div class="card">
+                        <h1> CPU </h1>
+
+                        <div class="percentage">
+                            <h1> 43% </h1>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
         </div>
     </div>
+
 
 
 

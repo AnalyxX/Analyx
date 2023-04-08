@@ -3,81 +3,134 @@
     padding: 0;
 }
 
-/* header */
-.header {
-    width: 100%;
-    background-color: #274360;
-}
-
-.container {
-    width: 100%;
-    margin: auto;
-}
-
-#bars {
-    margin-left: 2%;
-    color: white;
-    cursor: pointer;
-    font-size: 1.5em;
-}
-
-#bars:hover {
-    color: #496B8E;
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    text-align: center;
-    width: 100%;
-}
-
-
-/* menu */
-
 .align {
     display: flex;
 }
 
-#left_menu {
-    /* border: solid 3px red; */
-    display: none;
-    background-color: #274360;
-    width: 15%;
-    transition: 1s;
-}
-
-#left_menu.show {
-    background-color: #274360;
-    display: block;
-    flex-direction: column;
-    transition: 1s;
-    height: 85.6vh;
+.menu {
+    text-align: center;
+    height: 95.8vh;
+    width: 3%;
+    padding-top: 2%;
     background-color: #496B8E;
+    font-size: 1.5em;
+    color: white;
 }
 
-#left_menu .container {
-    width: 90%;
-    margin: auto;
+#bars:hover {
+    color: #274360;
+    transition: .3s;
+    cursor: pointer;
+}
+
+/* left-menu */
+.left-menu {
+    height: 95.8vh;
+    width: 15%;
+    display: none;
+    padding-top: 2%;
+    background-color: #496B8E;
+    color: white;
 }
 
 .icons {
     display: flex;
     justify-content: space-between;
-    color: white;
+    margin: 0% 10% 0% 10%;
     font-size: 1.5em;
-    padding-top: 2% ;
+    padding-bottom: 2em;
 }
 
 #exit_menu:hover {
-    cursor: pointer;
     color: #274360;
+    transition: .3s;
+    cursor: pointer;
 }
 
 #settings_menu:hover {
-    cursor: pointer;
     color: #274360;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.profile-img {
+    width: 50%;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5em;
+}
+
+.profile-align {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #edit {
+    background-color: #274360;
+    padding: 5%;
+    border-radius: 100%;
+    position: relative;
+    bottom: 2em;
+    left: 2em;
+} */
+
+.machines {
+    text-align: center;
+    padding-bottom: 11em;
+}
+
+.exit {
+    text-align: center;
+}
+
+.exit button {
+    padding: 3% 20%;
+    border-radius: 15px;
+    border: none;
+    font-size: 1em;
+    color: white;
+    background-color: red;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.exit button:hover {
+   background-color: rgb(199, 0, 0);
+   cursor: pointer;
+}
+
+/* right */
+.right {
+    width: 100%;
+}
+
+.header {
+    background-color: #274360;
+}
+
+.navbar {
+    text-align: center;
+}
+
+.analytics {
+    background-color: #D6DAFF;
+} 
+
+.analytics .container {
+    width: 90%;
+    margin: auto;
+}
+
+/* teste, favor apagar */
+.card {
+    padding: 1%;
+    width: 5%;
+    background-color: #274360;
+    color: white;
 }
