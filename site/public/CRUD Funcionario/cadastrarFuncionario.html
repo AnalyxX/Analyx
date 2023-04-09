@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../assets/css/funcionario/style_funcionario.css">
-    <link rel="stylesheet" href="../assets/css/usuario/login.css">
+    <link
+      rel="stylesheet"
+      href="../assets/css/funcionario/style_funcionario.css" />
+    <link rel="stylesheet" href="../assets/css/usuario/login.css" />
   </head>
   <body>
     <section>
@@ -14,7 +16,9 @@
         <nav>
           <ul>
             <li>
-              <a href="cadastrarFuncionario.html">Cadastrar Funcionário</a>
+              <a href="cadastrarFuncionario.html" id="selected"
+                >Cadastrar Funcionário</a
+              >
             </li>
             <li><a href="alterarFuncionario.html">Alterar Funcionário</a></li>
             <li><a href="http://">Listar Funcionários</a></li>
@@ -23,9 +27,30 @@
         </nav>
       </header>
       <div class="navBarLateral">
-        <div class="user"></div>
-        <div class="navegarLeteral"></div>
-        <div class="sair"></div>
+        <div class="user">
+          <div class="img-user">
+            <img src="../assets/images/icon-user.svg" alt="" />
+          </div>
+          <h2>Nome Usuário</h2>
+        </div>
+        <div class="navegarLateral">
+          <ul>
+            <a href="../CRUD Empresa/empresa.html"
+              ><h2><li>Empresa</li></h2></a
+            >
+            <a href="../CRUD Maquina/cadastrarMaquina.html"
+              ><h2><li>Máquina</li></h2></a
+            >
+            <a href="#"
+              ><h2 id="text-efect"><li>Funcionário</li></h2></a
+            >
+            <a href="../CRUD Usuario/cadastro-user.html"
+              ><h2><li>Usuário</li></h2></a
+            >
+
+            <a href="../dashboard/dashboard.html"><h4 id="sair">sair</h4></a>
+          </ul>
+        </div>
       </div>
 
       <div class="cadastro-func">
