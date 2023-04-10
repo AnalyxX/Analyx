@@ -8,7 +8,7 @@
 }
 
 #bars:hover {
-    color: #274360;
+    color: #496B8E;
     transition: .3s;
     cursor: pointer;
 }
@@ -115,19 +115,26 @@
     text-align: center;
 }
 
+
+/* dashboard */
 .analytics {
     background-color: #D6DAFF;
+    padding-top: 3%;
 } 
 
 .analytics .container {
-    width: 95%;
+    width: 90%;
     margin: auto;
 }
 
-/* teste, favor apagar */
+/* cards */
+.card-align {
+    display: flex;
+    justify-content: space-between;
+}
+
 .card {
-    padding: 1%;
-    width: 5%;
+    width: 30%;
     background-color: #274360;
     color: white;
 }

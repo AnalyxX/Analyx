@@ -49,6 +49,8 @@
                     <div id="menu" class="menu">
                         <i id="bars" onclick="showMenu()" class="fa-solid fa-bars" title="Abrir menu lateral"></i>
                     </div>
+
+
                     <div class="logo-align">
                         <img src="../assets/images/logo-analyx.svg" alt="">
                     </div>
@@ -61,28 +63,168 @@
         <div class="analytics">
             <div class="container">
 
-                <div class="card">
-                    <h1> CPU </h1>
+                <!-- cpu -->
+                <div class="card-align">
+                    <div class="card">
+                        <div class="header-card">
+                            <h1> CPU </h1>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
 
-                    <div class="percentage">
-                        <h1> 43% </h1>
+
+                        <div class="grafics">
+                            <h1 id="percentage1"> 43% </h1>
+
+                            <div>
+                                <canvas id="myChart1"></canvas>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ram -->
+                    <div class="card">
+                        <div class="header-card">
+                            <h1> RAM </h1>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+
+
+                        <div class="grafics">
+                            <h1 id="percentage2"> 43% </h1>
+
+                            <div>
+                                <canvas id="myChart2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- disc -->
+                    <div class="card">
+                        <div class="header-card">
+                            <h1> DISCO </h1>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+
+
+                        <div class="grafics">
+                            <h1 id="percentage3"> 43% </h1>
+                            <div>
+                                <canvas id="myChart3"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+
             </div>
         </div>
-
-
-
-
     </div>
-
-
-
-
-
-
 </body>
-<script src="../js/dash.js"></script>
 
 </html>
+
+<script>
+   
+
+</script>
+
+<script src="../js/dash.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx1 = document.getElementById('myChart1');
+
+    new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+            labels: [],
+            datasets: [{
+                label: '# of Votes',
+                data: [p1, rest1],
+                borderWidth: 1,
+                cutout: '60%',
+                circumference: 180,
+                rotation: 270,
+                backgroundColor: [
+                    '#ffffff',
+                    '#496B8E',
+                ]
+            }]
+        },
+        options: {
+            aspectRatio: 4,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<script>
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+            labels: [],
+            datasets: [{
+                label: '# of Votes',
+                data: [p2, rest2],
+                borderWidth: 1,
+                cutout: '60%',
+                circumference: 180,
+                rotation: 270,
+                backgroundColor: [
+                    '#ffffff',
+                    '#496B8E',
+                ]
+            }]
+        },
+        options: {
+            aspectRatio: 4,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<script>
+    const ctx3 = document.getElementById('myChart3');
+
+    new Chart(ctx3, {
+        type: 'doughnut',
+        data: {
+            labels: [],
+            datasets: [{
+                label: '# of Votes',
+                data: [p3, rest3],
+                borderWidth: 1,
+                cutout: '60%',
+                circumference: 180,
+                rotation: 270,
+                backgroundColor: [
+                    '#ffffff',
+                    '#496B8E',
+                ]
+            }]
+        },
+        options: {
+            aspectRatio: 4,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
