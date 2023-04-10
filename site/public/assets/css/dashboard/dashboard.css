@@ -3,10 +3,6 @@
     padding: 0;
 }
 
-.align {
-    display: flex;
-}
-
 #bars:hover {
     color: #496B8E;
     transition: .3s;

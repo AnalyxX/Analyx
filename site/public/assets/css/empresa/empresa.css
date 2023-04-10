@@ -173,12 +173,7 @@ color: white;
   font-size: 1.8rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 23vw;
-  height: 10vh;
-  margin-top: 8vw;
-  margin-left: 37%;
-
+  margin-top: 8%;
   grid-column: 2 / 2;
   grid-row: 1/ 1;
 }
