@@ -7,16 +7,6 @@
     display: flex;
 }
 
-.menu {
-    text-align: center;
-    height: 95.8vh;
-    width: 3%;
-    padding-top: 2%;
-    background-color: #496B8E;
-    font-size: 1.5em;
-    color: white;
-}
-
 #bars:hover {
     color: #274360;
     transition: .3s;
@@ -25,12 +15,12 @@
 
 /* left-menu */
 .left-menu {
-    height: 95.8vh;
     width: 15%;
     display: none;
-    padding-top: 2%;
+    padding-top: 3%;
     background-color: #496B8E;
     color: white;
+    position: absolute;
 }
 
 .icons {
@@ -72,22 +62,14 @@
     align-items: center;
 }
 
-/* #edit {
-    background-color: #274360;
-    padding: 5%;
-    border-radius: 100%;
-    position: relative;
-    bottom: 2em;
-    left: 2em;
-} */
-
 .machines {
     text-align: center;
-    padding-bottom: 11em;
+    padding-bottom: 10em;
 }
 
 .exit {
     text-align: center;
+    padding-bottom: 1.15em;
 }
 
 .exit button {
@@ -105,8 +87,10 @@
    cursor: pointer;
 }
 
-/* right */
-.right {
+
+
+/* content */
+.content {
     width: 100%;
 }
 
@@ -114,7 +98,20 @@
     background-color: #274360;
 }
 
+.menu {
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    margin-left: 1%;
+}
+
 .navbar {
+    display: flex;
+    align-items: center;
+}
+
+.logo-align {
+    width: 100%;    
     text-align: center;
 }
 
@@ -123,7 +120,7 @@
 } 
 
 .analytics .container {
-    width: 90%;
+    width: 95%;
     margin: auto;
 }
 
