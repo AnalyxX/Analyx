@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 #bars:hover {
@@ -133,4 +134,9 @@
     width: 30%;
     background-color: #274360;
     color: white;
+}
+
+.header-card {
+    display: flex;
+    align-items: center;
 }

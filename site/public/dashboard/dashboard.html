@@ -74,7 +74,6 @@
 
 
                         <div class="grafics">
-                            <h1 id="percentage1"> 43% </h1>
 
                             <div>
                                 <canvas id="myChart1"></canvas>
@@ -87,7 +86,7 @@
                     <!-- ram -->
                     <div class="card">
                         <div class="header-card">
-                            <h1> RAM </h1>
+                            <h1> DISCO </h1>
                             <i class="fa-solid fa-circle-check"></i>
                             <i class="fa-solid fa-circle-exclamation"></i>
                         </div>
@@ -105,14 +104,13 @@
                     <!-- disc -->
                     <div class="card">
                         <div class="header-card">
-                            <h1> DISCO </h1>
+                            <h1> RAM </h1>
                             <i class="fa-solid fa-circle-check"></i>
                             <i class="fa-solid fa-circle-exclamation"></i>
                         </div>
 
 
                         <div class="grafics">
-                            <h1 id="percentage3"> 43% </h1>
                             <div>
                                 <canvas id="myChart3"></canvas>
                             </div>
@@ -129,7 +127,7 @@
 </html>
 
 <script>
-   
+
 
 </script>
 
@@ -141,42 +139,42 @@
     const ctx1 = document.getElementById('myChart1');
 
     new Chart(ctx1, {
-        type: 'doughnut',
+        type: 'line',
         data: {
-            labels: [],
+            labels: ['0', '1', '2', '3', '4', '60'],
             datasets: [{
-                label: '# of Votes',
-                data: [p1, rest1],
+                label: 'Uso de CPU por minuto',
+                data: [40, 20, 78, 65, 90],
                 borderWidth: 1,
-                cutout: '60%',
-                circumference: 180,
-                rotation: 270,
-                backgroundColor: [
-                    '#ffffff',
-                    '#496B8E',
-                ]
             }]
         },
         options: {
-            aspectRatio: 4,
-            scales: {
+                aspectRatio: 3,
+                scales: {
                 y: {
-                    beginAtZero: true
+                    ticks: {
+                        color: '#ffffff'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#ffffff'
+                    }
                 }
             }
         }
     });
 </script>
+
 <script>
     const ctx2 = document.getElementById('myChart2');
 
     new Chart(ctx2, {
         type: 'doughnut',
         data: {
-            labels: [],
+            labels: ["Porcentagem de uso do disco"],
             datasets: [{
-                label: '# of Votes',
-                data: [p2, rest2],
+                data: [usedDisc, total],
                 borderWidth: 1,
                 cutout: '60%',
                 circumference: 180,
@@ -188,12 +186,7 @@
             }]
         },
         options: {
-            aspectRatio: 4,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+            aspectRatio: 2,
         }
     });
 </script>
@@ -202,27 +195,27 @@
     const ctx3 = document.getElementById('myChart3');
 
     new Chart(ctx3, {
-        type: 'doughnut',
+        type: 'line',
         data: {
-            labels: [],
+            labels: ['0', '1', '2', '3', '4', '60'],
             datasets: [{
-                label: '# of Votes',
-                data: [p3, rest3],
+                label: 'Uso de RAM por minuto',
+                data: [40, 20, 30, 65, 63],
                 borderWidth: 1,
-                cutout: '60%',
-                circumference: 180,
-                rotation: 270,
-                backgroundColor: [
-                    '#ffffff',
-                    '#496B8E',
-                ]
             }]
         },
         options: {
-            aspectRatio: 4,
+            aspectRatio: 3,
             scales: {
                 y: {
-                    beginAtZero: true
+                    ticks: {
+                        color: '#ffffff'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#ffffff'
+                    }
                 }
             }
         }
