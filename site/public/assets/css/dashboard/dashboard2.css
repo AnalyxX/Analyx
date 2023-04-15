@@ -14,7 +14,7 @@
 .left-menu {
     width: 15%;
     display: none;
-    padding-top: 3%;
+    padding-top: 1%;
     background-color: #496B8E;
     color: white;
     position: absolute;
@@ -23,7 +23,7 @@
 .icons {
     display: flex;
     justify-content: space-between;
-    margin: 0% 10% 0% 10%;
+    margin: 0% 15% 0% 15%;
     font-size: 1.5em;
     padding-bottom: 2em;
 }
@@ -66,7 +66,7 @@
 
 .exit {
     text-align: center;
-    padding-bottom: 1.15em;
+    padding-bottom: 0.9em;
 }
 
 .exit button {
@@ -80,8 +80,8 @@
 }
 
 .exit button:hover {
-   background-color: rgb(199, 0, 0);
-   cursor: pointer;
+    background-color: rgb(199, 0, 0);
+    cursor: pointer;
 }
 
 
@@ -99,25 +99,48 @@
     text-align: center;
     font-size: 1.5em;
     color: white;
-    margin-left: 1%;
 }
 
 .navbar {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .logo-align {
-    width: 100%;    
+    width: 90%;
     text-align: center;
+}
+
+.logo {
+    width: 4%;
+}
+
+.return {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5em;
+    color: white;
+}
+
+.return i {
+    margin-left: 8%;
+    font-size: 1.8em;
+}
+
+.return:hover {
+    color: #496B8E;
+    cursor: pointer;
+    transition: .3s;
 }
 
 
 /* dashboard */
 .analytics {
-    background-color: #D6DAFF;
-    padding-top: 3%;
-} 
+    background-color: #304F73;
+    padding-top: 2%;
+}
 
 .analytics .container {
     width: 90%;
@@ -127,16 +150,52 @@
 /* cards */
 .card-align {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .card {
-    width: 30%;
+    width: 25%;
     background-color: #274360;
     color: white;
+    border-radius: 25px;
+    padding: 0.8%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: .5s;
+}
+
+.card .container {
+    width: 90%;
+    margin: auto;
 }
 
 .header-card {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
+.grafics {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#discValue {
+    font-size: 1.6em;
+    margin-right: 0.5em;
+}
+
+#cpu_check,
+#cpu_alert,
+#disc_check,
+#disc_alert,
+#ram_check,
+#ram_alert {
+    display: none;
+    font-size: 1.3em;
 }
