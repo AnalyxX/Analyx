@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/dashboard/dashboardInit.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="content">
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+
+                    <div id="menu" class="menu">
+                        <i id="bars" onclick="showMenu()" class="fa-solid fa-bars" title="Abrir menu lateral"></i>
+                    </div>
+
+                    <div class="logo-align">
+                        <img class="logo" src="../assets/images/logo-analyx.svg" alt="">
+                    </div>
+
+                    <div class="return" onclick="Profile()" title="Voltar ao menu principal">
+                        <img src="../assets/images/config.svg" alt="">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="localCard">
+
+            <div class="cardConfig"  id="profileVisibility">
+                <div class="perfil">
+                    <div class="fotoPerfil">
+
+                    </div>
+
+                </div>
+                <div class="nomePerfil">
+
+                </div>
+
+                <div class="sairPerfil">
+                    <button>Sair</button>
+                </div>
+            </div>
+        </div>
+        <div class="social">
+            aa
+            <div class="container1">
+                ee
+                <div class="subcontainer">
+                    <div class="titulo">
+                        Monitoramento
+
+                    </div>
+                    <div class="maquinas">
+                        <div class="subtitulos">
+                            <div class="tituloMaq">
+                                Maquinas
+                            </div>
+                            <div class="titulostatus">
+                                Status
+                            </div>
+                        </div>
+
+                        <div class="listMaquina">
+                            <div class="numeros">
+                                <li>MAQUINA007</li>
+                            </div>
+                            <div class="setas">
+                                <li>></li>
+                            </div>
+                            <div class="status">
+                            </div>
+                        </div>
+                        <div class="listMaquina">
+                            <div class="numeros">
+                                <li>MAQUINA013</li>
+                            </div>
+                            <div class="setas">
+                                <li>></li>
+                            </div>
+                            <div class="status">
+                            </div>
+                        </div>
+                        <div class="listMaquina">
+                            <div class="numeros">
+                                <li>MAQUINA010</li>
+                            </div>
+                            <div class="setas">
+                                <li>></li>
+                            </div>
+                            <div class="status">
+                            </div>
+                        </div>
+                        <div class="listMaquina">
+                            <div class="numeros">
+                                <li>MAQUINA001</li>
+                            </div>
+                            <div class="setas">
+                                <li>></li>
+                            </div>
+                            <div class="status">
+                            </div>
+                        </div>
+                        <div class="listMaquina">
+                            <div class="numeros">
+                                <li>MAQUINA002</li>
+                            </div>
+                            <div class="setas">
+                                <li>></li>
+                            </div>
+                            <div class="status">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="subcontainer2">
+                    <div class="totalmaquina">
+                        Total de Máquinas
+                        <span>5</span>
+                    </div>
+                    <div class="totalmaquina2">
+
+                        ee
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+
+    Visibilidade = false;
+    function Profile(){
+        if(Visibilidade == false){
+        profileVisibility.style.visibility="visible";
+        Visibilidade =true;
+    }else{
+        profileVisibility.style.visibility="hidden";
+        Visibilidade =false;
+
+        }
+        
+    }
+</script>
