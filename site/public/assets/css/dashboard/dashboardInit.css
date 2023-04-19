@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+
+}
+
+
+#bars:hover {
+    color: #496B8E;
+    transition: .3s;
+    cursor: pointer;
+}
+
+
+
+/* content */
+.content {
+    width: 100%;
+}
+
+.header {
+    background-color: #274360;
+}
+
+.menu {
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-align {
+    width: 90%;
+    text-align: center;
+}
+
+.logo {
+    width: 4%;
+}
+
+.return {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5em;
+    color: white;
+    width: 30px;
+}
+
+.return i {
+    margin-left: 8%;
+    font-size: 1.8em;
+}
+
+.return:hover {
+    color: #496B8E;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.return img{
+    width: 100%;
+}
+
+
+/* cards */
+.card-align {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    width: 25%;
+    background-color: #274360;
+    color: white;
+    border-radius: 25px;
+    padding: 0.8%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: .5s;
+}
+
+.card .container {
+    width: 90%;
+    margin: auto;
+}
+
+.header-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
+
+.social {
+    border: solid 3px green;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #304F73;
+}
+
+.social .container1 {
+    border: solid 3px red;
+    height: 90%;
+    width: 90%;
+    padding: 1vh 2vw 1vh 2vw;
+    display: flex;
+    border-radius: 30px;
+    background-color: #637CA2;
+    justify-content: center;
+    align-items: center;
+}
+
+.subcontainer {
+    border: solid 5px brown;
+    width: 50%;
+    height: 90%;
+    overflow: hidden;
+
+}
+
+.subcontainer2 {
+    border: solid 5px orange;
+    width: 50%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.social .container1 .titulo {
+    border: solid 3px purple;
+    height: 25%;
+    width: 90%;
+    font-weight: bolder;
+    font-size: 6rem;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.social .container1 .maquinas {
+    border: solid 3px yellow;
+    width: 80%;
+    height: 70%;
+    border-radius: 50px;
+    padding: 2rem;
+    background-color: #748EB7;
+    color: white;
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    
+}
+
+.subtitulos{
+    display: flex;
+    border: solid 3px yellow;
+    width: 100%;
+    height: 10%;
+    font-size: 3rem;
+    justify-content: space-around;
+    font-weight: bolder;
+}
+
+.titulostatus{
+    margin-left: 20%;
+}
+
+.maquinas .listMaquina {
+border: solid 3px greenyellow;
+    width: 100%;
+    display: flex;
+    height: 12%;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-bottom: 5%;
+    overflow-y: hidden; 
+}
+.maquinas .listMaquina .numeros {
+    border: solid 3px red;
+    font-weight: 600;
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+.maquinas .listMaquina .setas {
+    border: solid 3px blue;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: larger;
+}
+.maquinas .listMaquina .status{
+    border: solid 3px pink;
+    width: 30%;
+    background-image: url(../../images/Vector.svg);
+    background-size: 100% 100%;
+
+}
+
+
+.social .container1 .totalmaquina {
+    border: solid 3px blue;
+    height: 42%;
+    width: 85%;
+    border-radius: 50px;
+    padding: 2rem;
+    background-color: #748EB7;
+    font-size: 5rem;
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.totalmaquina span{
+    font-size: 7rem;
+}
+
+.social .container1 .totalmaquina2 {
+    border: solid 3px green;
+    height: 42%;
+    width: 90%;
+    border-radius: 50px;
+    background-color: #748EB7;
+
+}
+
+
+/* Card Perfil do usuario */
+
+
+.localCard{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.cardConfig{
+    background-color: #274360;
+    height: 60%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    border-bottom-left-radius: 30px;
+    margin-right: 3%;
+    visibility: hidden;
+}
+
+
+.perfil{
+    background-color: #274360;
+    width: 100%;
+    height: 30%;
+    border: solid 3px red;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.fotoPerfil{
+    width: 35%;
+    height: 75%;
+    background-image: url(../../images/usuario-teste.jpg);
+    background-size: 100% 100%;
+    border-radius: 50%;
+}
+
+.nomePerfil{
+    width: 100%;
+    height: 15%;
+    border: solid 3px aqua;
+}
+
+.sairPerfil{
+    width: 100%;
+    border: solid 3px palegreen;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.sairPerfil button {
+    height: 20%;
+    width: 30%;
+    border-radius: 50px;
+    font-size: 2rem;
+    background-color: #3C6A9A;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 5vh;
+}
