@@ -149,7 +149,7 @@
     height: 25%;
     width: 90%;
     font-weight: bolder;
-    font-size: 6rem;
+    font-size: 2.5rem;
     color: white;
     display: flex;
     align-items: center;
@@ -163,7 +163,7 @@
     padding: 2rem;
     background-color: #748EB7;
     color: white;
-    font-size: 3rem;
+    font-size: 1rem;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -175,13 +175,21 @@
     border: solid 3px yellow;
     width: 100%;
     height: 10%;
-    font-size: 3rem;
+    font-size: 2rem;
     justify-content: space-around;
     font-weight: bolder;
+    overflow-y: hidden; 
+
 }
 
+.tituloMaq{
+    overflow-y: hidden; 
+
+}
 .titulostatus{
     margin-left: 20%;
+    overflow-y: hidden; 
+
 }
 
 .maquinas .listMaquina {
@@ -193,6 +201,7 @@ border: solid 3px greenyellow;
     list-style-type: none;
     margin-bottom: 5%;
     overflow-y: hidden; 
+    
 }
 .maquinas .listMaquina .numeros {
     border: solid 3px red;
@@ -221,12 +230,12 @@ border: solid 3px greenyellow;
 
 .social .container1 .totalmaquina {
     border: solid 3px blue;
-    height: 42%;
+    height: 40%;
     width: 85%;
     border-radius: 50px;
     padding: 2rem;
     background-color: #748EB7;
-    font-size: 5rem;
+    font-size: 2.5rem;
     color: white;
     font-weight: bolder;
     display: flex;
@@ -237,13 +246,13 @@ border: solid 3px greenyellow;
 }
 
 .totalmaquina span{
-    font-size: 7rem;
+    font-size: 5rem;
 }
 
 .social .container1 .totalmaquina2 {
     border: solid 3px green;
-    height: 42%;
-    width: 90%;
+    height: 40%;
+    width: 95%;
     border-radius: 50px;
     background-color: #748EB7;
 
