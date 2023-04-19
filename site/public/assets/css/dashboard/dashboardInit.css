@@ -65,7 +65,7 @@
     transition: .3s;
 }
 
-.return img{
+.return img {
     width: 100%;
 }
 
@@ -105,7 +105,7 @@
 
 
 .social {
-    border: solid 3px green;
+    /* border: solid 3px green; */
     height: 100vh;
     width: 100%;
     display: flex;
@@ -115,7 +115,7 @@
 }
 
 .social .container1 {
-    border: solid 3px red;
+    /* border: solid 3px red; */
     height: 90%;
     width: 90%;
     padding: 1vh 2vw 1vh 2vw;
@@ -127,7 +127,7 @@
 }
 
 .subcontainer {
-    border: solid 5px brown;
+    /* border: solid 5px brown; */
     width: 50%;
     height: 90%;
     overflow: hidden;
@@ -135,7 +135,7 @@
 }
 
 .subcontainer2 {
-    border: solid 5px orange;
+    /* border: solid 5px orange; */
     width: 50%;
     height: 90%;
     display: flex;
@@ -145,7 +145,7 @@
 }
 
 .social .container1 .titulo {
-    border: solid 3px purple;
+    /* border: solid 3px purple; */
     height: 25%;
     width: 90%;
     font-weight: bolder;
@@ -156,10 +156,10 @@
 }
 
 .social .container1 .maquinas {
-    border: solid 3px yellow;
+    /* border: solid 3px yellow; */
     width: 80%;
     height: 70%;
-    border-radius: 50px;
+    border-radius: 20px;
     padding: 2rem;
     background-color: #748EB7;
     color: white;
@@ -167,51 +167,69 @@
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-    
+
 }
 
-.subtitulos{
+
+
+.maquinas::-webkit-scrollbar {
+    width: 15px;
+    height: 8px;
+    background-color: #aaa;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    height: 8px;
+    background-color: #aaa;
+}
+
+
+.subtitulos {
     display: flex;
-    border: solid 3px yellow;
+    /* border: solid 3px yellow; */
     width: 100%;
     height: 10%;
     font-size: 2rem;
     justify-content: space-around;
     font-weight: bolder;
-    overflow-y: hidden; 
+    overflow-y: hidden;
 
 }
 
-.tituloMaq{
-    overflow-y: hidden; 
+.tituloMaq {
+    overflow-y: hidden;
 
 }
-.titulostatus{
+
+.titulostatus {
     margin-left: 20%;
-    overflow-y: hidden; 
+    overflow-y: hidden;
 
 }
 
 .maquinas .listMaquina {
-border: solid 3px greenyellow;
+    /* border: solid 3px greenyellow; */
     width: 100%;
     display: flex;
     height: 12%;
     justify-content: space-between;
     list-style-type: none;
     margin-bottom: 5%;
-    overflow-y: hidden; 
-    
+    overflow-y: hidden;
+
 }
+
 .maquinas .listMaquina .numeros {
-    border: solid 3px red;
+    /* border: solid 3px red; */
     font-weight: 600;
     width: 40%;
     display: flex;
     align-items: center;
 }
+
 .maquinas .listMaquina .setas {
-    border: solid 3px blue;
+    /* border: solid 3px blue; */
     width: 20%;
     display: flex;
     justify-content: center;
@@ -219,8 +237,9 @@ border: solid 3px greenyellow;
     font-weight: bolder;
     font-size: larger;
 }
-.maquinas .listMaquina .status{
-    border: solid 3px pink;
+
+.maquinas .listMaquina .status {
+    /* border: solid 3px pink; */
     width: 30%;
     background-image: url(../../images/Vector.svg);
     background-size: 100% 100%;
@@ -229,7 +248,7 @@ border: solid 3px greenyellow;
 
 
 .social .container1 .totalmaquina {
-    border: solid 3px blue;
+    /* border: solid 3px blue; */
     height: 40%;
     width: 85%;
     border-radius: 50px;
@@ -245,12 +264,12 @@ border: solid 3px greenyellow;
 
 }
 
-.totalmaquina span{
+.totalmaquina span {
     font-size: 5rem;
 }
 
 .social .container1 .totalmaquina2 {
-    border: solid 3px green;
+    /* border: solid 3px green; */
     height: 40%;
     width: 95%;
     border-radius: 50px;
@@ -262,14 +281,15 @@ border: solid 3px greenyellow;
 /* Card Perfil do usuario */
 
 
-.localCard{
+.localCard {
     width: 100%;
     position: absolute;
     height: 100%;
     display: flex;
     justify-content: flex-end;
 }
-.cardConfig{
+
+.cardConfig {
     background-color: #274360;
     height: 60%;
     width: 20%;
@@ -283,16 +303,17 @@ border: solid 3px greenyellow;
 }
 
 
-.perfil{
+.perfil {
     background-color: #274360;
     width: 100%;
     height: 30%;
-    border: solid 3px red;
+    /* border: solid 3px red; */
     display: flex;
     justify-content: center;
     align-items: end;
 }
-.fotoPerfil{
+
+.fotoPerfil {
     width: 35%;
     height: 75%;
     background-image: url(../../images/usuario-teste.jpg);
@@ -300,19 +321,20 @@ border: solid 3px greenyellow;
     border-radius: 50%;
 }
 
-.nomePerfil{
+.nomePerfil {
+    /* border: solid 3px aqua; */
     width: 100%;
     height: 15%;
-    border: solid 3px aqua;
 }
 
-.sairPerfil{
+.sairPerfil {
+    /* border: solid 3px palegreen; */
     width: 100%;
-    border: solid 3px palegreen;
     height: 45%;
     display: flex;
     justify-content: center;
     align-items: end;
+    overflow-y: hidden;
 }
 
 .sairPerfil button {
@@ -325,4 +347,24 @@ border: solid 3px greenyellow;
     font-weight: bold;
     border: none;
     margin-bottom: 5vh;
+    overflow-y: hidden;
+
+}
+
+.sairPerfil button a {
+    height: 20%;
+    width: 30%;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    background-color: #3C6A9A;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 5vh;
+    list-style-type: none;
+    text-decoration: none;
+
+    color: white;
+    overflow-y: hidden;
+
 }
