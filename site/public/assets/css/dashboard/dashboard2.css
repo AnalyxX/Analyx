@@ -18,6 +18,9 @@
     background-color: #496B8E;
     color: white;
     position: absolute;
+    z-index: 1000000000000;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .icons {
@@ -26,6 +29,10 @@
     margin: 0% 15% 0% 15%;
     font-size: 1.5em;
     padding-bottom: 2em;
+}
+
+.text {
+    text-align: center;
 }
 
 #exit_menu:hover {
@@ -49,7 +56,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 5em;
+    padding-bottom: 2em;
 }
 
 .profile-align {
@@ -60,8 +67,54 @@
 }
 
 .machines {
+    margin-bottom: 4em;
     text-align: center;
-    padding-bottom: 10em;
+}
+
+.machines p {
+    margin-bottom: 0.7em;
+}
+
+.names {
+    padding: 1em;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 100px;
+    text-align: center;
+}
+
+.names::-webkit-scrollbar {
+    width: 8px;
+    background-color: #3d6085;
+    border-radius: 10px;
+}
+
+.names::-webkit-scrollbar-thumb {
+    background-color: #274360;
+    border-radius: 10px;
+}
+
+.names h2 {
+    font-size: 0.9em;
+}
+
+.names i {
+    font-size: 0.9em;
+}
+
+.names-align {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.names-align:hover {
+    color: #304F73;
+    transition: .3s;
+}
+
+.names-align:not(:last-child) {
+    margin-bottom: 0.5em;
 }
 
 .exit {
@@ -84,11 +137,17 @@
     cursor: pointer;
 }
 
+#b_usuario {
+    font-size: 0.8em;
+}
+
 
 
 /* content */
 .content {
     width: 100%;
+    height: 100vh;
+    background-color: #304F73;
 }
 
 .header {
@@ -138,8 +197,7 @@
 
 /* dashboard */
 .analytics {
-    background-color: #304F73;
-    padding-top: 2%;
+    margin-top: 3em;
 }
 
 .analytics .container {
@@ -150,7 +208,8 @@
 /* cards */
 .card-align {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin-bottom: 1em;
 }
 
 .card {
@@ -159,8 +218,10 @@
     color: white;
     border-radius: 25px;
     padding: 0.8%;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
+
 .card:hover {
     cursor: pointer;
     transform: scale(1.03);
@@ -179,23 +240,210 @@
     margin-top: 2%;
 }
 
+.header-card .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
 .grafics {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#discValue {
-    font-size: 1.6em;
-    margin-right: 0.5em;
+.cpu-grafic-width {
+    width: 100%;
+    margin-top: 0.5em;
 }
+
+.disc-grafic-width {
+    width: 50%;
+    margin-top: 0.5em;
+}
+
+.ram-grafic-width {
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+#discValue {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 1920px) {
+    #discValue {
+        font-size: 2.5em;
+    }
+}
+
+@media screen and (max-width: 1390px) {
+    #discValue {
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    #discValue {
+        font-size: 1.5em;
+    }
+}
+
+
 
 #cpu_check,
 #cpu_alert,
 #disc_check,
 #disc_alert,
 #ram_check,
-#ram_alert {
+#ram_alert,
+#net_check,
+#net_alert {
     display: none;
     font-size: 1.3em;
+}
+
+/* network grafics */
+
+.network-align {
+    display: flex;
+    justify-content: space-between;
+}
+
+.network-grafic .title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.network-grafic {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: #274360;
+    padding: 1.5em 0 1.5em 1.5em;
+    border-radius: 15px;
+    width: 50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.network-grafic-width {
+    width: 85%;
+}
+
+.latency {
+    color: white;
+    border-radius: 15px;
+    left: 45%;
+    padding: 1.5em;
+}
+
+.latency-escope {
+    color: white;
+    background-color: #3d6085;
+    border-radius: 15px;
+    position: absolute;
+    left: 43%;
+    padding: 1em 1.5em 1.5em 1.5em;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.latency-escope .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.latency-escope .title h1 {
+    font-size: 2em;
+}
+
+#latencyValue {
+    font-size: 1.5em;
+}
+
+
+/* dowloads values */
+
+.download {
+    background-color: #274360;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    width: 37%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    color: white;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+
+.download .title {
+    margin-top: 1em;
+}
+
+.download::-webkit-scrollbar {
+    width: 8px;
+    background-color: #274360;
+    border-radius: 10px
+}
+
+.download::-webkit-scrollbar-thumb {
+    background-color: #3d6085;
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width: 1920px) {
+    .download {
+        padding: 1.5em;
+        font-size: 1.2em;
+        height: 250px;
+    }
+
+    .download .title {
+        margin-top: 5em;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .download {
+        padding: 1.3em;
+        font-size: 1em;
+        height: 200px;
+    }
+}
+
+.columns-align {
+    display: flex;
+}
+
+.columns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.columns:not(:last-child) {
+    margin-inline-end: 0.60em;
+    /* border: red 3px solid; */
+}
+
+.columns:not(:first-child) {
+    border-left: solid 1px;
+    padding: 0.60em;
+    border-image: linear-gradient(to bottom, #274360, #eee, #274360) 1 100%;
+}
+
+.columns p:not(:first-child) {
+    margin-bottom: 0.3em;
+}
+
+.columns h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.3em;
 }

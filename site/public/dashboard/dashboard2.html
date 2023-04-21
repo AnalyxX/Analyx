@@ -12,7 +12,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body onload="checkCPU(), checkDisc(), checkRam()">
+<body onload="checkCPU(), checkDisc(), checkRam(), checkNet()">
 
     <div id="left_menu" class="left-menu">
         <div class="icons">
@@ -24,14 +24,62 @@
 
             <img class="profile-img" src="../assets/images/fotor_2023-4-8_2_11_54.png" alt="">
 
-            <h1> <b id="b_usuario">Example</b> </h1>
+            <div class="text">
+                <h1> <b id="b_usuario">Olá, Anna!</b> </h1>
+
+            </div>
         </div>
 
         <div class="machines">
-            <h2>Machine 001</h2>
-            <h2>Machine 002</h2>
-            <h2>Machine 003</h2>
-            <h2>Machine 004</h2>
+            <p>Selecione a máquina que deseja monitorar!</p>
+            <div class="names">
+                <div class="names-align">
+                    <h2>Milena Soares</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="names-align">
+                    <h2>João Fernandez</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="names-align">
+                    <h2>Rodolfo Guilherme</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="names-align">
+                    <h2>Jenifer Barreto</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="names-align">
+                    <h2>Miguel Silva</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="names-align">
+                    <h2>Solange Barros</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="names-align">
+                    <h2>Pedro Matos</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="names-align">
+                    <h2>Alexandre Maia</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+                <div class="names-align">
+                    <h2>Gabriel Leal</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+
+               
+            </div>
         </div>
 
         <div class="exit">
@@ -55,7 +103,7 @@
                         <img class="logo" src="../assets/images/logo-analyx.svg" alt="">
                     </div>
 
-                    <div class="return" title="Voltar ao menu principal">
+                    <div class="return" onclick="back()" title="Voltar ao menu principal">
                         <h1>Voltar</h1>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
@@ -83,8 +131,8 @@
 
                             <div class="grafics">
 
-                                <div>
-                                    <canvas id="myChart1"></canvas>
+                                <div class="cpu-grafic-width">
+                                    <canvas id="cpu_grafic"></canvas>
                                 </div>
                             </div>
 
@@ -98,6 +146,7 @@
                         <div class="container">
                             <div class="header-card">
                                 <h1> DISCO </h1>
+
                                 <div class="card-icons">
                                     <i id="disc_check" class="fa-solid fa-circle-check"></i>
                                     <i id="disc_alert" class="fa-solid fa-circle-exclamation"></i>
@@ -106,10 +155,11 @@
 
 
                             <div class="grafics">
-                                <h1 id="percentage2"> <span id="discValue"></span> </h1>
-                                <div>
-                                    <canvas style="width: 10vw;" id="myChart2"></canvas>
+                                <h1> <b id="discValue"></b> </h1>
+                                <div class="disc-grafic-width">
+                                    <canvas id="disc_grafic"></canvas>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -128,13 +178,108 @@
 
 
                             <div class="grafics">
-                                <div>
-                                    <canvas id="myChart3"></canvas>
+                                <div class="ram-grafic-width">
+                                    <canvas id="ram_grafic"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="latency">
+                    <div class="latency-escope">
+                        <div class="card-icons" style="text-align: end;">
+                            <i id="net_check" class="fa-solid fa-circle-check"></i>
+                            <i id="net_alert" class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+                        <div class="title">
+                            <h1> Latência </h1>
+                            <span> <b id="latencyValue"></b></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- nao vai ser mais network -->
+                <div class="network-align">
+
+                    <div class="network-grafic">
+                        <div class="title">
+                            <h1> Rede </h1>
+
+                        </div>
+
+                        <div class="network-align">
+                            <div class="network-grafic-width">
+                                <canvas id="rede_grafic"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="download">
+                        <div class="title">
+                            <h1 style="text-align: center;"> Download </h1>
+                        </div>
+
+                        <div class="columns-align">
+                            <div class="columns">
+                                <h1> Nome </h1>
+                                <p>Vscode</p>
+                                <p>Music</p>
+                                <p>Image</p>
+                                <p>Mysql</p>
+                                <p>Vscode</p>
+                                <p>Music</p>
+                                <p>Image</p>
+                                <p>Mysql</p>
+                            </div>
+
+                            <div class="columns">
+                                <h1> Arquivo </h1>
+                                <p> kpg </p>
+                                <p> mp3 </p>
+                                <p> jpg </p>
+                                <p> Sql </p>
+                                <p> kpg </p>
+                                <p> mp3 </p>
+                                <p> jpg </p>
+                                <p> Sql </p>
+                            </div>
+
+                            <div class="columns">
+                                <h1> Data </h1>
+                                <p> 03/04/2023 </p>
+                                <p> 01/01/2023 </p>
+                                <p> 09/07/2018 </p>
+                                <p> 12/05/2019 </p>
+                                <p> 03/04/2023 </p>
+                                <p> 01/01/2023 </p>
+                                <p> 09/07/2018 </p>
+                                <p> 12/05/2019 </p>
+                            </div>
+
+                            <div class="columns">
+                                <h1> Status </h1>
+                                <p> Concluído </p>
+                                <p> Cancelado </p>
+                                <p> Concluído </p>
+                                <p> Andamento </p>
+                                <p> Concluído </p>
+                                <p> Cancelado </p>
+                                <p> Concluído </p>
+                                <p> Andamento </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
     </div>
 </body>
 
@@ -150,7 +295,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-    const ctx1 = document.getElementById('myChart1');
+    const ctx1 = document.getElementById('cpu_grafic');
 
     new Chart(ctx1, {
         type: 'line',
@@ -163,7 +308,6 @@
             }]
         },
         options: {
-            aspectRatio: 2.5,
             scales: {
                 y: {
                     ticks: {
@@ -193,7 +337,7 @@
 </script>
 
 <script>
-    const ctx2 = document.getElementById('myChart2');
+    const ctx2 = document.getElementById('disc_grafic');
 
     new Chart(ctx2, {
         type: 'doughnut',
@@ -216,7 +360,7 @@
 </script>
 
 <script>
-    const ctx3 = document.getElementById('myChart3');
+    const ctx3 = document.getElementById('ram_grafic');
 
     new Chart(ctx3, {
         type: 'line',
@@ -229,7 +373,6 @@
             }]
         },
         options: {
-            aspectRatio: 2.5,
             scales: {
                 y: {
                     ticks: {
@@ -256,20 +399,25 @@
 </script>
 
 <script>
-    const ctx4 = document.getElementById('myChart4');
+    const ctx4 = document.getElementById('rede_grafic');
 
     new Chart(ctx4, {
         type: 'line',
         data: {
             labels: ['0', '1', '2', '3', '4', '5', '60'],
             datasets: [{
-                label: 'Uso de RAM por minuto',
-                data: [ramData[0], ramData[1], ramData[2], ramData[3], ramData[4], ramData[5]],
+                label: 'Dowload por minuto',
+                data: [download[0], download[1], download[2], download[3], download[4], download[5]],
                 borderWidth: 1,
+            }, {
+                label: 'Upload por minuto',
+                data: [upload[0], upload[1], upload[2], upload[3], upload[4], upload[5]],
+                borderWidth: 1,
+                labelColor: ('rbg(255, 0, 0)')
             }]
         },
         options: {
-            aspectRatio: 2.5,
+            aspectRatio: 3.5,
             scales: {
                 y: {
                     ticks: {

@@ -15,8 +15,11 @@ discValue.innerHTML = `${discData}%`
 let cpuData = [40, 20, 78, 65, 56, 90]
 let ramData = [40, 20, 90, 65, 63, 45]
 
-let latency = 90;
+let latency = 20;
 latencyValue.innerHTML = `${latency}ms`
+
+let download = [20, 60, 55, 43, 60, 80]
+let upload = [78, 44, 43, 22, 37, 5]
 
 // cpu_alert.style.display = "block"
 
@@ -54,12 +57,12 @@ function checkDisc() {
     check = true;
 
     if (discData > 50) {
-        disc_check.style.display = "block";
-        disc_check.style.color = "yellow";
+        disc_alert.style.display = "block";
+        disc_alert.style.color = "yellow";
         check = false
     } else if (discData > 75){
-        disc_check.style.display = "block";
-        disc_check.style.color = "red";
+        disc_alert.style.display = "block";
+        disc_alert.style.color = "red";
         check = false
     }
 
@@ -99,5 +102,26 @@ function checkRam() {
     }
 }
 
+function checkNet() {
+    check = true;
 
+    if (latency > 50) {
+        net_alert.style.display = "block";
+        net_alert.style.color = "yellow";
+        check = false
+    } else if (latency > 75){
+        net_alert.style.display = "block";
+        net_alert.style.color = "red";
+        check = false
+    }
+
+    if(check) {
+        net_check.style.display = "block";
+        net_check.style.color = "rgb(0, 172, 0)";
+    }
+}
+
+function back(){
+    window.location = "dashboardInit.html"
+}
 
