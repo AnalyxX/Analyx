@@ -23,7 +23,7 @@
                         <img class="logo" src="../assets/images/logo-analyx.svg" alt="">
                     </div>
 
-                    <div class="return" onclick="Profile()" title="Voltar ao menu principal">
+                    <div id="id_config" class="return" onclick="Profile()" title="Voltar ao menu principal">
                         <img src="../assets/images/config.svg" alt="">
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
@@ -33,7 +33,14 @@
         </div>
         <div class="localCard">
 
-            <div class="cardConfig"  id="profileVisibility">
+            <div class="cardConfig" id="profileVisibility">
+                <div class="config-x">
+                    <div  class="x">
+                    </div>
+                    <div class="config2" onclick="Profile()">
+                        <img src="../assets/images/config.svg" alt="">
+                    </div>
+                </div>
                 <div class="perfil">
                     <div class="fotoPerfil">
 
@@ -41,7 +48,7 @@
 
                 </div>
                 <div class="nomePerfil">
-
+                    Bem-vindo, Anna!
                 </div>
 
                 <div class="sairPerfil">
@@ -50,9 +57,9 @@
             </div>
         </div>
         <div class="social">
-            
+
             <div class="container1">
-                
+
                 <div class="subcontainer">
                     <div class="titulo">
                         Monitoramento
@@ -70,54 +77,105 @@
 
                         <div class="listMaquina">
                             <div class="numeros">
-                                <li>MAQUINA007</li>
+                                <li><a href="dashboard2.html">Milena Soares</a></li>
                             </div>
                             <div class="setas">
                                 <li>></li>
                             </div>
                             <div class="status">
+                                <img src="../assets/images/sinal-vermelho.svg" alt="">
                             </div>
                         </div>
                         <div class="listMaquina">
                             <div class="numeros">
-                                <li>MAQUINA013</li>
+                                <li><a href="dashboard2.html">João Fernandez</a></li>
                             </div>
                             <div class="setas">
                                 <li>></li>
                             </div>
                             <div class="status">
+                                <img src="../assets/images/sinal-vermelho.svg" alt="">
                             </div>
                         </div>
                         <div class="listMaquina">
                             <div class="numeros">
-                                <li>MAQUINA010</li>
+                                <li><a href="dashboard2.html">Rodolfo Guilherme</a></li>
                             </div>
                             <div class="setas">
                                 <li>></li>
                             </div>
                             <div class="status">
+                                <img src="../assets/images/sinal-amarelo.svg" alt="">
+
                             </div>
                         </div>
                         <div class="listMaquina">
                             <div class="numeros">
-                                <li>MAQUINA001</li>
+                                <li><a href="dashboard2.html">Jenifer Barreto</a></li>
                             </div>
                             <div class="setas">
                                 <li>></li>
                             </div>
                             <div class="status">
+                                <img src="../assets/images/sinal-verde.svg" alt="">
                             </div>
                         </div>
                         <div class="listMaquina">
                             <div class="numeros">
-                                <li>MAQUINA002</li>
+                                <li><a href="dashboard2.html">Miguel Silva</a></li>
                             </div>
                             <div class="setas">
                                 <li>></li>
                             </div>
                             <div class="status">
+                                <img src="../assets/images/sinal-verde.svg" alt="">
                             </div>
                         </div>
+                        <div class="listMaquina">
+                            <div class="numeros">
+                                <li><a href="dashboard2.html">Solange Barros</a></li>
+                            </div>
+                            <div class="setas">
+                                <li>></li>
+                            </div>
+                            <div class="status">
+                                <img src="../assets/images/sinal-verde.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="listMaquina">
+                            <div class="numeros">
+                                <li><a href="dashboard2.html">Pedro Matos</a></li>
+                            </div>
+                            <div class="setas">
+                                <li>></li>
+                            </div>
+                            <div class="status">
+                                <img src="../assets/images/sinal-verde.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="listMaquina">
+                            <div class="numeros">
+                                <li><a href="dashboard2.html">Alexandre Maia</a></li>
+                            </div>
+                            <div class="setas">
+                                <li>></li>
+                            </div>
+                            <div class="status">
+                                <img src="../assets/images/sinal-verde.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="listMaquina">
+                            <div class="numeros">
+                                <li><a href="dashboard2.html">Gabriel Leal</a></li>
+                            </div>
+                            <div class="setas">
+                                <li>></li>
+                            </div>
+                            <div class="status">
+                                <img src="../assets/images/sinal-verde.svg" alt="">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="subcontainer2">
@@ -143,16 +201,18 @@
 <script>
 
     Visibilidade = false;
-    function Profile(){
-        if(Visibilidade == false){
-        profileVisibility.style.visibility="visible";
-        Visibilidade =true;
-    }else{
-        profileVisibility.style.visibility="hidden";
-        Visibilidade =false;
+    function Profile() {
+        if (Visibilidade == false) {
+            profileVisibility.style.visibility = "visible";
+            id_config.style.display = "none";
+            Visibilidade = true;
+        } else {
+            profileVisibility.style.visibility = "hidden";
+            id_config.style.display = "block";
+            Visibilidade = false;
 
         }
-        
+
     }
 
 </script>
