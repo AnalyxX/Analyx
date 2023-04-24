@@ -19,8 +19,6 @@
     color: white;
     position: absolute;
     z-index: 1000000000000;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 .icons {
@@ -28,7 +26,17 @@
     justify-content: space-between;
     margin: 0% 15% 0% 15%;
     font-size: 1.5em;
-    padding-bottom: 2em;
+}
+
+@media screen and (max-width: 1920px) {
+    .icons {
+        margin-bottom: 2em;
+    }
+}
+@media screen and (max-width: 1700px) {
+    .icons {
+        margin-bottom: 1em;
+    }
 }
 
 .text {
@@ -67,8 +75,33 @@
 }
 
 .machines {
-    margin-bottom: 4em;
     text-align: center;
+}
+
+@media screen and (max-width: 1920px) {
+    .machines {
+        margin-top: 0.1em;
+        margin-bottom: 3em;
+    }
+
+    .machines p {
+        font-size: 1.5em;
+    }
+
+    .exit {
+        padding-bottom: 2em;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .machines {
+        margin-top: 0.1em;
+        margin-bottom: 2em;
+    }
+
+    .machines p {
+        font-size: 1em;
+    }
 }
 
 .machines p {
@@ -79,7 +112,7 @@
     padding: 1em;
     overflow: hidden;
     overflow-y: scroll;
-    height: 100px;
+    height: 150px;
     text-align: center;
 }
 
@@ -111,6 +144,7 @@
 .names-align:hover {
     color: #304F73;
     transition: .3s;
+    cursor: pointer;
 }
 
 .names-align:not(:last-child) {
@@ -119,7 +153,6 @@
 
 .exit {
     text-align: center;
-    padding-bottom: 0.9em;
 }
 
 .exit button {
@@ -196,9 +229,25 @@
 
 
 /* dashboard */
-.analytics {
-    margin-top: 3em;
-}
+
+@media screen and (max-width: 1920px){
+    .analytics {
+        margin-top: 6em;
+    }
+
+    .card-align {
+        margin-bottom: 5em;
+    }
+} 
+
+@media screen and (max-width: 1700px){
+    .analytics {
+        margin-top: 2.2em;
+    }
+    .card-align {
+        margin-bottom: 1em;
+    }
+} 
 
 .analytics .container {
     width: 90%;
@@ -209,7 +258,6 @@
 .card-align {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 1em;
 }
 
 .card {
@@ -285,9 +333,9 @@
     }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1390px) {
     #discValue {
-        font-size: 1.5em;
+        font-size: 1.8em;
     }
 }
 

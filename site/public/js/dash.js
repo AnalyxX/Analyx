@@ -49,7 +49,7 @@ function checkCPU() {
 
     if(check) {
         cpu_check.style.display = "block";
-        cpu_check.style.color = "green";
+        cpu_check.style.color = "rgb(0, 172, 0)";
     }
 }
 
@@ -68,7 +68,7 @@ function checkDisc() {
 
     if(check) {
         disc_check.style.display = "block";
-        disc_check.style.color = "green";
+        disc_check.style.color = "rgb(0, 172, 0)";
     }
 }
 
@@ -98,7 +98,7 @@ function checkRam() {
 
     if(check) {
         ram_check.style.display = "block";
-        ram_check.style.color = "green";
+        ram_check.style.color = "rgb(0, 172, 0)";
     }
 }
 
