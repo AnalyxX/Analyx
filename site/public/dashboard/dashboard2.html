@@ -305,10 +305,20 @@
                 label: 'Uso de CPU por minuto',
                 data: [cpuData[0], cpuData[1], cpuData[2], cpuData[3], cpuData[4], cpuData[5]],
                 borderWidth: 1,
+                    
             }]
         },
         options: {
+            plugins: {
+                legend: {
+                  labels: {
+                    color: 'white'
+                  }
+                }
+              },
             scales: {
+                
+                
                 y: {
                     ticks: {
                         color: '#ffffff'
@@ -327,6 +337,11 @@
                     ticks: {
                         color: '#ffffff'
                     }
+                }
+            },
+            legend: {
+                labels: {
+                    fontColor: 'rgb(255, 99, 132)'
                 }
             },
             datalabels: {
@@ -373,6 +388,13 @@
             }]
         },
         options: {
+            plugins: {
+                legend: {
+                  labels: {
+                    color: 'white'
+                  }
+                }
+              },            
             scales: {
                 y: {
                     ticks: {
@@ -417,6 +439,13 @@
             }]
         },
         options: {
+            plugins: {
+                legend: {
+                  labels: {
+                    color: 'white'
+                  }
+                }
+              },
             aspectRatio: 3.5,
             scales: {
                 y: {

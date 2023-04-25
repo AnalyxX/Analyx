@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +9,11 @@
     <link rel="stylesheet" href="../assets/css/index/index.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=80307728-deba-46b0-896c-3db8e9d0c692"> 
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=80307728-deba-46b0-896c-3db8e9d0c692">
     </script>
     <title>Login</title>
 </head>
+
 <body>
 
     <div class="header" id="header-login">
@@ -36,19 +38,32 @@
 
             <div class="input" id="ipt1">
                 Email:
-                <input type="email" name="email" id="ipt_email">
+                <input type="email" name="email" id="ipt_email" placeholder="Digite seu E-MAIL">
             </div>
 
             <div class="input" id="ipt2">
                 Senha:
-                <input type="password" name="senha" id="ipt_senha">
+                <input type="password" name="senha" id="ipt_senha" placeholder="Digite sua senha">
             </div>
 
-            <button id="btn_entrar">Conectar</button>
+            <button id="btn_entrar" onclick="conectar()">Conectar</button>
         </div>
     </div>
-    
+
 </body>
 
 <script src="js/index.js"></script>
+
 </html>
+
+<script>
+    function conectar() {
+        if ((ipt_email.value).length > 3 && (ipt_senha.value).length > 3) {
+            setTimeout(() => {
+                window.location = "../dashboard/dashboardInit.html";
+            }, "2000")
+        }else{
+            alert('O email e senha precisam ter o minimo de 4 digitos.');
+        }
+    }
+</script>

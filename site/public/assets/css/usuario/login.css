@@ -61,3 +61,7 @@ input{
     background-color: #858585;
 }
 
+#btn_entrar{
+    cursor: pointer;
+}
+
