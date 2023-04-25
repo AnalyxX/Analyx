@@ -305,8 +305,8 @@
 
 .social .container1 .totalmaquina2 {
     /* border: solid 3px green; */
-    height: 40%;
-    width: 95%;
+    height: 30%;
+    width: 86%;
     border-radius: 50px;
     background-color: #748EB7;
 
@@ -317,9 +317,6 @@
 
 
 .localCard {
-    width: 100%;
-    position: absolute;
-    height: 100%;
     display: flex;
     justify-content: flex-end;
 }
@@ -437,4 +434,19 @@
     color: white;
     overflow-y: hidden;
 
+}
+.totalmaquina2 {
+    height: 40%;
+    width: 80%;
+    border-radius: 50px;
+    padding: 2rem;
+    background-color: #748EB7;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+   
 }
