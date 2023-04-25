@@ -7,38 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/dashboard/dashboardInit.css">
     <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <div class="content">
-        <div class="header">
-            <div class="container">
-                <div class="navbar">
 
-                    <div id="menu" class="menu">
-                        <i id="bars" onclick="showMenu()" class="fa-solid fa-bars" title="Abrir menu lateral"></i>
-                    </div>
-
-                    <div class="logo-align">
-                        <img class="logo" src="../assets/images/logo-analyx.svg" alt="">
-                    </div>
-
-                    <div id="id_config" class="return" onclick="Profile()" title="Voltar ao menu principal">
-                        <img src="../assets/images/config.svg" alt="">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-
-                </div>
-            </div>
-        </div>
         <div class="localCard">
-
             <div class="cardConfig" id="profileVisibility">
                 <div class="config-x">
-                    <div  class="x">
+                    <div class="x">
                     </div>
                     <div class="config2" onclick="Profile()">
-                        X
+                        <i class="fa-solid fa-xmark" title="Fechar menu lateral"></i>
                     </div>
                 </div>
                 <div class="perfil">
@@ -48,7 +31,7 @@
 
                 </div>
                 <div class="nomePerfil">
-                    Bem-vindo, Anna!
+                    Olá, Anna!
                 </div>
 
                 <div class="sairPerfil">
@@ -56,6 +39,24 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+
+                    <div class="logo-align">
+                        <img class="logo" src="../assets/images/logo-analyx.svg" alt="">
+                    </div>
+
+                    <div id="id_config" class="return" onclick="Profile()" title="Voltar ao menu principal">
+                        <img src="../assets/images/config.svg" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <div class="social">
 
             <div class="container1">

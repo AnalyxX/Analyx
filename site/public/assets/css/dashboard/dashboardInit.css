@@ -327,8 +327,6 @@
 .cardConfig {
     background-color: rgba(73, 107, 142, 1);
     /* Rectangle 10 */
-
-
     position: absolute;
     width: 93px;
     height: 276px;
@@ -359,6 +357,7 @@
 }
 
 .config-x .config2 {
+    margin-top: 1em;
     margin-right: 5%;
     color: white;
     cursor: pointer;

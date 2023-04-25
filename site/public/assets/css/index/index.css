@@ -312,7 +312,7 @@ a {
 }
 
 .about-title {
-  background-image: linear-gradient(0deg, white 3%, transparent 30%), url(../images/colegas-dando-uma-colisao-de-punho\ 1.png);
+  background-image: linear-gradient(0deg, white 3%, transparent 30%), url(/site/public/assets/images/colegas-dando-uma-colisao-de-punho\ 1.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -543,23 +543,23 @@ input:focus {
   color: #323232;
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
   background-color: #274360;
   width: 10px;
-  /* width of the entire scrollbar */
+  width of the entire scrollbar
 }
 
 body::-webkit-scrollbar-track {
   background: #274360;
-  /* color of the tracking area */
-}
+  color of the tracking area
+} */
 
 
-body::-webkit-scrollbar-thumb {
+/* body::-webkit-scrollbar-thumb {
   background-color: rgba(148, 148, 148, 0.357);
   border-radius: 3px;
   border: 3px solid rgba(0, 0, 0, 0, 0);
-}
+} */
 
 
 
