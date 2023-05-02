@@ -58,10 +58,10 @@ a {
   transition: .3s;
 }
 
-.navbar .login-button {
+.navbar a .login-button {
   color: #FEFEFE;
-  margin-left: 4%;
-  padding: 0.6% 2.5%;
+  margin-left: 2.5em;
+  padding: 0.3em 1.5em;
   border-radius: 10px;
   border: solid #FEFEFE 1px;
   background: none;
@@ -338,22 +338,18 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 3%;
 }
 
 .about-text h1 {
   margin-top: 4%;
   color: #274360;
   font-size: 3em;
-  justify-content: center;
-  align-items: center;
 }
 
 .ttext {
   display: flex;
   flex-direction: row;
-  padding-left: 13%;
-
+  justify-content: center;
 }
 
 .text1 {
@@ -364,12 +360,8 @@ a {
   padding: 1%;
 }
 
-.text2 {
-  color: #274360;
-  font-size: 1.5em;
-  text-align: justify;
-  width: 40%;
-  padding: 1%;
+.text1:not(:last-child){
+  margin-right: 1em;
 }
 
 .parceiros {
@@ -391,13 +383,10 @@ a {
 
 .container-contact {
   display: flex;
-  height: 90vh;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   background-color: #274360;
-  align-items: center;
-  justify-content: center;
-
-
 }
 
 .box-contact {
@@ -405,11 +394,11 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70vh;
-  width: 60%;
+  width: 30%;
   background-color: #ffffff;
   border-radius: 20px;
-padding-top: 0px;
+  padding: 1em 2em;
+  margin: 3em 0;
 }
 
 .input-box-contact {
@@ -488,7 +477,6 @@ input:focus {
   height: 25vh;
   color: #052d21;
   padding-bottom: 20px;
-  padding-top: 20px;
   background-color: #274360;
   ;
 }
