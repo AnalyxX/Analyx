@@ -418,7 +418,6 @@
     background-color: #274360;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     border-radius: 15px;
     width: 37%;
@@ -430,7 +429,11 @@
 
 
 .download .title {
-    margin-top: 1em;
+    margin-top: 0.3em;
+}
+
+.download .title h1 {
+    font-size: 2em;
 }
 
 .download::-webkit-scrollbar {
@@ -447,13 +450,13 @@
 
 @media screen and (max-width: 1920px) {
     .download {
-        padding: 1.5em;
+        padding: 0.3em;
         font-size: 1.2em;
         height: 250px;
     }
 
     .download .title {
-        margin-top: 5em;
+        margin-top: 1em;
     }
 }
 
@@ -465,33 +468,32 @@
     }
 }
 
-.columns-align {
-    display: flex;
-}
 
-.columns {
+.align {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
 }
 
-.columns:not(:last-child) {
-    margin-inline-end: 0.60em;
-    /* border: red 3px solid; */
+.columns-align .title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.6em 0 0.6em;
 }
 
-.columns:not(:first-child) {
-    border-left: solid 1px;
-    padding: 0.60em;
-    border-image: linear-gradient(to bottom, #274360, #eee, #274360) 1 100%;
-}
-
-.columns p:not(:first-child) {
-    margin-bottom: 0.3em;
-}
-
-.columns h1 {
+.columns-align .title h1 {
     font-size: 1.5em;
-    margin-bottom: 0.3em;
+}
+
+.columns-align .tipe {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3em 1.3em 0.3em 1.3em;
+    margin: 0.2em 0em;
+    background-color: #3d6085;
+    border-radius: 1em;
+}
+
+.columns-align .tipe h1 {
+   font-size: 1em;
 }

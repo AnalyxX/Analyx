@@ -22,7 +22,8 @@ a {
 }
 
 
-.header.active, #header-login {
+.header.active,
+#header-login {
   background-color: rgba(0, 0, 0, 0.65);
   transition: .25s;
 }
@@ -338,6 +339,8 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 2em;
+  margin-bottom: 3em;
 }
 
 .about-text h1 {
@@ -360,7 +363,7 @@ a {
   padding: 1%;
 }
 
-.text1:not(:last-child){
+.text1:not(:last-child) {
   margin-right: 1em;
 }
 
@@ -398,15 +401,14 @@ a {
   background-color: #ffffff;
   border-radius: 20px;
   padding: 1em 2em;
-  margin: 3em 0;
+  margin: 4em 0;
 }
 
 .input-box-contact {
-  width: 80%;
-  height: 25vh;
-  padding-left: 20%;
-
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .input-box-contact input {
@@ -463,14 +465,21 @@ input:focus {
 }
 
 .button-box-contact button {
-  height: 60%;
-  width: 54%;
   color: #ffffff;
-  background-color: #0c2136;
+  background-color: #274360;
   font-size: x-large;
   font-weight: bold;
   border-radius: 20px;
   margin-top: 9%;
+  margin-bottom: 3%;
+  padding: 0.1em 2em;
+}
+
+.button-box-contact button:hover {
+  background-color: rgb(123, 123, 233);
+  transition: .3s;
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .footer {
@@ -551,31 +560,35 @@ body::-webkit-scrollbar-track {
 
 
 
- @media screen and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
   #img_grafics {
     display: none;
-  } 
+  }
 
   .card-section {
     display: flex;
     flex-direction: column;
-  
+
   }
+
   .card-premium {
-  margin-top: 5%;
-  
+    margin-top: 5%;
+
   }
-  .text1{
-    margin-right:5% ;
+
+  .text1 {
+    margin-right: 5%;
     text-indent: 0em;
     text-align: justify;
     font-size: 1em;
   }
-  .text5{
+
+  .text5 {
     text-indent: 0em;
     text-align: justify;
     font-size: 1em;
   }
+
   .box-contact {
     display: flex;
     flex-direction: column;
@@ -586,15 +599,12 @@ body::-webkit-scrollbar-track {
     background-color: #ffffff;
     border-radius: 20px;
   }
-  
+
   .input-box-contact {
     width: 80%;
     height: 25vh;
-    padding-left: 20%;
-  
-  
   }
-  
+
   .input-box-contact input {
     height: 7vh;
     width: 75%;
@@ -603,29 +613,29 @@ body::-webkit-scrollbar-track {
     color: #0c2136 solid;
     background-color: transparent;
   }
-  
+
   .input-box-contact input textarea:focus,
   input:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
   }
-  
+
   .tittle-input-box-contact {
     margin-top: 4%;
     height: 10%;
     width: 75%;
     color: #0c2136 solid;
   }
-  
+
   .tittle-box-contact {
-  
+
     padding: 15px;
     height: 10%;
     width: 55%;
     padding-left: 5%;
     font-weight: 900;
   }
-  
+
   .tittle-box-contact .h1 {
     display: flex;
     justify-content: center;
@@ -635,10 +645,10 @@ body::-webkit-scrollbar-track {
     height: 80%;
     width: 99%;
     color: #0c2136;
-  
-  
+
+
   }
-  
+
   .button-box-contact {
     height: 20%;
     width: 100%;
@@ -647,7 +657,7 @@ body::-webkit-scrollbar-track {
     justify-content: center;
     align-items: center;
   }
-  
+
   .button-box-contact button {
     height: 60%;
     width: 54%;
@@ -659,6 +669,3 @@ body::-webkit-scrollbar-track {
     margin-top: 5%;
   }
 }
-
-
-
