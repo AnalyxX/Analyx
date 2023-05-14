@@ -91,7 +91,7 @@
       <div id="alterarEmp" class="alterar-emp" style="display:none;">
         <div class="input2" id="ipt-1">
           CNPJ:
-          <input type="text" name="nome" id="ipt_nome2" />
+          <input type="text" name="nome" id="Alt_cnpj" />
           <button id="btn_entrar" onclick="aparecerBuscados()">Buscar</button>
         </div>
       </div>
@@ -331,7 +331,7 @@
         alert("Escreva um nome mais curto")
       }
       // mensagem_erro= ("") 
-      finalizarAguardar();
+      //finalizarAguardar();
       return false;
     } else if (ipt_cnpj.value.length < 10) {
       alert("CNPJ invalido!")
@@ -347,11 +347,11 @@
       alert("Telefone invalido!")
     }
     else {
-      setInterval(sumirMensagem, 5000)
+   //   setInterval(sumirMensagem, 5000)
     }
 
     // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
+    fetch("/empresa/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -360,7 +360,7 @@
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         cnpjServer: cnpj,
-        razaoSocialServer: razaoSocial,
+        razaoServer: razaoSocial,
         responsavelServer: responsavel,
         emailServer: email,
         telefoneServer: telefone
@@ -374,32 +374,30 @@
           window.location = "Login-Madara.html";
         }, "2000")
 
-        limparFormulario();
-        finalizarAguardar();
+      //  limparFormulario();
+       // finalizarAguardar();
       } else {
         throw ("Houve um erro ao tentar realizar o cadastro!");
 
       }
     }).catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
-      finalizarAguardar();
+     // finalizarAguardar();
     });
 
     return false;
   }
 
-  function sumirMensagem() {
-    cardErro.style.display = "none"
-
-  }
 
 
   function aparecerBuscados() {
-
     alterarEmp2.style.display = "block";
     alterarEmp.style.height = "15%";
 
-    var cnpj = ipt_cnpj.value;
+
+    var cnpj = Alt_cnpj.value;
+
+    console.log(cnpj);
 
     if (cnpj.value == "") {
 
@@ -407,22 +405,22 @@
         alert(`Preencha o campo cnpj!`)
       }
 
-      finalizarAguardar();
+    //  finalizarAguardar();
       return false;
     }
     else {
-      setInterval(sumirMensagem, 5000)
+    //  setInterval(sumirMensagem, 5000)
     }
 
     console.log("FORM cnpj: ", cnpj);
 
-    fetch("/usuarios/autenticar", {
+    fetch("/empresa/pegarEmpresa", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        cnpjServer: cnpj,
+        cnpjAltServer: cnpj,
       })
     }).then(function (resposta) {
       console.log("ESTOU NO THEN DO aparecerBuscados()!")
@@ -434,16 +432,14 @@
           console.log(json);
           console.log(JSON.stringify(json));
 
-          sessionStorage.cnpj_USUARIO = json.cnpj;
-          sessionStorage.razaoSocial_USUARIO = json.razaoSocial;
-          sessionStorage.responsavel_USUARIO = json.responsavel;
-          sessionStorage.email_USUARIO = json.email;
-          sessionStorage.telefone_USUARIO = json.telefone;
+          sessionStorage.ID_USUARIO = json.id;
+          sessionStorage.CNPJ_USUARIO = json.cnpj;
+          sessionStorage.RAZAOSOCIAL_USUARIO = json.razaoSocial;
+          sessionStorage.RESPONSAVEL_USUARIO = json.responsavel;
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.TELEFONEUSUARIO = json.telefone;
 
-          setTimeout(function () {
-            window.location = "../Logado/Perfil.html";
-          }, 1000); // apenas para exibir o loading
-
+          console.log(sessionStorage.CNPJ_USUARIO);
         });
 
       } else {
@@ -453,7 +449,7 @@
 
         resposta.text().then(texto => {
           console.error(texto);
-          finalizarAguardar(texto);
+      //    finalizarAguardar(texto);
         });
       }
 

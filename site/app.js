@@ -1,5 +1,5 @@
-//process.env.AMBIENTE_PROCESSO = "desenvolvimento";
-process.env.AMBIENTE_PROCESSO = "producao";
+process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+// process.env.AMBIENTE_PROCESSO = "producao";
 
 var express = require("express");
 var cors = require("cors");
@@ -13,6 +13,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var empresaRouter = require("./src/routes/empresa");
 // var funcionarioRouter = require("./src/routes/funcionario");
 var maquinaRouter = require("./src/routes/maquina");
+// var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 
 app.use(express.json());
@@ -26,7 +27,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/empresa", empresaRouter);
 app.use("/maquina", maquinaRouter);
 // app.use("/funcionario", funcionarioRouter);
-app.use("/avisos", avisosRouter);
+// app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 
 app.listen(PORTA, function () {
