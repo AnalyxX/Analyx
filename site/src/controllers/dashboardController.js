@@ -1,8 +1,10 @@
 var dashboardModel = require("../models/dashboardModel");
 
-function useCpu(req, res) {
-    dashboardModel.useCpu()
-        .then(function (resultado) {
+function getUseCpuByFuncId(req, res) {
+
+    var id = req.params.id;
+
+    dashboardModel.getUseCpuByFuncId(id).then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {
@@ -17,9 +19,11 @@ function useCpu(req, res) {
         );
 }
 
-function useDisc(req, res) {
-    dashboardModel.useDisc()
-        .then(function (resultado) {
+function getUseDiscByFuncId(req, res) {
+
+    var id = req.params.id;
+
+    dashboardModel.getUseDiscByFuncId(id).then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {
@@ -34,26 +38,11 @@ function useDisc(req, res) {
         );
 }
 
-function useRam(req, res) {
-    dashboardModel.useRam()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhuma empresa encontrada!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta de empresas! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
+function getUseRamByFuncId(req, res) {
 
-function useRede(req, res) {
-    dashboardModel.useRede()
-        .then(function (resultado) {
+    var id = req.params.id;
+
+    dashboardModel.getUseRamByFuncId(id).then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {
@@ -69,8 +58,7 @@ function useRede(req, res) {
 }
 
 module.exports = {
-    useCpu,
-    useDisc,
-    useRam,
-    useRede
+    getUseCpuByFuncId,
+    getUseDiscByFuncId,
+    getUseRamByFuncId
 };

@@ -8,13 +8,6 @@ function hideMenu() {
 }
 
 // plotar dados dos graficos
-
-let discData = 43;
-discValue.innerHTML = `${discData}%`
-
-let cpuData = [40, 20, 78, 65, 56, 90]
-let ramData = [40, 20, 90, 65, 63, 45]
-
 let latency = 20;
 latencyValue.innerHTML = `${latency}ms`
 

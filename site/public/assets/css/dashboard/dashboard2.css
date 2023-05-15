@@ -317,24 +317,24 @@
     margin-top: 0.5em;
 }
 
-#discValue {
+#disc_grafic {
     margin-right: 10px;
 }
 
 @media screen and (max-width: 1920px) {
-    #discValue {
+    #disc_grafic {
         font-size: 2.5em;
     }
 }
 
 @media screen and (max-width: 1390px) {
-    #discValue {
+    #disc_grafic {
         font-size: 2em;
     }
 }
 
 @media screen and (max-width: 1390px) {
-    #discValue {
+    #disc_grafic {
         font-size: 1.8em;
     }
 }
