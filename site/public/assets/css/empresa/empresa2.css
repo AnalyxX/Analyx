@@ -1,0 +1,40 @@
+*{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.allContainer{
+    border: solid 3px red;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.headerLateral{
+    border: solid 3px purple;
+    height: 100%;
+    width: 20%;
+
+}
+
+.areaHeader{
+    border: solid 3px green;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    border: solid 3px green;
+
+    width: 100%;
+    height: 20%;
+    display: flex;
+}
+.areaContainers{
+    width: 80%;
+    height: 20%;
+}

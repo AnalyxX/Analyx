@@ -9,9 +9,9 @@ function listar() {
     return database.executar(instrucao);
 }
 
-function getEmpresa(id) {
+function pegarEmpresa(cnpj) {
     var instrucao = `
-        SELECT cnpj,razaoSocial,responsavel, email, telefone FROM empresa WHERE id = ${id};
+        SELECT id,cnpj,razaoSocial,responsavel, email, telefone FROM empresa WHERE cnpj = '${cnpj}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -27,7 +27,7 @@ function cadastrar(cnpj, razaoSocial, responsavel, email, telefone) {
     return database.executar(instrucao);
 }
 
-function alterar(cnpj, razaoSocial, responsavel, email, telefone,id) {
+function alterar(cnpj, razaoSocial, responsavel, email, telefone, id) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", cnpj, razaoSocial, responsavel, email, telefone,id);
     var instrucao = `
         UPDATE empresa SET 
@@ -36,7 +36,7 @@ function alterar(cnpj, razaoSocial, responsavel, email, telefone,id) {
         responsavel = '${responsavel}',
         email = '${email}',
         telefone = '${telefone}'
-        WHERE id = ${id};
+        WHERE cnpj = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -53,7 +53,7 @@ function deletar(id) {
 
 module.exports = {
     listar,
-    getEmpresa,
+    pegarEmpresa,
     cadastrar,
     alterar,
     deletar

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +9,7 @@
   color: inherit;
   border: 0;
   font-family: 'Poppins', sans-serif;
+  overflow: hidden;
 }
 
 .form {
@@ -38,25 +40,28 @@ input {
 
 
 section {
-  display: grid;
-  justify-content: center;
+  border: solid 3px purple;
+  display: flex;
   height: 100vh;
-  width: 100vw;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  overflow-x: hidden;
+  width: 100%;
   background-color: #D6DAFF;
+
+}
+
+.areaPrincipal {
+  display: flex;
+  flex-direction: column;
 }
 
 header {
   display: flex;
-  width: 89vw;
-  height: 12vh;
+  width: 100%;
+  height: 13%;
   background-color: #496B8E;
   justify-content: center;
   color: white;
-  grid-column: 2 / 2;
-  grid-row: 1/ 1;
+  align-items: center;
+
 }
 
 nav {
@@ -87,15 +92,14 @@ ul {
 }
 
 .navBarLateral {
-  /* border: solid 3px red; */
+  border: solid 3px red;
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 18vw;
+  width: 17%;
   background-color: #274360;
-color: white;
-  grid-column: 1 / 1;
-  grid-row: 1/ 2;
+  color: white;
+
 }
 
 .user {
@@ -110,8 +114,7 @@ color: white;
 
 .user .fotoUser {
   height: 50%;
-  width: 30%;
-  margin-left: 20%;
+  width: 50%;
   border: solid 3px red;
   border-radius: 50%;
   background-image: url(../../images/usuario-teste.jpg);
@@ -121,19 +124,17 @@ color: white;
 
 .user h2 {
   margin-top: 20px;
-  margin-left: 20%;
-
 }
 
 .navegarLeteral {
-  /* border: solid 3px blue; */
+  border: solid 3px blue;
   display: flex;
-  width: 60%;
+  width: 100%;
   height: 40%;
-  margin-left: 30%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 9999;
 }
 
 .navegarLeteral li {
@@ -158,10 +159,18 @@ color: white;
   justify-content: center;
   align-items: center;
   display: flex;
-  margin-left: 30%;
   margin-top: 30%;
   height: 70px;
-  width: 60%;
+  width: 100%;
+}
+
+.areaTitulo{
+  border: solid 3px blue;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -173,16 +182,12 @@ color: white;
   font-size: 1.8rem;
   display: flex;
   justify-content: center;
-  margin-top: 8%;
-  grid-column: 2 / 2;
-  grid-row: 1/ 1;
+
 }
 
 
 .cadastro-emp {
-  /* border: solid 3px green; */
-  grid-area: cadastro;
-
+  border: solid 3px green;
   border-radius: 7px;
   background-color: #274360;
   display: flex;
@@ -192,12 +197,7 @@ color: white;
   justify-content: center;
   color: white;
   padding: 1.5rem 0.9rem 1rem 0.5rem;
-
-  grid-column: 2 / 2;
-  grid-row: 1/ 2;
-
   margin: auto;
-  margin-top: 14%;
 }
 
 .cadastro-emp button {
@@ -209,11 +209,12 @@ color: white;
   align-self: center;
   padding: 1rem;
   background-color: #858585;
-  margin:  3% auto;
-  padding: 2% 6% 2% 6%
+  margin: 3% auto;
+  padding: 2% 6% 2% 6%;
+  cursor: pointer;
 }
 
-.input{
+.input {
   /* border: solid 3px yellow; */
   width: 100%;
   margin: 0 auto;
@@ -235,62 +236,47 @@ color: white;
 
 #tituloALT {
   /* border: solid 3px green; */
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 20vh;
-  width: 22vw;
-  margin-top: 9vw;
-  margin-left: 37%;
+  width: 30vw;
+  margin-top: auto;
 
-  grid-column: 2 / 2;
-  grid-row: 1/ 1;
 }
 
 .alterar-emp {
-  grid-area: cadastro;
-
   border-radius: 7px;
   background-color: #274360;
   display: flex;
   flex-direction: column;
-  height: 23vh;
+  height: 15vh;
   width: 80vh;
   justify-content: center;
+  align-items: center;
   color: white;
   font-weight: bolder;
   font-size: 1.4vw;
-
   padding: 33px;
-
-  grid-column: 2 / 2;
-  grid-row: 1/ 2;
-
-  margin: auto;
-  margin-top: 15%;
+  margin-left: 27%;
   display: inline-flex;
 }
 
 .alterar-emp2 {
-  grid-area: cadastro;
-
   border-radius: 7px;
   background-color: #274360;
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  height: 70%;
   width: 80vh;
   justify-content: center;
   color: white;
-
   padding: 33px;
-
-  grid-column: 2 / 2;
-  grid-row: 1/ 2;
-
-  margin: auto;
-  margin-top: 28%;
-  margin-bottom: 25px;
+  margin-left: 27%; 
+  margin-top: 1%;
+  margin-bottom: 1%;
+  overflow-y: visible;
 }
 
 .alterar-emp button {
@@ -301,7 +287,6 @@ color: white;
   background-color: #858585;
   justify-content: center;
   cursor: pointer;
-  grid-column: 2 / 2;
 }
 
 .alterar-emp2 button {
@@ -334,13 +319,13 @@ input {
   width: 100%;
 }
 
-.input3{
+.input3 {
   /* border: solid 3px magenta; */
   margin-bottom: 2.5vh;
   font-size: 1.1vw;
   padding: 0 2vw 0 2vw;
   font-weight: bolder;
-  
+
 }
 
 #ipt_nome2 {
@@ -367,16 +352,10 @@ input {
   display: flex;
   justify-content: center;
   width: 30vw;
-  margin-top: 12vw;
-  margin-left: 24%;
 
-  grid-column: 2 / 2;
-  grid-row: 1/ 1;
 }
 
 .listar-emp {
-  grid-area: cadastro;
-
   border-radius: 7px;
   background-color: #274360;
   display: flex;
@@ -388,11 +367,7 @@ input {
 
   padding: 55px;
 
-  grid-column: 2 / 2;
-  grid-row: 1/ 2;
-
   margin-left: 22%;
-  margin-top: 30vh;
 }
 
 .listar-emp button {
@@ -409,11 +384,11 @@ input {
   padding: 10px;
   margin-bottom: 5px;
   font-size: 2rem;
-  
+
 }
 
-input::placeholder{
-  color: rgb(0, 0, 0,0.5);
+input::placeholder {
+  color: rgb(0, 0, 0, 0.5);
   font-size: 1.4rem;
 }
 
@@ -430,38 +405,24 @@ input::placeholder{
 }
 
 #tituloDELET {
-  font-size: 1.8vw;
   display: flex;
   justify-content: center;
   width: 40vw;
-  margin-top: 20vh;
-  margin-left: 9%;
   font-size: 1.4vw;
-
-
-  grid-column: 2 / 2;
-  grid-row: 1/ 1;
 }
 
 .deletar-emp {
-  grid-area: cadastro;
-
-  border-radius: 7px;
   background-color: #274360;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
   height: 65vh;
   width: 130vh;
   justify-content: center;
+  align-items: center;
   color: white;
-
   padding: 55px;
-
-  grid-column: 2 / 2;
-  grid-row: 1/ 2;
-
   margin: auto;
-  margin-top: 28vh;
 }
 
 .deletar-emp button {
@@ -481,8 +442,8 @@ input::placeholder{
   width: 70%;
   justify-content: center;
   margin-left: 10%;
-  margin-top: 10vw;
-  font-size:2rem;
+  margin-top: 10%;
+  font-size: 2rem;
 }
 
 .deletar-emp input {
@@ -491,25 +452,26 @@ input::placeholder{
   height: 4rem;
   font-size: 2rem;
 }
+
 button {
   font-size: 1.5vw;
   border-radius: 15px;
   padding: 2% 6% 2% 6%
-
 }
 
-.deletarEmp2{
+.deletarEmp2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.SimNao{
+.SimNao {
   display: flex;
   justify-content: space-evenly;
 }
-.SimNao li{
-  
+
+.SimNao li {
+
   border: solid 3px;
   background: grey;
   width: 5rem;

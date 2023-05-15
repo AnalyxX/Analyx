@@ -17,10 +17,10 @@ function listar(req, res) {
         );
 }
 
-function getEmpresa(req, res) {
-    var empresa = req.params.id;
+function pegarEmpresa(req, res) {
+    var cnpj = req.body.cnpjAltServer;
 
-    empresaModel.getEmpresa(empresa)
+    empresaModel.pegarEmpresa(cnpj)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -134,7 +134,7 @@ function deletar(req, res) {
 
 module.exports = {
     listar, 
-    getEmpresa,
+    pegarEmpresa,
     cadastrar,
     alterar,
     deletar
