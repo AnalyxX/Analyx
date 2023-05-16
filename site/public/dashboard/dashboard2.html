@@ -12,7 +12,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body onload="instanceCards() ,checkNet()">
+<body onload="instance()">
 
     <div id="left_menu" class="left-menu">
         <div class="icons">
@@ -95,17 +95,17 @@
             <div class="container">
                 <div class="navbar">
 
-                    <div id="menu" class="menu">
-                        <i id="bars" onclick="showMenu()" class="fa-solid fa-bars" title="Abrir menu lateral"></i>
+                    <div class="return" onclick="back()" title="Voltar ao menu principal">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <h1>Voltar</h1>
                     </div>
 
                     <div class="logo-align">
                         <img class="logo" src="../assets/images/logo-analyx.svg" alt="">
                     </div>
 
-                    <div class="return" onclick="back()" title="Voltar ao menu principal">
-                        <h1>Voltar</h1>
-                        <i class="fa-solid fa-chevron-right"></i>
+                    <div id="menu" class="menu">
+                        <i id="bars" onclick="showMenu()" class="fa-solid fa-bars" title="Abrir menu lateral"></i>
                     </div>
 
                 </div>
@@ -268,11 +268,17 @@
 
 <script>
 
-    function instanceCards() {
+    function instance() {
         getDataCpu(idFunc);
         getDataDisc(idFunc);
         getDataRam(idFunc);
     }
+
+    let latency = 20;
+    latencyValue.innerHTML = `${latency}ms`
+
+    let download = [20, 60, 55, 43, 60, 80]
+    let upload = [78, 44, 43, 22, 37, 5]
 
     b_usuario.innerHTML = localStorage.NOME_USUARIO;
 
@@ -286,6 +292,9 @@
 
     let app = true
 
+    function back() {
+        window.location = "dashboardInit.html"
+    }
 
     // cpu
     function getDataCpu(idFunc) {
@@ -320,6 +329,7 @@
 
                     let discValue = resposta[0].uso
                     discData.push(discValue)
+                    loadDisc()
 
                     text.innerHTML = `${discData[0]}%`
 
@@ -362,15 +372,13 @@
     }
 
 
-
-
     function loadCpu() {
         const ctx1 = document.getElementById('cpu_grafic');
 
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: ['0', '1', '2', '3', '4', '5', '60'],
+                labels: [1, 60],
                 datasets: [{
                     label: 'Uso de CPU por minuto',
                     data: [cpuData[0]],
@@ -419,6 +427,34 @@
                 }
             }
         });
+
+        let contYellow = 0;
+        let contRed = 0;
+        let check = true;
+
+        for (i = 0; i < cpuData.length; i++) {
+            if (cpuData[i] > 75) {
+                contRed++;
+                if (contRed >= 2) {
+                    cpu_alert.style.display = "block";
+                    cpu_alert.style.color = "red";
+                    check = false;
+                }
+
+            } else if (cpuData[i] > 50) {
+                contYellow++;
+                if (contYellow >= 2) {
+                    cpu_alert.style.display = "block";
+                    cpu_alert.style.color = "yellow";
+                    check = false;
+                }
+            }
+        }
+
+        if (check) {
+            cpu_check.style.display = "block";
+            cpu_check.style.color = "rgb(0, 172, 0)";
+        }
     }
 
 
@@ -430,7 +466,8 @@
             type: 'doughnut',
             data: {
                 datasets: [{
-                    data: [discData[0]],
+                    labels: [1],
+                    data: [discData[0], (100 - discData[0])],
                     borderWidth: 1,
                     cutout: '60%',
                     circumference: 360,
@@ -444,6 +481,25 @@
             options: {
             }
         });
+
+        let contYellow = 0;
+        let contRed = 0;
+        let check = true;
+
+        if (discData > 50) {
+            disc_alert.style.display = "block";
+            disc_alert.style.color = "yellow";
+            check = false
+        } else if (discData > 75) {
+            disc_alert.style.display = "block";
+            disc_alert.style.color = "red";
+            check = false
+        }
+
+        if (check) {
+            disc_check.style.display = "block";
+            disc_check.style.color = "rgb(0, 172, 0)";
+        }
     }
 
 
@@ -454,7 +510,7 @@
         new Chart(ctx3, {
             type: 'line',
             data: {
-                labels: [0, 60],
+                labels: [1, 60],
                 datasets: [{
                     label: 'Uso de RAM por minuto',
                     data: [ramData[0]],
@@ -492,6 +548,66 @@
                 }
             }
         });
+
+        let contYellow = 0;
+        let contRed = 0;
+        let check = true;
+
+        for (i = 0; i < ramData.length; i++) {
+            if (ramData[i] > 75) {
+                contRed++;
+                if (contRed >= 2) {
+                    ram_alert.style.display = "block";
+                    ram_alert.style.color = "red";
+                    check = false;
+                }
+
+            } else if (ramData[i] > 50) {
+                contYellow++;
+                if (contYellow >= 2) {
+                    ram_alert.style.display = "block";
+                    ram_alert.style.color = "yellow";
+                    check = false;
+                }
+            }
+        }
+
+        if (check) {
+            ram_check.style.display = "block";
+            ram_check.style.color = "rgb(0, 172, 0)";
+        }
+    }
+
+
+    // function checkCPU() {
+
+    // }
+
+    // function checkDisc() {
+
+    // }
+
+    // function checkRam() {
+
+    // }
+
+    function checkNet() {
+        let check = true;
+
+        if (latency > 50) {
+            net_alert.style.display = "block";
+            net_alert.style.color = "yellow";
+            check = false
+        } else if (latency > 75) {
+            net_alert.style.display = "block";
+            net_alert.style.color = "red";
+            check = false
+        }
+
+        if (check) {
+            net_check.style.display = "block";
+            net_check.style.color = "rgb(0, 172, 0)";
+        }
     }
 </script>
 

@@ -313,7 +313,7 @@ a {
 }
 
 .about-title {
-  background-image: linear-gradient(0deg, white 3%, transparent 30%), url(/site/public/assets/images/colegas-dando-uma-colisao-de-punho\ 1.png);
+  background-image: linear-gradient(0deg, white 3%, transparent 30%), url(../../images/colegas-dando-uma-colisao-de-punho\ 1.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;

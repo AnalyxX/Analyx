@@ -19,6 +19,12 @@
     color: white;
     position: absolute;
     z-index: 1000000000000;
+    left: 85%;
+    -webkit-animation: animate-div .5s;
+} 
+@-webkit-keyframes animate-div {
+    from { opacity: 0; margin-top: -150px;}
+    to { opacity: 1;margin-top: 0px;}
 }
 
 .icons {
@@ -217,7 +223,7 @@
 }
 
 .return i {
-    margin-left: 8%;
+    margin-right: 8%;
     font-size: 1.8em;
 }
 
@@ -322,24 +328,16 @@
 }
 
 @media screen and (max-width: 1920px) {
-    #disc_grafic {
-        font-size: 2.5em;
+    #discText {
+        font-size: 2.0em;
     }
 }
 
 @media screen and (max-width: 1390px) {
-    #disc_grafic {
-        font-size: 2em;
+    #discText {
+        font-size: 1.5em;
     }
 }
-
-@media screen and (max-width: 1390px) {
-    #disc_grafic {
-        font-size: 1.8em;
-    }
-}
-
-
 
 #cpu_check,
 #cpu_alert,

@@ -21,9 +21,6 @@ var mySqlConfig = {
     database: "bd_analyx",
     user: "root",
     password: "screenbr123",
-    database: "bd_analyx",
-    user: "root",
-    password: "naosei",
 };
 
 function executar(instrucao) {
