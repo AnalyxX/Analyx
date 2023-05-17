@@ -165,13 +165,13 @@ ul {
 }
 
 .sair span{
-  cursor: pointer;
-  transition: all 200ms ease-in;
+    cursor: pointer;
+    transition: all 200ms ease-in;
 
 }
 .sair span:hover{
-  color: red;
-  transform: scale(1.2);
+    color: red;
+    transform: scale(1.2);
 }
 
 .areaTitulo{
@@ -196,7 +196,7 @@ ul {
 }
 
 
-.cadastro-emp {
+.cadastro-maq {
   border: solid 3px green;
   border-radius: 7px;
   background-color: #274360;
@@ -210,7 +210,7 @@ ul {
   margin: auto;
 }
 
-.cadastro-emp button {
+.cadastro-maq button {
   /* border: solid 3px pink; */
 
   width: 30%;
@@ -231,7 +231,7 @@ ul {
   display: flex;
   flex-direction: column;
   width: 60vh;
-  margin-bottom: 1vh;
+  margin-bottom: 3vh;
 }
 
 
@@ -256,7 +256,7 @@ ul {
 
 }
 
-.alterar-emp {
+.alterar-maq {
   border-radius: 7px;
   background-color: #274360;
   display: flex;
@@ -273,7 +273,7 @@ ul {
   display: inline-flex;
 }
 
-.alterar-emp2 {
+.alterar-maq2 {
   border-radius: 7px;
   background-color: #274360;
   display: flex;
@@ -289,7 +289,7 @@ ul {
   overflow-y: visible;
 }
 
-.alterar-emp button {
+.alterar-maq button {
   display: flex;
   margin-left: 5%;
   width: 20%;
@@ -300,7 +300,7 @@ ul {
   font-size: 1rem;
 }
 
-.alterar-emp2 button {
+.alterar-maq2 button {
   display: flex;
   margin-left: 5%;
   width: 20%;
@@ -366,7 +366,7 @@ input {
 
 }
 
-.listar-emp {
+.listar-maq {
   border-radius: 7px;
   background-color: #274360;
   display: flex;
@@ -381,7 +381,7 @@ input {
   margin-left: 22%;
 }
 
-.listar-emp button {
+.listar-maq button {
   display: flex;
   margin-left: 40px;
   width: 20%;
@@ -422,7 +422,7 @@ input::placeholder {
   font-size: 1.4vw;
 }
 
-.deletar-emp {
+.deletar-maq {
   background-color: #274360;
   border-radius: 7px;
   display: flex;
@@ -436,7 +436,7 @@ input::placeholder {
   margin: auto;
 }
 
-.deletar-emp button {
+.deletar-maq button {
   display: flex;
   width: 20%;
   padding: 7px;
@@ -447,7 +447,7 @@ input::placeholder {
   margin-top: 10%;
 }
 
-.deletar-emp .input {
+.deletar-maq .input {
   /* border:  solid 3px green; */
   display: flex;
   width: 70%;
@@ -457,7 +457,7 @@ input::placeholder {
   font-size: 2rem;
 }
 
-.deletar-emp input {
+.deletar-maq input {
   padding: 10px;
   margin-bottom: 5px;
   height: 4rem;
@@ -470,7 +470,7 @@ button {
   padding: 2% 6% 2% 6%
 }
 
-.deletarEmp2 {
+.deletarMaq2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

@@ -33,12 +33,12 @@
 
             <div class="input" id="ipt1">
                 Email:
-                <input type="email" name="email" id="ipt_email" placeholder="Digite seu E-MAIL">
+                <input type="email" name="email" id="email_input" placeholder="Digite seu E-MAIL">
             </div>
 
             <div class="input" id="ipt2">
                 Senha:
-                <input type="password" name="senha" id="ipt_senha" placeholder="Digite sua senha">
+                <input type="password" name="senha" id="senha_input" placeholder="Digite sua senha">
             </div>
 
             <button id="btn_entrar" onclick="conectar()">Conectar</button>
@@ -52,14 +52,78 @@
 </html>
 
 <script>
-    function conectar() {
 
-        if ((ipt_email.value).length > 3 && (ipt_senha.value).length > 3) {
-            setTimeout(() => {
-                window.location = "../dashboard/dashboardInit.html";
-            }, "2000")
-        }else{
-            alert('O email e senha precisam ter o minimo de 4 digitos.');
+
+    function conectar() {
+        // aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+
+            // finalizarAguardar();
+            return false;
         }
+        else {
+            //  setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.ID_EMPRESA = json.fkEmpresa;
+                    sessionStorage.TIPO_USUARIO = json.tipo;
+
+                    if (sessionStorage.TIPO_USUARIO == 2) {
+                        alert("Este usuario é java")
+                        sessionStorage.clear();
+                    } else {
+
+                        setTimeout(function () {
+                            window.location = "../dashboard/dashboardInit.html";
+                        }, 1000); // apenas para exibir o loading
+                    }
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                alert("Email ou senha inválidos!")
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
+
 </script>

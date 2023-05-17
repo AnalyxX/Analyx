@@ -139,6 +139,7 @@
 
 #login-title{
     font-size: 24px;
+    color: white;
 }
 
 #login-title, .input, button{
@@ -147,7 +148,7 @@
 
 .login-user{
     border-radius: 15px;
-    background-color: #D7D1D1;
+    background-color: #405872;
     display: flex;
     flex-direction: column;
     margin: 160px 0 70px 0;
@@ -157,7 +158,7 @@
 }
 
 input{
-    background-color: #BEBABA;
+    background-color: #fffbfb;
     border-radius: 5px;
     height: 30px;
     margin-top: 10px;
@@ -173,16 +174,18 @@ input{
 
 #ipt1{
     margin: 50px 0 10px 0;
+    color: white;
 }
 
 #ipt2{
     margin-bottom: 50px;
+    color: white;
 }
 
 .form button{
     width: 20%;
     padding: 7px;
-    background-color: #858585;
+    background-color: #d1cfcf;
 }
 
 #btn_entrar{
