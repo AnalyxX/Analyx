@@ -36,7 +36,7 @@ function alterar(cnpj, razaoSocial, responsavel, email, telefone, id) {
         responsavel = '${responsavel}',
         email = '${email}',
         telefone = '${telefone}'
-        WHERE cnpj = ${id};
+        WHERE id = ${id};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

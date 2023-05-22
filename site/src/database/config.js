@@ -1,12 +1,5 @@
 var mysql = require("mysql2");
 var sql = require('mssql');
-const { WebClient } = require('@slack/web-api');
-
-// Read a token from the environment variables
-const token = process.env.SLACK_TOKEN;
-
-// Initialize
-const web = new WebClient(token);
 
 var sqlServerConfig = {
     server: "SEU_SERVIDOR",
@@ -27,7 +20,7 @@ var mySqlConfig = {
     host: "localhost",
     database: "bd_analyx",
     user: "root",
-    password: "screenbr123",
+    password: "minhasenha",
 };
 
 function executar(instrucao) {
