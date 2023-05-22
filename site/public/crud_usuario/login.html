@@ -55,75 +55,85 @@
 
 
     function conectar() {
+
+        if ((email_input.value).length > 3 && (senha_input.value).length > 3) {
+            setTimeout(() => {
+                window.location = "../dashboard/dashboardInit.html";
+            }, "2000")
+        }else{
+            alert('O email e senha precisam ter o minimo de 4 digitos.');
+        }
+
+
         // aguardar();
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        // var emailVar = email_input.value;
+        // var senhaVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {
+        // if (emailVar == "" || senhaVar == "") {
 
-            // finalizarAguardar();
-            return false;
-        }
-        else {
-            //  setInterval(sumirMensagem, 5000)
-        }
+        //     // finalizarAguardar();
+        //     return false;
+        // }
+        // else {
+        //     //  setInterval(sumirMensagem, 5000)
+        // }
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+        // console.log("FORM LOGIN: ", emailVar);
+        // console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+        // fetch("/usuarios/autenticar", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: JSON.stringify({
+        //         emailServer: emailVar,
+        //         senhaServer: senhaVar
+        //     })
+        // }).then(function (resposta) {
+        //     console.log("ESTOU NO THEN DO entrar()!")
 
-            if (resposta.ok) {
-                console.log(resposta);
+        //     if (resposta.ok) {
+        //         console.log(resposta);
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
+        //         resposta.json().then(json => {
+        //             console.log(json);
+        //             console.log(JSON.stringify(json));
 
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nomeUsuario;
-                    sessionStorage.ID_USUARIO = json.idUsuario;
-                    sessionStorage.ID_EMPRESA = json.fkEmpresa;
-                    sessionStorage.TIPO_USUARIO = json.tipo;
+        //             sessionStorage.EMAIL_USUARIO = json.email;
+        //             sessionStorage.NOME_USUARIO = json.nomeUsuario;
+        //             sessionStorage.ID_USUARIO = json.idUsuario;
+        //             sessionStorage.ID_EMPRESA = json.fkEmpresa;
+        //             sessionStorage.TIPO_USUARIO = json.tipo;
 
-                    if (sessionStorage.TIPO_USUARIO == 2) {
-                        alert("Este usuario é java")
-                        sessionStorage.clear();
-                    } else {
+        //             if (sessionStorage.TIPO_USUARIO == 2) {
+        //                 alert("Este usuario é java")
+        //                 sessionStorage.clear();
+        //             } else {
 
-                        setTimeout(function () {
-                            window.location = "../dashboard/dashboardInit.html";
-                        }, 1000); // apenas para exibir o loading
-                    }
+        //                 setTimeout(function () {
+        //                     window.location = "../dashboard/dashboardInit.html";
+        //                 }, 1000); // apenas para exibir o loading
+        //             }
 
-                });
+        //         });
 
-            } else {
+        //     } else {
 
-                console.log("Houve um erro ao tentar realizar o login!");
-                alert("Email ou senha inválidos!")
+        //         console.log("Houve um erro ao tentar realizar o login!");
+        //         alert("Email ou senha inválidos!")
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
+        //         resposta.text().then(texto => {
+        //             console.error(texto);
+        //         });
+        //     }
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+        // }).catch(function (erro) {
+        //     console.log(erro);
+        // })
 
-        return false;
+        // return false;
     }
 
 </script>
