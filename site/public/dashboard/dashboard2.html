@@ -14,7 +14,7 @@
 
 <body onload="instance()">
 
-    <div id="left_menu" class="left-menu">
+    <div id="right_menu" class="right-menu">
         <div class="icons">
             <i id="exit_menu" onclick="hideMenu()" class="fa-solid fa-xmark" title="Fechar menu lateral"></i>
             <i id="settings_menu" class="fa-solid fa-gear" title="Abrir configurações"></i>
@@ -32,53 +32,12 @@
 
         <div class="machines">
             <p>Selecione a máquina que deseja monitorar!</p>
+
             <div class="names">
                 <div class="names-align">
                     <h2>Milena Soares</h2>
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
-
-                <div class="names-align">
-                    <h2>João Fernandez</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-
-                <div class="names-align">
-                    <h2>Rodolfo Guilherme</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-
-                <div class="names-align">
-                    <h2>Jenifer Barreto</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-
-                <div class="names-align">
-                    <h2>Miguel Silva</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-
-                <div class="names-align">
-                    <h2>Solange Barros</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-
-                <div class="names-align">
-                    <h2>Pedro Matos</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-
-                <div class="names-align">
-                    <h2>Alexandre Maia</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-
-                <div class="names-align">
-                    <h2>Gabriel Leal</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-
-
             </div>
         </div>
 
@@ -145,7 +104,7 @@
                     <div class="card">
                         <div class="container">
                             <div class="header-card">
-                                <h1> DISCO </h1>
+                                <h1> Disco </h1>
 
                                 <div class="card-icons">
                                     <i id="disc_check" class="fa-solid fa-circle-check"></i>
@@ -169,7 +128,7 @@
                     <div class="card">
                         <div class="container">
                             <div class="header-card">
-                                <h1> RAM </h1>
+                                <h1> Ram </h1>
                                 <div class="card-icons">
                                     <i id="ram_check" class="fa-solid fa-circle-check"></i>
                                     <i id="ram_alert" class="fa-solid fa-circle-exclamation"></i>
@@ -194,65 +153,38 @@
                         </div>
                         <div class="title">
                             <h1> Latência </h1>
-                            <span> <b id="latencyValue"></b></span>
+                            <span> <b id="latencyText"></b></span>
                         </div>
                     </div>
                 </div>
 
                 <!-- nao vai ser mais network -->
-                <div class="network-align">
+                <div class="package">
 
-                    <div class="network-grafic">
-                        <div class="title">
-                            <h1> Rede </h1>
-
-                        </div>
-
-                        <div class="network-align">
-                            <div class="network-grafic-width">
-                                <canvas id="rede_grafic"></canvas>
-                            </div>
-                        </div>
+                    <div class="package-title">
+                        <h1>Pacotes de Rede</h1>
                     </div>
 
+                    <div class="package-align">
 
-                    <div class="download">
-                        <div class="title">
-                            <h1> Downloads </h1>
+                        <div class="values-title">
+                            <h1> Bytes recebidos </h1>
+                            <h1> Bytes enviados </h1>
+                            <h1> Pacotes recebidos </h1>
+                            <h1> Pacotes enviados </h1>
                         </div>
 
-                        <div class="align">
-                            <div class="columns-align">
-                                <div class="title">
-                                    <h1> Nome </h1>
-                                    <h1> Arquivo </h1>
-                                    <h1> Data </h1>
-                                    <h1> Status </h1>
-                                </div>
-                            </div>
+                        <div class="scroll" id="scroll_text">
 
-                            <div class="columns-align">
-                                <div class="tipe">
-                                    <h1> Nome </h1>
-                                    <h1> Arquivo </h1>
-                                    <h1> Data </h1>
-                                    <h1> Status </h1>
-                                </div>
-                            </div>
                         </div>
-
-
-
                     </div>
-
                 </div>
-
             </div>
 
         </div>
     </div>
-    </div>
 </body>
+
 
 </html>
 
@@ -272,21 +204,27 @@
         getDataCpu(idFunc);
         getDataDisc(idFunc);
         getDataRam(idFunc);
+        getDataLatency(idFunc);
+        getDataPackages(idFunc);
     }
-
-    let latency = 20;
-    latencyValue.innerHTML = `${latency}ms`
-
-    let download = [20, 60, 55, 43, 60, 80]
-    let upload = [78, 44, 43, 22, 37, 5]
 
     b_usuario.innerHTML = localStorage.NOME_USUARIO;
 
     let text = document.getElementById("discText");
+    let textLatency = document.getElementById("latencyText");
+    let textPackage = document.getElementById("scroll_text");
 
     let cpuData = [];
     let discData = [];
     let ramData = [];
+
+    let bytesRecebidos = []
+    let bytesEnviados = []
+    let pacotesRecebidos = []
+    let pacotesEnviados = []
+
+    let latencyData = [];
+    let packages = [];
 
     let idFunc = 1;
 
@@ -308,7 +246,7 @@
 
                     setTimeout(() => {
                         getDataCpu(idFunc)
-                    }, 5000)
+                    }, 10000)
 
                 });
             } else {
@@ -331,11 +269,15 @@
                     discData.push(discValue)
                     loadDisc()
 
-                    text.innerHTML = `${discData[0]}%`
+                    for (let i = 0; i < discData.length; i++) {
+                        if (i == discData.length - 1) {
+                            text.innerHTML = `${discData[i]}%`
+                        }
+                    }
 
                     setTimeout(() => {
                         getDataDisc(idFunc)
-                    }, 5000)
+                    }, 10000)
 
                 });
             } else {
@@ -360,7 +302,76 @@
 
                     setTimeout(() => {
                         getDataRam(idFunc)
-                    }, 5000)
+                    }, 10000)
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // latency
+    function getDataLatency(idFunc) {
+        fetch(`/dashboard/getLatencyValue/${idFunc}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+
+                    let latencyValue = resposta[0].latencia
+                    latencyData.push(latencyValue)
+                    loadNet()
+
+                    for (let i = 0; i < latencyData.length; i++) {
+                        if (i == latencyData.length - 1) {
+                            textLatency.innerHTML = `${latencyData[i]}ms`
+                        }
+                    }
+
+                    setTimeout(() => {
+                        getDataLatency(idFunc)
+                    }, 10000)
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+    // Packages
+    function getDataPackages(idFunc) {
+        fetch(`/dashboard/getDataPackages/${idFunc}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+
+                    let packagesItem = {
+                        br: resposta[0].bytesRecebidos,
+                        be: resposta[0].bytesEnviados,
+                        pr: resposta[0].pacotesRecebidos,
+                        pe: resposta[0].pacotesEnviados
+                    }
+
+                    packages.push(packagesItem)
+
+
+                    for (let i = 0; i < packages.length; i++) {
+                        textPackage.innerHTML += `
+                            <div class="package-values">
+                                <p> ${packages[i].br} </p>
+                                <p> ${packages[i].be} </p>
+                                <p> ${packages[i].pr} </p>
+                                <p> ${packages[i].pe} </p>
+                            </div>`
+                    }
+
+                    setTimeout(() => {
+                        getDataPackages(idFunc)
+                    }, 10000)
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -378,7 +389,7 @@
         new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: [1, 60],
+                labels: [1],
                 datasets: [{
                     label: 'Uso de CPU por minuto',
                     data: [cpuData[0]],
@@ -578,27 +589,14 @@
         }
     }
 
-
-    // function checkCPU() {
-
-    // }
-
-    // function checkDisc() {
-
-    // }
-
-    // function checkRam() {
-
-    // }
-
-    function checkNet() {
+    function loadNet() {
         let check = true;
 
-        if (latency > 50) {
+        if (latencyData[0] > 50) {
             net_alert.style.display = "block";
             net_alert.style.color = "yellow";
             check = false
-        } else if (latency > 75) {
+        } else if (latencyData[0] > 75) {
             net_alert.style.display = "block";
             net_alert.style.color = "red";
             check = false
@@ -609,57 +607,5 @@
             net_check.style.color = "rgb(0, 172, 0)";
         }
     }
-</script>
 
-
-<script>
-    const ctx4 = document.getElementById('rede_grafic');
-
-    new Chart(ctx4, {
-        type: 'line',
-        data: {
-            labels: ['0', '1', '2', '3', '4', '5', '60'],
-            datasets: [{
-                label: 'Dowload por minuto',
-                data: [download[0], download[1], download[2], download[3], download[4], download[5]],
-                borderWidth: 1,
-            }, {
-                label: 'Upload por minuto',
-                data: [upload[0], upload[1], upload[2], upload[3], upload[4], upload[5]],
-                borderWidth: 1,
-                labelColor: ('rbg(255, 0, 0)')
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    labels: {
-                        color: 'white'
-                    }
-                }
-            },
-            aspectRatio: 3.5,
-            scales: {
-                y: {
-                    ticks: {
-                        color: '#ffffff'
-                    },
-                    grid: {
-                        color: (context) => {
-                            if (context.tick.value == 60) {
-                                return 'rgb(255, 0, 0)'
-                            } else {
-                                return 'rgba(0, 0, 0, 0.1)'
-                            }
-                        }
-                    }
-                },
-                x: {
-                    ticks: {
-                        color: '#ffffff'
-                    }
-                }
-            }
-        }
-    });
 </script>
