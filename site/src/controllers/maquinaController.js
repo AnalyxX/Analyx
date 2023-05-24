@@ -2,37 +2,56 @@ var maquinaModel = require("../models/maquinaModel");
 
 function listar(req, res) {
     maquinaModel.listar()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhuma maquina encontrada!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta de maquinas! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+    .then(function (resultado) {
+        console.log(`\nResultados encontrados: ${resultado.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+        if (resultado.length > 0) {
+            console.log(resultado);
+            res.json(resultado);
+
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
 }
 
 function getMaquina(req, res) {
-    var maquina = req.params.id;
+    var numeroSerial = req.body.numeroSerialAltServer;
 
-    maquinaModel.getMaquina(maquina)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        )
-        .catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao requistar a maquina: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+    maquinaModel.getMaquina(numeroSerial)
+    if (numeroSerial == undefined) {
+        res.status(400).send("Seu numeroSerial está undefined!");
+    } else {
+
+        maquinaModel.getMaquina(numeroSerial)
+            .then(
+                function (resultado) {
+                    console.log(`\nResultados encontrados: ${resultado.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+                    if (resultado.length >= 1) {
+                        console.log(resultado);
+                        res.json(resultado[0]);
+                    }else{
+                        res.status(403).send("Email e/ou senha inválido(s)");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao buscar empresar! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
 }
 
 function cadastrar(req, res) {
@@ -73,11 +92,11 @@ function cadastrar(req, res) {
 
 function alterar(req, res) {
 
-    var cpu = req.body.cpuServer;
-    var disco = req.body.discoServer;
-    var ram = req.body.ramServer;
-    var serial = req.body.serialServer;
-    var id = req.params.id;
+    var cpu = req.body.cpunovoServer;
+    var disco = req.body.disconovoServer;
+    var ram = req.body.ramnovoServer;
+    var serial = req.body.numeroSerialnovoServer;
+    var serialVelho =  req.body.numeroSerialVelhoServer;
 
     if (cpu == undefined) {
         res.status(400).send("Sua cpu está undefined!");
@@ -87,10 +106,12 @@ function alterar(req, res) {
         res.status(400).send("Sua ram está undefined!");
     } else if (serial == undefined) {
         res.status(400).send("Seu serial está undefined!");
+    } else if (serialVelho == undefined) {
+        res.status(400).send("Seu serial está undefined!");
 
     } else {
         
-        maquinaModel.cadastrar(cpu, disco, ram, serial, id)
+        maquinaModel.alterar(cpu, disco, ram, serial, serialVelho)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -99,7 +120,7 @@ function alterar(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        "\nHouve um erro ao tentar alterar uma maquina! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
@@ -109,7 +130,7 @@ function alterar(req, res) {
 }
 
 function deletar(req, res) {
-    var maquina = req.params.id;
+    var maquina = req.body.idServer;
 
     maquinaModel.deletar(maquina)
         .then(

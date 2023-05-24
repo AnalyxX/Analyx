@@ -15,11 +15,15 @@ router.post("/pegarEmpresa", function (req, res) {
     empresaController.pegarEmpresa(req, res);
 });
 
+router.post("/autenticarEMP", function (req, res) {
+    usuarioController.autenticarEMP(req, res);
+});
+
 router.put("/alterar/", function (req, res) {
     empresaController.alterar(req, res);
 });
 
-router.delete("/deletar/:id", function (req, res) { 
+router.delete("/deletar", function (req, res) { 
     empresaController.deletar(req, res);
 });
 

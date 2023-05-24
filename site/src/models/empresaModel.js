@@ -17,6 +17,15 @@ function pegarEmpresa(cnpj) {
     return database.executar(instrucao);
 }
 
+function autenticarEMP(cnpj) {
+    var instrucao = `
+        SELECT id,cnpj,razaoSocial,responsavel, email, telefone FROM empresa WHERE cnpj = '${cnpj}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
 function cadastrar(cnpj, razaoSocial, responsavel, email, telefone) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar(): ", cnpj, razaoSocial, responsavel, email, telefone);
     var instrucao = `
@@ -45,7 +54,7 @@ function alterar(cnpj, razaoSocial, responsavel, email, telefone, id) {
 function deletar(id) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", id);
     var instrucao = `
-        DELETE FROM empresa WHERE id = ${id};
+        DELETE FROM empresa WHERE id = '${id}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -54,6 +63,7 @@ function deletar(id) {
 module.exports = {
     listar,
     pegarEmpresa,
+    autenticarEMP,
     cadastrar,
     alterar,
     deletar
