@@ -7,7 +7,8 @@ function getUseCpuByFuncId(id) {
 	f.nome,
     c.id 'id_comp',
 	c.uso,
-	tp.tipoComponente
+	tp.tipoComponente,
+	m.hora
 	from funcionario f
 		join especificacaoMaquina em 
 			on em.id = f.fkMaquina
@@ -19,7 +20,7 @@ function getUseCpuByFuncId(id) {
 			on tp.id = c.fkTipoComponente
 		where tp.tipoComponente = "cpu" and f.id = 2
 		order by c.id desc
-		limit 1;`;
+		limit 5;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -55,7 +56,8 @@ function getUseRamByFuncId(id) {
 	f.nome,
     c.id 'id_comp',
 	c.uso,
-	tp.tipoComponente
+	tp.tipoComponente,
+	m.hora
 	from funcionario f
 		join especificacaoMaquina em 
 			on em.id = f.fkMaquina
@@ -67,7 +69,7 @@ function getUseRamByFuncId(id) {
 			on tp.id = c.fkTipoComponente
 		where tp.tipoComponente = "ram" and f.id = 2
 		order by c.id desc
-		limit 1;`;
+		limit 5;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

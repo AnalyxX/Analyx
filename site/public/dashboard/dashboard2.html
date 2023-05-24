@@ -16,8 +16,8 @@
 
     <div id="right_menu" class="right-menu">
         <div class="icons">
-            <i id="exit_menu" onclick="hideMenu()" class="fa-solid fa-xmark" title="Fechar menu lateral"></i>
             <i id="settings_menu" class="fa-solid fa-gear" title="Abrir configurações"></i>
+            <i id="exit_menu" onclick="hideMenu()" class="fa-solid fa-xmark" title="Fechar menu lateral"></i>
         </div>
 
         <div class="profile">
@@ -26,7 +26,6 @@
 
             <div class="text">
                 <h1> <b id="b_usuario"></b> </h1>
-
             </div>
         </div>
 
@@ -214,10 +213,6 @@
     let textLatency = document.getElementById("latencyText");
     let textPackage = document.getElementById("scroll_text");
 
-    let cpuData = [];
-    let discData = [];
-    let ramData = [];
-
     let bytesRecebidos = []
     let bytesEnviados = []
     let pacotesRecebidos = []
@@ -228,7 +223,13 @@
 
     let idFunc = 1;
 
+    let contCpu = 0
+
     let app = true
+
+    let chartCPU;
+    let chartRAM;
+    let chartDisc;
 
     function back() {
         window.location = "dashboardInit.html"
@@ -239,10 +240,17 @@
         fetch(`/dashboard/getUseCpuByFuncId/${idFunc}`).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
+                    const points = [];
+                    const labels = [];
 
-                    let cpuValue = resposta[0].uso
-                    cpuData.push(cpuValue)
-                    loadCpu()
+                    // TROUXE OS 5 DADOS OBTIDOS NOS ULTIMOS MINUTOS
+                    resposta.forEach((element, index) => {
+                        points.push(element.uso)
+                        // labels.push(index)
+                        labels.push(element.hora)
+                    });
+
+                    loadCpu(points, labels)
 
                     setTimeout(() => {
                         getDataCpu(idFunc)
@@ -265,9 +273,10 @@
             if (response.ok) {
                 response.json().then(function (resposta) {
 
-                    let discValue = resposta[0].uso
-                    discData.push(discValue)
-                    loadDisc()
+                    let discData = [];
+
+                    discData.push(resposta[0].uso)
+                    loadDisc(discData)
 
                     for (let i = 0; i < discData.length; i++) {
                         if (i == discData.length - 1) {
@@ -296,13 +305,20 @@
             if (response.ok) {
                 response.json().then(function (resposta) {
 
-                    let ramValue = resposta[0].uso
-                    ramData.push(ramValue)
-                    loadRam()
+                    const points = [];
+                    const labels = [];
+
+                    resposta.forEach((element, index) => {
+                        points.push(element.uso)
+                        labels.push(element.hora)
+                    });
+
+                    loadRam(points, labels)
 
                     setTimeout(() => {
                         getDataRam(idFunc)
                     }, 10000)
+
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -321,13 +337,16 @@
 
                     let latencyValue = resposta[0].latencia
                     latencyData.push(latencyValue)
-                    loadNet()
 
                     for (let i = 0; i < latencyData.length; i++) {
                         if (i == latencyData.length - 1) {
                             textLatency.innerHTML = `${latencyData[i]}ms`
                         }
                     }
+
+                    setTimeout(() => {
+                        loadNet()
+                    }, 1000)
 
                     setTimeout(() => {
                         getDataLatency(idFunc)
@@ -383,16 +402,18 @@
     }
 
 
-    function loadCpu() {
+    function loadCpu(points, labels) {
         const ctx1 = document.getElementById('cpu_grafic');
 
-        new Chart(ctx1, {
+        if (chartCPU) chartCPU.destroy();
+
+        chartCPU = new Chart(ctx1, {
             type: 'line',
             data: {
-                labels: [1],
+                labels: labels,
                 datasets: [{
                     label: 'Uso de CPU por minuto',
-                    data: [cpuData[0]],
+                    data: points,
                     borderWidth: 1,
 
                 }]
@@ -406,9 +427,9 @@
                     }
                 },
                 scales: {
-
-
                     y: {
+                        min: 0,
+                        max: 100,
                         ticks: {
                             color: '#ffffff'
                         },
@@ -439,46 +460,54 @@
             }
         });
 
+
         let contYellow = 0;
         let contRed = 0;
         let check = true;
 
-        for (i = 0; i < cpuData.length; i++) {
-            if (cpuData[i] > 75) {
+        points.forEach(point => {
+            if (point > 75) {
                 contRed++;
                 if (contRed >= 2) {
                     cpu_alert.style.display = "block";
                     cpu_alert.style.color = "red";
+                    cpu_check.style.display = "none";
                     check = false;
                 }
 
-            } else if (cpuData[i] > 50) {
+            }
+            
+            if (point > 50) {
                 contYellow++;
                 if (contYellow >= 2) {
                     cpu_alert.style.display = "block";
                     cpu_alert.style.color = "yellow";
+                    cpu_check.style.display = "none";
                     check = false;
                 }
             }
-        }
+        })
 
         if (check) {
             cpu_check.style.display = "block";
             cpu_check.style.color = "rgb(0, 172, 0)";
+            cpu_alert.style.display = "none";
         }
     }
 
 
 
-    function loadDisc() {
+    function loadDisc(discData) {
         const ctx2 = document.getElementById('disc_grafic');
 
-        new Chart(ctx2, {
+        if (chartDisc) chartDisc.destroy();
+
+        chartDisc = new Chart(ctx2, {
             type: 'doughnut',
             data: {
                 datasets: [{
-                    labels: [1],
-                    data: [discData[0], (100 - discData[0])],
+                    labels: [],
+                    data: [discData[discData.length - 1], 100 - discData[discData.length - 1]],
                     borderWidth: 1,
                     cutout: '60%',
                     circumference: 360,
@@ -493,38 +522,42 @@
             }
         });
 
-        let contYellow = 0;
-        let contRed = 0;
         let check = true;
 
-        if (discData > 50) {
-            disc_alert.style.display = "block";
-            disc_alert.style.color = "yellow";
-            check = false
-        } else if (discData > 75) {
+        if (discData[discData.length - 1] > 75) {
             disc_alert.style.display = "block";
             disc_alert.style.color = "red";
+            disc_check.style.display = "none";
+            check = false
+
+        } else if (discData[discData.length - 1] > 50) {
+            disc_alert.style.display = "block";
+            disc_alert.style.color = "yellow";
+            disc_check.style.display = "none";
             check = false
         }
 
         if (check) {
             disc_check.style.display = "block";
             disc_check.style.color = "rgb(0, 172, 0)";
+            disc_alert.style.display = "none";
         }
     }
 
 
 
-    function loadRam() {
+    function loadRam(points, labels) {
         const ctx3 = document.getElementById('ram_grafic');
 
-        new Chart(ctx3, {
+        if (chartRAM) chartRAM.destroy();
+
+        chartRAM = new Chart(ctx3, {
             type: 'line',
             data: {
-                labels: [1, 60],
+                labels: labels,
                 datasets: [{
                     label: 'Uso de RAM por minuto',
-                    data: [ramData[0]],
+                    data: points,
                     borderWidth: 1,
                 }]
             },
@@ -564,28 +597,35 @@
         let contRed = 0;
         let check = true;
 
-        for (i = 0; i < ramData.length; i++) {
-            if (ramData[i] > 75) {
-                contRed++;
-                if (contRed >= 2) {
-                    ram_alert.style.display = "block";
-                    ram_alert.style.color = "red";
-                    check = false;
-                }
+        points.forEach(point => {
 
-            } else if (ramData[i] > 50) {
+            if (point > 50) {
                 contYellow++;
                 if (contYellow >= 2) {
                     ram_alert.style.display = "block";
                     ram_alert.style.color = "yellow";
+                    ram_check.style.display = "none";
                     check = false;
                 }
             }
-        }
+
+            if (point > 75) {
+                contRed++;
+                if (contRed >= 2) {
+                    ram_alert.style.display = "block";
+                    ram_alert.style.color = "red";
+                    ram_check.style.display = "none";
+                    check = false;
+                }
+
+            }
+        })
+
 
         if (check) {
             ram_check.style.display = "block";
             ram_check.style.color = "rgb(0, 172, 0)";
+            ram_alert.style.display = "none";
         }
     }
 
@@ -595,16 +635,21 @@
         if (latencyData[0] > 50) {
             net_alert.style.display = "block";
             net_alert.style.color = "yellow";
+            net_check.style.display = "none";
             check = false
-        } else if (latencyData[0] > 75) {
+
+        }
+        if (latencyData[0] > 75) {
             net_alert.style.display = "block";
             net_alert.style.color = "red";
+            net_check.style.display = "none";
             check = false
         }
 
         if (check) {
             net_check.style.display = "block";
             net_check.style.color = "rgb(0, 172, 0)";
+            net_alert.style.display = "none";
         }
     }
 
