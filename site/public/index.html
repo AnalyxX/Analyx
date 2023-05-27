@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analyx</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/index/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-<!-- Start of analyx Zendesk Widget script -->
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=80307728-deba-46b0-896c-3db8e9d0c692"> 
-</script>
-<!-- End of analyx Zendesk Widget script -->
+    <!-- Start of analyx Zendesk Widget script -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=80307728-deba-46b0-896c-3db8e9d0c692">
+    </script>
+    <!-- End of analyx Zendesk Widget script -->
 
 </head>
 
@@ -25,21 +25,22 @@
         <div class="header" id="header">
             <div class="container">
                 <!-- logo -->
-                <img id="logo" src="images/logo-analyx.svg" alt="">
+                <img id="logo" src="assets/images/logo-analyx.svg" alt="">
 
                 <div class="navbar">
-                    <li><a href="">Início</a></li>
-                    <li><a href="">Serviços</a></li>
-                    <li><a href="">Sobre</a></li>
-                    <li><a href="">Contatos</a></li>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#contacts">Contatos</a></li>
 
-                    <button class="login-button">Log In</button>
+                    <a href="crud_usuario/login.html"><button class="login-button">Log In</button></a>
+
                 </div>
             </div>
         </div>
 
         <!-- banner -->
-        <div class="home">
+        <div class="home" id="home">
             <div class="container">
                 <div class="home-title">
                     <h1>Monitoramento de infraestrutura corporativa.</h1>
@@ -48,16 +49,16 @@
 
                 <div class="verify">
                     <div class="division">
-                        <img src="images/confirm.svg" alt="">
-                        <p>Fique de olho nos seus dispositivos de hardware</p>
+                        <img src="assets/images/confirm.svg" alt="">
+                        <p>Fique de olho nos seus dispositivos de hardware!</p>
                     </div>
                     <div class="division" id="division">
-                        <img src="images/confirm.svg" alt="">
-                        <p>CPU, RAM, discos rígidos, Rede, Janelas do Sistema e mais</p>
+                        <img src="assets/images/confirm.svg" alt="">
+                        <p>CPU, RAM, Discos rígidos, Rede e mais!</p>
                     </div>
                     <div class="division">
-                        <img src="images/confirm.svg" alt="">
-                        <p>Avisamos antes que ocorram erros de hardware</p>
+                        <img src="assets/images/confirm.svg" alt="">
+                        <p>Envio de alertas com base em indicadores!</p>
                         <p></p>
                     </div>
                 </div>
@@ -67,11 +68,11 @@
 
 
     <div class="waves">
-        <img src="images/waves.svg" alt="">
+        <img src="assets/images/wave (3).svg" alt="">
     </div>
 
 
-    <div class="presentation">
+    <div class="presentation" id="services">
         <div class="container">
             <div class="presentation-text">
                 <h1>Analyx garante o monitoramento em tempo real do seu hardware.</h1>
@@ -86,7 +87,7 @@
             </div>
 
             <div class="presentation-img">
-                <img src="images/grafics.svg" alt="" id="img_grafics">
+                <img src="assets/images/grafics.svg" alt="" id="img_grafics">
             </div>
         </div>
     </div>
@@ -95,29 +96,25 @@
         <div class="container">
             <div class="planes-title">
                 <h1>
-                    Planos de contrato
+                    TEXTO
                 </h1>
 
-                <h3>
-                    Escolha o plano certo para o seu negócio!
-                </h3>
             </div>
 
             <div class="card-section">
                 <div class="card-basic">
                     <h1>
-                        Básico
+                       Confiável
                     </h1>
 
-                    <button class="btn-basic">Iniciar</button>
                 </div>
 
                 <div class="card-premium">
                     <h1>
-                        Premium
+                       Seguro
                     </h1>
 
-                    <button class="btn-premium"> iniciar </button>
+                   
                 </div>
 
                 <div class="card-essencial">
@@ -125,13 +122,13 @@
                         Essencial
                     </h1>
 
-                    <button class="btn-essencial">Iniciar</button>
+                
                 </div>
             </div>
         </div>
-    </div>
-   
-    <div class="about">
+    </div> 
+
+    <div class="about" id="about">
         <div class="about-title">
             <div class="container">
                 <h1>Quem somos?</h1>
@@ -141,20 +138,23 @@
 
         <div class="about-text">
             <div class="container">
-                <h1>
-                    Nossa História
-                </h1>
-<div class="ttext">
-<div class="text1">  A Analyx nasceu com o intuito de fornecer um monitoramento de dados de desempenho e atividade em
-    maquinas corporativas, gerando maior eficiência em carga horária de trabalho e uma maior segurança
-    de dados empresariais.</div>
-  
+                <div class="about-text-title">
+                    <h1>
+                        Nossa História
+                    </h1>
+                </div>
+                <div class="ttext">
+                    <div class="text1"> A Analyx nasceu com o intuito de fornecer um monitoramento de dados de
+                        desempenho e atividade em
+                        maquinas corporativas, gerando maior eficiência em carga horária de trabalho e uma maior
+                        segurança
+                        de dados empresariais.</div>
 
-<div class="text1"> Nós somos uma empresa fundada na cidade de São Paulo no ano de 2011,
-    e desde então viemos liderando o mercado com a confiabilidade e a qualidade unificada aos serviços prestados.</div>
-    
-</div>
-                
+
+                    <div class="text1"> Nós somos uma empresa fundada na cidade de São Paulo no ano de 2011,
+                        e desde então viemos liderando o mercado com a confiabilidade e a qualidade unificada aos
+                        serviços prestados.</div>
+                </div>
             </div>
 
         </div>
@@ -164,80 +164,63 @@
 
         </div>
         <div class="productp">
-            <img src="../public/images/parceiros/55337776-0-5-telecine-logo.svg" alt="" width="60%">
+            <img src="assets/images/parceiros/55337776-0-5-telecine-logo.svg" alt="" width="60%">
         </div>
         <div class="productp">
-            <img src="../public/images/parceiros/55337766-0-4-smiles-logo.svg" alt="" width="60%">
+            <img src="assets/images/parceiros/55337766-0-4-smiles-logo.svg" alt="" width="60%">
         </div>
         <div class="productp">
-            <img src="../public/images/parceiros/55337771-0-1-logo-loggi.svg" alt="" width="60%">
+            <img src="assets/images/parceiros/55337771-0-1-logo-loggi.svg" alt="" width="60%">
         </div>
         <div class="productp">
-            <img src="../public/images/parceiros/svguber.svg" alt="" width="60%">
+            <img src="assets/images/parceiros/svguber.svg" alt="" width="60%">
         </div>
         <div class="productp">
-            <img src="../public/images/parceiros/55809176-0-customer-logos.svg" alt="" width="60%">
+            <img src="assets/images/parceiros/55809176-0-customer-logos.svg" alt="" width="60%">
         </div>
         <div class="productp">
-            <img src="../public/images/parceiros/55070386-0-cea.svg" alt="" width="60%">
+            <img src="assets/images/parceiros/55070386-0-cea.svg" alt="" width="60%">
         </div>
         <div class="productp">
-            <img src="../public/images/parceiros/55070401-0-magalu.svg" alt="" width="60%">
+            <img src="assets/images/parceiros/55070401-0-magalu.svg" alt="" width="60%">
         </div>
         <div class="productp">
 
         </div>
     </div>
-    <div class="container-contact">
+
+    <div class="container-contact" id="contacts">
         <div class="box-contact">
             <div class="tittle-box-contact">
-                <div class="h1">Contate-Nos</div>
+                <div class="h1" style="font-weight: bolder;">Contate-Nos</div>
             </div>
             <div class="input-box-contact">
                 <div class="tittle-input-box-contact">Email:</div>
-                    <input type="email">
-                    <div class="tittle-input-box-contact">Telefone:</div>
-                    <input type="tel">
-  
-                </div>
-
-                <div class="button-box-contact">
-                    <button>Enviar</button>
-                </div>
+                <input type="email">
+                <div class="tittle-input-box-contact">Telefone:</div>
+                <input type="tel">
 
             </div>
-               
-            
+
+            <div class="button-box-contact">
+                <button>Enviar</button>
+            </div>
+
         </div>
     </div>
-        <div class="footer">
-            <div class="footer2">
 
-                <div class="box-footer">
-                    <div class="mini-box-footer">
-                        <img src="../public/images/parceiros/Captura de tela_20230221_022519.png" alt="" width="170px">
-                    </div>
-                    <div class="mini-box-footer2">
-                        <B>PAGE</B> <br>
-                        <a href="">Home</a> <br>
-                        <a href="">Log in</a><br>
+    </div>
+    <div class="footer">
+        <div class="footer2">
 
-                    </div>
-                    <div class="mini-box-footer">
-                        <img src="../public/images/parceiros/464-4641427_youtube-instagram-social-media-icons-grey-hd-png.png"
-                            alt="" width="50px">
-                        <img src="../public/images/parceiros/github-icon-white-5.jpg" alt="" width="50px">
-                        <img src="../public/images/parceiros/whatsapp_icon-icons.com_65542.png" alt="" width="40px">
-                        <img src="../public/images/parceiros/INSTAGRAM_icon-icons.com_65535.png" alt="" width="40px">
-                    </div>
-                    <div class="mini-box-footer">
-                        <img src="../public/images/parceiros/ZENDESK-GREY.png" alt="" width="220px">
-                    </div>
+            <div class="box-footer">
+              
                 </div>
-
             </div>
 
         </div>
+
+    </div>
 
 </body>
 

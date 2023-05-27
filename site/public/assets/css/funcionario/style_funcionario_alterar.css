@@ -1,0 +1,23 @@
+.pesquisar-func {
+  border-radius: 15px;
+  background-color: #d7d1d1;
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  width: 80vh;
+  justify-content: center;
+
+  padding: 55px;
+
+  grid-column: 2 / 2;
+  grid-row: 1/ 2;
+
+  margin: auto;
+  margin-top: 150px;
+}
+.pesquisar-func button {
+  width: 20%;
+  padding: 7px;
+  margin-top: 5px;
+  background-color: #858585;
+}

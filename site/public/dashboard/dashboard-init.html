@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyx | Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/dashboard/dashboard-init.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body onload="instance()">
+
+    <div id="right_menu" class="right-menu">
+        <div class="icons">
+            <i id="exit_menu" onclick="hideMenu()" class="fa-solid fa-xmark" title="Fechar menu lateral"></i>
+            <i id="settings_menu" class="fa-solid fa-gear" title="Abrir configurações"></i>
+        </div>
+
+        <div class="profile">
+
+            <img class="profile-img" src="../assets/images/fotor_2023-4-8_2_11_54.png" alt="">
+
+            <div class="text">
+                <h1> <b id="b_usuario"></b> </h1>
+
+            </div>
+        </div>
+
+        <div class="machines">
+            <p>Selecione a máquina que deseja monitorar!</p>
+
+            <div class="names">
+                <div class="names-align">
+                    <h2>Milena Soares</h2>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="exit">
+            <button> Sair </button>
+        </div>
+
+    </div>
+
+
+
+    <div class="content">
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+
+                    <div class="return" onclick="back()" title="Voltar ao menu principal">
+
+
+                    </div>
+
+                    <div class="logo-align">
+                        <img class="logo" src="../assets/images/logo-analyx.svg" alt="">
+                    </div>
+
+                    <div id="menu" class="menu">
+                        <i id="bars" onclick="showMenu()" class="fa-solid fa-bars" title="Abrir menu lateral"></i>
+                    </div>
+
+                </div>
+            </div>
+            <div class="box-p">
+                <div class="box-analytics">
+
+                    <div class="box1">
+                        <div class="maquinas"><div class="machines">
+                            <div class="names">
+                                <div class="names-align">
+                                    <h2>Milena Soares</h2>
+                                  
+                                    <h2>João Silva</h2>
+                                   
+                                    <h2>Pedro Morais</h2>
+                                    
+                                    <h2>Carolina Santos</h2>
+                                   
+                                    <h2>Carlos Romã</h2>
+                       
+                                    <h2>Leonardo Silva</h2>
+                                    <i class="fa-solid fa-chevron-right"></i>
+
+                                </div>
+                            </div>
+                        </div></div>
+                    </div>
+
+                    <div class="box2">
+                        <div class="tittle-mqns">Total Máquinas</div>
+                        <div class="ttlmaquinas">23</div>
+                    </div>
+
+                    <div class="box3">
+                        <div class="mini-box">
+                            <div class="icon-mini-box"><img src="../assets/images/sinal-verde.svg" alt="" width="60px">
+                            </div>
+                            <div class="maquinas-func">15</div>
+                        </div>
+                        <div class="mini-box">
+                            <div class="icon-mini-box"><img src="../assets/images/sinal-amarelo.svg" alt="" width="60px">
+                            </div>
+                            <div class="maquinas-func">5</div>
+                        </div>
+                        <div class="mini-box">
+                            <div class="icon-mini-box"><img src="../assets/images/sinal-vermelho.svg" alt="" width="60px">
+                            </div>
+                            <div class="maquinas-func">3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-dash">
+                    <div class="box11">  <div class="tittle11">Máquinas em estado critico nos ultimos 7 dias</div>
+                    <div class="grafics">
+                        <h1> <b id="discText"></b> </h1>
+                        <div class="disc-grafic-width">
+                            <canvas id="disc_grafic"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+                    <div class="box12">  
+                        <div class="tittle12">Hardwares que ficaram em estado de alerta nos ultimos 7 dias</div> </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+</body>
+<script src="../js/dash.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+
+    function back() {
+        window.location = "dashboardInit.html"
+    }
+
+</script>

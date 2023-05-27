@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: inherit;
+  border: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.form {
+  /* border: red solid 2px; */
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+.input,
+button {
+  font-weight: 700;
+  font-size: 1.1vw;
+}
+
+
+input {
+  /* background-color: #BEBABA; */
+  background-color: rgb(242, 241, 241);
+  border-radius: 2px;
+  height: 5vh;
+  font-size: 0.9rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  outline: 0;
+}
+
+
+section {
+  border: solid 3px purple;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #D6DAFF;
+
+}
+
+.areaPrincipal {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  height: 13%;
+  background-color: #496B8E;
+  justify-content: center;
+  color: white;
+  align-items: center;
+
+}
+
+nav {
+  display: flex;
+  width: 89vw;
+  height: 12vh;
+  justify-content: center;
+  align-items: center;
+}
+
+header li {
+  cursor: pointer;
+  transition: all 200ms ease-in;
+  transform: scale(1);
+}
+
+header li:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+ul {
+  display: flex;
+  width: 70vw;
+  height: 19vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navBarLateral {
+  border: solid 3px red;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 17%;
+  background-color: #274360;
+  color: white;
+
+}
+
+.user {
+  /* border: solid 3px yellow; */
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.user .fotoUser {
+  height: 50%;
+  width: 50%;
+  border: solid 3px red;
+  border-radius: 50%;
+  background-image: url(../../images/usuario-teste.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.user h2 {
+  margin-top: 20px;
+}
+
+.navegarLeteral {
+  border: solid 3px blue;
+  display: flex;
+  width: 100%;
+  height: 40%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.navegarLeteral li {
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.navegarLeteral #aqui {
+  font-weight: bolder;
+
+}
+
+#aqui2 {
+  font-weight: bolder;
+  text-decoration: underline;
+  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-thickness: 3px;
+}
+
+.sair {
+  /* border: solid 5px purple; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 30%;
+  height: 70px;
+  width: 100%;
+}
+
+.sair span{
+    cursor: pointer;
+    transition: all 200ms ease-in;
+
+}
+.sair span:hover{
+    color: red;
+    transform: scale(1.2);
+}
+
+.areaTitulo{
+  border: solid 3px blue;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Cadastro Empresa */
+
+
+#tituloCAD {
+  /* border: solid 3px red; */
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+
+}
+
+
+.cadastro-maq {
+  border: solid 3px green;
+  border-radius: 7px;
+  background-color: #274360;
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  width: 80vh;
+  justify-content: center;
+  color: white;
+  padding: 1.5rem 0.9rem 1rem 0.5rem;
+  margin: auto;
+}
+
+.cadastro-maq button {
+  /* border: solid 3px pink; */
+
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 1rem;
+  background-color: #858585;
+  margin: 3% auto;
+  padding: 2% 6% 2% 6%;
+  cursor: pointer;
+}
+
+.input {
+  /* border: solid 3px yellow; */
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 60vh;
+  margin-bottom: 3vh;
+}
+
+
+/*  Alterar Empresa */
+
+#aqui3 {
+  font-weight: bolder;
+  text-decoration: underline;
+  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-thickness: 3px;
+}
+
+#tituloALT {
+  /* border: solid 3px green; */
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 30vw;
+  margin-top: auto;
+
+}
+
+.alterar-maq {
+  border-radius: 7px;
+  background-color: #274360;
+  display: flex;
+  flex-direction: column;
+  height: 15vh;
+  width: 80vh;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bolder;
+  font-size: 1.4vw;
+  padding: 33px;
+  margin-left: 27%;
+  display: inline-flex;
+}
+
+.alterar-maq2 {
+  border-radius: 7px;
+  background-color: #274360;
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  width: 80vh;
+  justify-content: center;
+  color: white;
+  padding: 33px;
+  margin-left: 27%; 
+  margin-top: 1%;
+  margin-bottom: 1%;
+  overflow-y: visible;
+}
+
+.alterar-maq button {
+  display: flex;
+  margin-left: 5%;
+  width: 20%;
+  padding: 7px;
+  background-color: #858585;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.alterar-maq2 button {
+  display: flex;
+  margin-left: 5%;
+  width: 20%;
+  padding: 7px;
+  background-color: #858585;
+  justify-content: center;
+  cursor: pointer;
+  grid-column: 2 / 2;
+  margin-left: 40%;
+  margin-top: 5%;
+}
+
+.input2 {
+  /* padding: 0.9rem; */
+  margin-bottom: 5px;
+  /* background-color: yellow; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 90%;
+}
+
+input {
+  padding: 20px;
+  /* border: solid 3px magenta; */
+  margin-bottom: 5vh;
+  width: 100%;
+}
+
+.input3 {
+  /* border: solid 3px magenta; */
+  margin-bottom: 2.5vh;
+  font-size: 1.1vw;
+  padding: 0 2vw 0 2vw;
+  font-weight: bolder;
+
+}
+
+#ipt_nome2 {
+  margin-left: 3%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* Listar Empresa */
+
+
+#aqui4 {
+  font-weight: bolder;
+  text-decoration: underline;
+  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-thickness: 3px;
+}
+
+#tituloLIST {
+  font-size: 1.4vw;
+  display: flex;
+  justify-content: center;
+  width: 30vw;
+
+}
+
+.listar-maq {
+  border-radius: 7px;
+  background-color: #274360;
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  width: 50vh;
+  justify-content: center;
+  color: white;
+
+  padding: 55px;
+
+  margin-left: 22%;
+}
+
+.listar-maq button {
+  display: flex;
+  margin-left: 40px;
+  width: 20%;
+  padding: 7px;
+  background-color: #858585;
+  justify-content: center;
+  cursor: pointer;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 2rem;
+
+}
+
+input::placeholder {
+  color: rgb(0, 0, 0, 0.5);
+  font-size: 1.4rem;
+}
+
+
+
+/* Deletar Empresa */
+
+
+#aqui5 {
+  font-weight: bolder;
+  text-decoration: underline;
+  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-thickness: 3px;
+}
+
+#tituloDELET {
+  display: flex;
+  justify-content: center;
+  width: 40vw;
+  font-size: 1.4vw;
+}
+
+.deletar-maq {
+  background-color: #274360;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  width: 130vh;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 55px;
+  margin: auto;
+}
+
+.deletar-maq button {
+  display: flex;
+  width: 20%;
+  padding: 7px;
+  background-color: #858585;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 35%;
+  margin-top: 10%;
+}
+
+.deletar-maq .input {
+  /* border:  solid 3px green; */
+  display: flex;
+  width: 70%;
+  justify-content: center;
+  margin-left: 10%;
+  margin-top: 10%;
+  font-size: 2rem;
+}
+
+.deletar-maq input {
+  padding: 10px;
+  margin-bottom: 5px;
+  height: 4rem;
+  font-size: 2rem;
+}
+
+button {
+  font-size: 1.5vw;
+  border-radius: 15px;
+  padding: 2% 6% 2% 6%
+}
+
+.deletarMaq2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.SimNao {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.SimNao li {
+
+  border: solid 3px;
+  background: grey;
+  width: 5rem;
+  justify-content: center;
+  align-items: center;
+
+}

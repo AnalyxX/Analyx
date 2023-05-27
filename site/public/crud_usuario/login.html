@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/usuario/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script id="ze-snippet"
+        src="https://static.zdassets.com/ekr/snippet.js?key=80307728-deba-46b0-896c-3db8e9d0c692"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <title>Login</title>
+</head>
+
+<body>
+
+    <div class="header" id="header-login">
+        <div class="container">
+            <!-- logo -->
+            <img id="logo" src="../assets/images/logo-analyx.svg" alt="">
+
+            <div class="navbar">
+                <li><a href="../index.html">Início</a></li>
+            </div>
+        </div>
+    </div>
+
+    <div class="form">
+        <div class="icon"><img src="../assets/images/imagem_2023-05-19_224902480-removebg-preview.png" alt=""
+                width="400px"></div>
+        <div class="login-user">
+
+            <span id="login-title">Login</span>
+
+            <div class="input" id="ipt1">
+                Email:
+                <input type="email" name="email" id="ipt_email" placeholder="Digite seu E-MAIL">
+            </div>
+
+            <div class="input" id="ipt2">
+                Senha:
+                <input type="password" name="senha" id="ipt_senha" placeholder="Digite sua senha">
+            </div>
+            <div class="link"><input type="checkbox" id="agreement"><a href="../crud_usuario/termos-de-uso"> Leia os-<B>
+                        Termos de uso</B> </a></div>
+            <button id="btn_entrar" onclick="conectar()">Conectar</button>
+        </div>
+    </div>
+
+</body>
+
+<script src="js/index.js"></script>
+
+</html>
+
+<script>
+
+    function conectar() {
+        let timerInterval
+
+
+       
+        if ((ipt_email.value).length > 3 && (ipt_senha.value).length > 3) {
+            setTimeout(() => {
+                window.location = "../dashboard/dashboardInit.html";
+            }, "2000")
+        } else {
+            Swal.fire('<p style="color: black;" style="font-size: 20px "  > O PRESENTE DOCUMENTO ("TERMOS DE USO") ESTABELECE OS TERMOS E CONDIÇÕES APLICÁVEIS  AO USO DO SITE. </p>');
+        
+  
+}
+        }
+    
+</script>
