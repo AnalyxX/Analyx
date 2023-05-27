@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>empresa</title>
-  <link rel="stylesheet" href="../assets/css/empresa/empresa.css" />
+  <title>usuario</title>
+  <link rel="stylesheet" href="../assets/css/usuario/usuarioo.css" />
 </head>
 
 <body>
@@ -20,10 +20,10 @@
         <h2 id="NomeUsuario"></h2>
       </div>
       <div class="navegarLeteral">
-        <li id="aqui">EMPRESA</li>
+        <li><a href="../crud_usuario/cadastro-user.html">Empresa</a></li>
         <li> <a href="../crud_maquina/maquina.html"> MÁQUINA</a></li>
         <li><a href="../crud_funcionario/cadastrarFuncionario.html">FUNCIONÁRIO</a></li>
-        <li><a href="../crud_usuario/cadastro-user.html"> USUÁRIO</a></li>
+        <li id="aqui"> USUÁRIO</a></li>
       </div>
       <div class="sair" onclick="sair()"><span>Sair</span></div>
     </div>
@@ -32,14 +32,14 @@
       <header>
         <nav>
           <ul>
-            <li id="cadEMP" style="display:none"><a onclick="cadastrarEMP()">Cadastrar Empresa</a></li>
-            <li id="aqui2"><a style="display:block">Cadastrar Empresa</a></li>
-            <li id="altEmp" style="display: block;"><a onclick="alterarEMP()"> Alterar Empresa</a></li>
-            <li id="aqui3" style="display: none;"><a>Alterar Empresa</a></li>
-            <li id="listEmp" style="display: none;"><a onclick="listarEMP()">Listar Empresa</a></li>
-            <li id="aqui4" style="display: none;"><a>Listar Empresa</a></li>
-            <li id="deletEmp" style="display: none;"><a onclick="deletarEMP()">Deletar Empresa</a></li>
-            <li id="aqui5" style="display: none;"><a>Deletar Empresa</a></li>
+            <li id="cadUSU" style="display:none"><a onclick="cadastrarUSU()">Cadastrar usuário</a></li>
+            <li id="aqui2"><a style="display:block">Cadastrar usuário</a></li>
+            <li id="altUSU" style="display: block;"><a onclick="alterarUSU()"> Alterar usuário</a></li>
+            <li id="aqui3" style="display: none;"><a>Alterar usuário</a></li>
+            <li id="listUSU" style="display: block;"><a onclick="listarUSU()">Listar usuário</a></li>
+            <li id="aqui4" style="display: none;"><a>Listar usuário</a></li>
+            <li id="deletUSU" style="display: block;"><a onclick="deletarUSU()">Deletar usuário</a></li>
+            <li id="aqui5" style="display: none;"><a>Deletar usuário</a></li>
           </ul>
         </nav>
       </header>
@@ -47,17 +47,17 @@
       <div class="areaTitulo">
 
         <div id="tituloCAD" class="titulo">
-          <h1>Cadastro Empresa</h1>
+          <h1>Cadastro usuário</h1>
         </div>
 
         <div id="tituloALT" class="titulo" style="display: none;">
-          <h1>Buscar Empresa</h1>
+          <h1>Buscar usuário</h1>
         </div>
         <div id="tituloLIST" class="titulo" style="display: none;">
-          <h1>Listagem de Empresas</h1>
+          <h1>Listagem de usuário</h1>
         </div>
         <div id="tituloDELET" class="titulo" style="display: none;">
-          <h1>Deletar Empresa</h1>
+          <h1>Deletar usuário</h1>
         </div>
         <div class="menssagem" id="menssagem">
 
@@ -66,77 +66,69 @@
       </div>
 
 
-      <div id="cadastroEmp" class="cadastro-emp" style="display:block;">
+      <div id="cadastroUsu" class="cadastro-usu" style="display:block;">
         <div class="input" id="ipt-1">
-          CNPJ
+          Email
           <input type="text" name="nome" id="ipt_cnpj" />
         </div>
         <div class="input" id="ipt-2">
-          Razão social
+          Matricula
           <input type="text" name="matricula" id="ipt_razaoSocial" />
         </div>
         <div class="input" id="ipt-3">
-          Responsavel
+          Senha
           <input type="text" name="setor" id="ipt_responsavel" />
         </div>
         <div class="input" id="ipt-4">
-          E-mail
+          Confirmar Senha
           <input type="text" name="maquina" id="ipt_email" />
-        </div>
-        <div class="input" id="ipt-5">
-          Telefone
-          <input type="text" name="funcao" id="ipt_telefone" />
         </div>
         <button id="btn_entrar" onclick="cadastrar2()">Cadastrar</button>
       </div>
 
 
-      <div id="alterarEmp" class="alterar-emp" style="display:none;">
+      <div id="alterarUsu" class="alterar-usu" style="display:none;">
         <div class="input2" id="ipt-1">
-          CNPJ:
+          Email:
           <input type="text" name="nome" id="Alt_cnpj" />
           <button id="btn_entrar" onclick="aparecerBuscados()">Buscar</button>
         </div>
       </div>
 
 
-      <div id="alterarEmp2" class="alterar-emp2" style="display:none;">
+      <div id="alterarUsu2" class="alterar-Usu2" style="display:none;">
         <div class="input3" id="ipt-1">
-          CNPJ
+          Email
           <input type="text" name="nome" placeholder="Altere o CNPJ" id="alt_cnpj" />
         </div>
         <div class="input3" id="ipt-2">
-          Razão social
+          Matricula
           <input type="text" name="matricula" placeholder="Altere a Razão Social" id="alt_razao" />
         </div>
         <div class="input3" id="ipt-3">
-          Responsavel
+          Senha
           <input type="text" name="setor" placeholder="Altere o Responsável" id="alt_responsavel" />
         </div>
         <div class="input3" id="ipt-4">
-          E-mail
+          Confirmar Senha
           <input type="text" name="maquina" placeholder="Altere o Email" id="alt_email" />
-        </div>
-        <div class="input3" id="ipt-5">
-          Telefone
-          <input type="text" name="funcao" placeholder="Altere o Telefone" id="alt_telefone" />
         </div>
         <button id="btn_entrar" onclick="alterar()">Alterar</button>
       </div>
 
 
 
-      <div id="listarEmp" class="listar-emp" style="display:none;">
+      <div id="listarUsu" class="listar-usu" style="display:none;">
         <div class="input" id="ipt-1">
           Foram encontradas:
         </div>
-        <div id="empresas_lista">
+        <div id="USUresas_lista">
 
         </div>
 
       </div>
       
-      <div id="listarEmp2" class="listar-emp" style="display:none;">
+      <div id="listarUsu2" class="listar-usu" style="display:none;">
         <div class="input" id="ipt-1">
           CNPJ
           <input type="text" name="nome" id="ipt_nome" />
@@ -161,22 +153,21 @@
       </div>
 
 
-      <div id="deletarEmp" class="deletar-emp" style="display:none;">
+      <div id="deletarUsu" class="deletar-usu" style="display:none;">
         <div id="buscarDelete" style="display:block;">
           <div class="input" id="ipt-1">
-            CNPJ
+            Email
             <input type="text" name="nome" id="Delet_cnpj" />
           </div>
           <button id="btn_entrar" onclick="aparecerDelete()">Procurar</button>
         </div>
 
-        <div id="deletarEmp2" class="deletarEmp2" style="display:none;">
-          <h3>Tem certeza que deseja excluir essa empresa ?</h3>
-          <li>CNPJ:<span id="del_cnpj"></span></li>
-          <li>Razão social:<span id="del_razaoSocial"></span></li>
-          <li>Responsável:<span id="del_responsavel"></span></li>
-          <li>E-mail:<span id="del_email"></span></li>
-          <li>Telefone:<span id="del_telefone"></span></li>
+        <div id="deletarUsu2" class="deletarUsu2" style="display:none;">
+          <h3>Tem certeza que deseja excluir essa USUresa ?</h3>
+          <li>EMAIL:<span id="del_cnpj"></span></li>
+          <li>Matricula:<span id="del_razaoSocial"></span></li>
+          <li>Senha:<span id="del_responsavel"></span></li>
+          <li>Confirmar Senha:<span id="del_email"></span></li>
           <div class="SimNao">
             <li onclick="deletar()">Sim</li>
             <li onclick="voltar()">Não</li>
@@ -199,11 +190,11 @@
 
   NomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-  console.log(EmailUsuario);
-  if (EmailUsuario && EmailUsuario.includes("analyx@")) {
-    listEmp.style.display = "block";
-    deletEmp.style.display = "block";
-  }
+//  console.log(EmailUsuario);
+//  if (EmailUsuario && EmailUsuario.includes("analyx@")) {
+ //   listUSU.style.display = "block";
+//   deletUSU.style.display = "block";
+//  }
 
   function teste() {
     menssagem.style.display = "block";
@@ -214,138 +205,85 @@
   }
 
 
-  function cadastrarEMP() {
-    if (EmailUsuario && EmailUsuario.includes("analyx@")) {
+  function cadastrarUSU() {
       //header
       aqui3.style.display = "none";
       aqui4.style.display = "none";
       aqui5.style.display = "none";
-      cadEMP.style.display = "none";
+      cadUSU.style.display = "none";
 
-      altEmp.style.display = "block";
-      listEmp.style.display = "block";
-      deletEmp.style.display = "block";
+      altUSU.style.display = "block";
+      listUSU.style.display = "block";
+      deletUSU.style.display = "block";
 
       aqui2.style.display = "block";
 
       //social
-      alterarEmp.style.display = "none";
-      listarEmp.style.display = "none";
-      deletarEmp.style.display = "none";
-      alterarEmp2.style.display = "none";
+      alterarUsu.style.display = "none";
+      listarUsu.style.display = "none";
+      deletarUsu.style.display = "none";
+      alterarUSU2.style.display = "none";
 
-      cadastroEmp.style.display = "block";
+      cadastroUSU.style.display = "block";
 
       //titulo
       tituloCAD.style.display = "block";
       tituloALT.style.display = "none";
       tituloLIST.style.display = "none";
       tituloDELET.style.display = "none";
-    } else {
-      //header
-      aqui3.style.display = "none";
-      aqui4.style.display = "none";
-      aqui5.style.display = "none";
-      cadEMP.style.display = "none";
 
-      altEmp.style.display = "block";
-      listEmp.style.display = "none";
-      deletEmp.style.display = "none";
-
-      aqui2.style.display = "block";
-
-      //social
-      alterarEmp.style.display = "none";
-      listarEmp.style.display = "none";
-      deletarEmp.style.display = "none";
-      alterarEmp2.style.display = "none";
-
-      cadastroEmp.style.display = "block";
-
-      //titulo
-      tituloCAD.style.display = "block";
-      tituloALT.style.display = "none";
-      tituloLIST.style.display = "none";
-      tituloDELET.style.display = "none";
-    }
   }
-  function alterarEMP() {
-    if (EmailUsuario && EmailUsuario.includes("analyx@")) {
+  function alterarUSU() {
       //header
       aqui2.style.display = "none";
       aqui4.style.display = "none";
       aqui5.style.display = "none";
-      altEmp.style.display = "none";
+      altUSU.style.display = "none";
 
-      deletEmp.style.display = "block";
-      listEmp.style.display = "block";
-      cadEMP.style.display = "block";
+      deletUSU.style.display = "block";
+      listUSU.style.display = "block";
+      cadUSU.style.display = "block";
 
       aqui3.style.display = "block";
 
       //social
-      cadastroEmp.style.display = "none";
-      listarEmp.style.display = "none";
-      deletarEmp.style.display = "none";
-      alterarEmp2.style.display = "none";
+      cadastroUSU.style.display = "none";
+      listarUsu.style.display = "none";
+      deletarUsu.style.display = "none";
+      alterarUSU2.style.display = "none";
 
 
-      alterarEmp.style.display = "block";
+      alterarUsu.style.display = "block";
 
       //titulo
       tituloCAD.style.display = "none";
       tituloALT.style.display = "block";
       tituloLIST.style.display = "none";
       tituloDELET.style.display = "none";
-    } else {
-      //header
-      aqui2.style.display = "none";
-      aqui4.style.display = "none";
-      aqui5.style.display = "none";
-      altEmp.style.display = "none";
-
-      deletEmp.style.display = "none";
-      listEmp.style.display = "none";
-      cadEMP.style.display = "block";
-
-      aqui3.style.display = "block";
-
-      //social
-      cadastroEmp.style.display = "none";
-      alterarEmp2.style.display = "none";
-
-
-      alterarEmp.style.display = "block";
-
-      //titulo
-      tituloCAD.style.display = "none";
-      tituloALT.style.display = "block";
-    }
-
   }
 
-  function listarEMP() {
+  function listarUSU() {
     //header
     aqui2.style.display = "none";
     aqui3.style.display = "none";
     aqui5.style.display = "none";
-    listEmp.style.display = "none";
+    listUSU.style.display = "none";
 
-    cadEMP.style.display = "block";
-    altEmp.style.display = "block";
-    deletEmp.style.display = "block";
+    cadUSU.style.display = "block";
+    altUSU.style.display = "block";
+    deletUSU.style.display = "block";
 
     aqui4.style.display = "block";
 
 
     //social
-    cadastroEmp.style.display = "none";
-    alterarEmp.style.display = "none";
-    deletarEmp.style.display = "none";
-    alterarEmp2.style.display = "none";
+    cadastroUSU.style.display = "none";
+    alterarUSU.style.display = "none";
+    deletarUSU.style.display = "none";
+    alterarUSU2.style.display = "none";
 
 
-    listarEmp.style.display = "block";
+    listarUSU.style.display = "block";
 
     //titulo
     tituloCAD.style.display = "none";
@@ -354,27 +292,27 @@
     tituloDELET.style.display = "none";
   }
 
-  function deletarEMP() {
+  function deletarUSU() {
     //header
     aqui2.style.display = "none";
     aqui3.style.display = "none";
     aqui4.style.display = "none";
-    deletEmp.style.display = "none";
+    deletUSU.style.display = "none";
 
-    cadEMP.style.display = "block";
-    altEmp.style.display = "block";
-    listEmp.style.display = "block";
+    cadUSU.style.display = "block";
+    altUSU.style.display = "block";
+    listUSU.style.display = "block";
 
     aqui5.style.display = "block";
 
     //social
-    cadastroEmp.style.display = "none";
-    alterarEmp.style.display = "none";
-    listarEmp.style.display = "none";
-    alterarEmp2.style.display = "none";
+    cadastroUSU.style.display = "none";
+    alterarUSU.style.display = "none";
+    listarUSU.style.display = "none";
+    alterarUSU2.style.display = "none";
 
 
-    deletarEmp.style.display = "block";
+    deletarUSU.style.display = "block";
 
 
     //titulo
@@ -388,7 +326,7 @@
   function cadastrar2(){
     var cnpj = ipt_cnpj.value;
 
-    fetch("/empresa/autenticarEMP", {
+    fetch("/USUresa/autenticarUSU", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -406,7 +344,7 @@
           console.log(json);
           console.log(JSON.stringify(json));
           if (json === false) {
-            alert("Já existe uma empresa com o mesmo CNPJ!");
+            alert("Já existe uma USUresa com o mesmo CNPJ!");
             ax_erro = true;
             return;
           }else{
@@ -421,7 +359,7 @@
 
         console.log("Houve um erro ao tentar realizar o cadastro!");
         ax_erro=true;
-        alert("Essa empresa já está cadastrada!")
+        alert("Essa USUresa já está cadastrada!")
         return;
         
         resposta.text().then(texto => {
@@ -472,7 +410,7 @@
 
 
 
-    fetch("/empresa/cadastrar", {
+    fetch("/USUresa/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -490,7 +428,7 @@
         cardErro.style.display = "block";
         alert("Cadastro realizado com sucesso!");
         setTimeout(() => {
-          window.location = "empresa.html";
+          window.location = "USUresa.html";
         }, "2000")
       } else {
         throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -519,7 +457,7 @@
     
     console.log("FORM cnpj: ", cnpj);
 
-    fetch("/empresa/pegarEmpresa", {
+    fetch("/USUresa/pegarUSUresa", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -537,12 +475,12 @@
           console.log(json);
           console.log(JSON.stringify(json));
 
-          sessionStorage.ID_EMPRESACAD = json.id;
-          sessionStorage.CNPJ_EMPRESACAD = json.cnpj;
-          sessionStorage.RAZAOSOCIAL_EMPRESACAD = json.razaoSocial;
-          sessionStorage.RESPONSAVEL_EMPRESACAD = json.responsavel;
-          sessionStorage.EMAIL_EMPRESACAD = json.email;
-          sessionStorage.TELEFONE_EMPRESACAD = json.telefone;
+          sessionStorage.ID_USURESACAD = json.id;
+          sessionStorage.CNPJ_USURESACAD = json.cnpj;
+          sessionStorage.RAZAOSOCIAL_USURESACAD = json.razaoSocial;
+          sessionStorage.RESPONSAVEL_USURESACAD = json.responsavel;
+          sessionStorage.EMAIL_USURESACAD = json.email;
+          sessionStorage.TELEFONE_USURESACAD = json.telefone;
           
           alt_cnpj.value = sessionStorage.CNPJ_USUARIO;
           alt_razao.value = sessionStorage.RAZAOSOCIAL_USUARIO;
@@ -551,12 +489,12 @@
           alt_telefone.value = sessionStorage.TELEFONE_USUARIO;
           
           if (sessionStorage.CNPJ_USUARIO != null && sessionStorage.CNPJ_USUARIO != undefined) {
-            alert("Empresa encontrada!")
+            alert("USUresa encontrada!")
           }
           
           
-              alterarEmp2.style.display = "block";
-              alterarEmp.style.height = "15%";
+              alterarUSU2.style.display = "block";
+              alterarUSU.style.height = "15%";
           console.log(sessionStorage.CNPJ_USUARIO);
         });
 
@@ -621,7 +559,7 @@
     }
     else {
       // Enviando o valor da nova input
-      fetch("/empresa/alterar", {
+      fetch("/USUresa/alterar", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -650,7 +588,7 @@
           alt_responsavel.value = "";
           alt_telefone.value = "";
           setTimeout(() => {
-            window.location = "empresa.html";
+            window.location = "USUresa.html";
           }, "2000")
 
         } else {
@@ -672,11 +610,11 @@
   }
 
   if (EmailUsuario && EmailUsuario.includes("analyx@")) {
-    listagemEmpresas()
+    listagemUSUresas()
 
-    function listagemEmpresas() {
+    function listagemUSUresas() {
 
-      fetch("/empresa/listar", {
+      fetch("/USUresa/listar", {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -691,23 +629,23 @@
             console.log(json);
             console.log(JSON.stringify(json));
 
-            sessionStorage.CNPJ_EMPRESA = json.cnpj;
+            sessionStorage.CNPJ_USURESA = json.cnpj;
             console.log(json.length);
 
             for (i = 0; i < json.length; i++) {
               var registro = json[i];
-              empresas_lista.innerHTML += `<li>${registro.cnpj}</li>`;
+              USUresas_lista.innerHTML += `<li>${registro.cnpj}</li>`;
             }
 
-            if (sessionStorage.CNPJ_EMPRESA != null && sessionStorage.CNPJ_EMPRESA != undefined) {
-              // alert("Empresa encontrada!")
+            if (sessionStorage.CNPJ_USURESA != null && sessionStorage.CNPJ_USURESA != undefined) {
+              // alert("USUresa encontrada!")
             } else {
-              //   alert("empresa null ou undefined")
+              //   alert("USUresa null ou undefined")
             }
           });
 
         } else {
-          console.log("Houve um erro ao tentar encontrar empresas!");
+          console.log("Houve um erro ao tentar encontrar USUresas!");
           resposta.text().then(texto => {
             console.error(texto);
           });
@@ -737,7 +675,7 @@
 
     console.log("FORM cnpj: ", cnpj);
 
-    fetch("/empresa/pegarEmpresa", {
+    fetch("/USUresa/pegarUSUresa", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -754,25 +692,25 @@
         resposta.json().then(json => {
           console.log(json);
           console.log(JSON.stringify(json));
-          deletarEmp2.style.display = "block";
+          deletarUSU2.style.display = "block";
           buscarDelete.style.display = "none";
 
-          sessionStorage.ID_EMPRESADEL = json.id;
-          sessionStorage.CNPJ_EMPRESADEL = json.cnpj;
-          sessionStorage.RAZAOSOCIAL_EMPRESADEL = json.razaoSocial;
-          sessionStorage.RESPONSAVEL_EMPRESADEL = json.responsavel;
-          sessionStorage.EMAIL_EMPRESADEL = json.email;
-          sessionStorage.TELEFONE_EMPRESADEL = json.telefone;
+          sessionStorage.ID_USURESADEL = json.id;
+          sessionStorage.CNPJ_USURESADEL = json.cnpj;
+          sessionStorage.RAZAOSOCIAL_USURESADEL = json.razaoSocial;
+          sessionStorage.RESPONSAVEL_USURESADEL = json.responsavel;
+          sessionStorage.EMAIL_USURESADEL = json.email;
+          sessionStorage.TELEFONE_USURESADEL = json.telefone;
 
-          del_cnpj.innerHTML = sessionStorage.CNPJ_EMPRESADEL;
-          del_razaoSocial.innerHTML = sessionStorage.RAZAOSOCIAL_EMPRESADEL;
-          del_responsavel.innerHTML = sessionStorage.RESPONSAVEL_EMPRESADEL;
-          del_email.innerHTML = sessionStorage.EMAIL_EMPRESADEL;
-          del_telefone.innerHTML = sessionStorage.TELEFONE_EMPRESADEL;
+          del_cnpj.innerHTML = sessionStorage.CNPJ_USURESADEL;
+          del_razaoSocial.innerHTML = sessionStorage.RAZAOSOCIAL_USURESADEL;
+          del_responsavel.innerHTML = sessionStorage.RESPONSAVEL_USURESADEL;
+          del_email.innerHTML = sessionStorage.EMAIL_USURESADEL;
+          del_telefone.innerHTML = sessionStorage.TELEFONE_USURESADEL;
 
 
           if (sessionStorage.CNPJ_USUARIO != null && sessionStorage.CNPJ_USUARIO != undefined) {
-            alert("Empresa encontrada!")
+            alert("USUresa encontrada!")
           }
 
         });
@@ -789,7 +727,7 @@
       }
     }).catch(function (erro) {
       console.log(erro);
-      alert("Empresa não encontrada")
+      alert("USUresa não encontrada")
     })
 
     return false;
@@ -797,10 +735,10 @@
 
 
   function deletar() {
-    deletarEmp2.style.display = "block";
+    deletarUSU2.style.display = "block";
     buscarDelete.style.display = "none";
 
-    var id = sessionStorage.ID_EMPRESADEL;
+    var id = sessionStorage.ID_USURESADEL;
 
     if (id == "") {
 
@@ -810,7 +748,7 @@
 
     console.log("FORM id: ", id);
 
-    fetch("/empresa/deletar", {
+    fetch("/USUresa/deletar", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
@@ -827,7 +765,7 @@
         resposta.json().then(json => {
           console.log(json);
           console.log(JSON.stringify(json));
-          alert("Empresa deletada com sucesso!")
+          alert("USUresa deletada com sucesso!")
         });
 
       } else {
@@ -847,7 +785,7 @@
   }
 
   function voltar() {
-    deletarEmp2.style.display = "none";
+    deletarUSU2.style.display = "none";
     buscarDelete.style.display = "block";
   }
 </script>

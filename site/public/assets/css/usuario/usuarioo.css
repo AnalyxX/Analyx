@@ -214,7 +214,7 @@ ul {
 }
 
 
-.cadastro-emp {
+.cadastro-usu {
   /* border: solid 3px green; */
   border-radius: 7px;
   background-color: #637CA2;
@@ -228,7 +228,7 @@ ul {
   margin-left: 27%;
 }
 
-.cadastro-emp button {
+.cadastro-usu button {
   /* border: solid 3px pink; */
 
   width: 30%;
@@ -437,7 +437,7 @@ input::placeholder {
   margin-right: 27%;
 }
 
-.deletar-emp {
+.deletar-usu {
   background-color: #274360;
   border-radius: 7px;
   display: flex;
@@ -451,7 +451,7 @@ input::placeholder {
   margin-left: 13%;
 }
 
-.deletar-emp button {
+.deletar-usu button {
   display: flex;
   width: 20%;
   padding: 7px;
@@ -462,7 +462,7 @@ input::placeholder {
   margin-top: 10%;
 }
 
-.deletar-emp .input {
+.deletar-usu .input {
   /* border:  solid 3px green; */
   display: flex;
   width: 70%;
@@ -472,7 +472,7 @@ input::placeholder {
   font-size: 2rem;
 }
 
-.deletar-emp input {
+.deletar-usu input {
   padding: 10px;
   margin-bottom: 5px;
   height: 4rem;
@@ -485,18 +485,18 @@ button {
   padding: 2% 6% 2% 6%
 }
 
-.deletarEmp2 {
+.deletarUsu2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.deletarEmp2 li{
+.deletarUsu2 li{
   font-weight: bolder;
   font-size: large;
   margin-bottom: 10px;
 }
 
-.deletarEmp2 li span {
+.deletarUsu2 li span {
   margin-left: 5px;
   font-weight: 200;
   font-size: medium;

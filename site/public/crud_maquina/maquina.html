@@ -32,13 +32,11 @@
       <header>
         <nav>
           <ul>
-            <li id="cadMaq" style="display:none"><a onclick="cadastrarMAQ()">Cadastrar Maquina</a></li>
-            <li id="aqui2"><a style="display:block">Cadastrar Maquina</a></li>
             <li id="altMaq" style="display: block;"><a onclick="alterarMAQ()"> Alterar Maquina</a></li>
             <li id="aqui3" style="display: none;"><a>Alterar Maquina</a></li>
-            <li id="listMaq" style="display: none;"><a onclick="listarMAQ()">Listar Maquina</a></li>
+            <li id="listMaq" style="display: block;"><a onclick="listarMAQ()">Listar Maquina</a></li>
             <li id="aqui4" style="display: none;"><a>Listar Maquina</a></li>
-            <li id="deletMaq" style="display: none;"><a onclick="deletarMAQ()">Deletar Maquina</a></li>
+            <li id="deletMaq" style="display: block;"><a onclick="deletarMAQ()">Deletar Maquina</a></li>
             <li id="aqui5" style="display: none;"><a>Deletar Maquina</a></li>
           </ul>
         </nav>
@@ -46,11 +44,7 @@
 
       <div class="areaTitulo">
 
-        <div id="tituloCAD" class="titulo">
-          <h1>Especificações Máquina</h1>
-        </div>
-
-        <div id="tituloALT" class="titulo" style="display: none;">
+        <div id="tituloALT" class="titulo" style="display: block;">
           <h1>Buscar Máquina</h1>
         </div>
         <div id="tituloLIST" class="titulo" style="display: none;">
@@ -59,35 +53,16 @@
         <div id="tituloDELET" class="titulo" style="display: none;">
           <h1>Deletar Máquina</h1>
         </div>
+        <div class="menssagem" id="menssagem">
 
+        </div>
       </div>
 
 
-      <div id="cadastroMaq" class="cadastro-maq" style="display:block;">
-        <div class="input" id="ipt-1">
-            CPU
-            <input type="text" name="nome" id="ipt_cnpj" />
-          </div>
-          <div class="input" id="ipt-2">
-            RAM
-            <input type="text" name="matricula" id="ipt_razaoSocial" />
-          </div>
-          <div class="input" id="ipt-3">
-            DISCO
-            <input type="text" name="setor" id="ipt_responsavel" />
-          </div>
-          <div class="input" id="ipt-4">
-            Número Serial
-            <input type="text" name="maquina" id="ipt_email" />
-          </div>
-        <button id="btn_entrar" onclick="cadastrar()">Cadastrar</button>
-      </div>
-
-
-      <div id="alterarMaq" class="alterar-maq" style="display:none;">
+      <div id="alterarMaq" class="alterar-maq" style="display:block;">
         <div class="input2" id="ipt-1">
           Número Serial:
-          <input type="text" name="nome" id="Alt_cnpj" />
+          <input type="text" name="nome" id="Alt_numeroSerial" />
           <button id="btn_entrar" onclick="aparecerBuscados()">Buscar</button>
         </div>
       </div>
@@ -96,21 +71,21 @@
       <div id="alterarMaq2" class="alterar-maq2" style="display:none;">
         <div class="input3" id="ipt-1">
           CPU
-          <input type="text" name="nome" placeholder="Altere o CNPJ" id="ipt_nome" />
+          <input type="text" name="nome" placeholder="Altere o numeroSerial" id="alt_cpu" />
         </div>
         <div class="input3" id="ipt-2">
           RAM
-          <input type="text" name="matricula" placeholder="Altere a Razão Social" id="ipt_matricula" />
+          <input type="text" name="matricula" placeholder="Altere a Razão Social" id="alt_ram" />
         </div>
         <div class="input3" id="ipt-3">
           DISCO
-          <input type="text" name="setor" placeholder="Altere o Responsável" id="ipt_setor" />
+          <input type="text" name="setor" placeholder="Altere o Responsável" id="alt_disco" />
         </div>
         <div class="input3" id="ipt-4">
           Número Serial
-          <input type="text" name="maquina" placeholder="Altere o Email" id="ipt_maquina" />
+          <input type="text" name="maquina" placeholder="Altere o Email" id="alt_numeroSerial" />
         </div>
-        <button id="btn_entrar" onclick="aparecerBuscados()">Alterar</button>
+        <button id="btn_entrar" onclick="alterar()">Alterar</button>
       </div>
 
 
@@ -119,14 +94,14 @@
         <div class="input" id="ipt-1">
           Foram encontradas:
         </div>
-        <div>000.012.0043
+        <div id="maquinas_lista">
 
         </div>
 
       </div>
       <div id="listarMaq2" class="listar-maq" style="display:none;">
         <div class="input" id="ipt-1">
-          CNPJ
+          numeroSerial
           <input type="text" name="nome" id="ipt_nome" />
           <div class="input" id="ipt-2">
             Razão social
@@ -148,26 +123,24 @@
 
       </div>
 
-
       <div id="deletarMaq" class="deletar-maq" style="display:none;">
         <div id="buscarDelete" style="display:block;">
           <div class="input" id="ipt-1">
-            CNPJ
-            <input type="text" name="nome" id="ipt_nome" />
+            Numero Serial:
+            <input type="text" name="nome" id="Delet_numeroSerial" />
           </div>
-          <button id="btn_entrar" onclick="aparecerDelete()">Cadastrar</button>
+          <button id="btn_entrar" onclick="aparecerDelete()">Procurar</button>
         </div>
 
         <div id="deletarMaq2" class="deletarMaq2" style="display:none;">
           <h3>Tem certeza que deseja excluir essa empresa ?</h3>
-          <li>CNPJ:</li>
-          <li>Razão social:</li>
-          <li>Responsável:</li>
-          <li>E-mail::</li>
-          <li>Telefone:</li>
+          <li>CPU:<span id="del_cpu"></span></li>
+          <li>RAM:<span id="del_ram"></span></li>
+          <li>DISCO:<span id="del_disco"></span></li>
+          <li>Numero Serial da Maquina:<span id="del_numeroSerial"></span></li>
           <div class="SimNao">
-            <li>Sim</li>
-            <li>Não</li>
+            <li onclick="deletar()">Sim</li>
+            <li onclick="voltar()">Não</li>
           </div>
         </div>
       </div>
@@ -175,39 +148,37 @@
 
 
 
+
   </section>
 </body>
 
 </html>
-<script>  
-  var EmailUsuario ="";
-  var NomeUsuario ="";
-  sessionStorage.EMAIL_USUARIO = EmailUsuario;
+<script>
+  var EmailUsuario = "";
+  var NomeDousuario = "";
 
-  sessionStorage.NOME_USUARIO = NomeUsuario;
+  EmailUsuario = sessionStorage.EMAIL_USUARIO;
 
-  function sair(){
+  NomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+  function sair() {
     window.location = "../index.html";
+    sessionStorage.clear();
 
   }
-  
 
   function alterarMAQ() {
-    if(EmailUsuario == "Analyx@"){
-      //header
-    aqui2.style.display = "none";
+    //header
     aqui4.style.display = "none";
     aqui5.style.display = "none";
     altMaq.style.display = "none";
 
     deletMaq.style.display = "block";
     listMaq.style.display = "block";
-    cadMaq.style.display = "block";
 
     aqui3.style.display = "block";
 
     //social
-    cadastroMaq.style.display = "none";
     listarMaq.style.display = "none";
     deletarMaq.style.display = "none";
     alterarMaq2.style.display = "none";
@@ -216,100 +187,18 @@
     alterarMaq.style.display = "block";
 
     //titulo
-    tituloCAD.style.display = "none";
     tituloALT.style.display = "block";
     tituloLIST.style.display = "none";
     tituloDELET.style.display = "none";
-    }else{
-          //header
-          aqui2.style.display = "none";
-          aqui4.style.display = "none";
-          aqui5.style.display = "none";
-          altMaq.style.display = "none";
-      
-          deletMaq.style.display = "none";
-          listMaq.style.display = "none";
-          cadMaq.style.display = "block";
-      
-          aqui3.style.display = "block";
-  
-      //social
-      cadastroMaq.style.display = "none";
-      alterarMaq2.style.display = "none";
-  
-  
-      alterarMaq.style.display = "block";
-  
-      //titulo
-      tituloCAD.style.display = "none";
-      tituloALT.style.display = "block";
-    }
 
-  }
-  function cadastrarMAQ() {
-    if(EmailUsuario == "Analyx@"){
-      //header
-    aqui3.style.display = "none";
-    aqui4.style.display = "none";
-    aqui5.style.display = "none";
-    cadMaq.style.display = "none";
-
-    altMaq.style.display = "block";
-    listMaq.style.display = "block";
-    deletMaq.style.display = "block";
-
-    aqui2.style.display = "block";
-
-    //social
-    alterarMaq.style.display = "none";
-    listarMaq.style.display = "none";
-    deletarMaq.style.display = "none";
-    alterarMaq2.style.display = "none";
-
-    cadastroMaq.style.display = "block";
-
-    //titulo
-    tituloCAD.style.display = "block";
-    tituloALT.style.display = "none";
-    tituloLIST.style.display = "none";
-    tituloDELET.style.display = "none";
-    }else{
-      //header
-      aqui3.style.display = "none";
-      aqui4.style.display = "none";
-      aqui5.style.display = "none";
-      cadMaq.style.display = "none";
-  
-      altMaq.style.display = "block";
-      listMaq.style.display = "none";
-      deletMaq.style.display = "none";
-  
-      aqui2.style.display = "block";
-  
-      //social
-      alterarMaq.style.display = "none";
-      listarMaq.style.display = "none";
-      deletarMaq.style.display = "none";
-      alterarMaq2.style.display = "none";
-  
-      cadastroMaq.style.display = "block";
-  
-      //titulo
-      tituloCAD.style.display = "block";
-      tituloALT.style.display = "none";
-      tituloLIST.style.display = "none";
-      tituloDELET.style.display = "none";
-    }
   }
 
   function listarMAQ() {
     //header
-    aqui2.style.display = "none";
     aqui3.style.display = "none";
     aqui5.style.display = "none";
     listMaq.style.display = "none";
 
-    cadMaq.style.display = "block";
     altMaq.style.display = "block";
     deletMaq.style.display = "block";
 
@@ -317,7 +206,6 @@
 
 
     //social
-    cadastroMaq.style.display = "none";
     alterarMaq.style.display = "none";
     deletarMaq.style.display = "none";
     alterarMaq2.style.display = "none";
@@ -326,7 +214,6 @@
     listarMaq.style.display = "block";
 
     //titulo
-    tituloCAD.style.display = "none";
     tituloALT.style.display = "none";
     tituloLIST.style.display = "block";
     tituloDELET.style.display = "none";
@@ -334,19 +221,16 @@
 
   function deletarMAQ() {
     //header
-    aqui2.style.display = "none";
     aqui3.style.display = "none";
     aqui4.style.display = "none";
     deletMaq.style.display = "none";
 
-    cadMaq.style.display = "block";
     altMaq.style.display = "block";
     listMaq.style.display = "block";
 
     aqui5.style.display = "block";
 
     //social
-    cadastroMaq.style.display = "none";
     alterarMaq.style.display = "none";
     listarMaq.style.display = "none";
     alterarMaq2.style.display = "none";
@@ -356,7 +240,6 @@
 
 
     //titulo
-    tituloCAD.style.display = "none";
     tituloALT.style.display = "none";
     tituloLIST.style.display = "none";
     tituloDELET.style.display = "block";
@@ -369,113 +252,163 @@
     buscarDelete.style.display = "none";
   }
 
-  function cadastrar() {
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var cpu = ipt_cpu.value;
-    var ram = ipt_ram.value;
-    var disco = ipt_disco.value;
-    var numeroSerial = ipt_serial.value;
-    var ax_erro = false
+  function aparecerBuscados() {
 
 
-    if (cpu == "" || ram == "" || disco == "" || serial == "") {
-      //cardErro.style.display = "block"
-      alert("Por favor, preencha todos os campos!")
-      if (ipt_nome.length > 10) {
-        alert("Escreva um nome mais curto")
-      }
-      // mensagem_erro= ("") 
-      //finalizarAguardar();
+    var numeroSerial = Alt_numeroSerial.value;
+
+    console.log(numeroSerial);
+
+    if (Alt_numeroSerial.value == "") {
+
+      alert(`Preencha o campo numeroSerial!`)
+
       return false;
-    } else if (ipt_cpu.value.length < 10) {
-      alert("CNPJ invalido!")
-    } else if (email.indexOf('@') == -1 || email.length <= 10) {
-      alert("Insira um email com @ ou mais longo!")
-    } else if (razaoSocial.length <= 2 && razaoSocial.length >= 25) {
-      alert("Razao social não pode ser muito curta ou muito longa")
-    } else if (responsavel.length < 3 && responsavel.length > 25) {
-      alert("Razao social não pode ser muito curta ou muito longa!")
-    } else if (email.length < 6) {
-      alert("Email muito curto!")
-    } else if (telefone.length <= 6 && telefone.length > 15) {
-      alert("Telefone invalido!")
-    }
-    else {
-   //   setInterval(sumirMensagem, 5000)
     }
 
-    // Enviando o valor da nova input
-    fetch("/maquina/cadastrar", {
+
+    console.log("FORM numeroSerial: ", numeroSerial);
+
+    fetch("/maquina/pegarMaquina", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        cpuServer: cpu,
-        ramServer: ram,
-        discoServer: disco,
-        serialServer: serial,
+        numeroSerialAltServer: numeroSerial,
       })
     }).then(function (resposta) {
-      console.log("resposta: ", resposta);
+      console.log("ESTOU NO THEN DO aparecerBuscados()!")
+
       if (resposta.ok) {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-        setTimeout(() => {
-          window.location = "Login-Madara.html";
-        }, "2000")
+        console.log(resposta);
 
-      //  limparFormulario();
-       // finalizarAguardar();
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+
+          if (Object.keys(json).length === 0) {
+            alert("Nenhuma maquina encontrada!");
+          } else {
+
+            sessionStorage.CPU_MAQUINA = json.fkCpu;
+            sessionStorage.RAM_MAQUINA = json.fkRam;
+            sessionStorage.DISCO_MAQUINA = json.fkDisco;
+            sessionStorage.NUMEROSERIAL_MAQUINA = json.numeroSerial;
+
+            alterarMaq2.style.display = "block";
+            alterarMaq.style.height = "15%";
+
+
+            alt_cpu.value = sessionStorage.CPU_MAQUINA;
+            alt_ram.value = sessionStorage.RAM_MAQUINA;
+            alt_disco.value = sessionStorage.DISCO_MAQUINA;
+            alt_numeroSerial.value = sessionStorage.NUMEROSERIAL_MAQUINA;
+            console.log(sessionStorage.NUMEROSERIAL_MAQUINA);
+          }
+        });
       } else {
-        throw ("Houve um erro ao tentar realizar o cadastro!");
+        alert("Numero Serial invalidos!")
 
+        console.log("Houve um erro ao tentar buscar a maquina!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+          //    finalizarAguardar(texto);
+        });
       }
-    }).catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
-     // finalizarAguardar();
-    });
 
+    }).catch(function (erro) {
+      alert("Empresa não encontrada!");
+      console.log(erro);
+    })
     return false;
   }
 
+  function alterar() {
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var cpuNovo = alt_cpu.value;
+    var ramNovo = alt_ram.value;
+    var discoNovo = alt_disco.value;
+    var numeroSerialNovo = alt_numeroSerial.value;
+    var numeroSerialVelho = Alt_numeroSerial.value;
+    var ax_erro = false;
 
 
-  function aparecerBuscados() {
-    alterarMaq2.style.display = "block";
-    alterarMaq.style.height = "15%";
+    if (alt_cpu.value == "" || alt_ram.value == "" || alt_disco.value == "" || alt_numeroSerial.value == "") {
+      //cardErro.style.display = "block"
+      alert("Por favor, preencha todos os campos!")
 
 
-    var cnpj = Alt_cnpj.value;
-
-    console.log(cnpj);
-
-    if (cnpj.value == "") {
-
-      if (cnpj.value == "") {
-        alert(`Preencha o campo cnpj!`)
-      }
-
-    //  finalizarAguardar();
       return false;
+    } else if (alt_numeroSerial.value.length < 4) {
+      alert("numeroSerial invalido!")
+    } else if (alt_cpu.value == sessionStorage.CPU_MAQUINA && alt_ram.value == sessionStorage.RAM_MAQUINA
+      && alt_disco.value == sessionStorage.DISCO_MAQUINA && alt_numeroSerial.value == sessionStorage.NUMEROSERIAL_MAQUINA) {
+      alert("Nenhuma alteração feita!")
     }
     else {
-    //  setInterval(sumirMensagem, 5000)
+      // Enviando o valor da nova input
+      fetch("/maquina/alterar", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+
+          cpunovoServer: cpuNovo,
+          ramnovoServer: ramNovo,
+          disconovoServer: discoNovo,
+          numeroSerialnovoServer: numeroSerialNovo,
+          numeroSerialVelhoServer: numeroSerialVelho
+        })
+      }).then(function (resposta) {
+        console.log("resposta: ", resposta);
+        if (resposta.ok) {
+          menssagem.style.display = "block";
+          menssagem.innerHTML = "Alteração realizada com sucesso!";
+          setTimeout(() => {
+            menssagem.style.display = "none";
+          }, "4000")
+          alt_cpu.value = "";
+          alt_ram.value = "";
+          alt_disco.value = "";
+          alt_numeroSerial.value = "";
+          setTimeout(() => {
+            window.location = "maquina.html";
+          }, "2000")
+
+        } else {
+          throw ("Houve um erro ao tentar realizar o cadastro!");
+          menssagem.style.display = "block";
+          menssagem.innerHTML = "Houve um erro ao realizar o cadastro!";
+          setTimeout(() => {
+            menssagem.style.display = "none";
+          }, "4000")
+
+        }
+      }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+      return false;
     }
 
-    console.log("FORM cnpj: ", cnpj);
+  }
 
-    fetch("/empresa/pegarEmpresa", {
-      method: "POST",
+  listagemEmpresas()
+
+  function listagemEmpresas() {
+
+    fetch("/maquina/listar", {
+      method: "GET",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        cnpjAltServer: cnpj,
-      })
     }).then(function (resposta) {
       console.log("ESTOU NO THEN DO aparecerBuscados()!")
 
@@ -486,24 +419,25 @@
           console.log(json);
           console.log(JSON.stringify(json));
 
-          sessionStorage.ID_USUARIO = json.id;
-          sessionStorage.CNPJ_USUARIO = json.cnpj;
-          sessionStorage.RAZAOSOCIAL_USUARIO = json.razaoSocial;
-          sessionStorage.RESPONSAVEL_USUARIO = json.responsavel;
-          sessionStorage.EMAIL_USUARIO = json.email;
-          sessionStorage.TELEFONEUSUARIO = json.telefone;
+          localStorage.NUMEROSERIAL_LISTA = json.numeroSerial;
+          console.log(json.length);
 
-          console.log(sessionStorage.CNPJ_USUARIO);
+          for (i = 0; i < json.length; i++) {
+            var registro = json[i];
+            maquinas_lista.innerHTML += `<li><a  href="">${registro.numeroSerial}</a></li>`;
+          }
+
+          if (sessionStorage.NUMEROSERIAL_LISTA != null && sessionStorage.NUMEROSERIAL_LISTA != undefined) {
+            // alert("Empresa encontrada!")
+          } else {
+            //   alert("empresa null ou undefined")
+          }
         });
 
       } else {
-        alert("Email ou senha invalidos!")
-
-        console.log("Houve um erro ao tentar realizar o login!");
-
+        console.log("Houve um erro ao tentar encontrar as maquinas!");
         resposta.text().then(texto => {
           console.error(texto);
-      //    finalizarAguardar(texto);
         });
       }
 
@@ -513,4 +447,130 @@
 
     return false;
   }
+
+  function aparecerDelete() {
+
+    var numeroSerial = Delet_numeroSerial.value;
+
+    if (numeroSerial == "") {
+
+      alert(`Preencha o campo cnpj!`)
+
+      return false;
+    }
+
+    console.log("FORM numeroSerial: ", numeroSerial);
+
+    fetch("/maquina/pegarMaquina", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        numeroSerialAltServer: numeroSerial,
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO aparecerBuscados()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          deletarMaq2.style.display = "block";
+          buscarDelete.style.display = "none";
+
+          sessionStorage.ID_MAQUINADEL = json.id;
+          sessionStorage.CPU_MAQUINADEL = json.fkCpu;
+          sessionStorage.RAM_MAQUINADEL = json.fkRam;
+          sessionStorage.DISCO_MAQUINADEL = json.fkDisco;
+          sessionStorage.NUMEROSERIAL_MAQUINADEL = json.numeroSerial;
+
+          del_cpu.innerHTML = sessionStorage.CPU_MAQUINADEL;
+          del_ram.innerHTML = sessionStorage.RAM_MAQUINADEL;
+          del_disco.innerHTML = sessionStorage.DISCO_MAQUINADEL;
+          del_numeroSerial.innerHTML = sessionStorage.NUMEROSERIAL_MAQUINADEL;
+
+
+          if (sessionStorage.NUMEROSERIAL_MAQUINADEL != null && sessionStorage.NUMEROSERIAL_MAQUINADEL != undefined) {
+            console.log("validação ok")
+          }
+
+        });
+
+      } else {
+        alert("Maquina não encontrada!")
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+          //    finalizarAguardar(texto);
+        });
+      }
+    }).catch(function (erro) {
+      console.log(erro);
+      alert("Empresa não encontrada")
+    })
+
+    return false;
+  }
+
+
+  function deletar() {
+    deletarMaq2.style.display = "block";
+    buscarDelete.style.display = "none";
+
+    var id = sessionStorage.ID_MAQUINADEL;
+
+    if (id == "") {
+
+      return false;
+    }
+
+
+    console.log("FORM id: ", id);
+
+    fetch("/maquina/deletar", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idServer: id,
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO DELETAR!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          alert("Empresa deletada com sucesso!")
+        });
+
+      } else {
+        alert("Ops! há um erro no sistema, já estamos tentando resolver.")
+
+        console.log("Houve um erro ao tentar deletar!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+        });
+      }
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+  }
+
+  function voltar() {
+    deletarMaq2.style.display = "none";
+    buscarDelete.style.display = "block";
+  }
+
 </script>

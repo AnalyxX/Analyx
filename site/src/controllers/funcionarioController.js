@@ -1,7 +1,8 @@
-var empresaModel = require("../models/empresaModel");
+const { response } = require("express");
+var funcionarioModel = require("../models/funcionarioModel.js");
 
 function listar(req, res) {
-    empresaModel.listar()
+    funcionarioModel.listar()
         .then(function (resultado) {
             console.log(`\nResultados encontrados: ${resultado.length}`);
             console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
@@ -22,15 +23,15 @@ function listar(req, res) {
         );
 }
 
-function pegarEmpresa(req, res) {
-    var cnpj = req.body.cnpjAltServer;
+function pegarFuncionario(req, res) {
+    var matricula = req.body.matriculaAltServer;
 
-    empresaModel.pegarEmpresa(cnpj)
-    if (cnpj == undefined) {
-        res.status(400).send("Seu cnpj está undefined!");
+    funcionarioModel.pegarFuncionario(matricula)
+    if (matricula == undefined) {
+        res.status(400).send("Seu nome está undefined!");
     } else {
 
-        empresaModel.pegarEmpresa(cnpj)
+        funcionarioModel.pegarFuncionario(matricula)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -54,27 +55,58 @@ function pegarEmpresa(req, res) {
 
 }
 
+function autenticarFUNC(req, res) {
+    var matricula = req.body.matriculaServer;
+
+    if (matricula == undefined) {
+        res.status(400).send("Sua matricula está undefined!");
+    } else {
+        
+        funcionarioModel.autenticarFUNC(matricula)
+            .then(
+                function (resultado) {
+                    console.log(`\nResultados encontrados: ${resultado.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+                    if (resultado.length >= 1) {
+                        res.json(response);
+                    } else if (resultado.length == 0) {
+                        res.status(403).send("(falha na matricula!)");
+
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o cadastro da empresa! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 function cadastrar(req, res) {
 
-    var cnpj = req.body.cnpjServer;
-    var razaoSocial = req.body.razaoServer;
-    var responsavel = req.body.responsavelServer;
-    var email = req.body.emailServer;
-    var telefone = req.body.telefoneServer;
+    var nome = req.body.nomeServer;
+    var matricula = req.body.razaoServer;
+    var setor = req.body.setorServer;
+    var numeroSerial = req.body.numeroSerialServer;
+    // var funcao = req.body.funcaoServer;
 
-    if (cnpj == undefined) {
-        res.status(400).send("Seu cnpj está undefined!");
-    } else if (razaoSocial == undefined) {
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (matricula == undefined) {
         res.status(400).send("Sua razão social está undefined!");
-    } else if (responsavel == undefined) {
+    } else if (setor == undefined) {
         res.status(400).send("Seu responsável está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (telefone == undefined) {
-        res.status(400).send("Sua telefone está undefined!");
+    } else if (numeroSerial == undefined) {
+        res.status(400).send("Seu numeroSerial está undefined!");
+    // } else if (funcao == undefined) {
+        // res.status(400).send("Sua funcao está undefined!");
     } else {
 
-        empresaModel.cadastrar(cnpj, razaoSocial, responsavel, email, telefone)
+        funcionarioModel.cadastrar(nome, matricula, setor, numeroSerial)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -94,14 +126,14 @@ function cadastrar(req, res) {
 
 function alterar(req, res) {
 
-    var cnpj = req.body.cnpjnovoServer;
-    var razaoSocial = req.body.razaonovoServer;
-    var responsavel = req.body.responsavelnovoServer;
-    var email = req.body.emailnovoServer;
-    var telefone = req.body.telefonenovoServer;
+    var nome = req.body.nomenovoServer;
+    var matricula = req.body.razaonovoServer;
+    var setor = req.body.setornovoServer;
+    var numeroSerial = req.body.numeroSerialnovoServer;
+    var funcao = req.body.funcaonovoServer;
     var id = req.body.idServer;
 
-    empresaModel.alterar(cnpj, razaoSocial, responsavel, email, telefone, id)
+    funcionarioModel.alterar(nome, matricula, setor, numeroSerial, funcao, id)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -119,41 +151,10 @@ function alterar(req, res) {
 
 }
 
-function autenticarEMP(req, res) {
-    var cnpj = req.body.cnpjServer;
-
-    if (cnpj == undefined) {
-        res.status(400).send("Seu cnpj está undefined!");
-    } else {
-        
-        usuarioModel.autenticarEMP(cnpj)
-            .then(
-                function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
-                    if (resultado.length >= 1) {
-                        res.json(false);
-                    } else if (resultado.length == 0) {
-                        console.log(resultado);
-                        res.json(true);
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o cadastro da empresa! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-
-}
-
 function deletar(req, res) {
     var id = req.body.idServer;
 
-    empresaModel.deletar(id)
+    funcionarioModel.deletar(id)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -170,8 +171,8 @@ function deletar(req, res) {
 
 module.exports = {
     listar,
-    pegarEmpresa,
-    autenticarEMP,
+    pegarFuncionario,
+    autenticarFUNC,
     cadastrar,
     alterar,
     deletar

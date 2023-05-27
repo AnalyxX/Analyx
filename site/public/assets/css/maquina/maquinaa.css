@@ -40,11 +40,11 @@ input {
 
 
 section {
-  border: solid 3px purple;
+  /* border: solid 3px purple; */
   display: flex;
   height: 100vh;
   width: 100%;
-  background-color: #D6DAFF;
+  background-color: #304F73;  
 
 }
 
@@ -57,11 +57,10 @@ header {
   display: flex;
   width: 100%;
   height: 13%;
-  background-color: #496B8E;
+  background-color: #274360;
   justify-content: center;
   color: white;
   align-items: center;
-
 }
 
 nav {
@@ -92,12 +91,13 @@ ul {
 }
 
 .navBarLateral {
-  border: solid 3px red;
+  /* border: solid 3px red; */
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 17%;
-  background-color: #274360;
+  /* background-color: #274360; */
+  background-color: #496B8E;
   color: white;
 
 }
@@ -175,7 +175,7 @@ ul {
 }
 
 .areaTitulo{
-  border: solid 3px blue;
+  /* border: solid 3px blue; */
   width: 100%;
   height: 10%;
   display: flex;
@@ -184,45 +184,6 @@ ul {
 }
 
 
-/* Cadastro Empresa */
-
-
-#tituloCAD {
-  /* border: solid 3px red; */
-  font-size: 1.8rem;
-  display: flex;
-  justify-content: center;
-
-}
-
-
-.cadastro-maq {
-  border: solid 3px green;
-  border-radius: 7px;
-  background-color: #274360;
-  display: flex;
-  flex-direction: column;
-  height: 65vh;
-  width: 80vh;
-  justify-content: center;
-  color: white;
-  padding: 1.5rem 0.9rem 1rem 0.5rem;
-  margin: auto;
-}
-
-.cadastro-maq button {
-  /* border: solid 3px pink; */
-
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  padding: 1rem;
-  background-color: #858585;
-  margin: 3% auto;
-  padding: 2% 6% 2% 6%;
-  cursor: pointer;
-}
 
 .input {
   /* border: solid 3px yellow; */
@@ -246,13 +207,10 @@ ul {
 
 #tituloALT {
   /* border: solid 3px green; */
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 20vh;
-  width: 30vw;
-  margin-top: auto;
+  color: white;
 
 }
 
@@ -269,7 +227,7 @@ ul {
   font-weight: bolder;
   font-size: 1.4vw;
   padding: 33px;
-  margin-left: 27%;
+  margin-left: 28%;
   display: inline-flex;
 }
 
@@ -363,6 +321,8 @@ input {
   display: flex;
   justify-content: center;
   width: 30vw;
+  color: white;
+  margin-right: 20%;
 
 }
 
@@ -379,6 +339,12 @@ input {
   padding: 55px;
 
   margin-left: 22%;
+}
+
+.listar-maq #maquinas_lista li{
+  list-style-type: none;
+  text-decoration: underline;
+  color: blue;
 }
 
 .listar-maq button {
@@ -403,7 +369,17 @@ input::placeholder {
   font-size: 1.4rem;
 }
 
-
+.menssagem{
+  border: solid 3px rgb(97, 135, 217);
+  width: 10rem;
+  height: 5rem;
+  display: flex;
+  background-color:white;
+  position: absolute;
+  margin-left: 60%;
+  color: black;
+  display: none;
+}
 
 /* Deletar Empresa */
 
@@ -420,6 +396,8 @@ input::placeholder {
   justify-content: center;
   width: 40vw;
   font-size: 1.4vw;
+  color: white;
+  margin-right: 27%;
 }
 
 .deletar-maq {
@@ -433,7 +411,7 @@ input::placeholder {
   align-items: center;
   color: white;
   padding: 55px;
-  margin: auto;
+  margin-left: 13%;
 }
 
 .deletar-maq button {
@@ -482,11 +460,12 @@ button {
 }
 
 .SimNao li {
-
+  display: flex;
   border: solid 3px;
   background: grey;
   width: 5rem;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
 }

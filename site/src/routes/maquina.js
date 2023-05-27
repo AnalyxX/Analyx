@@ -11,15 +11,15 @@ router.get("/listar", function (req, res) {
     maquinaController.listar(req, res);
 });
 
-router.get("/pegarMaquina/:id", function (req, res) {
+router.post("/pegarMaquina", function (req, res) {
     maquinaController.getMaquina(req, res);
 });
 
-router.put("/alterar/:id", function (req, res) {
+router.put("/alterar", function (req, res) {
     maquinaController.alterar(req, res);
 });
 
-router.delete("/deletar/:id", function (req, res) { 
+router.delete("/deletar", function (req, res) { 
     maquinaController.deletar(req, res);
 });
 

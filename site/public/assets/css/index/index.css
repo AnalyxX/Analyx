@@ -56,6 +56,7 @@ a {
 
 .navbar li a:hover {
   color: rgb(217, 228, 8);
+  color: rgb(123, 123, 233);
   transition: .3s;
 }
 
@@ -73,6 +74,7 @@ a {
 
 .navbar .login-button:hover {
   background-color: rgb(217, 228, 8);
+  background-color: rgb(123, 123, 233);
   color: #FEFEFE;
   transition: .3s;
   transform: scale(1.05);
@@ -93,6 +95,7 @@ a {
   justify-content: center;
   align-items: center;
   background-color: #09121C;;
+  background-color: #274360;
   /* border: solid 3px red; */
 }
 
@@ -149,6 +152,7 @@ a {
 /* presentation */
 .presentation {
   color: #09121C;
+  color: #274360;
 }
 
 .presentation-text {
@@ -174,6 +178,7 @@ a {
   padding: 3% 12%;
   border-radius: 20px;
   background-color: #09121C;
+  background-color: #274360;
   color: white;
   cursor: pointer;
   font-size: 1em;
@@ -181,6 +186,7 @@ a {
 
 .presentation-text button:hover {
   background-color: rgb(217, 228, 8);
+  background-color: rgb(123, 123, 233);
   transform: scale(1.05);
   transition: .3s;
 }
@@ -203,6 +209,7 @@ a {
   align-items: center;
   margin: 5% 0% 1% 0%;
   color: #09121C;
+  color: #274360;
 }
 
 .planes-title h1 {
@@ -231,6 +238,7 @@ a {
   padding: 2% 9% 3% 9%;
   border-radius: 15px;
   color: #101923;
+  color: #274360;
 }
 
 .card-essencial {
@@ -243,6 +251,7 @@ a {
   padding: 2% 8% 3% 8%;
   border-radius: 15px;
   color: #101923;
+  color: #274360;
 }
 
 .card-essencial:hover,
@@ -254,6 +263,7 @@ a {
 
 .btn-basic {
   background-color:#101923;
+  background-color: #232E69;
   border-radius: 10px;
   padding: 4% 50%;
   color: white;
@@ -275,6 +285,7 @@ a {
 .btn-essencial:hover,
 .btn-basic:hover {
   background-color: rgb(217, 228, 8);;
+  background-color: rgb(123, 123, 233);
   transform: scale(1.05);
   transition: .3s;
 }
@@ -285,6 +296,7 @@ a {
   justify-content: center;
   align-items: center;
   background-color: #101923;
+  background-color: #232E69;
   padding: 2% 8% 3% 8%;
   border-radius: 15px;
   color: white;
@@ -292,6 +304,7 @@ a {
 
 .card-premium:hover {
   background-color: rgb(6, 7, 9);
+  background-color: #33439b;
   transform: scale(1.05);
   transition: .3s;
 }
@@ -346,6 +359,7 @@ a {
 .about-text h1 {
   margin-top: 4%;
   color: #101923;
+  color: #274360;
   font-size: 3em;
 }
 
@@ -357,6 +371,7 @@ a {
 
 .text1 {
   color: #101923;
+  color: #274360;
   font-size: 1.5em;
   text-align: justify;
   width: 40%;
@@ -390,6 +405,8 @@ a {
   align-items: center;
   width: 100%;
   background-color:#101923;;
+  background-color: #274360;
+
 }
 
 .box-contact {
@@ -469,6 +486,10 @@ input:focus {
   font-size: x-large;
   font-weight: bold;
   border-radius: 5px;
+  background-color: #274360;
+  font-size: x-large;
+  font-weight: bold;
+  border-radius: 20px;
   margin-top: 9%;
   margin-bottom: 3%;
   padding: 0.1em 2em;
@@ -476,6 +497,7 @@ input:focus {
 
 .button-box-contact button:hover {
   background-color: rgb(255, 217, 0);
+  background-color: rgb(123, 123, 233);
   transition: .3s;
   transform: scale(1.05);
   cursor: pointer;
@@ -487,6 +509,25 @@ input:focus {
   padding-bottom: 20px;
   background-color: #101923;
   border-top: #323232 1px solid;
+  height: 25vh;
+  color: #052d21;
+  padding-bottom: 20px;
+  background-color: #274360;
+  ;
+}
+
+.footer2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: #ffffff;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
 }
 
 .box-footer {
@@ -580,6 +621,9 @@ body::-webkit-scrollbar-track {
     width: 80%;
     background-color: #ffffff;
     border-radius: 0px;
+    width: 75%;
+    background-color: #ffffff;
+    border-radius: 20px;
   }
 
   .input-box-contact {
