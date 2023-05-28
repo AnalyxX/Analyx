@@ -25,19 +25,8 @@
             <img class="profile-img" src="../assets/images/fotor_2023-4-8_2_11_54.png" alt="">
 
             <div class="text">
-                <h1> <b id="b_usuario"></b> </h1>
+                <h1> Olá, <b id="b_usuario"></b> </h1>
 
-            </div>
-        </div>
-
-        <div class="machines">
-            <p>Selecione a máquina que deseja monitorar!</p>
-
-            <div class="names">
-                <div class="names-align">
-                    <h2>Milena Soares</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
             </div>
         </div>
 
@@ -69,82 +58,317 @@
 
                 </div>
             </div>
-            <div class="box-p">
-                <div class="box-analytics">
+        </div>
 
-                    <div class="box1">
-                        <div class="maquinas"><div class="machines">
-                            <div class="names">
-                                <div class="names-align">
-                                    <h2>Milena Soares</h2>
-                                  
-                                    <h2>João Silva</h2>
-                                   
-                                    <h2>Pedro Morais</h2>
-                                    
-                                    <h2>Carolina Santos</h2>
-                                   
-                                    <h2>Carlos Romã</h2>
-                       
-                                    <h2>Leonardo Silva</h2>
-                                    <i class="fa-solid fa-chevron-right"></i>
+        <div class="analytics">
+            <div class="container">
+                <div class="card-align">
+                    <div class="card">
+                        <div class="container">
+                            <div class="header-card">
+                                <h1> Sei lá </h1>
+                            </div>
 
+                            <div class="grafics">
+                                <div class="machine-grafic-width">
+                                    <canvas id="week_grafic"></canvas>
                                 </div>
                             </div>
-                        </div></div>
+
+                        </div>
                     </div>
 
-                    <div class="box2">
-                        <div class="tittle-mqns">Total Máquinas</div>
-                        <div class="ttlmaquinas">23</div>
-                    </div>
+                    <div class="card">
+                        <div class="container">
+                            <div class="header-card">
+                                <h1> Tanto faz </h1>
+                            </div>
 
-                    <div class="box3">
-                        <div class="mini-box">
-                            <div class="icon-mini-box"><img src="../assets/images/sinal-verde.svg" alt="" width="60px">
+                            <div class="grafics">
+                                <div class="machine-grafic-width">
+                                    <canvas id="secondWeek_grafic"></canvas>
+                                </div>
                             </div>
-                            <div class="maquinas-func">15</div>
-                        </div>
-                        <div class="mini-box">
-                            <div class="icon-mini-box"><img src="../assets/images/sinal-amarelo.svg" alt="" width="60px">
-                            </div>
-                            <div class="maquinas-func">5</div>
-                        </div>
-                        <div class="mini-box">
-                            <div class="icon-mini-box"><img src="../assets/images/sinal-vermelho.svg" alt="" width="60px">
-                            </div>
-                            <div class="maquinas-func">3</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-dash">
-                    <div class="box11">  <div class="tittle11">Máquinas em estado critico nos ultimos 7 dias</div>
-                    <div class="grafics">
-                        <h1> <b id="discText"></b> </h1>
-                        <div class="disc-grafic-width">
-                            <canvas id="disc_grafic"></canvas>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
-                    <div class="box12">  
-                        <div class="tittle12">Hardwares que ficaram em estado de alerta nos ultimos 7 dias</div> </div>
                 </div>
             </div>
 
+            <div class="panel">
+                <div class="container">
+                    <div class="list-func">
+                        <h1>Maquinas cadastradas</h1>
+                        <div class="func-title">
+                            <h1>Total de máquinas: <b id="qtd_maquina"></b> </h1>
+                            <div>
+                                <p> Estáveis </p>
+                                <i id="cpu_check" style="color: green;" class="fa-solid fa-circle-check"> <b
+                                        style="color: white;">13</b></i>
+                            </div>
+
+                            <div>
+                                <p> Alertas </p>
+                                <i id="cpu_alert" style="color: yellow;" class="fa-solid fa-circle-exclamation"><b
+                                        style="color: white; margin-left: 10%;">13</b></i>
+                            </div>
+
+                            <div>
+                                <p> Críticas </p>
+                                <i id="cpu_alert" style="color: red;" class="fa-solid fa-circle-exclamation"><b
+                                        style="color: white; margin-left: 10%;">13</b></i>
+                            </div>
+                        </div>
+
+                        <div class="func-align">
+                            <div class="values-title">
+                                <h1> Matrícula </h1>
+                                <h1> Nome </h1>
+                                <h1> Alerta </h1>
+                            </div>
+
+                            <div class="scroll" id="scroll_text">
+                                <div class="line-values" onclick="toSecondDash()">
+                                    <p> 0012232179</p>
+                                    <p> Roberto Faria </p>
+                                    <p> <i id="cpu_alert" style="color: red;"
+                                            class="fa-solid fa-circle-exclamation"></i>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
-
+    </div>
 
 </body>
 <script src="../js/dash.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
 
+<script>
 
     function back() {
         window.location = "dashboardInit.html"
     }
+
+    function toSecondDash() {
+        window.location = "dashboard2.html"
+    }
+
+    function instance() {
+        getWeek(2)
+        getSecondWeek(2)
+        getCountMachines()
+    }
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    let chartWeek;
+    let chartSecondWeek;
+
+    function getWeek(idFunc) {
+        fetch(`/dashboard/getUseCpuByFuncId/${idFunc}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    const points = [];
+                    const labels = [];
+
+                    // TROUXE OS 5 DADOS OBTIDOS NOS ULTIMOS MINUTOS
+                    resposta.forEach((element, index) => {
+                        points.push(element.uso)
+                        labels.push(element.hora)
+                    });
+
+                    loadWeek(points, labels)
+
+                    setTimeout(() => {
+                        getWeek(idFunc)
+                    }, 10000)
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function getSecondWeek(idFunc) {
+        fetch(`/dashboard/getUseCpuByFuncId/${idFunc}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    const points = [];
+                    const labels = [];
+
+                    // TROUXE OS 5 DADOS OBTIDOS NOS ULTIMOS MINUTOS
+                    resposta.forEach((element, index) => {
+                        points.push(element.uso)
+                        labels.push(element.hora)
+                    });
+
+                    loadSecondWeek(points, labels)
+
+                    setTimeout(() => {
+                        getSecondWeek(idFunc)
+                    }, 10000)
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function getCountMachines() {
+        fetch(`/dashboard/getCountMachines`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+
+                    let quantityMachine = resposta[0].total_maquina
+
+                    qtd_maquina.innerHTML = `${quantityMachine}`
+
+                    setTimeout(() => {
+                        getCountMachines()
+                    }, 10000)
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function loadWeek(points, labels) {
+        const ctx1 = document.getElementById('week_grafic');
+
+        if (chartWeek) chartWeek.destroy();
+
+        chartWeek = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Componentes em alerta na última semana',
+                    data: points,
+                    borderWidth: 1,
+
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            color: '#ffffff',
+                            stepSize: 25
+                        },
+                        grid: {
+                            color: (context) => {
+                                if (context.tick.value == 75) {
+                                    return 'rgb(255, 0, 0)'
+                                } else {
+                                    return 'rgba(0, 0, 0, 0.1)'
+                                }
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#ffffff'
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'rgb(255, 99, 132)'
+                    }
+                },
+                datalabels: {
+                    color: 'white'
+                }
+            }
+        });
+    }
+
+    function loadSecondWeek(points, labels) {
+        const ctx1 = document.getElementById('secondWeek_grafic');
+
+        if (chartSecondWeek) chartSecondWeek.destroy();
+
+        chartSecondWeek = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Uso de CPU por minuto',
+                    data: points,
+                    borderWidth: 1,
+
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            color: '#ffffff',
+                            stepSize: 25
+                        },
+                        grid: {
+                            color: (context) => {
+                                if (context.tick.value == 75) {
+                                    return 'rgb(255, 0, 0)'
+                                } else {
+                                    return 'rgba(0, 0, 0, 0.1)'
+                                }
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#ffffff'
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'rgb(255, 99, 132)'
+                    }
+                },
+                datalabels: {
+                    color: 'white'
+                }
+            }
+        });
+    }
+
 
 </script>

@@ -232,7 +232,7 @@
     let chartDisc;
 
     function back() {
-        window.location = "dashboardInit.html"
+        window.location = "dashboard-init.html"
     }
 
     // cpu
@@ -431,11 +431,12 @@
                         min: 0,
                         max: 100,
                         ticks: {
-                            color: '#ffffff'
+                            color: '#ffffff',
+                            stepSize: 25
                         },
                         grid: {
                             color: (context) => {
-                                if (context.tick.value == 60) {
+                                if (context.tick.value == 75) {
                                     return 'rgb(255, 0, 0)'
                                 } else {
                                     return 'rgba(0, 0, 0, 0.1)'
@@ -466,7 +467,15 @@
         let check = true;
 
         points.forEach(point => {
-            if (point > 75) {
+            if (point >= 50) {
+                contYellow++;
+                if (contYellow >= 2) {
+                    cpu_alert.style.display = "block";
+                    cpu_alert.style.color = "yellow";
+                    cpu_check.style.display = "none";
+                    check = false;
+                }
+            } else if (point >= 75) {
                 contRed++;
                 if (contRed >= 2) {
                     cpu_alert.style.display = "block";
@@ -475,16 +484,6 @@
                     check = false;
                 }
 
-            }
-            
-            if (point > 50) {
-                contYellow++;
-                if (contYellow >= 2) {
-                    cpu_alert.style.display = "block";
-                    cpu_alert.style.color = "yellow";
-                    cpu_check.style.display = "none";
-                    check = false;
-                }
             }
         })
 
@@ -524,13 +523,13 @@
 
         let check = true;
 
-        if (discData[discData.length - 1] > 75) {
+        if (discData[discData.length - 1] >= 75) {
             disc_alert.style.display = "block";
             disc_alert.style.color = "red";
             disc_check.style.display = "none";
             check = false
 
-        } else if (discData[discData.length - 1] > 50) {
+        } else if (discData[discData.length - 1] >= 50) {
             disc_alert.style.display = "block";
             disc_alert.style.color = "yellow";
             disc_check.style.display = "none";
@@ -571,12 +570,15 @@
                 },
                 scales: {
                     y: {
+                        min: 0,
+                        max: 100,
                         ticks: {
-                            color: '#ffffff'
+                            color: '#ffffff',
+                            stepSize: 25
                         },
                         grid: {
                             color: (context) => {
-                                if (context.tick.value == 60) {
+                                if (context.tick.value == 75) {
                                     return 'rgb(255, 0, 0)'
                                 } else {
                                     return 'rgba(0, 0, 0, 0.1)'
@@ -599,7 +601,7 @@
 
         points.forEach(point => {
 
-            if (point > 50) {
+            if (point >= 50) {
                 contYellow++;
                 if (contYellow >= 2) {
                     ram_alert.style.display = "block";
@@ -607,9 +609,7 @@
                     ram_check.style.display = "none";
                     check = false;
                 }
-            }
-
-            if (point > 75) {
+            } else if (point >= 75) {
                 contRed++;
                 if (contRed >= 2) {
                     ram_alert.style.display = "block";
@@ -632,14 +632,15 @@
     function loadNet() {
         let check = true;
 
-        if (latencyData[0] > 50) {
+        if (latencyData[0] >= 50) {
             net_alert.style.display = "block";
             net_alert.style.color = "yellow";
             net_check.style.display = "none";
             check = false
 
         }
-        if (latencyData[0] > 75) {
+
+        if (latencyData[0] >= 75) {
             net_alert.style.display = "block";
             net_alert.style.color = "red";
             net_check.style.display = "none";

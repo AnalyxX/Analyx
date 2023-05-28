@@ -15,16 +15,16 @@ router.get("/getUseRamByFuncId/:id", function (req, res) {
     dashboardController.getUseRamByFuncId(req, res);
 });
 
-router.get("/getFuncName", function (req, res) {
-    dashboardController.getFuncName(req, res);
-});
-
 router.get("/getLatencyValue/:id", function (req, res) {
     dashboardController.getLatencyValue(req, res);
 });
 
 router.get("/getDataPackages/:id", function (req, res) {
     dashboardController.getDataPackages(req, res);
+});
+
+router.get("/getCountMachines", function (req, res) {
+    dashboardController.getCountMachines(req, res);
 });
 
 module.exports = router;
