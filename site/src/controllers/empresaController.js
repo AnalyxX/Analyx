@@ -126,7 +126,7 @@ function autenticarEMP(req, res) {
         res.status(400).send("Seu cnpj está undefined!");
     } else {
         
-        usuarioModel.autenticarEMP(cnpj)
+        empresaModel.autenticarEMP(cnpj)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);

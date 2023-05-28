@@ -19,7 +19,19 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
-router.delete("/deletar/:id", function (req, res) {
+router.post("/pegarUsuario", function (req, res) {
+    usuarioController.pegarUsuario(req, res);
+});
+
+router.post("/autenticarUSU", function (req, res) {
+    usuarioController.autenticarUSU(req, res);
+});
+
+router.put("/alterar", function (req, res) {
+    usuarioController.alterar(req, res);
+});
+
+router.delete("/deletar", function (req, res) {
     usuarioController.deletar(req, res);
 });
 

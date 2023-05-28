@@ -20,10 +20,10 @@
         <h2 id="NomeUsuario"></h2>
       </div>
       <div class="navegarLeteral">
-        <li><a href="../crud_empresa/empresa.html">EMPRESA</a></li>
+        <li style="display: none;" id="empresa_lateral"><a href="../crud_empresa/empresa.html">EMPRESA</a></li>
         <li> <a href="../crud_maquina/maquina.html"> MÁQUINA</a></li>
         <li id="aqui">FUNCIONÁRIO</li>
-        <li><a href="../crud_usuario/cadastro-user.html"> USUÁRIO</a></li>
+        <li><a href="../crud_usuario/usuario.html"> USUÁRIO</a></li>
       </div>
       <div class="sair" onclick="sair()"><span>Sair</span></div>
     </div>
@@ -68,24 +68,24 @@
 
       <div id="cadastroFunc" class="cadastro-func" style="display:block;">
         <div class="input" id="ipt-1">
-          Nome:
-          <input type="text" name="nome" id="ipt_nome" />
+          Nome
+          <input type="text" name="nome" id="cad_nome" />
         </div>
         <div class="input" id="ipt-2">
-          Matricula:
+          Matricula
           <input type="text" name="matricula" id="cad_matricula" />
         </div>
         <div class="input" id="ipt-3">
-          Setor:
-          <input type="text" name="setor" id="cad_setor" />
-        </div>
-        <div class="input" id="ipt-4">
-          Número Serial Máquina:
-          <input type="text" name="maquina" id="cad_numeroSerial" />
+          Setor
+          <input type="number" name="setor" id="cad_setor" />
         </div>
         <div class="input" id="ipt-5">
-          Função:
-          <input type="text" name="funcao" id="cad_telefone" />
+          Empresa
+          <input type="number" name="funcao" id="cad_empresa" />
+        </div>
+        <div class="input" id="ipt_gestorCAD" style="display: none;">
+          Gestor
+          <input type="number" name="funcao" id="cad_gestor" />
         </div>
         <button id="btn_entrar" onclick="autenticarFUNC()">Cadastrar</button>
       </div>
@@ -111,52 +111,56 @@
         </div>
         <div class="input3" id="ipt-3">
           Setor
-          <input type="text" name="setor" placeholder="Altere o Responsável" id="alt_setor" />
+          <input type="number" name="setor" placeholder="Altere o Responsável" id="alt_setor" />
         </div>
         <div class="input3" id="ipt-4">
-          Número Serial Máquina
-          <input type="text" name="maquina" placeholder="Altere o numeroSerial" id="alt_serial" />
+          Empresa
+          <input type="number" name="maquina" placeholder="Altere o numeroSerial" id="alt_empresa" />
         </div>
-        <div class="input3" id="ipt-5">
-          Função
-          <input type="text" name="funcao" placeholder="Altere o Telefone" id="alt_funcao" />
+        <div class="input3" id="ipt_gestorALT" style="display:none;">
+          Gestor
+          <input type="number" name="funcao" placeholder="Altere o Telefone" id="alt_gestor" />
         </div>
         <button id="btn_entrar" onclick="alterar()">Alterar</button>
       </div>
 
 
+      <div class="funcionarios" id="funcionario" style="display: none;">
+        <div class="funcionarios2" id="funcionario2">
 
-      <div id="listarFunc" class="listar-func" style="display:none;">
-        <div class="input" id="ipt-1">
-          Foram encontradas:
+          <div id="listarFunc" class="listar-func">
+            <div class="input" id="ipt-1">
+              Foram encontradas:
+            </div>
+            <div id="funcionarios_lista">
+            </div>
+          </div>
+
+
+          <div id="listarFunc2" class="listar-func2">
+            <div class="input" id="ipt-1">
+              Nome
+              <input type="text" name="nome" id="list_nome" readonly />
+            </div>
+            <div class="input" id="ipt-2">
+              Matricula
+              <input type="text" name="matricula" id="list_matricula" readonly />
+            </div>
+            <div class="input" id="ipt-3">
+              Setor
+              <input type="text" name="setor" id="list_setor" readonly />
+            </div>
+            <div class="input" id="ipt-4">
+              empresa
+              <input type="text" name="maquina" id="ipt_maquina" readonly />
+            </div>
+            <div class="input" id="ipt-5">
+              gestor
+              <input type="text" name="funcao" id="ipt_funcao" readonly />
+            </div>
+          </div>
+
         </div>
-        <div id="funcionarios_lista">
-
-        </div>
-
-      </div>
-      <div id="listarFunc2" class="listar-func" style="display:none;">
-        <div class="input" id="ipt-1">
-          Nome
-          <input type="text" name="nome" id="ipt_nome" />
-          <div class="input" id="ipt-2">
-            Matricula
-            <input type="text" name="matricula" id="ipt_matricula" />
-          </div>
-          <div class="input" id="ipt-3">
-            Setor
-            <input type="text" name="setor" id="ipt_setor" />
-          </div>
-          <div class="input" id="ipt-4">
-            Numero Serial Máquina
-            <input type="text" name="maquina" id="ipt_maquina" />
-          </div>
-          <div class="input" id="ipt-5">
-            Função
-            <input type="text" name="funcao" id="ipt_funcao" />
-          </div>
-        </div>
-
       </div>
 
 
@@ -171,11 +175,11 @@
 
         <div id="deletarFunc2" class="deletarFunc2" style="display:none;">
           <h3>Tem certeza que deseja excluir essa empresa ?</h3>
-          <li>Nome:<span id="del_cnpj"></span></li>
+          <li>Nome:<span id="del_nome"></span></li>
           <li>Matricula:<span id="del_matricula"></span></li>
           <li>Setor:<span id="del_setor"></span></li>
-          <li>Numero Serial Maquin:<span id="del_numeroSerial"></span></li>
-          <li>Função:<span id="del_telefone"></span></li>
+          <li>Empresa:<span id="del_empresa"></span></li>
+          <li>Gestor:<span id="del_gestor"></span></li>
           <div class="SimNao">
             <li onclick="deletar()">Sim</li>
             <li onclick="voltar()">Não</li>
@@ -200,9 +204,33 @@
 
   console.log(sessionStorage.NOME_USUARIO);
   //if (EmailUsuario && EmailUsuario.includes("analyx@")) {
-   // listFunc.style.display = "block";
-   // deletFunc.style.display = "block";
- // }
+  // listFunc.style.display = "block";
+  // deletFunc.style.display = "block";
+  // }
+
+  if (EmailUsuario != undefined && EmailUsuario.includes("analyx@")) {
+    empresa_lateral.style.display = "block";
+
+    //cad
+    ipt_gestorCAD.style.display = "block";
+
+    //alt
+    ipt_gestorALT.style.display = "block";
+
+  } else {
+
+    cadastroFunc.style.height = "58vh";
+    alterarFunc2.style.height = "58vh";
+  }
+
+  function sair() {
+    window.location = "../index.html";
+    sessionStorage.clear();
+
+  }
+
+
+
 
   function teste() {
     menssagem.style.display = "block";
@@ -231,6 +259,8 @@
     listarFunc.style.display = "none";
     deletarFunc.style.display = "none";
     alterarFunc2.style.display = "none";
+    funcionario.style.display = "none";
+
 
     cadastroFunc.style.display = "block";
 
@@ -259,6 +289,8 @@
     listarFunc.style.display = "none";
     deletarFunc.style.display = "none";
     alterarFunc2.style.display = "none";
+    funcionario.style.display = "none";
+
 
 
     alterarFunc.style.display = "block";
@@ -292,6 +324,9 @@
 
 
     listarFunc.style.display = "block";
+    funcionario.style.display = "block";
+
+
 
     //titulo
     tituloCAD.style.display = "none";
@@ -386,34 +421,38 @@
   }
 
   function cadastrar() {
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
+
+
     var nome = cad_nome.value;
     var matricula = cad_matricula.value;
     var setor = cad_setor.value;
-    var numeroSerial = cad_numeroSerial.value;
-    //    var funcao = cad_funcao.value;
+    var empresa = cad_empresa.value;
+
+    if (EmailUsuario != undefined && EmailUsuario.includes("analyx@")) {
+      var gestor = cad_gestor.value;
+    } else {
+      var gestor = sessionStorage.GESTOR_USUARIO;
+
+    }
     // var ax_erro = false
 
 
-    if (nome == "" || matricula == "" || setor == "" || numeroSerial == "" || funcao == "") {
-      //cardErro.style.display = "block"
+    if (nome == "" || matricula == "" || setor == "" || empresa == "" || gestor == "") {
+
       alert("Por favor, preencha todos os campos!")
-      if (ipt_nome.length > 10) {
-        alert("Escreva um nome mais curto")
-      }
-    } else if (ipt_nome.value.length < 10) {
-      alert("nomeinvalido!")
-    } else if (numeroSerial.indexOf('@') == -1 || numeroSerial.length <= 10) {
-      alert("Insira um numeroSerial com @ ou mais longo!")
+      ax_erro = true;
+    } else if (cad_nome.value.length <= 2) {
+      alert("Nome invalido! Nome muito curto!")
+      ax_erro = true;
+    } else if (cad_nome.value.length >= 15) {
+      alert("Nome invalido! Nome muito longo")
+      ax_erro = true;
     } else if (matricula.length <= 2 && matricula.length >= 25) {
       alert("Razao social não pode ser muito curta ou muito longa")
+      ax_erro = true;
     } else if (setor.length < 3 && setor.length > 25) {
       alert("Razao social não pode ser muito curta ou muito longa!")
-    } else if (numeroSerial.length < 6) {
-      alert("numeroSerial muito curto!")
-    } else if (funcao.length <= 6 && funcao.length > 15) {
-      alert("Telefone invalido!")
+      ax_erro = true;
     }
 
     if (ax_erro == false) {
@@ -429,18 +468,18 @@
           nomeServer: nome,
           matriculaServer: matricula,
           setorServer: setor,
-          numeroSerialServer: numeroSerial,
-          //        funcaoServer: funcao
+          empresaServer: empresa,
+          gestorServer: gestor,
         })
       }).then(function (resposta) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
           alert("Cadastro realizado com sucesso!");
           setTimeout(() => {
-            window.location = "empresa.html";
+            window.location = "funcionario.html";
           }, "2000")
+
         } else {
           throw ("Houve um erro ao tentar realizar o cadastro!");
         }
@@ -448,7 +487,6 @@
 
       }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        // finalizarAguardar();
       });
       return false;
     }
@@ -486,38 +524,42 @@
       if (resposta.ok) {
         console.log(resposta);
 
-        resposta.json().then(json => {
-          console.log(json);
-          console.log(JSON.stringify(json));
+
+        if (resposta.status == 204) {
+          alert("Nenhuma funcionario encontrado!")
+        } else {
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            sessionStorage.ID_FUNCIONARIOCAD = json.id;
+            sessionStorage.NOME_FUNCIONARIOCAD = json.nome;
+            sessionStorage.MATRICULA_FUNCIONARIOCAD = json.matricula;
+            sessionStorage.SETOR_FUNCIONARIOCAD = json.fkSetor;
+            sessionStorage.EMPRESA_FUNCIONARIOCAD = json.fkEmpresa;
+            sessionStorage.GESTOR_FUNCIONARIOCAD = json.fkGestor;
+            console.log(sessionStorage.MATRICULA_FUNCIONARIOCAD);
 
 
+            if (sessionStorage.MATRICULA_FUNCIONARIOCAD != null && sessionStorage.MATRICULA_FUNCIONARIOCAD != undefined) {
+              alert("Funcionario encontrada!")
+              alterarFunc2.style.display = "block";
+              alterarFunc.style.height = "15%";
+            }
+            alt_nome.value = sessionStorage.NOME_FUNCIONARIOCAD;
+            alt_matricula.value = sessionStorage.MATRICULA_FUNCIONARIOCAD;
+            alt_setor.value = sessionStorage.SETOR_FUNCIONARIOCAD;
+            alt_empresa.value = sessionStorage.EMPRESA_FUNCIONARIOCAD;
+            alt_gestor.value = sessionStorage.GESTOR_FUNCIONARIOCAD;
 
-          sessionStorage.ID_EMPRESACAD = json.id;
-          sessionStorage.NOME_FUNCIONARIOCAD = json.nome;
-          sessionStorage.MATRICULA_FUNCIONARIOCAD = json.matricula;
-          sessionStorage.SETOR_FUNCIONARIOCAD = json.setor;
-          sessionStorage.NUMEROSERIAL_FUNCIONARIOCAD = json.numeroSerial;
-          sessionStorage.FUNCAO_FUNCIONARIOCAD = json.funcao;
-
-
-          if (sessionStorage.MATRICULA_FUNCIONARIOCAD != null && sessionStorage.MATRICULA_FUNCIONARIOCAD != undefined) {
-            alert("Empresa encontrada!")
-            alterarFunc2.style.display = "block";
-            alterarFunc.style.height = "15%";
-          }
-          alt_nome.value = sessionStorage.NOME_FUNCIONARIOCAD;
-          alt_matricula.value = sessionStorage.MATRICULA_FUNCIONARIOCAD;
-          alt_setor.value = sessionStorage.SETOR_FUNCIONARIOCAD;
-          alt_serial.value = sessionStorage.NUMEROSERIAL_FUNCIONARIOCAD;
-          alt_funcao.value = sessionStorage.FUNCAO_FUNCIONARIOCAD;
-
-          console.log(sessionStorage.MATRICULA_FUNCIONARIOCAD);
-        });
+            console.log(sessionStorage.MATRICULA_FUNCIONARIOCAD);
+          });
+        }
 
       } else {
-        alert("numeroSerial ou senha invalidos!")
+        alert("matricula invalida!")
 
-        console.log("Houve um erro ao tentar realizar o login!");
+        console.log("Houve um erro ao tentar procurar!");
 
         resposta.text().then(texto => {
           console.error(texto);
@@ -526,7 +568,7 @@
       }
 
     }).catch(function (erro) {
-      alert("Empresa não encontrada!")
+      alert("funcionario(a) não encontrado!")
 
       console.log(erro);
     })
@@ -536,44 +578,41 @@
 
 
   function alterar() {
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var cnpjNovo = alt_nome.value;
+
+    var nomeNovo = alt_nome.value;
     var matriculaNovo = alt_matricula.value;
     var setorNovo = alt_setor.value;
-    var numeroSerialNovo = alt_serial.value;
-    var telefoneNovo = alt_funcao.value;
-    var id = sessionStorage.ID_USUARIO;
-    console.log(id);
+    var empresaNovo = alt_empresa.value;
+    var gestorNovo = alt_gestor.value;
+    var id = sessionStorage.ID_FUNCIONARIOCAD;
     var ax_erro = false;
 
+    console.log(id);
 
-    if (alt_nome.value == "" || alt_matricula.value == "" || alt_setor.value == "" || alt_serial.value == ""
-      || alt_funcao.value == "") {
-      //cardErro.style.display = "block"
+    if (alt_nome.value == "" || alt_matricula.value == "" || alt_setor.value == "" || alt_empresa.value == ""
+      || alt_gestor.value == "") {
       alert("Por favor, preencha todos os campos!")
-      if (ipt_nome.length > 10) {
-        alert("Escreva um nome mais curto")
-      }
-
-
       return false;
-    } else if (alt_nome.value.length < 10) {
-      alert("nomeinvalido!")
-    } else if (!numeroSerialNovo || numeroSerialNovo.indexOf('@') == -1 || numeroSerialNovo.length <= 10) {
-      alert("Insira um numeroSerial válido com @ ou mais longo!");
+    } else if (alt_nome.value.length < 3) {
+      alert("nome invalido!")
+      return false;
     } else if (matriculaNovo.length <= 2 || matriculaNovo.length >= 25) {
-      alert("Razao social não pode ser muito curta ou muito longa")
-    } else if (setorNovo.length < 3 || setorNovo.length > 25) {
-      alert("Razao social não pode ser muito curta ou muito longa!")
-    } else if (numeroSerialNovo.length < 6) {
-      alert("numeroSerial muito curto!")
-    } else if (telefoneNovo.length <= 6 && telefoneNovo.length > 15) {
-      alert("Telefone invalido!")
-    } else if (alt_nome.value == sessionStorage.CNPJ_USUARIO && alt_matricula.value == sessionStorage.matricula_USUARIO
-      && alt_setor.value == sessionStorage.setor_USUARIO && alt_serial.value == sessionStorage.numeroSerial_USUARIO
-      && alt_funcao.value == sessionStorage.TELEFONE_USUARIO) {
+      alert("matricula não pode ser muito curta ou muito longa")
+      return false;
+    } else if (setorNovo.length <= 0 || setorNovo.length > 10000000) {
+      alert(" setor invalido! escolha um numero de setor existente!")
+      return false;
+    } else if (empresaNovo.length <= 0 || empresaNovo.length > 1000000) {
+      alert("empresa invalida!")
+      return false;
+    } else if (gestorNovo.length <= 0 && gestorNovo.length > 1000000) {
+      alert("Gestor invalido!")
+      return false;
+    } else if (alt_nome.value == sessionStorage.NOME_FUNCIONARIOCAD && alt_matricula.value == sessionStorage.MATRICULA_FUNCIONARIOCAD
+      && alt_setor.value == sessionStorage.SETOR_FUNCIONARIOCAD && alt_serial.value == sessionStorage.EMPRESA_FUNCIONARIOCAD
+      && alt_funcao.value == sessionStorage.GESTOR_FUNCIONARIOCAD) {
       alert("Nenhuma alteração feita!")
+      return false;
     }
     else {
       // Enviando o valor da nova input
@@ -585,34 +624,36 @@
         body: JSON.stringify({
           // crie um atributo que recebe o valor recuperado aqui
           // Agora vá para o arquivo routes/usuario.js
-          cnpjnovoServer: cnpjNovo,
-          razaonovoServer: matriculaNovo,
+          nomenovoServer: nomeNovo,
+          matriculanovoServer: matriculaNovo,
           setornovoServer: setorNovo,
-          numeroSerialnovoServer: numeroSerialNovo,
-          telefonenovoServer: telefoneNovo,
+          empresanovoServer: empresaNovo,
+          gestornovoServer: gestorNovo,
           idServer: id,
         })
       }).then(function (resposta) {
         console.log("resposta: ", resposta);
         if (resposta.ok) {
+
+
           menssagem.style.display = "block";
           menssagem.innerHTML = "Alteração realizada com sucesso!";
           setTimeout(() => {
             menssagem.style.display = "none";
           }, "4000")
           alt_nome.value = "";
-          alt_serial.value = "";
           alt_matricula.value = "";
           alt_setor.value = "";
-          alt_funcao.value = "";
+          alt_empresa.value = "";
+          alt_gestor.value = "";
           setTimeout(() => {
-            window.location = "empresa.html";
+            window.location = "funcionario.html";
           }, "2000")
 
         } else {
-          throw ("Houve um erro ao tentar realizar o cadastro!");
+          throw ("Houve um erro ao tentar realizar a alteração!");
           menssagem.style.display = "block";
-          menssagem.innerHTML = "Houve um erro ao realizar o cadastro!";
+          menssagem.innerHTML = "Houve um erro ao realizar a alteração!";
           setTimeout(() => {
             menssagem.style.display = "none";
           }, "4000")
@@ -627,9 +668,17 @@
 
   }
 
-  listagemEmpresas()
+  var informacaoList = -1;
+  function listFuncionarios(i) {
+    informacaoList = i;
+    listagemFuncionario();
 
-  function listagemEmpresas() {
+  }
+  var listarUmaVez = false;
+
+  listagemFuncionario()
+
+  function listagemFuncionario() {
 
     fetch("/funcionario/listar", {
       method: "GET",
@@ -646,15 +695,35 @@
           console.log(json);
           console.log(JSON.stringify(json));
 
-          sessionStorage.FUNCIONARIO_MATRICULA = json.matricula;
+          sessionStorage.MATRICULA_FUNCIONARIOLIST = json.matricula;
           console.log(json.length);
+
+          if (listarUmaVez == false) {
+
+            for (i = 0; i < json.length; i++) {
+              var registro = json[i];
+              funcionarios_lista.innerHTML += `<li onclick="listFuncionarios(${i})">${registro.matricula}</li>`;
+              listarUmaVez = true;
+            }
+          }
+
 
           for (i = 0; i < json.length; i++) {
             var registro = json[i];
-            funcionarios_lista.innerHTML += `<li>${registro.matricula}</li>`;
+            if (informacaoList >= 0) {
+              if (i == informacaoList) {
+    
+                list_nome.value = `${registro.nome}`;
+                list_matricula.value = `${registro.matricula}`;
+                list_setor.value = `${registro.fkSetor}`;
+                list_empresa.value = `${registro.fkEmpresa}`;
+                list_gestor.value = `${registro.fkGestor}`;
+              }
+            }
           }
 
-          if (sessionStorage.FUNCIONARIO_MATRICULA != null && sessionStorage.FUNCIONARIO_MATRICULA != undefined) {
+
+          if (sessionStorage.MATRICULA_FUNCIONARIOLIST != null && sessionStorage.MATRICULA_FUNCIONARIOLIST != undefined) {
             // alert("Empresa encontrada!")
           } else {
             //   alert("empresa null ou undefined")
@@ -680,7 +749,7 @@
 
     var matricula = Delet_matricula.value;
 
-    console.log(cnpj);
+    console.log(matricula);
 
     if (matricula.value == "") {
 
@@ -689,15 +758,15 @@
       return false;
     }
 
-    console.log("FORM cnpj: ", cnpj);
+    console.log("FORM matricula: ", matricula);
 
-    fetch("/funcionario/pegarEmpresa", {
+    fetch("/funcionario/pegarFuncionario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        cnpjAltServer: cnpj,
+        matriculaAltServer: matricula,
       })
     }).then(function (resposta) {
       console.log("ESTOU NO THEN DO aparecerBuscados()!")
@@ -711,21 +780,21 @@
           deletarFunc2.style.display = "block";
           buscarDelete.style.display = "none";
 
-          sessionStorage.ID_EMPRESADEL = json.id;
-          sessionStorage.CNPJ_EMPRESADEL = json.cnpj;
-          sessionStorage.matricula_EMPRESADEL = json.matricula;
-          sessionStorage.setor_EMPRESADEL = json.setor;
-          sessionStorage.numeroSerial_EMPRESADEL = json.numeroSerial;
-          sessionStorage.TELEFONE_EMPRESADEL = json.funcao;
+          sessionStorage.ID_FUNCIONARIODEL = json.id;
+          sessionStorage.NOME_FUNCIONARIODEL = json.nome;
+          sessionStorage.MATRICULA_FUNCIONARIOADEL = json.matricula;
+          sessionStorage.SETOR_FUNCIONARIODEL = json.fkSetor;
+          sessionStorage.EMPRESA_FUNCIONARIODEL = json.fkEmpresa;
+          sessionStorage.GESTOR_FUNCIONARIODEL = json.fkGestor;
 
-          del_cnpj.innerHTML = sessionStorage.CNPJ_EMPRESADEL;
-          del_matricula.innerHTML = sessionStorage.matricula_EMPRESADEL;
-          del_setor.innerHTML = sessionStorage.setor_EMPRESADEL;
-          del_numeroSerial.innerHTML = sessionStorage.numeroSerial_EMPRESADEL;
-          del_telefone.innerHTML = sessionStorage.TELEFONE_EMPRESADEL;
+          del_nome.innerHTML = sessionStorage.NOME_FUNCIONARIODEL;
+          del_matricula.innerHTML = sessionStorage.MATRICULA_FUNCIONARIOADEL;
+          del_setor.innerHTML = sessionStorage.SETOR_FUNCIONARIODEL;
+          del_empresa.innerHTML = sessionStorage.EMPRESA_FUNCIONARIODEL;
+          del_gestor.innerHTML = sessionStorage.GESTOR_FUNCIONARIODEL;
 
 
-          if (sessionStorage.CNPJ_USUARIO != null && sessionStorage.CNPJ_USUARIO != undefined) {
+          if (sessionStorage.MATRICULA_FUNCIONARIOADEL != null && sessionStorage.MATRICULA_FUNCIONARIOADEL != undefined) {
             alert("Empresa encontrada!")
           }
 
@@ -734,7 +803,7 @@
       } else {
         alert("numeroSerial ou senha invalidos!")
 
-        console.log("Houve um erro ao tentar realizar o login!");
+        console.log("Houve um erro ao tentar procurar o funcionario!");
 
         resposta.text().then(texto => {
           console.error(texto);
@@ -754,7 +823,7 @@
     deletarFunc2.style.display = "block";
     buscarDelete.style.display = "none";
 
-    var id = sessionStorage.ID_EMPRESADEL;
+    var id = sessionStorage.ID_FUNCIONARIODEL;
 
     if (id == "") {
 
@@ -782,6 +851,8 @@
           console.log(json);
           console.log(JSON.stringify(json));
           alert("Empresa deletada com sucesso!")
+          deletarFunc2.style.display = "none";
+          buscarDelete.style.display = "block";
         });
 
       } else {

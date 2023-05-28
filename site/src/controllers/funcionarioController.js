@@ -69,10 +69,10 @@ function autenticarFUNC(req, res) {
                     console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
 
                     if (resultado.length >= 1) {
-                        res.json(response);
+                        res.json(false);
                     } else if (resultado.length == 0) {
-                        res.status(403).send("(falha na matricula!)");
-
+                        console.log(resultado);
+                        res.json(true);
                     }
                 }
             ).catch(
@@ -89,24 +89,26 @@ function autenticarFUNC(req, res) {
 function cadastrar(req, res) {
 
     var nome = req.body.nomeServer;
-    var matricula = req.body.razaoServer;
+    var matricula = req.body.matriculaServer;
     var setor = req.body.setorServer;
-    var numeroSerial = req.body.numeroSerialServer;
-    // var funcao = req.body.funcaoServer;
+    var gestor = req.body.gestorServer;
+    var empresa = req.body.empresaServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (matricula == undefined) {
-        res.status(400).send("Sua razão social está undefined!");
+        res.status(400).send("Sua matricula social está undefined!");
     } else if (setor == undefined) {
-        res.status(400).send("Seu responsável está undefined!");
-    } else if (numeroSerial == undefined) {
-        res.status(400).send("Seu numeroSerial está undefined!");
+        res.status(400).send("Seu setor social está undefined!");
+    } else if (gestor == undefined) {
+        res.status(400).send("Seu gestor está undefined!");
+    } else if (empresa == undefined) {
+        res.status(400).send("Sua empresa está undefined!");
     // } else if (funcao == undefined) {
         // res.status(400).send("Sua funcao está undefined!");
     } else {
 
-        funcionarioModel.cadastrar(nome, matricula, setor, numeroSerial)
+        funcionarioModel.cadastrar(nome, matricula, empresa, gestor, setor)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -127,13 +129,13 @@ function cadastrar(req, res) {
 function alterar(req, res) {
 
     var nome = req.body.nomenovoServer;
-    var matricula = req.body.razaonovoServer;
+    var matricula = req.body.matriculanovoServer;
     var setor = req.body.setornovoServer;
-    var numeroSerial = req.body.numeroSerialnovoServer;
-    var funcao = req.body.funcaonovoServer;
+    var empresa = req.body.empresanovoServer;
+    var gestor = req.body.gestornovoServer;
     var id = req.body.idServer;
 
-    funcionarioModel.alterar(nome, matricula, setor, numeroSerial, funcao, id)
+    funcionarioModel.alterar(nome, matricula, setor, empresa, gestor, id)
         .then(
             function (resultado) {
                 res.json(resultado);

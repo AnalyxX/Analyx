@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8" />
@@ -20,9 +20,9 @@
         <h2 id="NomeUsuario"></h2>
       </div>
       <div class="navegarLeteral">
-        <li><a href="../crud_usuario/cadastro-user.html">Empresa</a></li>
+        <li style="display:none;" id="empresa_lateral"><a href="../crud_empresa/empresa.html">EMPRESA</a></li>
         <li> <a href="../crud_maquina/maquina.html"> MÁQUINA</a></li>
-        <li><a href="../crud_funcionario/cadastrarFuncionario.html">FUNCIONÁRIO</a></li>
+        <li><a href="../crud_funcionario/funcionario.html">FUNCIONÁRIO</a></li>
         <li id="aqui"> USUÁRIO</a></li>
       </div>
       <div class="sair" onclick="sair()"><span>Sair</span></div>
@@ -32,13 +32,13 @@
       <header>
         <nav>
           <ul>
-            <li id="cadUSU" style="display:none"><a onclick="cadastrarUSU()">Cadastrar usuário</a></li>
+            <li id="cadUsu" style="display:none"><a onclick="cadastrarUSU()">Cadastrar usuário</a></li>
             <li id="aqui2"><a style="display:block">Cadastrar usuário</a></li>
-            <li id="altUSU" style="display: block;"><a onclick="alterarUSU()"> Alterar usuário</a></li>
+            <li id="altUsu" style="display: block;"><a onclick="alterarUSU()"> Alterar usuário</a></li>
             <li id="aqui3" style="display: none;"><a>Alterar usuário</a></li>
-            <li id="listUSU" style="display: block;"><a onclick="listarUSU()">Listar usuário</a></li>
+            <li id="listUsu" style="display: block;"><a onclick="listarUSU()">Listar usuário</a></li>
             <li id="aqui4" style="display: none;"><a>Listar usuário</a></li>
-            <li id="deletUSU" style="display: block;"><a onclick="deletarUSU()">Deletar usuário</a></li>
+            <li id="deletUsu" style="display: block;"><a onclick="deletarUSU()">Deletar usuário</a></li>
             <li id="aqui5" style="display: none;"><a>Deletar usuário</a></li>
           </ul>
         </nav>
@@ -69,19 +69,23 @@
       <div id="cadastroUsu" class="cadastro-usu" style="display:block;">
         <div class="input" id="ipt-1">
           Email
-          <input type="text" name="nome" id="ipt_cnpj" />
-        </div>
-        <div class="input" id="ipt-2">
-          Matricula
-          <input type="text" name="matricula" id="ipt_razaoSocial" />
+          <input type="email" name="nome" id="cad_email" />
         </div>
         <div class="input" id="ipt-3">
           Senha
-          <input type="text" name="setor" id="ipt_responsavel" />
+          <input type="password" name="setor" id="cad_senha" />
         </div>
         <div class="input" id="ipt-4">
           Confirmar Senha
-          <input type="text" name="maquina" id="ipt_email" />
+          <input type="password" name="maquina" id="cad_ConfirmarSenha" />
+        </div>
+        <!-- <div class="input" id="ipt-4">
+          Tipo: (java ou web)
+          <input type="text" name="maquina" id="cad_tipo" />
+        </div> -->
+        <div class="input" id="ipt-4">
+          Funcionário
+          <input type="text" name="maquina" id="cad_funcionario" />
         </div>
         <button id="btn_entrar" onclick="cadastrar2()">Cadastrar</button>
       </div>
@@ -90,7 +94,7 @@
       <div id="alterarUsu" class="alterar-usu" style="display:none;">
         <div class="input2" id="ipt-1">
           Email:
-          <input type="text" name="nome" id="Alt_cnpj" />
+          <input type="text" name="nome" id="Alt_email" />
           <button id="btn_entrar" onclick="aparecerBuscados()">Buscar</button>
         </div>
       </div>
@@ -99,57 +103,55 @@
       <div id="alterarUsu2" class="alterar-Usu2" style="display:none;">
         <div class="input3" id="ipt-1">
           Email
-          <input type="text" name="nome" placeholder="Altere o CNPJ" id="alt_cnpj" />
+          <input type="text" name="nome" placeholder="Altere o email" id="alt_email" />
         </div>
         <div class="input3" id="ipt-2">
-          Matricula
-          <input type="text" name="matricula" placeholder="Altere a Razão Social" id="alt_razao" />
+          Senha
+          <input type="text" name="matricula" placeholder="Altere a Razão Social" id="alt_senha" />
         </div>
         <div class="input3" id="ipt-3">
-          Senha
-          <input type="text" name="setor" placeholder="Altere o Responsável" id="alt_responsavel" />
+          Tipo
+          <input type="text" name="setor" placeholder="Altere o Responsável" id="alt_tipo" />
         </div>
         <div class="input3" id="ipt-4">
-          Confirmar Senha
-          <input type="text" name="maquina" placeholder="Altere o Email" id="alt_email" />
+          Funcionario
+          <input type="text" name="maquina" placeholder="Altere o Email" id="alt_funcionario" />
         </div>
         <button id="btn_entrar" onclick="alterar()">Alterar</button>
       </div>
 
 
+      <div class="listar" id="listar" style="display: none;">
+        <div class="listar2" id="listar2">
 
-      <div id="listarUsu" class="listar-usu" style="display:none;">
-        <div class="input" id="ipt-1">
-          Foram encontradas:
+          <div id="listarUsu" class="listar-usu">
+            <div class="input" id="ipt-1">
+              Foram encontradas:
+            </div>
+            <div id="usuario_lista">
+            </div>
+          </div>
+
+          <div id="listarUsu2" class="listar-usu2">
+            <div class="input" id="ipt-1">
+              email
+              <input type="text" name="nome" id="list_email" />
+            </div>
+            <div class="input" id="ipt-2">
+              Senha
+              <input type="text" name="matricula" id="list_senha" />
+            </div>
+            <div class="input" id="ipt-3">
+              Tipo
+              <input type="text" name="setor" id="list_tipo" />
+            </div>
+            <div class="input" id="ipt-4">
+              Funcionario
+              <input type="text" name="maquina" id="list_funcionario" />
+            </div>
+          </div>
+
         </div>
-        <div id="USUresas_lista">
-
-        </div>
-
-      </div>
-      
-      <div id="listarUsu2" class="listar-usu" style="display:none;">
-        <div class="input" id="ipt-1">
-          CNPJ
-          <input type="text" name="nome" id="ipt_nome" />
-          <div class="input" id="ipt-2">
-            Razão social
-            <input type="text" name="matricula" id="ipt_matricula" />
-          </div>
-          <div class="input" id="ipt-3">
-            Responsavel
-            <input type="text" name="setor" id="ipt_setor" />
-          </div>
-          <div class="input" id="ipt-4">
-            E-mail
-            <input type="text" name="maquina" id="ipt_maquina" />
-          </div>
-          <div class="input" id="ipt-5">
-            Telefone
-            <input type="text" name="funcao" id="ipt_funcao" />
-          </div>
-        </div>
-
       </div>
 
 
@@ -157,17 +159,17 @@
         <div id="buscarDelete" style="display:block;">
           <div class="input" id="ipt-1">
             Email
-            <input type="text" name="nome" id="Delet_cnpj" />
+            <input type="text" name="nome" id="Delet_email" />
           </div>
           <button id="btn_entrar" onclick="aparecerDelete()">Procurar</button>
         </div>
 
         <div id="deletarUsu2" class="deletarUsu2" style="display:none;">
-          <h3>Tem certeza que deseja excluir essa USUresa ?</h3>
-          <li>EMAIL:<span id="del_cnpj"></span></li>
-          <li>Matricula:<span id="del_razaoSocial"></span></li>
-          <li>Senha:<span id="del_responsavel"></span></li>
-          <li>Confirmar Senha:<span id="del_email"></span></li>
+          <h3>Tem certeza que deseja excluir essa usuario ?</h3>
+          <li>EMAIL:<span id="del_email"></span></li>
+          <li>Senha:<span id="del_senha"></span></li>
+          <!-- <li>Tipo:<span id="del_tipo"></span></li> -->
+          <li>Funcionario:<span id="del_funcionario"></span></li>
           <div class="SimNao">
             <li onclick="deletar()">Sim</li>
             <li onclick="voltar()">Não</li>
@@ -190,11 +192,21 @@
 
   NomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-//  console.log(EmailUsuario);
-//  if (EmailUsuario && EmailUsuario.includes("analyx@")) {
- //   listUSU.style.display = "block";
-//   deletUSU.style.display = "block";
-//  }
+  if (EmailUsuario != undefined && EmailUsuario.includes("analyx@")) {
+    empresa_lateral.style.display = "block";
+  }
+
+  function sair() {
+    window.location = "../index.html";
+    sessionStorage.clear();
+
+  }
+
+  //  console.log(EmailUsuario);
+  //  if (EmailUsuario && EmailUsuario.includes("analyx@")) {
+  //   listUSU.style.display = "block";
+  //   deletUSU.style.display = "block";
+  //  }
 
   function teste() {
     menssagem.style.display = "block";
@@ -206,60 +218,62 @@
 
 
   function cadastrarUSU() {
-      //header
-      aqui3.style.display = "none";
-      aqui4.style.display = "none";
-      aqui5.style.display = "none";
-      cadUSU.style.display = "none";
+    //header
+    aqui3.style.display = "none";
+    aqui4.style.display = "none";
+    aqui5.style.display = "none";
+    cadUsu.style.display = "none";
 
-      altUSU.style.display = "block";
-      listUSU.style.display = "block";
-      deletUSU.style.display = "block";
+    altUsu.style.display = "block";
+    listUsu.style.display = "block";
+    deletUsu.style.display = "block";
 
-      aqui2.style.display = "block";
+    aqui2.style.display = "block";
 
-      //social
-      alterarUsu.style.display = "none";
-      listarUsu.style.display = "none";
-      deletarUsu.style.display = "none";
-      alterarUSU2.style.display = "none";
+    //social
+    alterarUsu.style.display = "none";
+    listarUsu.style.display = "none";
+    deletarUsu.style.display = "none";
+    alterarUsu2.style.display = "none";
+    listar.style.display = "none";
 
-      cadastroUSU.style.display = "block";
+    cadastroUsu.style.display = "block";
 
-      //titulo
-      tituloCAD.style.display = "block";
-      tituloALT.style.display = "none";
-      tituloLIST.style.display = "none";
-      tituloDELET.style.display = "none";
+    //titulo
+    tituloCAD.style.display = "block";
+    tituloALT.style.display = "none";
+    tituloLIST.style.display = "none";
+    tituloDELET.style.display = "none";
 
   }
   function alterarUSU() {
-      //header
-      aqui2.style.display = "none";
-      aqui4.style.display = "none";
-      aqui5.style.display = "none";
-      altUSU.style.display = "none";
+    //header
+    aqui2.style.display = "none";
+    aqui4.style.display = "none";
+    aqui5.style.display = "none";
+    altUsu.style.display = "none";
 
-      deletUSU.style.display = "block";
-      listUSU.style.display = "block";
-      cadUSU.style.display = "block";
+    deletUsu.style.display = "block";
+    listUsu.style.display = "block";
+    cadUsu.style.display = "block";
 
-      aqui3.style.display = "block";
+    aqui3.style.display = "block";
 
-      //social
-      cadastroUSU.style.display = "none";
-      listarUsu.style.display = "none";
-      deletarUsu.style.display = "none";
-      alterarUSU2.style.display = "none";
+    //social
+    cadastroUsu.style.display = "none";
+    listarUsu.style.display = "none";
+    deletarUsu.style.display = "none";
+    alterarUsu2.style.display = "none";
+    listar.style.display = "none";
 
 
-      alterarUsu.style.display = "block";
+    alterarUsu.style.display = "block";
 
-      //titulo
-      tituloCAD.style.display = "none";
-      tituloALT.style.display = "block";
-      tituloLIST.style.display = "none";
-      tituloDELET.style.display = "none";
+    //titulo
+    tituloCAD.style.display = "none";
+    tituloALT.style.display = "block";
+    tituloLIST.style.display = "none";
+    tituloDELET.style.display = "none";
   }
 
   function listarUSU() {
@@ -267,23 +281,25 @@
     aqui2.style.display = "none";
     aqui3.style.display = "none";
     aqui5.style.display = "none";
-    listUSU.style.display = "none";
+    listUsu.style.display = "none";
 
-    cadUSU.style.display = "block";
-    altUSU.style.display = "block";
-    deletUSU.style.display = "block";
+    cadUsu.style.display = "block";
+    altUsu.style.display = "block";
+    deletUsu.style.display = "block";
 
     aqui4.style.display = "block";
 
 
     //social
-    cadastroUSU.style.display = "none";
-    alterarUSU.style.display = "none";
-    deletarUSU.style.display = "none";
-    alterarUSU2.style.display = "none";
+    cadastroUsu.style.display = "none";
+    alterarUsu.style.display = "none";
+    deletarUsu.style.display = "none";
+    alterarUsu2.style.display = "none";
 
 
-    listarUSU.style.display = "block";
+    listarUsu.style.display = "block";
+    listar.style.display = "block";
+
 
     //titulo
     tituloCAD.style.display = "none";
@@ -297,22 +313,23 @@
     aqui2.style.display = "none";
     aqui3.style.display = "none";
     aqui4.style.display = "none";
-    deletUSU.style.display = "none";
+    deletUsu.style.display = "none";
 
-    cadUSU.style.display = "block";
-    altUSU.style.display = "block";
-    listUSU.style.display = "block";
+    cadUsu.style.display = "block";
+    altUsu.style.display = "block";
+    listUsu.style.display = "block";
 
     aqui5.style.display = "block";
 
     //social
-    cadastroUSU.style.display = "none";
-    alterarUSU.style.display = "none";
-    listarUSU.style.display = "none";
-    alterarUSU2.style.display = "none";
+    cadastroUsu.style.display = "none";
+    alterarUsu.style.display = "none";
+    listarUsu.style.display = "none";
+    alterarUsu2.style.display = "none";
+    listar.style.display = "none";
 
 
-    deletarUSU.style.display = "block";
+    deletarUsu.style.display = "block";
 
 
     //titulo
@@ -323,19 +340,19 @@
 
   }
   var ax_erro = false;
-  function cadastrar2(){
-    var cnpj = ipt_cnpj.value;
+  function cadastrar2() {
+    var email = cad_email.value;
 
-    fetch("/USUresa/autenticarUSU", {
+    fetch("/usuarios/autenticarUSU", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        cnpjServer: cnpj,
+        emailServer: email,
       })
     }).then(function (resposta) {
-      console.log("ESTOU NO THEN DO entrar()!")
+      console.log("ESTOU NO THEN DO autenticar usu()!")
 
       if (resposta.ok) {
         console.log(resposta);
@@ -344,10 +361,10 @@
           console.log(json);
           console.log(JSON.stringify(json));
           if (json === false) {
-            alert("Já existe uma USUresa com o mesmo CNPJ!");
+            alert("Já existe um usuario com o mesmo email!");
             ax_erro = true;
             return;
-          }else{
+          } else {
             ax_erro = false;
             cadastrar();
           }
@@ -358,10 +375,10 @@
       } else {
 
         console.log("Houve um erro ao tentar realizar o cadastro!");
-        ax_erro=true;
-        alert("Essa USUresa já está cadastrada!")
+        ax_erro = true;
+        alert("Essa usuario já está cadastrada!")
         return;
-        
+
         resposta.text().then(texto => {
           console.error(texto);
         });
@@ -369,101 +386,111 @@
 
     }).catch(function (erro) {
       console.log(erro);
-      ax_erro=true;
+      ax_erro = true;
 
     })
-    ax_erro= true;
+    ax_erro = true;
   }
 
   function cadastrar() {
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var cnpj = ipt_cnpj.value;
-    var razaoSocial = ipt_razaoSocial.value;
-    var responsavel = ipt_responsavel.value;
-    var email = ipt_email.value;
-    var telefone = ipt_telefone.value;
-   // var ax_erro = false
+    var email = cad_email.value;
+    var senha = cad_senha.value;
+    var confirmarSenha = cad_ConfirmarSenha.value;
+    var tipo = 1;
+    var funcionario = cad_funcionario.value;
+    // var ax_erro = false
 
 
-    if (cnpj == "" || razaoSocial == "" || responsavel == "" || email == "" || telefone == "") {
+    if (email == "" || senha == "" || confirmarSenha == "" || funcionario == "") {
       //cardErro.style.display = "block"
       alert("Por favor, preencha todos os campos!")
-      if (ipt_nome.length > 10) {
-        alert("Escreva um nome mais curto")
-      }
-    } else if (ipt_cnpj.value.length < 10) {
-      alert("CNPJ invalido!")
-    } else if (email.indexOf('@') == -1 || email.length <= 10) {
-      alert("Insira um email com @ ou mais longo!")
-    } else if (razaoSocial.length <= 2 && razaoSocial.length >= 25) {
-      alert("Razao social não pode ser muito curta ou muito longa")
-    } else if (responsavel.length < 3 && responsavel.length > 25) {
-      alert("Razao social não pode ser muito curta ou muito longa!")
+      return false;
+
+    } else if (cad_email.value.length < 10) {
+      alert("email invalido! muito curto")
+      return false;
+    } else if (email.indexOf('@') == -1) {
+      alert("Insira um email com @ ")
+      return false;
+    } else if (senha.length <= 5 && senha.length >= 25) {
+      alert("senha precisa ter pelo menos 6 characters e menos de 25!")
+      return false;
+    } else if (confirmarSenha.length <= 5 && confirmarSenha.length > 25) {
+      alert("senha precisa ter pelo menos 6 characters e menos de 25!")
+      return false;
     } else if (email.length < 6) {
       alert("Email muito curto!")
-    } else if (telefone.length <= 6 && telefone.length > 15) {
-      alert("Telefone invalido!")
+      return false;
+    } else if (senha != confirmarSenha) {
+      alert("As senhas precisam ser iguais!");
+      return false;
+    } else if (funcionario >= 1000000) {
+      alert("funcionario invalido!");
+      return false;
     }
-
-    if(ax_erro == false){
-
+    if (ax_erro == false) {
 
 
-    fetch("/USUresa/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        cnpjServer: cnpj,
-        razaoServer: razaoSocial,
-        responsavelServer: responsavel,
-        emailServer: email,
-        telefoneServer: telefone
-      })
-    }).then(function (resposta) {
-      console.log("resposta: ", resposta);
-      if (resposta.ok) {
-        cardErro.style.display = "block";
-        alert("Cadastro realizado com sucesso!");
-        setTimeout(() => {
-          window.location = "USUresa.html";
-        }, "2000")
-      } else {
-        throw ("Houve um erro ao tentar realizar o cadastro!");
-      }
-    }).catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
-      // finalizarAguardar();
-    });
-    return false;
-  }
+
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          emailServer: email,
+          senhaServer: senha,
+          tipoServer: tipo,
+          funcionarioServer: funcionario
+        })
+      }).then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+
+        if (resposta.ok) {
+
+          alert("Cadastro realizado com sucesso!");
+          setTimeout(() => {
+            window.location = "usuario.html";
+          }, "2000")
+
+
+        } else {
+          throw ("Houve um erro ao tentar realizar o cadastro!");
+        }
+      }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+      return false;
+    }
   }
 
   function aparecerBuscados() {
 
 
-    var cnpj = Alt_cnpj.value;
+    var email = Alt_email.value;
 
-    console.log(cnpj);
+    console.log(email);
 
-    if (cnpj == "") {
+    if (email == "") {
 
-      alert(`Preencha o campo cnpj!`)
+      alert(`Preencha o campo email!`)
 
       return false;
     }
-    
-    console.log("FORM cnpj: ", cnpj);
 
-    fetch("/USUresa/pegarUSUresa", {
+    console.log("FORM email: ", email);
+
+    fetch("/usuarios/pegarUsuario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        cnpjAltServer: cnpj,
+        emailAltServer: email,
       })
     }).then(function (resposta) {
       console.log("ESTOU NO THEN DO aparecerBuscados()!")
@@ -471,33 +498,38 @@
       if (resposta.ok) {
         console.log(resposta);
 
-        resposta.json().then(json => {
-          console.log(json);
-          console.log(JSON.stringify(json));
+        if (resposta.status == 204) {
+          alert("Nenhuma empresa encontrada!")
+        } else {
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
 
-          sessionStorage.ID_USURESACAD = json.id;
-          sessionStorage.CNPJ_USURESACAD = json.cnpj;
-          sessionStorage.RAZAOSOCIAL_USURESACAD = json.razaoSocial;
-          sessionStorage.RESPONSAVEL_USURESACAD = json.responsavel;
-          sessionStorage.EMAIL_USURESACAD = json.email;
-          sessionStorage.TELEFONE_USURESACAD = json.telefone;
-          
-          alt_cnpj.value = sessionStorage.CNPJ_USUARIO;
-          alt_razao.value = sessionStorage.RAZAOSOCIAL_USUARIO;
-          alt_responsavel.value = sessionStorage.RESPONSAVEL_USUARIO;
-          alt_email.value = sessionStorage.EMAIL_USUARIO;
-          alt_telefone.value = sessionStorage.TELEFONE_USUARIO;
-          
-          if (sessionStorage.CNPJ_USUARIO != null && sessionStorage.CNPJ_USUARIO != undefined) {
-            alert("USUresa encontrada!")
-          }
-          
-          
-              alterarUSU2.style.display = "block";
-              alterarUSU.style.height = "15%";
-          console.log(sessionStorage.CNPJ_USUARIO);
-        });
 
+            sessionStorage.ID_USUARIOALT = json.id;
+            sessionStorage.EMAIL_USUARIOALT = json.email;
+            sessionStorage.SENHA_USUARIOALT = json.senha;
+            //           sessionStorage.TIPO_USUARIOALT = json.fkTipoUsuario;
+            sessionStorage.FUNCIONARIO_USUARIOALT = json.fkFuncionario;
+
+            alt_email.value = sessionStorage.EMAIL_USUARIOALT;
+            alt_senha.value = sessionStorage.SENHA_USUARIOALT;
+            //           alt_tipo.value = sessionStorage.TIPO_USUARIOALT;
+            alt_funcionario.value = sessionStorage.FUNCIONARIO_USUARIOALT;
+
+            if (sessionStorage.EMAIL_USUARIOALT != null && sessionStorage.EMAIL_USUARIOALT != undefined) {
+              alert("usuario encontrada!")
+            }
+
+
+            alterarUsu2.style.display = "block";
+            alterarUsu.style.height = "15%";
+            console.log(sessionStorage.EMAIL_USUARIOALT);
+
+          });
+
+
+        }
       } else {
         alert("Email ou senha invalidos!")
 
@@ -520,46 +552,36 @@
   function alterar() {
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var cnpjNovo = alt_cnpj.value;
-    var razaoSocialNovo = alt_razao.value;
-    var responsavelNovo = alt_responsavel.value;
     var emailNovo = alt_email.value;
-    var telefoneNovo = alt_telefone.value;
-    var id = sessionStorage.ID_USUARIO;
+    var senhaNovo = alt_senha.value;
+    var tipoNovo = 1;
+    var funcionarioNovo = alt_funcionario.value;
+    var id = sessionStorage.ID_USUARIOALT;
     console.log(id);
     var ax_erro = false;
 
 
-    if (alt_cnpj.value == "" || alt_razao.value == "" || alt_responsavel.value == "" || alt_email.value == ""
-      || alt_telefone.value == "") {
+    if (alt_email.value == "" || alt_senha.value == "" || alt_funcionario.value == "") {
       //cardErro.style.display = "block"
       alert("Por favor, preencha todos os campos!")
-      if (ipt_nome.length > 10) {
-        alert("Escreva um nome mais curto")
-      }
-
-
       return false;
-    } else if (alt_cnpj.value.length < 10) {
-      alert("CNPJ invalido!")
+    } else if (alt_email.value.length < 10) {
+      alert("email invalido!")
     } else if (!emailNovo || emailNovo.indexOf('@') == -1 || emailNovo.length <= 10) {
       alert("Insira um email válido com @ ou mais longo!");
-    } else if (razaoSocialNovo.length <= 2 || razaoSocialNovo.length >= 25) {
+    } else if (senhaNovo.length <= 2 || senhaNovo.length >= 25) {
       alert("Razao social não pode ser muito curta ou muito longa")
-    } else if (responsavelNovo.length < 3 || responsavelNovo.length > 25) {
-      alert("Razao social não pode ser muito curta ou muito longa!")
     } else if (emailNovo.length < 6) {
       alert("Email muito curto!")
-    } else if (telefoneNovo.length <= 6 && telefoneNovo.length > 15) {
+    } else if (funcionarioNovo.length >= 10) {
       alert("Telefone invalido!")
-    } else if (alt_cnpj.value == sessionStorage.CNPJ_USUARIO && alt_razao.value == sessionStorage.RAZAOSOCIAL_USUARIO
-      && alt_responsavel.value == sessionStorage.RESPONSAVEL_USUARIO && alt_email.value == sessionStorage.EMAIL_USUARIO
-      && alt_telefone.value == sessionStorage.TELEFONE_USUARIO) {
+    } else if (alt_email.value == sessionStorage.EMAIL_USUARIOALT && alt_senha.value == sessionStorage.SENHA_USUARIOALT
+      && alt_funcionario.value == sessionStorage.FUNCIONARIO_USUARIOALT) {
       alert("Nenhuma alteração feita!")
     }
     else {
       // Enviando o valor da nova input
-      fetch("/USUresa/alterar", {
+      fetch("/usuarios/alterar", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -567,28 +589,28 @@
         body: JSON.stringify({
           // crie um atributo que recebe o valor recuperado aqui
           // Agora vá para o arquivo routes/usuario.js
-          cnpjnovoServer: cnpjNovo,
-          razaonovoServer: razaoSocialNovo,
-          responsavelnovoServer: responsavelNovo,
           emailnovoServer: emailNovo,
-          telefonenovoServer: telefoneNovo,
+          senhanovoServer: senhaNovo,
+          //    tiponovoServer: tipoNovo,
+          funcionarionovoServer: funcionarioNovo,
           idServer: id,
         })
       }).then(function (resposta) {
         console.log("resposta: ", resposta);
         if (resposta.ok) {
+
           menssagem.style.display = "block";
           menssagem.innerHTML = "Alteração realizada com sucesso!";
           setTimeout(() => {
             menssagem.style.display = "none";
           }, "4000")
-          alt_cnpj.value = "";
+
           alt_email.value = "";
-          alt_razao.value = "";
-          alt_responsavel.value = "";
-          alt_telefone.value = "";
+          alt_senha.value = "";
+          //     alt_tipo.value = "";
+          alt_funcionario.value = "";
           setTimeout(() => {
-            window.location = "USUresa.html";
+            window.location = "usuario.html";
           }, "2000")
 
         } else {
@@ -609,80 +631,24 @@
 
   }
 
-  if (EmailUsuario && EmailUsuario.includes("analyx@")) {
-    listagemUSUresas()
+  var informacaoList = -1;
+  function listUsuarios(i) {
+    informacaoList = i;
+    listagemUsuarios();
 
-    function listagemUSUresas() {
-
-      fetch("/USUresa/listar", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        },
-      }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO aparecerBuscados()!")
-
-        if (resposta.ok) {
-          console.log(resposta);
-
-          resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
-
-            sessionStorage.CNPJ_USURESA = json.cnpj;
-            console.log(json.length);
-
-            for (i = 0; i < json.length; i++) {
-              var registro = json[i];
-              USUresas_lista.innerHTML += `<li>${registro.cnpj}</li>`;
-            }
-
-            if (sessionStorage.CNPJ_USURESA != null && sessionStorage.CNPJ_USURESA != undefined) {
-              // alert("USUresa encontrada!")
-            } else {
-              //   alert("USUresa null ou undefined")
-            }
-          });
-
-        } else {
-          console.log("Houve um erro ao tentar encontrar USUresas!");
-          resposta.text().then(texto => {
-            console.error(texto);
-          });
-        }
-
-      }).catch(function (erro) {
-        console.log(erro);
-      })
-
-      return false;
-    }
   }
+  var listarUmaVez = false;
 
 
-  function aparecerDelete() {
+  listagemUsuarios()
 
-    var cnpj = Delet_cnpj.value;
+  function listagemUsuarios() {
 
-    console.log(cnpj);
-
-    if (cnpj.value == "") {
-
-      alert(`Preencha o campo cnpj!`)
-
-      return false;
-    }
-
-    console.log("FORM cnpj: ", cnpj);
-
-    fetch("/USUresa/pegarUSUresa", {
-      method: "POST",
+    fetch("/usuarios/listar", {
+      method: "GET",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        cnpjAltServer: cnpj,
-      })
     }).then(function (resposta) {
       console.log("ESTOU NO THEN DO aparecerBuscados()!")
 
@@ -692,29 +658,116 @@
         resposta.json().then(json => {
           console.log(json);
           console.log(JSON.stringify(json));
-          deletarUSU2.style.display = "block";
-          buscarDelete.style.display = "none";
 
-          sessionStorage.ID_USURESADEL = json.id;
-          sessionStorage.CNPJ_USURESADEL = json.cnpj;
-          sessionStorage.RAZAOSOCIAL_USURESADEL = json.razaoSocial;
-          sessionStorage.RESPONSAVEL_USURESADEL = json.responsavel;
-          sessionStorage.EMAIL_USURESADEL = json.email;
-          sessionStorage.TELEFONE_USURESADEL = json.telefone;
+          sessionStorage.EMAIL_USUARIOLIST = json.email;
+          console.log(json.length);
 
-          del_cnpj.innerHTML = sessionStorage.CNPJ_USURESADEL;
-          del_razaoSocial.innerHTML = sessionStorage.RAZAOSOCIAL_USURESADEL;
-          del_responsavel.innerHTML = sessionStorage.RESPONSAVEL_USURESADEL;
-          del_email.innerHTML = sessionStorage.EMAIL_USURESADEL;
-          del_telefone.innerHTML = sessionStorage.TELEFONE_USURESADEL;
-
-
-          if (sessionStorage.CNPJ_USUARIO != null && sessionStorage.CNPJ_USUARIO != undefined) {
-            alert("USUresa encontrada!")
+          if (listarUmaVez == false) {
+            for (i = 0; i < json.length; i++) {
+              var registro = json[i];
+              usuario_lista.innerHTML += `<li onclick="listUsuarios(${i})">${registro.email}</li>`;
+              listarUmaVez = true;
+            }
           }
 
+
+          for (i = 0; i < json.length; i++) {
+            var registro = json[i];
+            if (informacaoList >= 0) {
+              if (i == informacaoList) {
+                if (registro.tipo == 1) {
+                  registro.tipo = 'web';
+                } else if (registro.tipo == 2) {
+                  registro.tipo = 'java';
+                }
+
+                list_email.value = `${registro.email}`;
+                list_senha.value = `${registro.senha}`;
+                list_tipo.value = `${registro.fkTipoUsuario}`;
+                list_funcionario.value = `${registro.fkFuncionario}`;
+              }
+            }
+          }
+
+          if (sessionStorage.EMAIL_USUARIOLIST != null && sessionStorage.EMAIL_USUARIOLIST != undefined) {
+            // alert("USUresa encontrada!")
+          } else {
+            //   alert("USUresa null ou undefined")
+          }
         });
 
+      } else {
+        console.log("Houve um erro ao tentar encontrar usuario!");
+        resposta.text().then(texto => {
+          console.error(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+  }
+
+
+
+  function aparecerDelete() {
+
+    var email = Delet_email.value;
+
+    console.log(email);
+
+    if (email.value == "") {
+
+      alert(`Preencha o campo email!`)
+
+      return false;
+    }
+
+    console.log("FORM email: ", email);
+
+    fetch("/usuarios/pegarUsuario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailAltServer: email,
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO aparecerBuscados()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        if (resposta.status == 204) {
+          alert("Nenhuma empresa encontrada!")
+        } else {
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            deletarUsu2.style.display = "block";
+            buscarDelete.style.display = "none";
+
+            sessionStorage.ID_USUARIODEL = json.id;
+            sessionStorage.EMAIL_USUARIODEL = json.email;
+            sessionStorage.SENHA_USUARIODEL = json.senha;
+            //     sessionStorage.TIPO_USUARIODEL = json.fkTipoUsuario;
+            sessionStorage.FUNCIONARIO_USUARIODEL = json.fkFuncionario;
+
+            del_email.innerHTML = sessionStorage.EMAIL_USUARIODEL;
+            del_senha.innerHTML = sessionStorage.SENHA_USUARIODEL;
+            //     del_tipo.innerHTML = sessionStorage.TIPO_USUARIODEL;
+            del_funcionario.innerHTML = sessionStorage.FUNCIONARIO_USUARIODEL;
+
+
+            if (sessionStorage.EMAIL_USUARIODEL != null && sessionStorage.EMAIL_USUARIODEL != undefined) {
+              alert("usuario encontrada!")
+            }
+
+          });
+        }
       } else {
         alert("Email ou senha invalidos!")
 
@@ -727,7 +780,7 @@
       }
     }).catch(function (erro) {
       console.log(erro);
-      alert("USUresa não encontrada")
+      alert("usuario não encontrada")
     })
 
     return false;
@@ -735,10 +788,10 @@
 
 
   function deletar() {
-    deletarUSU2.style.display = "block";
+    deletarUsu2.style.display = "block";
     buscarDelete.style.display = "none";
 
-    var id = sessionStorage.ID_USURESADEL;
+    var id = sessionStorage.ID_USUARIODEL;
 
     if (id == "") {
 
@@ -748,7 +801,7 @@
 
     console.log("FORM id: ", id);
 
-    fetch("/USUresa/deletar", {
+    fetch("/usuarios/deletar", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
@@ -765,7 +818,9 @@
         resposta.json().then(json => {
           console.log(json);
           console.log(JSON.stringify(json));
-          alert("USUresa deletada com sucesso!")
+          alert("usuario deletada com sucesso!")
+          deletarUsu2.style.display = "none";
+          buscarDelete.style.display = "block";
         });
 
       } else {
@@ -785,7 +840,7 @@
   }
 
   function voltar() {
-    deletarUSU2.style.display = "none";
+    deletarUsu2.style.display = "none";
     buscarDelete.style.display = "block";
   }
 </script>

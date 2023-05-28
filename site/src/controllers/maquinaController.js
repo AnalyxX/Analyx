@@ -23,14 +23,14 @@ function listar(req, res) {
 }
 
 function getMaquina(req, res) {
-    var numeroSerial = req.body.numeroSerialAltServer;
+    var hostName = req.body.hostNameAltServer;
 
-    maquinaModel.getMaquina(numeroSerial)
-    if (numeroSerial == undefined) {
-        res.status(400).send("Seu numeroSerial está undefined!");
+    maquinaModel.getMaquina(hostName)
+    if (hostName == undefined) {
+        res.status(400).send("Seu hostName está undefined!");
     } else {
 
-        maquinaModel.getMaquina(numeroSerial)
+        maquinaModel.getMaquina(hostName)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -95,8 +95,8 @@ function alterar(req, res) {
     var cpu = req.body.cpunovoServer;
     var disco = req.body.disconovoServer;
     var ram = req.body.ramnovoServer;
-    var serial = req.body.numeroSerialnovoServer;
-    var serialVelho =  req.body.numeroSerialVelhoServer;
+    var hostName = req.body.hostNamenovoServer;
+    var hostNameVelho =  req.body.hostNameVelhoServer;
 
     if (cpu == undefined) {
         res.status(400).send("Sua cpu está undefined!");
@@ -104,14 +104,14 @@ function alterar(req, res) {
         res.status(400).send("Seu disco está undefined!");
     } else if (ram == undefined) {
         res.status(400).send("Sua ram está undefined!");
-    } else if (serial == undefined) {
+    } else if (hostName == undefined) {
         res.status(400).send("Seu serial está undefined!");
-    } else if (serialVelho == undefined) {
+    } else if (hostNameVelho == undefined) {
         res.status(400).send("Seu serial está undefined!");
 
     } else {
         
-        maquinaModel.alterar(cpu, disco, ram, serial, serialVelho)
+        maquinaModel.alterar(cpu, disco, ram, hostName, hostNameVelho)
             .then(
                 function (resultado) {
                     res.json(resultado);

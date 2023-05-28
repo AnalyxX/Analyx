@@ -16,7 +16,7 @@ router.post("/pegarEmpresa", function (req, res) {
 });
 
 router.post("/autenticarEMP", function (req, res) {
-    usuarioController.autenticarEMP(req, res);
+    empresaController.autenticarEMP(req, res);
 });
 
 router.put("/alterar/", function (req, res) {
