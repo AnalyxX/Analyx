@@ -1,8 +1,8 @@
 var database = require("../database/config");
 
 function getUseCpuByFuncId(id) {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-    var instrucao = `
+	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+	var instrucao = `
     select f.id,
 	f.nome,
     c.id 'id_comp',
@@ -21,13 +21,13 @@ function getUseCpuByFuncId(id) {
 		where tp.tipoComponente = "cpu" and f.id = 2
 		order by c.id desc
 		limit 5;`;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function getUseDiscByFuncId(id) {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-    var instrucao = `
+	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+	var instrucao = `
     select f.id,
 	f.nome,
     c.id 'id_comp',
@@ -45,13 +45,13 @@ function getUseDiscByFuncId(id) {
 		where tp.tipoComponente = "disco" and f.id = 2
 		order by c.id desc
 		limit 1;`;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function getUseRamByFuncId(id) {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-    var instrucao = `
+	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+	var instrucao = `
     select f.id,
 	f.nome,
     c.id 'id_comp',
@@ -70,21 +70,13 @@ function getUseRamByFuncId(id) {
 		where tp.tipoComponente = "ram" and f.id = 2
 		order by c.id desc
 		limit 5;`;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function getFuncName() {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-    var instrucao = `
-    select f.nome from funcionario f;`;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function getLatencyValue(id) {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-    var instrucao = `
+	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+	var instrucao = `
     select f.id,
 	f.nome,
     p.id 'id_pacote',
@@ -99,13 +91,13 @@ function getLatencyValue(id) {
 		where f.id = 2
 		order by p.id desc
 		limit 1;`;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function getDataPackages(id) {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-    var instrucao = `
+	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+	var instrucao = `
     select f.id,
 	f.nome,
     p.id 'id_pacote',
@@ -123,16 +115,25 @@ function getDataPackages(id) {
 		where f.id = 2
 		order by p.id desc
 		limit 1;`;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
+}
+
+function getCountMachines() {
+	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+	var instrucao = `
+	select count(em.id) total_maquina
+	from especificacaoMaquina em;`;
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 
 module.exports = {
-    getUseCpuByFuncId,
-    getUseDiscByFuncId,
-    getUseRamByFuncId,
-	getFuncName,
+	getUseCpuByFuncId,
+	getUseDiscByFuncId,
+	getUseRamByFuncId,
 	getLatencyValue,
-	getDataPackages
+	getDataPackages,
+	getCountMachines
 }
