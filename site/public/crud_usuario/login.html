@@ -66,17 +66,91 @@
 <script>
 
     function conectar() {
-        let timerInterval
-
-
 
         if ((ipt_email.value).length > 3 && (ipt_senha.value).length > 3) {
             setTimeout(() => {
-                window.location = "../dashboard/dashboard-init.html";
-            }, "2000")
-        } else {
-             alert("a senha e o email devem conter no minimo 4 caracteres")
+            //    window.location = "../dashboard/dashboardInit.html";
+         //   }, "2000"
+        });
+        }else{
+            alert('O email e senha precisam ter o minimo de 4 digitos.');
         }
+
+
+        // aguardar();
+
+     var emailVar = ipt_email.value;
+     var senhaVar = ipt_senha.value;
+
+     if (emailVar == "" || senhaVar == "") {
+
+         //finalizarAguardar();
+         return false;
+     }
+     else {
+       //   setInterval(sumirMensagem, 5000)
+     }
+
+     console.log("FORM LOGIN: ", emailVar);
+     console.log("FORM SENHA: ", senhaVar);
+
+     fetch("/usuarios/autenticar", {
+         method: "POST",
+         headers: {
+             "Content-Type": "application/json"
+         },
+         body: JSON.stringify({
+             emailServer: emailVar,
+             senhaServer: senhaVar
+         })
+     }).then(function (resposta) {
+         console.log("ESTOU NO THEN DO entrar()!")
+
+         if (resposta.ok) {
+             console.log(resposta);
+
+             resposta.json().then(json => {
+                 console.log(json);
+                 console.log(JSON.stringify(json));
+
+                 sessionStorage.ID_USUARIO = json.id;
+                 sessionStorage.EMAIL_USUARIO = json.email;
+                 sessionStorage.NOME_USUARIO = json.nome;
+                 sessionStorage.TIPO_USUARIO = json.fkTipoUsuario;
+                 sessionStorage.ID_EMPRESA = json.fkEmpresa;
+                 sessionStorage.GESTOR_USUARIO = json.fkGestor;
+                 sessionStorage.MAQUINA_USUARIO = json.fkMaquina;
+                 sessionStorage.SETOR_USUARIO = json.fkMaquina;
+
+                 if (sessionStorage.TIPO_USUARIO == 2) {
+                     alert("Este usuario é java")
+                     sessionStorage.clear();
+                 } else {
+
+                     setTimeout(function () {
+                         window.location = "../dashboard/dashboard-Init.html";
+                     }, 1000); 
+                        }
+
+             });
+         
+
+         } else {
+
+             console.log("Houve um erro ao tentar realizar o login!");
+             alert("Email ou senha inválidos!")
+
+             resposta.text().then(texto => {
+               //  console.error(texto);
+             });
+         }
+
+         }).catch(function (erro) {
+             console.log(erro);
+         })
+
+        // return false; -->
     }
+
 
 </script>
