@@ -12,20 +12,15 @@
 <body>
   <section>
 
-    <div class="navBarLateral">
-
-      <div class="user">
-        <div class="fotoUser">
-        </div>
-        <h2 id="NomeUsuario"></h2>
-      </div>
+    <div class="navBarLateral">]
+     
       <div class="navegarLeteral">
         <li style="display:none;" id="empresa_lateral"><a href="../crud_empresa/empresa.html">EMPRESA</a></li>
         <li> <a href="../crud_maquina/maquina.html"> MÁQUINA</a></li>
         <li><a href="../crud_funcionario/funcionario.html">FUNCIONÁRIO</a></li>
         <li id="aqui"> USUÁRIO</a></li>
       </div>
-      <div class="sair" onclick="sair()"><span>Sair</span></div>
+      <div class="sair" onclick="sair()"><span>Voltar</span></div>
     </div>
 
     <div class="areaPrincipal">
@@ -53,12 +48,12 @@
         <div id="tituloALT" class="titulo" style="display: none;">
           <h1>Buscar usuário</h1>
         </div>
-        <div id="tituloLIST" class="titulo" style="display: none;">
-          <h1>Listagem de usuário</h1>
-        </div>
-        <div id="tituloDELET" class="titulo" style="display: none;">
-          <h1>Deletar usuário</h1>
-        </div>
+        <div id="tituloLIST" class="titulo" style="display: none;">           
+          <h1>Listagem de usuário</h1>                                  
+        </div>                                                                              
+        <div id="tituloDELET" class="titulo" style="display: none;">                 
+          <h1>Deletar usuário</h1>                                       
+        </div>                                                         
         <div class="menssagem" id="menssagem">
 
         </div>
@@ -134,19 +129,19 @@
 
           <div id="listarUsu2" class="listar-usu2">
             <div class="input" id="ipt-1">
-              email
+             <div class="tittle">email</div> 
               <input type="text" name="nome" id="list_email" />
             </div>
             <div class="input" id="ipt-2">
-              Senha
+              <div class="tittle">Senha</div>
               <input type="text" name="matricula" id="list_senha" />
             </div>
             <div class="input" id="ipt-3">
-              Tipo
+              <div class="tittle">Tipo</div>
               <input type="text" name="setor" id="list_tipo" />
             </div>
             <div class="input" id="ipt-4">
-              Funcionario
+              <div class="tittle">Funcionario</div>
               <input type="text" name="maquina" id="list_funcionario" />
             </div>
           </div>
@@ -189,7 +184,7 @@
   var NomeDousuario = "";
 
   EmailUsuario = sessionStorage.EMAIL_USUARIO;
-
+                                                                        
   NomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
 
   if (EmailUsuario != undefined && EmailUsuario.includes("analyx@")) {
@@ -197,7 +192,7 @@
   }
 
   function sair() {
-    window.location = "../index.html";
+    window.location = "../dashboard-init.html";
     sessionStorage.clear();
 
   }

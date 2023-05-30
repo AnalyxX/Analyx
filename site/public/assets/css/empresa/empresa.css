@@ -31,17 +31,17 @@ input {
   background-color: rgb(242, 241, 241);
   border-radius: 2px;
   height: 5vh;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   color: black;
   display: flex;
   flex-direction: column;
   outline: 0;
-  padding: 20px;
   /* border: solid 3px magenta; */
   margin-bottom: 5vh;
   width: 100%;
   word-spacing: 0.3rem;
   letter-spacing: 0.05rem;
+  padding: 1%;
 }
 
 section {
@@ -96,13 +96,14 @@ ul {
 }
 
 .navBarLateral {
+  padding-top: 13%;
   /* border: solid 3px red; */
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 17%;
   /* background-color: #274360; */
-  background-color: #0E1533;
+  background-color: #09121C;
   color: white;
 
 }
@@ -159,7 +160,7 @@ ul {
 #aqui2 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color: rgb(131, 131, 224);
+  text-decoration-color:  rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
@@ -194,7 +195,7 @@ ul {
 }
 
   .menssagem{
-    border: solid 3px rgb(97, 135, 217);
+    border: solid 3px  rgb(255, 230, 0);
     width: 10rem;
     height: 5rem;
     display: flex;
@@ -263,7 +264,7 @@ ul {
 #aqui3 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-color:  rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
@@ -373,7 +374,7 @@ ul {
 #aqui4 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-color:  rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
@@ -414,7 +415,7 @@ ul {
 .listar-emp #empresas_lista li{
   list-style-type: none;
   text-decoration: underline;
-  color: blue;
+  color: rgb(255, 251, 0);
   cursor: pointer;
 }
 
@@ -474,7 +475,7 @@ input::placeholder {
 #aqui5 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-color:  rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 

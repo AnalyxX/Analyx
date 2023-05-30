@@ -96,15 +96,15 @@ ul {
 }
 
 .navBarLateral {
+  padding-top: 13%;
   /* border: solid 3px red; */
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 17%;
   /* background-color: #274360; */
-  background-color: #0E1533;
   color: white;
-
+  background-color: #09121C;
 }
 
 .user {
@@ -159,7 +159,7 @@ ul {
 #aqui2 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color: rgb(131, 131, 224);
+  text-decoration-color:  rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
@@ -194,7 +194,7 @@ ul {
 }
 
 .menssagem {
-  border: solid 3px rgb(97, 135, 217);
+  border: solid 3px  rgb(255, 230, 0);
   width: 10rem;
   height: 5rem;
   display: flex;
@@ -264,7 +264,7 @@ ul {
 #aqui3 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-color:  rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
@@ -374,7 +374,7 @@ ul {
 #aqui4 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-color:  rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
@@ -462,7 +462,7 @@ input {
   padding: 10px;
   margin-bottom: 5px;
   font-size: 1rem;
-
+  
 }
 
 input::placeholder {
@@ -478,7 +478,7 @@ input::placeholder {
 #aqui5 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color: rgb(76, 76, 240);
+  text-decoration-color:  rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
@@ -521,6 +521,7 @@ input::placeholder {
 
 .deletar-usu .input {
   /* border:  solid 3px green; */
+  padding: 10px;
   display: flex;
   width: 70%;
   justify-content: center;
@@ -578,5 +579,4 @@ button {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
 }
