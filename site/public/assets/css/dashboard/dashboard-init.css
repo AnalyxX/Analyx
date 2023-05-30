@@ -262,6 +262,7 @@
     width: 100%;
     min-height: 250px;
     text-align: center;
+    height: 70vh;
 }
 
 .func-align {
@@ -271,7 +272,7 @@
 .scroll {
     overflow: hidden;
     overflow-y: scroll;
-    height: 150px;
+    height: 50vh;
 }
 
 .scroll::-webkit-scrollbar {

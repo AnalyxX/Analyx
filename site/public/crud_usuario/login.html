@@ -67,34 +67,17 @@
 
     function conectar() {
 
-        if ((ipt_email.value).length > 3 && (ipt_senha.value).length > 3) {
-            setTimeout(() => {
-            //    window.location = "../dashboard/dashboardInit.html";
-         //   }, "2000"
-        });
-        }else{
-            alert('O email e senha precisam ter o minimo de 4 digitos.');
-        }
-
-
-        // aguardar();
-
      var emailVar = ipt_email.value;
      var senhaVar = ipt_senha.value;
 
      if (emailVar == "" || senhaVar == "") {
-
-         //finalizarAguardar();
          return false;
-     }
-     else {
-       //   setInterval(sumirMensagem, 5000)
      }
 
      console.log("FORM LOGIN: ", emailVar);
      console.log("FORM SENHA: ", senhaVar);
 
-     fetch("/usuarios/autenticar", {
+     fetch("/usuarios/entrar", {
          method: "POST",
          headers: {
              "Content-Type": "application/json"

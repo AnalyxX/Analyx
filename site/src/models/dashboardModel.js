@@ -3,7 +3,7 @@ var database = require("../database/config");
 function getUseCpuByFuncId(id) {
 	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
 	var instrucao = `
-    select f.id,
+    select top 5 f.id,
 	f.nome,
     c.id 'id_comp',
 	c.uso,
@@ -18,9 +18,8 @@ function getUseCpuByFuncId(id) {
 			on m.id = c.fkMonitoramento
 		join tipoComponente tp
 			on tp.id = c.fkTipoComponente
-		where tp.tipoComponente = "cpu" and f.id = 2
-		order by c.id desc
-		limit 5;`;
+		where tp.tipoComponente = 'cpu' and f.id = ${id}
+		order by c.id desc;`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
@@ -28,31 +27,7 @@ function getUseCpuByFuncId(id) {
 function getUseDiscByFuncId(id) {
 	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
 	var instrucao = `
-    select f.id,
-	f.nome,
-    c.id 'id_comp',
-	c.uso,
-	tp.tipoComponente
-	from funcionario f
-		join especificacaoMaquina em 
-			on em.id = f.fkMaquina
-		join monitoramento m
-			on em.id = m.fkMaquina
-		join componente c
-			on m.id = c.fkMonitoramento
-		join tipoComponente tp
-			on tp.id = c.fkTipoComponente
-		where tp.tipoComponente = "disco" and f.id = 2
-		order by c.id desc
-		limit 1;`;
-	console.log("Executando a instrução SQL: \n" + instrucao);
-	return database.executar(instrucao);
-}
-
-function getUseRamByFuncId(id) {
-	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-	var instrucao = `
-    select f.id,
+	select top 5 f.id,
 	f.nome,
     c.id 'id_comp',
 	c.uso,
@@ -67,9 +42,32 @@ function getUseRamByFuncId(id) {
 			on m.id = c.fkMonitoramento
 		join tipoComponente tp
 			on tp.id = c.fkTipoComponente
-		where tp.tipoComponente = "ram" and f.id = 2
-		order by c.id desc
-		limit 5;`;
+		where tp.tipoComponente = 'disco' and f.id = ${id}
+		order by c.id desc;`;
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
+}
+
+function getUseRamByFuncId(id) {
+	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+	var instrucao = `
+	select top 5 f.id,
+	f.nome,
+    c.id 'id_comp',
+	c.uso,
+	tp.tipoComponente,
+	m.hora
+	from funcionario f
+		join especificacaoMaquina em 
+			on em.id = f.fkMaquina
+		join monitoramento m
+			on em.id = m.fkMaquina
+		join componente c
+			on m.id = c.fkMonitoramento
+		join tipoComponente tp
+			on tp.id = c.fkTipoComponente
+		where tp.tipoComponente = 'ram' and f.id = ${id}
+		order by c.id desc;`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
@@ -77,7 +75,7 @@ function getUseRamByFuncId(id) {
 function getLatencyValue(id) {
 	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
 	var instrucao = `
-    select f.id,
+    select top 1 f.id,
 	f.nome,
     p.id 'id_pacote',
     p.latencia
@@ -88,9 +86,8 @@ function getLatencyValue(id) {
 			on em.id = m.fkMaquina
 		join pacote p
 			on m.id = p.fkMonitoramento
-		where f.id = 2
-		order by p.id desc
-		limit 1;`;
+		where f.id = ${id}
+		order by p.id desc;`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
@@ -98,7 +95,7 @@ function getLatencyValue(id) {
 function getDataPackages(id) {
 	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
 	var instrucao = `
-    select f.id,
+    select top 1 f.id,
 	f.nome,
     p.id 'id_pacote',
     p.bytesRecebidos,
@@ -112,18 +109,29 @@ function getDataPackages(id) {
 			on em.id = m.fkMaquina
 		join pacote p
 			on m.id = p.fkMonitoramento
-		where f.id = 2
-		order by p.id desc
-		limit 1;`;
+		where f.id = ${id}
+		order by p.id`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
 
-function getCountMachines() {
+function getListFunc() {
 	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
 	var instrucao = `
-	select count(em.id) total_maquina
-	from especificacaoMaquina em;`;
+	select f.id,
+	f.matricula,
+	f.nome,
+    a.fkTipoComponente,
+	a.fkMonitoramento,
+	a.nivelGravidade
+	from funcionario f
+		join especificacaoMaquina em 
+			on em.id = f.fkMaquina
+		join monitoramento m
+			on em.id = m.fkMaquina
+		join alerta a
+			on m.id = a.fkMonitoramento
+		 where a.fkMonitoramento = (select top 1 m.id from monitoramento m order by m.id desc);`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
@@ -135,5 +143,5 @@ module.exports = {
 	getUseRamByFuncId,
 	getLatencyValue,
 	getDataPackages,
-	getCountMachines
+	getListFunc
 }

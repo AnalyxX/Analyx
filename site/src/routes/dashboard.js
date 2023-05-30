@@ -23,8 +23,8 @@ router.get("/getDataPackages/:id", function (req, res) {
     dashboardController.getDataPackages(req, res);
 });
 
-router.get("/getCountMachines", function (req, res) {
-    dashboardController.getCountMachines(req, res);
+router.get("/getListFunc", function (req, res) {
+    dashboardController.getListFunc(req, res);
 });
 
 module.exports = router;

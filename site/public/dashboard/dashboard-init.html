@@ -31,7 +31,7 @@
         </div>
 
         <div class="exit">
-            <button> Sair </button>
+            <button onclick="exit()"> Sair </button>
         </div>
 
     </div>
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="analytics">
+        <!-- <div class="analytics">
             <div class="container">
                 <div class="card-align">
                     <div class="card">
@@ -93,55 +93,49 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="panel">
-                <div class="container">
-                    <div class="list-func">
-                        <h1>Maquinas cadastradas</h1>
-                        <div class="func-title">
-                            <h1>Total de máquinas: <b id="qtd_maquina"></b> </h1>
-                            <div>
-                                <p> Estáveis </p>
-                                <i id="cpu_check" style="color: green;" class="fa-solid fa-circle-check"> <b
-                                        style="color: white;">13</b></i>
-                            </div>
-
-                            <div>
-                                <p> Alertas </p>
-                                <i id="cpu_alert" style="color: yellow;" class="fa-solid fa-circle-exclamation"><b
-                                        style="color: white; margin-left: 10%;">13</b></i>
-                            </div>
-
-                            <div>
-                                <p> Críticas </p>
-                                <i id="cpu_alert" style="color: red;" class="fa-solid fa-circle-exclamation"><b
-                                        style="color: white; margin-left: 10%;">13</b></i>
-                            </div>
+        <div class="panel">
+            <div class="container">
+                <div class="list-func">
+                    <h1>Maquinas cadastradas</h1>
+                    <div class="func-title">
+                        <h1>Total de máquinas: <b id="qtd_maquina"></b> </h1>
+                        <div>
+                            <p> Estáveis </p>
+                            <i id="cpu_check" style="color: green;" class="fa-solid fa-circle-check"> <b
+                                    id="count_green" style="color: white;"></b></i>
                         </div>
 
-                        <div class="func-align">
-                            <div class="values-title">
-                                <h1> Matrícula </h1>
-                                <h1> Nome </h1>
-                                <h1> Alerta </h1>
-                            </div>
+                        <div>
+                            <p> Alertas </p>
+                            <i id="cpu_alert" style="color: yellow;" class="fa-solid fa-circle-exclamation"><b
+                                    id="count_yellow" style="color: white; margin-left: 10%;"></b></i>
+                        </div>
 
-                            <div class="scroll" id="scroll_text">
-                                <div class="line-values" onclick="toSecondDash()">
-                                    <p> 0012232179</p>
-                                    <p> Roberto Faria </p>
-                                    <p> <i id="cpu_alert" style="color: red;"
-                                            class="fa-solid fa-circle-exclamation"></i>
-                                    </p>
-                                </div>
-                            </div>
+                        <div>
+                            <p> Críticas </p>
+                            <i id="cpu_alert" style="color: red;" class="fa-solid fa-circle-exclamation"><b
+                                    id="count_red" style="color: white; margin-left: 10%;"></b></i>
+                        </div>
+                    </div>
+
+                    <div class="func-align">
+                        <div class="values-title">
+                            <h1> Matrícula </h1>
+                            <h1> Nome </h1>
+                            <h1> Alerta </h1>
+                        </div>
+
+                        <div class="scroll" id="scroll_text">
+
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+    </div>
     </div>
 
 </body>
@@ -150,24 +144,32 @@
 
 <script>
 
+    function exit() {
+        window.location = "login.html"
+    }
+
     function back() {
         window.location = "dashboardInit.html"
     }
 
-    function toSecondDash() {
+    function toSecondDash(userId, username) {
+        sessionStorage.setItem('userId', userId);
+        sessionStorage.setItem('username', username);
         window.location = "dashboard2.html"
     }
 
     function instance() {
-        getWeek(2)
-        getSecondWeek(2)
-        getCountMachines()
+        getWeek(1)
+        getSecondWeek(1)
+        getListFunc()
     }
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let chartWeek;
     let chartSecondWeek;
+
+    let textPackage = document.getElementById("scroll_text");
 
     function getWeek(idFunc) {
         fetch(`/dashboard/getUseCpuByFuncId/${idFunc}`).then(function (response) {
@@ -186,7 +188,7 @@
 
                     setTimeout(() => {
                         getWeek(idFunc)
-                    }, 10000)
+                    }, 60000)
 
                 });
             } else {
@@ -215,7 +217,7 @@
 
                     setTimeout(() => {
                         getSecondWeek(idFunc)
-                    }, 10000)
+                    }, 60000)
 
                 });
             } else {
@@ -227,18 +229,99 @@
             });
     }
 
-    function getCountMachines() {
-        fetch(`/dashboard/getCountMachines`).then(function (response) {
+    function getListFunc() {
+        fetch(`/dashboard/getListFunc`).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
+                    let maquinas
+                    const alert = {
+                        'Normal': 0,
+                        'Alerta': 0,
+                        'Crítico': 0,
+                    }
 
-                    let quantityMachine = resposta[0].total_maquina
+                    const rsp = resposta.reduce((monitoramento, alerta) => {
+                        const { matricula } = alerta;
+                        monitoramento[matricula] = monitoramento[matricula] ?? [];
+                        monitoramento[matricula].push(alerta);
+                        return alerta
+                    }, {})
 
-                    qtd_maquina.innerHTML = `${quantityMachine}`
+                    let funcList = []
+                    if (rsp.length === undefined) {
+                        maquinas = []
+                        maquinas.push(rsp)
+                    } else maquinas = rsp
+
+                    maquinas.forEach((element) => {
+                        let nivelGravidade = '';
+                        const matriculas = resposta.filter(matricula => element.matricula === matricula.matricula);
+
+                        matriculas.forEach((matricula) => {
+                            if (nivelGravidade === '' || nivelGravidade === 'Normal') nivelGravidade = matricula.nivelGravidade
+                            else if (matricula.nivelGravidade === 'Alerta' && nivelGravidade !== 'Crítico') nivelGravidade = matricula.nivelGravidade
+                            else if (nivelGravidade === 'Alerta' && matricula.nivelGravidade === 'Crítico') nivelGravidade = matricula.nivelGravidade
+                        })
+
+                        alert[nivelGravidade]++
+
+                        let funcItem = {
+                            matricula: element.matricula,
+                            nome: element.nome,
+                            id: element.id,
+                            nivelGravidade
+                        }
+
+                        funcList.push(funcItem)
+                    });
+
+                    count_green.innerHTML = alert['Normal']
+                    count_yellow.innerHTML = alert['Alerta']
+                    count_red.innerHTML = alert['Crítico']
+                    qtd_maquina.innerHTML = maquinas.length;
+
+                    const map = {
+                        'Normal': 3,
+                        'Alerta': 2,
+                        'Crítico': 1,
+                    }
+
+                    funcList.sort((a, b) => map[a.nivelGravidade] - map[b.nivelGravidade])
+
+                    // funcList.sort(function (a, b) {
+                    //     let alertaOrder = { red: 1, yellow: 2, green: 3 };
+                    //     return alertaOrder[a.alerta] - alertaOrder[b.alerta];
+                    // });
+
+
+                    for (let i = 0; i < funcList.length; i++) {
+                        let icon
+
+                        if (funcList[i].nivelGravidade == 'Crítico') {
+                            icon = `<i id="cpu_alert" style="color: red;"
+                                class="fa-solid fa-circle-exclamation"></i>`
+
+                        } else if (funcList[i].nivelGravidade == 'Alerta') {
+                            icon = `<i id="cpu_alert" style="color: yellow;"
+                                class="fa-solid fa-circle-exclamation"></i>`
+
+                        } else if (funcList[i].nivelGravidade == 'Normal') {
+                            icon = `<i id="cpu_alert" style="color: green;"
+                                class="fa-solid fa-circle-check"></i>`
+                        }
+
+                        textPackage.innerHTML += `
+                            <div class="line-values" onclick="toSecondDash('${funcList[i].id}', '${funcList[i].nome}')">
+                                <p> ${funcList[i].matricula} </p>
+                                <p> ${funcList[i].nome} </p>
+                                <p> ${icon} </p>
+                            </div>`
+                    }
 
                     setTimeout(() => {
-                        getCountMachines()
-                    }, 10000)
+                        getListFunc()
+                        textPackage.innerHTML = ``
+                    }, 60000)
 
                 });
             } else {

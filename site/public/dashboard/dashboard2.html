@@ -197,7 +197,12 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-<script>
+<script> 
+
+    b_usuario.innerHTML = sessionStorage.getItem('username');
+    var idFunc = sessionStorage.getItem('userId');
+
+    debugger
 
     function instance() {
         getDataCpu(idFunc);
@@ -207,21 +212,12 @@
         getDataPackages(idFunc);
     }
 
-    b_usuario.innerHTML = localStorage.NOME_USUARIO;
 
     let text = document.getElementById("discText");
     let textLatency = document.getElementById("latencyText");
     let textPackage = document.getElementById("scroll_text");
 
-    let bytesRecebidos = []
-    let bytesEnviados = []
-    let pacotesRecebidos = []
-    let pacotesEnviados = []
-
     let latencyData = [];
-    let packages = [];
-
-    let idFunc = 1;
 
     let contCpu = 0
 
@@ -246,15 +242,15 @@
                     // TROUXE OS 5 DADOS OBTIDOS NOS ULTIMOS MINUTOS
                     resposta.forEach((element, index) => {
                         points.push(element.uso)
-                        // labels.push(index)
-                        labels.push(element.hora)
+                        labels.push(element.hora.split('T')[1].split('.')[0])
+
                     });
 
                     loadCpu(points, labels)
 
                     setTimeout(() => {
                         getDataCpu(idFunc)
-                    }, 10000)
+                    }, 60000)
 
                 });
             } else {
@@ -286,7 +282,7 @@
 
                     setTimeout(() => {
                         getDataDisc(idFunc)
-                    }, 10000)
+                    }, 60000)
 
                 });
             } else {
@@ -310,14 +306,14 @@
 
                     resposta.forEach((element, index) => {
                         points.push(element.uso)
-                        labels.push(element.hora)
+                        labels.push(element.hora.split('T')[1].split('.')[0])
                     });
 
                     loadRam(points, labels)
 
                     setTimeout(() => {
                         getDataRam(idFunc)
-                    }, 10000)
+                    }, 60000)
 
                 });
             } else {
@@ -346,11 +342,11 @@
 
                     setTimeout(() => {
                         loadNet()
-                    }, 1000)
+                    }, 60000)
 
                     setTimeout(() => {
                         getDataLatency(idFunc)
-                    }, 10000)
+                    }, 60000)
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -368,15 +364,23 @@
             if (response.ok) {
                 response.json().then(function (resposta) {
 
-                    let packagesItem = {
-                        br: resposta[0].bytesRecebidos,
-                        be: resposta[0].bytesEnviados,
-                        pr: resposta[0].pacotesRecebidos,
-                        pe: resposta[0].pacotesEnviados
-                    }
+                    let packages = [];
 
-                    packages.push(packagesItem)
+                    let bytesRecebidos = []
+                    let bytesEnviados = []
+                    let pacotesRecebidos = []
+                    let pacotesEnviados = []
 
+                    resposta.forEach((element) => {
+                        let packagesItem = {
+                            br: element.bytesRecebidos,
+                            be: element.bytesEnviados,
+                            pr: element.pacotesRecebidos,
+                            pe: element.pacotesEnviados
+                        }
+
+                        packages.push(packagesItem)
+                    });
 
                     for (let i = 0; i < packages.length; i++) {
                         textPackage.innerHTML += `
@@ -390,7 +394,8 @@
 
                     setTimeout(() => {
                         getDataPackages(idFunc)
-                    }, 10000)
+                        textPackage.innerHTML = ``
+                    }, 60000)
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
