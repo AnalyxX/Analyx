@@ -426,7 +426,7 @@
     color: white;
     width: 95%;
     min-height: 200px;
-    height: 200px;
+    height: 220px;
 }
 
 .package-align {
@@ -437,8 +437,19 @@
 .scroll {
     overflow: hidden;
     overflow-y: scroll;
-    height: 120px;
 }
+
+@media screen and (max-width: 1920px) {
+    .scroll {
+        height: 200px;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .scroll {
+        height: 120px;
+    }
+}
+
 
 .scroll::-webkit-scrollbar {
     width: 8px;
