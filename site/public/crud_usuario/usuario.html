@@ -12,8 +12,11 @@
 <body>
   <section>
 
-    <div class="navBarLateral">]
-     
+    <div class="navBarLateral">
+      <div class="user">
+        <h2 id="NomeUsuario"></h2>
+      </div>
+
       <div class="navegarLeteral">
         <li style="display:none;" id="empresa_lateral"><a href="../crud_empresa/empresa.html">EMPRESA</a></li>
         <li> <a href="../crud_maquina/maquina.html"> MÁQUINA</a></li>
@@ -48,12 +51,12 @@
         <div id="tituloALT" class="titulo" style="display: none;">
           <h1>Buscar usuário</h1>
         </div>
-        <div id="tituloLIST" class="titulo" style="display: none;">           
-          <h1>Listagem de usuário</h1>                                  
-        </div>                                                                              
-        <div id="tituloDELET" class="titulo" style="display: none;">                 
-          <h1>Deletar usuário</h1>                                       
-        </div>                                                         
+        <div id="tituloLIST" class="titulo" style="display: none;">
+          <h1>Listagem de usuário</h1>
+        </div>
+        <div id="tituloDELET" class="titulo" style="display: none;">
+          <h1>Deletar usuário</h1>
+        </div>
         <div class="menssagem" id="menssagem">
 
         </div>
@@ -104,10 +107,10 @@
           Senha
           <input type="text" name="matricula" placeholder="Altere a Razão Social" id="alt_senha" />
         </div>
-        <div class="input3" id="ipt-3">
+        <!-- <div class="input3" id="ipt-3">
           Tipo
           <input type="text" name="setor" placeholder="Altere o Responsável" id="alt_tipo" />
-        </div>
+        </div> -->
         <div class="input3" id="ipt-4">
           Funcionario
           <input type="text" name="maquina" placeholder="Altere o Email" id="alt_funcionario" />
@@ -129,7 +132,7 @@
 
           <div id="listarUsu2" class="listar-usu2">
             <div class="input" id="ipt-1">
-             <div class="tittle">email</div> 
+              <div class="tittle">email</div>
               <input type="text" name="nome" id="list_email" />
             </div>
             <div class="input" id="ipt-2">
@@ -184,7 +187,7 @@
   var NomeDousuario = "";
 
   EmailUsuario = sessionStorage.EMAIL_USUARIO;
-                                                                        
+
   NomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
 
   if (EmailUsuario != undefined && EmailUsuario.includes("analyx@")) {
@@ -192,7 +195,7 @@
   }
 
   function sair() {
-    window.location = "../dashboard-init.html";
+    window.location = "../dashboard/dashboard-init.html";
     sessionStorage.clear();
 
   }
@@ -347,7 +350,7 @@
         emailServer: email,
       })
     }).then(function (resposta) {
-      console.log("ESTOU NO THEN DO autenticar usu()!")
+      console.log("ESTOU NO THEN DO autenticar usuario()!")
 
       if (resposta.ok) {
         console.log(resposta);
@@ -371,7 +374,7 @@
 
         console.log("Houve um erro ao tentar realizar o cadastro!");
         ax_erro = true;
-        alert("Essa usuario já está cadastrada!")
+        alert("Essa usuario já está cadastrado!")
         return;
 
         resposta.text().then(texto => {
@@ -446,11 +449,14 @@
 
         if (resposta.ok) {
 
-          alert("Cadastro realizado com sucesso!");
+          menssagem.style.display = "block";
+          menssagem.innerHTML = "Cadastro realizado com sucesso!";
+          setTimeout(() => {
+            menssagem.style.display = "none";
+          }, "4000")
           setTimeout(() => {
             window.location = "usuario.html";
           }, "2000")
-
 
         } else {
           throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -494,7 +500,7 @@
         console.log(resposta);
 
         if (resposta.status == 204) {
-          alert("Nenhuma empresa encontrada!")
+          alert("Nenhum usuario encontrado!")
         } else {
           resposta.json().then(json => {
             console.log(json);
@@ -504,16 +510,17 @@
             sessionStorage.ID_USUARIOALT = json.id;
             sessionStorage.EMAIL_USUARIOALT = json.email;
             sessionStorage.SENHA_USUARIOALT = json.senha;
-            //           sessionStorage.TIPO_USUARIOALT = json.fkTipoUsuario;
+            sessionStorage.TIPO_USUARIOALT = json.fkTipoUsuario;
             sessionStorage.FUNCIONARIO_USUARIOALT = json.fkFuncionario;
+
 
             alt_email.value = sessionStorage.EMAIL_USUARIOALT;
             alt_senha.value = sessionStorage.SENHA_USUARIOALT;
-            //           alt_tipo.value = sessionStorage.TIPO_USUARIOALT;
+         //    alt_tipo.value = sessionStorage.TIPO_USUARIOALT;
             alt_funcionario.value = sessionStorage.FUNCIONARIO_USUARIOALT;
 
             if (sessionStorage.EMAIL_USUARIOALT != null && sessionStorage.EMAIL_USUARIOALT != undefined) {
-              alert("usuario encontrada!")
+              alert("Usuario encontrado!")
             }
 
 
@@ -528,7 +535,7 @@
       } else {
         alert("Email ou senha invalidos!")
 
-        console.log("Houve um erro ao tentar realizar o login!");
+        console.log("Houve um erro ao tentar buscar usuario!");
 
         resposta.text().then(texto => {
           console.error(texto);
@@ -586,7 +593,7 @@
           // Agora vá para o arquivo routes/usuario.js
           emailnovoServer: emailNovo,
           senhanovoServer: senhaNovo,
-          //    tiponovoServer: tipoNovo,
+          tiponovoServer: tipoNovo,
           funcionarionovoServer: funcionarioNovo,
           idServer: id,
         })
@@ -602,7 +609,7 @@
 
           alt_email.value = "";
           alt_senha.value = "";
-          //     alt_tipo.value = "";
+          //alt_tipo.value = "";
           alt_funcionario.value = "";
           setTimeout(() => {
             window.location = "usuario.html";
@@ -671,15 +678,15 @@
             if (informacaoList >= 0) {
               if (i == informacaoList) {
                 if (registro.tipo == 1) {
-                  registro.tipo = 'web';
-                } else if (registro.tipo == 2) {
+                  registro.fkTipoUsuario = 'web';
+                } else if (registro.fkTipoUsuario == 2) {
                   registro.tipo = 'java';
                 }
 
                 list_email.value = `${registro.email}`;
                 list_senha.value = `${registro.senha}`;
-                list_tipo.value = `${registro.fkTipoUsuario}`;
-                list_funcionario.value = `${registro.fkFuncionario}`;
+                list_tipo.value = `${registro.tipoUsuario}`;
+                list_funcionario.value = `${registro.nome}`;
               }
             }
           }
@@ -737,7 +744,7 @@
         console.log(resposta);
 
         if (resposta.status == 204) {
-          alert("Nenhuma empresa encontrada!")
+          alert("Nenhum usuario encontrado!")
         } else {
           resposta.json().then(json => {
             console.log(json);
@@ -758,7 +765,7 @@
 
 
             if (sessionStorage.EMAIL_USUARIODEL != null && sessionStorage.EMAIL_USUARIODEL != undefined) {
-              alert("usuario encontrada!")
+              alert("usuario encontrado!")
             }
 
           });
@@ -775,7 +782,7 @@
       }
     }).catch(function (erro) {
       console.log(erro);
-      alert("usuario não encontrada")
+      alert("usuario não encontrado")
     })
 
     return false;
@@ -813,7 +820,7 @@
         resposta.json().then(json => {
           console.log(json);
           console.log(JSON.stringify(json));
-          alert("usuario deletada com sucesso!")
+          alert("usuario deletado com sucesso!")
           deletarUsu2.style.display = "none";
           buscarDelete.style.display = "block";
         });

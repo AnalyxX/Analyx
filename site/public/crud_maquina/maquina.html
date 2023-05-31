@@ -13,8 +13,10 @@
   <section>
 
     <div class="navBarLateral">
+      <div class="user">
+        <h2 id="NomeUsuario"></h2>
+      </div>
 
-      
       <div class="navegarLeteral">
         <li style="display:none;" id="empresa_lateral"><a href="../crud_empresa/empresa.html">EMPRESA</a></li>
         <li id="aqui">MÁQUINA</a></li>
@@ -37,7 +39,7 @@
           </ul>
         </nav>
       </header>
-          
+
       <div class="areaTitulo">
 
         <div id="tituloALT" class="titulo" style="display: block;">
@@ -72,19 +74,19 @@
       <div id="alterarMaq2" class="alterar-maq2" style="display:none;">
         <div class="input3" id="ipt-1">
           CPU
-          <input type="text" name="nome" placeholder="Altere o hostName" id="alt_cpu" />
+          <input type="text" name="nome" placeholder="Altere o CPU" id="alt_cpu" />
         </div>
         <div class="input3" id="ipt-2">
           RAM
-          <input type="text" name="matricula" placeholder="Altere a Razão Social" id="alt_ram" />
+          <input type="text" name="matricula" placeholder="Altere a RAM" id="alt_ram" />
         </div>
         <div class="input3" id="ipt-3">
           DISCO
-          <input type="text" name="setor" placeholder="Altere o Responsável" id="alt_disco" />
+          <input type="text" name="setor" placeholder="Altere o Disco" id="alt_disco" />
         </div>
         <div class="input3" id="ipt-4">
           hostName
-          <input type="text" name="maquina" placeholder="Altere o Email" id="alt_hostName" />
+          <input type="text" name="maquina" placeholder="Altere o HostName" id="alt_hostName" />
         </div>
         <button id="btn_entrar" onclick="alterar()">Alterar</button>
       </div>
@@ -110,7 +112,7 @@
               <input type="text" name="matricula" id="list_disco" readonly />
             </div>
             <div class="input" id="ipt-3">
-              CPU
+              Modelo CPU
               <input type="text" name="setor" id="list_cpu" readonly />
             </div>
             <div class="input" id="ipt-4">
@@ -160,12 +162,13 @@
 
   NomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+
   if (EmailUsuario != undefined && EmailUsuario.includes("analyx@")) {
     empresa_lateral.style.display = "block";
   }
 
   function sair() {
-    window.location = "../index.html";
+    window.location = "../dashboard/dashboard-init.html";
     sessionStorage.clear();
 
   }
@@ -202,7 +205,7 @@
     aqui3.style.display = "none";
     aqui5.style.display = "none";
     listMaq.style.display = "none";
-    
+
     altMaq.style.display = "block";
     deletMaq.style.display = "block";
 
@@ -298,9 +301,12 @@
             alert("Nenhuma maquina encontrada!");
           } else {
 
-            sessionStorage.CPU_MAQUINA = json.fkCpu;
-            sessionStorage.RAM_MAQUINA = json.fkRam;
-            sessionStorage.DISCO_MAQUINA = json.fkDisco;
+            sessionStorage.CPU_MAQUINA = json.modeloCPU;
+            sessionStorage.RAM_MAQUINA = json.total;
+            sessionStorage.DISCO_MAQUINA = json.volume;
+            sessionStorage.CPU_MAQUINA2 = json.fkCpu;
+            sessionStorage.RAM_MAQUINA2 = json.fkRam;
+            sessionStorage.DISCO_MAQUINA2 = json.fkDisco;
             sessionStorage.HOSTNAME_MAQUINA = json.hostName;
 
             alterarMaq2.style.display = "block";
@@ -321,33 +327,31 @@
 
         resposta.text().then(texto => {
           console.error(texto);
-          //    finalizarAguardar(texto);
         });
       }
 
     }).catch(function (erro) {
-      alert("Empresa não encontrada!");
+      alert("maquina não encontrada!");
       console.log(erro);
     })
     return false;
   }
 
   function alterar() {
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
+
     var cpuNovo = alt_cpu.value;
     var ramNovo = alt_ram.value;
     var discoNovo = alt_disco.value;
+    var cpuNovo2 = sessionStorage.CPU_MAQUINA2;
+    var ramNovo2 = sessionStorage.RAM_MAQUINA2;
+    var discoNovo2 = sessionStorage.DISCO_MAQUINA2;
     var hostNameNovo = alt_hostName.value;
     var hostNameVelho = Alt_hostName.value;
     var ax_erro = false;
 
 
     if (alt_cpu.value == "" || alt_ram.value == "" || alt_disco.value == "" || alt_hostName.value == "") {
-      //cardErro.style.display = "block"
       alert("Por favor, preencha todos os campos!")
-
-
       return false;
     } else if (alt_hostName.value.length < 4) {
       alert("hostName invalido!")
@@ -371,6 +375,9 @@
           cpunovoServer: cpuNovo,
           ramnovoServer: ramNovo,
           disconovoServer: discoNovo,
+          cpunovo2Server: cpuNovo2,
+          ramnovo2Server: ramNovo2,
+          disconovo2Server: discoNovo2,
           hostNamenovoServer: hostNameNovo,
           hostNameVelhoServer: hostNameVelho
         })
@@ -391,7 +398,7 @@
           }, "2000")
 
         } else {
-          throw ("Houve um erro ao tentar realizar o cadastro!");
+          throw ("Houve um erro ao tentar realizar a alteração!");
           menssagem.style.display = "block";
           menssagem.innerHTML = "Houve um erro ao realizar a alteração!";
           setTimeout(() => {
@@ -454,8 +461,8 @@
               if (i == informacaoList) {
                 list_hostname.value = `${registro.hostName}`;
                 list_cpu.value = `${registro.modeloCPU}`;
-                list_disco.value = `${registro.total}`;
-                list_ram.value = `${registro.volume}`;
+                list_disco.value = `${registro.total/10000} GB`;
+                list_ram.value = `${registro.volume} Volume`;
               }
 
             }
@@ -517,9 +524,9 @@
           buscarDelete.style.display = "none";
 
           sessionStorage.ID_MAQUINADEL = json.id;
-          sessionStorage.CPU_MAQUINADEL = json.fkCpu;
-          sessionStorage.RAM_MAQUINADEL = json.fkRam;
-          sessionStorage.DISCO_MAQUINADEL = json.fkDisco;
+          sessionStorage.CPU_MAQUINADEL = json.modeloCPU;
+          sessionStorage.RAM_MAQUINADEL = json.total;
+          sessionStorage.DISCO_MAQUINADEL = json.volume;
           sessionStorage.HOSTNAME_MAQUINADEL = json.hostName;
 
           del_cpu.innerHTML = sessionStorage.CPU_MAQUINADEL;
@@ -543,7 +550,7 @@
       }
     }).catch(function (erro) {
       console.log(erro);
-      alert("Empresa não encontrada")
+      alert("Maquina não encontrada")
     })
 
     return false;
@@ -581,9 +588,14 @@
         resposta.json().then(json => {
           console.log(json);
           console.log(JSON.stringify(json));
-          alert("Empresa deletada com sucesso!")
-          deletarMaq2.style.display = "none";
-          buscarDelete.style.display = "block";
+          menssagem.style.display = "block";
+          menssagem.innerHTML = "Maquina deletada com sucesso!";
+          setTimeout(() => {
+            menssagem.style.display = "none";
+          }, "4000")
+          setTimeout(() => {
+            window.location = "maquina.html";
+          }, "2000")
         });
 
       } else {

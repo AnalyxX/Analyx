@@ -109,16 +109,16 @@ ul {
 
 .user {
   /* border: solid 3px yellow; */
-  height: 200px;
+  /* height: 200px; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  border-bottom: solid 1px white;
 }
 
-.user .fotoUser {
-  /* border: solid 3px red; */
+/* .user .fotoUser {
+  /* border: solid 3px red; 
   height: 50%;
   width: 50%;
   border-radius: 50%;
@@ -129,7 +129,7 @@ ul {
 
 .user h2 {
   margin-top: 20px;
-}
+} */
 
 .navegarLeteral {
   /* border: solid 3px blue; */
@@ -174,15 +174,18 @@ ul {
 }
 
 .sair span {
-  cursor: pointer;
-  transition: all 200ms ease-in;
-
-}
-
-.sair span:hover {
-  color: red;
-  transform: scale(1.2);
-}
+  border: solid 3px red;
+  border-radius: 10px;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+    background-color:red;
+  
+  }
+  
+  .sair span:hover {
+    color: white;
+    transform: scale(1.2);
+  }
 
 .areaTitulo {
   /* border: solid 3px blue; */
@@ -300,7 +303,7 @@ ul {
   background-color: #09121C;
   display: flex;
   flex-direction: column;
-  height: 70%;
+  height: 55%;
   width: 80vh;
   justify-content: center;
   color: white;
@@ -443,7 +446,7 @@ ul {
 .listar-usu #usuario_lista li{
   list-style-type: none;
   text-decoration: underline;
-  color: blue;
+  color: rgb(255, 251, 0);
   cursor: pointer;
 }
 

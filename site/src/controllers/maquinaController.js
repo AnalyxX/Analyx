@@ -95,6 +95,9 @@ function alterar(req, res) {
     var cpu = req.body.cpunovoServer;
     var disco = req.body.disconovoServer;
     var ram = req.body.ramnovoServer;
+    var cpuID = req.body.cpunovo2Server;
+    var discoID = req.body.disconovo2Server;
+    var ramID = req.body.ramnovo2Server;
     var hostName = req.body.hostNamenovoServer;
     var hostNameVelho =  req.body.hostNameVelhoServer;
 
@@ -111,7 +114,7 @@ function alterar(req, res) {
 
     } else {
         
-        maquinaModel.alterar(cpu, disco, ram, hostName, hostNameVelho)
+        maquinaModel.alterar(cpu, disco, ram,cpuID, discoID,ramID, hostName, hostNameVelho)
             .then(
                 function (resultado) {
                     res.json(resultado);
