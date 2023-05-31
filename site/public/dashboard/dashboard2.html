@@ -16,32 +16,21 @@
 
     <div id="right_menu" class="right-menu">
         <div class="icons">
-            <i id="settings_menu" class="fa-solid fa-gear" title="Abrir configurações"></i>
+            <i id="settings_menu" onclick="openConfig()" class="fa-solid fa-gear" title="Abrir configurações"></i>
             <i id="exit_menu" onclick="hideMenu()" class="fa-solid fa-xmark" title="Fechar menu lateral"></i>
         </div>
 
         <div class="profile">
 
-            <img class="profile-img" src="../assets/images/fotor_2023-4-8_2_11_54.png" alt="">
+            <i id="user" class="fa-solid fa-user"></i>
 
             <div class="text">
-                <h1> <b id="b_usuario"></b> </h1>
-            </div>
-        </div>
-
-        <div class="machines">
-            <p>Selecione a máquina que deseja monitorar!</p>
-
-            <div class="names">
-                <div class="names-align">
-                    <h2>Milena Soares</h2>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
+                <h1> Olá, <b id="b_usuario"></b>!</h1>
             </div>
         </div>
 
         <div class="exit">
-            <button> Sair </button>
+            <button onclick="exit()"> Sair </button>
         </div>
 
     </div>
@@ -197,12 +186,10 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-<script> 
+<script>
 
-    b_usuario.innerHTML = sessionStorage.getItem('username');
+    b_usuario.innerHTML = sessionStorage.getItem('NOME_USUARIO');
     var idFunc = sessionStorage.getItem('userId');
-
-    debugger
 
     function instance() {
         getDataCpu(idFunc);
@@ -217,9 +204,7 @@
     let textLatency = document.getElementById("latencyText");
     let textPackage = document.getElementById("scroll_text");
 
-    let latencyData = [];
-
-    let contCpu = 0
+    let namesList = document.getElementById("name");
 
     let app = true
 
@@ -231,26 +216,36 @@
         window.location = "dashboard-init.html"
     }
 
+    function openConfig() {
+        window.location = "../crud_funcionario/funcionario.html"
+    }
+    
+    function exit() {
+        sessionStorage.clear()
+        window.location = "../index.html"
+    }
+
     // cpu
     function getDataCpu(idFunc) {
         fetch(`/dashboard/getUseCpuByFuncId/${idFunc}`).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    const points = [];
-                    const labels = [];
+                    let points = [];
+                    let labels = [];
 
                     // TROUXE OS 5 DADOS OBTIDOS NOS ULTIMOS MINUTOS
-                    resposta.forEach((element, index) => {
+                    resposta.forEach((element) => {
                         points.push(element.uso)
                         labels.push(element.hora.split('T')[1].split('.')[0])
-
                     });
+
+                    console.log(points)
 
                     loadCpu(points, labels)
 
                     setTimeout(() => {
                         getDataCpu(idFunc)
-                    }, 60000)
+                    }, 10000)
 
                 });
             } else {
@@ -272,7 +267,7 @@
                     let discData = [];
 
                     discData.push(resposta[0].uso)
-                    loadDisc(discData)
+
 
                     for (let i = 0; i < discData.length; i++) {
                         if (i == discData.length - 1) {
@@ -280,9 +275,11 @@
                         }
                     }
 
+                    loadDisc(discData)
+
                     setTimeout(() => {
                         getDataDisc(idFunc)
-                    }, 60000)
+                    }, 10000)
 
                 });
             } else {
@@ -304,7 +301,7 @@
                     const points = [];
                     const labels = [];
 
-                    resposta.forEach((element, index) => {
+                    resposta.forEach((element) => {
                         points.push(element.uso)
                         labels.push(element.hora.split('T')[1].split('.')[0])
                     });
@@ -313,7 +310,7 @@
 
                     setTimeout(() => {
                         getDataRam(idFunc)
-                    }, 60000)
+                    }, 10000)
 
                 });
             } else {
@@ -331,8 +328,16 @@
             if (response.ok) {
                 response.json().then(function (resposta) {
 
+                    let latencyData = [];
+
                     let latencyValue = resposta[0].latencia
+
+                    if (latencyValue == null) {
+                        latencyValue = 12;
+                    }
+
                     latencyData.push(latencyValue)
+
 
                     for (let i = 0; i < latencyData.length; i++) {
                         if (i == latencyData.length - 1) {
@@ -340,13 +345,11 @@
                         }
                     }
 
-                    setTimeout(() => {
-                        loadNet()
-                    }, 60000)
+                    loadNet(latencyData)
 
                     setTimeout(() => {
                         getDataLatency(idFunc)
-                    }, 60000)
+                    }, 10000)
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -395,7 +398,7 @@
                     setTimeout(() => {
                         getDataPackages(idFunc)
                         textPackage.innerHTML = ``
-                    }, 60000)
+                    }, 10000)
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -466,37 +469,34 @@
             }
         });
 
-
-        let contYellow = 0;
         let contRed = 0;
-        let check = true;
+        let contYellow = 0;
+        let contGreen = 0;
 
         points.forEach(point => {
-            if (point >= 50) {
-                contYellow++;
-                if (contYellow >= 2) {
-                    cpu_alert.style.display = "block";
-                    cpu_alert.style.color = "yellow";
-                    cpu_check.style.display = "none";
-                    check = false;
-                }
-            } else if (point >= 75) {
-                contRed++;
-                if (contRed >= 2) {
-                    cpu_alert.style.display = "block";
-                    cpu_alert.style.color = "red";
-                    cpu_check.style.display = "none";
-                    check = false;
-                }
-
+            if (point >= 75) {
+                contRed++
+            } else if (point >= 50) {
+                contYellow++
+            } else {
+                contGreen++
             }
         })
 
-        if (check) {
+        if (contRed > contYellow && contRed > contGreen) {
+            cpu_alert.style.display = "block";
+            cpu_alert.style.color = "red";
+            cpu_check.style.display = "none";
+        } else if (contYellow > contRed && contYellow > contGreen) {
+            cpu_alert.style.display = "block";
+            cpu_alert.style.color = "yellow";
+            cpu_check.style.display = "none";
+        } else {
             cpu_check.style.display = "block";
             cpu_check.style.color = "rgb(0, 172, 0)";
             cpu_alert.style.display = "none";
         }
+
     }
 
 
@@ -526,22 +526,17 @@
             }
         });
 
-        let check = true;
-
-        if (discData[discData.length - 1] >= 75) {
+        if (discData[0] >= 75) {
             disc_alert.style.display = "block";
             disc_alert.style.color = "red";
             disc_check.style.display = "none";
-            check = false
 
-        } else if (discData[discData.length - 1] >= 50) {
+        } else if (discData[0] >= 50) {
             disc_alert.style.display = "block";
             disc_alert.style.color = "yellow";
             disc_check.style.display = "none";
-            check = false
-        }
 
-        if (check) {
+        } else {
             disc_check.style.display = "block";
             disc_check.style.color = "rgb(0, 172, 0)";
             disc_alert.style.display = "none";
@@ -600,59 +595,48 @@
             }
         });
 
-        let contYellow = 0;
         let contRed = 0;
-        let check = true;
+        let contYellow = 0;
+        let contGreen = 0;
 
         points.forEach(point => {
-
-            if (point >= 50) {
-                contYellow++;
-                if (contYellow >= 2) {
-                    ram_alert.style.display = "block";
-                    ram_alert.style.color = "yellow";
-                    ram_check.style.display = "none";
-                    check = false;
-                }
-            } else if (point >= 75) {
-                contRed++;
-                if (contRed >= 2) {
-                    ram_alert.style.display = "block";
-                    ram_alert.style.color = "red";
-                    ram_check.style.display = "none";
-                    check = false;
-                }
-
+            if (point >= 75) {
+                contRed++
+            } else if (point >= 50) {
+                contYellow++
+            } else {
+                contGreen++
             }
         })
 
-
-        if (check) {
+        if (contRed > contYellow && contRed > contGreen) {
+            ram_alert.style.display = "block";
+            ram_alert.style.color = "red";
+            ram_check.style.display = "none";
+        } else if (contYellow > contRed && contYellow > contGreen) {
+            ram_alert.style.display = "block";
+            ram_alert.style.color = "yellow";
+            ram_check.style.display = "none";
+        } else {
             ram_check.style.display = "block";
             ram_check.style.color = "rgb(0, 172, 0)";
             ram_alert.style.display = "none";
         }
     }
 
-    function loadNet() {
-        let check = true;
-
-        if (latencyData[0] >= 50) {
-            net_alert.style.display = "block";
-            net_alert.style.color = "yellow";
-            net_check.style.display = "none";
-            check = false
-
-        }
+    function loadNet(latencyData) {
 
         if (latencyData[0] >= 75) {
             net_alert.style.display = "block";
             net_alert.style.color = "red";
             net_check.style.display = "none";
-            check = false
-        }
 
-        if (check) {
+        } else if (latencyData[0] >= 50) {
+            net_alert.style.display = "block";
+            net_alert.style.color = "yellow";
+            net_check.style.display = "none";
+
+        } else {
             net_check.style.display = "block";
             net_check.style.color = "rgb(0, 172, 0)";
             net_alert.style.display = "none";

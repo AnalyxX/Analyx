@@ -27,7 +27,7 @@ function getUseCpuByFuncId(id) {
 function getUseDiscByFuncId(id) {
 	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
 	var instrucao = `
-	select top 5 f.id,
+	select top 1 f.id,
 	f.nome,
     c.id 'id_comp',
 	c.uso,
@@ -95,7 +95,7 @@ function getLatencyValue(id) {
 function getDataPackages(id) {
 	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
 	var instrucao = `
-    select top 1 f.id,
+    select top 20 f.id,
 	f.nome,
     p.id 'id_pacote',
     p.bytesRecebidos,
@@ -118,20 +118,20 @@ function getDataPackages(id) {
 function getListFunc() {
 	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
 	var instrucao = `
-	select f.id,
-	f.matricula,
-	f.nome,
+	select TOP 3 f.id,
+    f.matricula,
+    f.nome,
     a.fkTipoComponente,
-	a.fkMonitoramento,
-	a.nivelGravidade
-	from funcionario f
-		join especificacaoMaquina em 
-			on em.id = f.fkMaquina
-		join monitoramento m
-			on em.id = m.fkMaquina
-		join alerta a
-			on m.id = a.fkMonitoramento
-		 where a.fkMonitoramento = (select top 1 m.id from monitoramento m order by m.id desc);`;
+    a.fkMonitoramento,
+    a.nivelGravidade 
+    from funcionario f 
+        join [dbo].[especificacaoMaquina] em
+        on f.fkMaquina = em.id
+        join [dbo].[monitoramento] m
+        on m.fkMaquina = em.id
+        join alerta a 
+        on a.fkMonitoramento = m.id
+        order by m.id desc;`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
