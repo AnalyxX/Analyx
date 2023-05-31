@@ -163,6 +163,7 @@
     }
 
     function instance() {
+        getArrayIdFunc(1)
         getWeek(1)
         getSecondWeek(1)
         getListFunc()
@@ -233,10 +234,52 @@
             });
     }
 
+    function getArrayIdFunc(idFunc) {
 
+        fetch(`/dashboard/getArrayIdFunc/${idFunc}`).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
 
+                    const arrayIdentifierFunc = {}
 
+                    arrayIdentifierFunc = resposta
 
+                    getListAlertFunc(arrayIdentifierFunc)
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function setOnHtmlArrayAlerts(arrayIdentifierFunc) {
+
+        const arrayFuncWithAlert = []
+
+        for (let index = 0; index < arrayIdentifierFunc.length; index++) {
+            
+            fetch(`/dashboard/getArrayListFuncWithId/${arrayIdentifierFunc[index]}`).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+    
+                        arrayFuncWithAlert.push(resposta)
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
+
+        }
+    }
 
     function getListFunc() {
         fetch(`/dashboard/getListFunc`).then(function (response) {
@@ -309,7 +352,7 @@
                     setTimeout(() => {
                         getListFunc()
                         textPackage.innerHTML = ``
-                    }, 60000)
+                    }, 10000)// att a cada 10s
 
                 });
             } else {

@@ -111,12 +111,12 @@ ul {
 
 .user {
   /* border: solid 3px yellow; */
-  height: 200px;
+  /* height: 200px; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  border-bottom: solid 1px white;
 }
 
 .user .fotoUser {
@@ -129,9 +129,9 @@ ul {
   background-size: 100% 100%;
 }
 
-.user h2 {
+/* .user h2 {
   margin-top: 20px;
-}
+} */
 
 .navegarLeteral {
   /* border: solid 3px blue; */
@@ -161,12 +161,11 @@ ul {
 #aqui2 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color:  rgb(255, 230, 0);
+  text-decoration-color: rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
 .sair {
-  /* border: solid 5px purple; */
   justify-content: center;
   align-items: center;
   display: flex;
@@ -176,13 +175,16 @@ ul {
 }
 
 .sair span {
+  border: solid 3px red;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 200ms ease-in;
+  background-color: red;
 
 }
 
 .sair span:hover {
-  color: red;
+  color: white;
   transform: scale(1.2);
 }
 
@@ -195,17 +197,17 @@ ul {
   align-items: center;
 }
 
-  .menssagem{
-    border: solid 3px  rgb(255, 230, 0);
-    width: 10rem;
-    height: 5rem;
-    display: flex;
-    background-color:white;
-    position: absolute;
-    margin-left: 60%;
-    color: black;
-    display: none;
-  }
+.menssagem {
+  border: solid 3px rgb(255, 230, 0);
+  width: 10rem;
+  height: 5rem;
+  display: flex;
+  background-color: white;
+  position: absolute;
+  margin-left: 60%;
+  color: black;
+  display: none;
+}
 
 
 /* Cadastro Empresa */
@@ -244,7 +246,7 @@ ul {
   justify-content: center;
   align-self: center;
   padding: 1rem;
-  background-color:rgb(237, 193, 19);
+  background-color: rgb(237, 193, 19);
   margin: 3% auto;
   padding: 2% 6% 2% 6%;
   cursor: pointer;
@@ -322,10 +324,10 @@ ul {
   margin-left: 5%;
   width: 20%;
   padding: 7px;
-  background-color:rgb(237, 193, 19);
-    justify-content: center;
+  background-color: rgb(237, 193, 19);
+  justify-content: center;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.8rem;
 
 }
 
@@ -334,7 +336,7 @@ ul {
   margin-left: 5%;
   width: 20%;
   padding: 7px;
-  background-color:rgb(237, 193, 19);
+  background-color: rgb(237, 193, 19);
   justify-content: center;
   cursor: pointer;
   grid-column: 2 / 2;
@@ -381,7 +383,7 @@ ul {
 #aqui4 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color:  rgb(255, 230, 0);
+  text-decoration-color: rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
@@ -394,15 +396,16 @@ ul {
   margin-right: 20%;
 }
 
-.funcionarios{
+.funcionarios {
   height: 100%;
   display: flex;
-} 
-.funcionarios2{
+}
+
+.funcionarios2 {
   /* border: solid 3px green; */
   height: 100%;
   display: flex;
-} 
+}
 
 .listar-func {
   border-radius: 7px;
@@ -421,7 +424,7 @@ ul {
 
 }
 
-.listar-func2{
+.listar-func2 {
   border-radius: 7px;
   background-color: #09121C;
   display: flex;
@@ -438,7 +441,7 @@ ul {
   box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
 }
 
-.listar-func2 input{
+.listar-func2 input {
   display: flex;
   width: 70%;
   justify-content: center;
@@ -448,10 +451,10 @@ ul {
 }
 
 
-.listar-func #funcionarios_lista li{
+.listar-func #funcionarios_lista li {
   list-style-type: none;
   text-decoration: underline;
-  color: blue;
+  color: rgb(255, 251, 0);
   cursor: pointer;
 }
 
@@ -460,8 +463,8 @@ ul {
   margin-left: 40px;
   width: 20%;
   padding: 7px;
-  background-color:rgb(237, 193, 19);
-    justify-content: center;
+  background-color: rgb(237, 193, 19);
+  justify-content: center;
   cursor: pointer;
 }
 
@@ -485,7 +488,7 @@ input::placeholder {
 #aqui5 {
   font-weight: bolder;
   text-decoration: underline;
-  text-decoration-color:  rgb(255, 230, 0);
+  text-decoration-color: rgb(255, 230, 0);
   text-decoration-thickness: 3px;
 }
 
@@ -518,7 +521,7 @@ input::placeholder {
   display: flex;
   width: 20%;
   padding: 7px;
-  background-color:rgb(237, 193, 19);
+  background-color: rgb(237, 193, 19);
   justify-content: center;
   cursor: pointer;
   margin-left: 35%;
@@ -553,7 +556,8 @@ button {
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.deletarFunc2 li{
+
+.deletarFunc2 li {
   font-weight: bolder;
   font-size: large;
   margin-bottom: 10px;
@@ -568,13 +572,13 @@ button {
 .SimNao {
   display: flex;
   justify-content: space-evenly;
-  
+
 }
 
 .SimNao li {
   display: flex;
   border: solid 3px;
-  background-color:rgb(237, 193, 19);
+  background-color: rgb(237, 193, 19);
   width: 5rem;
   justify-content: center;
   align-items: center;

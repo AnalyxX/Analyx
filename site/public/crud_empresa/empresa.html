@@ -13,6 +13,9 @@
   <section>
 
     <div class="navBarLateral">
+      <div class="user">
+        <h2 id="NomeUsuario"></h2>
+      </div>
 
       <div class="navegarLeteral">
         <li id="aqui">EMPRESA</li>
@@ -80,7 +83,7 @@
         </div>
         <div class="input" id="ipt-5">
           Telefone
-          <input type="text" name="funcao" id="ipt_telefone" />
+          <input type="number" name="funcao" id="ipt_telefone"/>
         </div>
         <button id="btn_entrar" onclick="cadastrar2()">Cadastrar</button>
       </div>
@@ -114,7 +117,7 @@
         </div>
         <div class="input3" id="ipt-5">
           Telefone
-          <input type="text" name="funcao" placeholder="Altere o Telefone" id="alt_telefone" />
+          <input type="number" name="funcao" placeholder="Altere o Telefone" id="alt_telefone"/>
         </div>
         <button id="btn_entrar" onclick="alterar()">Alterar</button>
       </div>
@@ -197,6 +200,8 @@
 
   NomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+
+
   if (EmailUsuario == undefined || !(EmailUsuario.includes("analyx@"))) {
     window.location = "../crud_maquina/maquina.html";
   }
@@ -208,7 +213,7 @@
   }
 
   function sair() {
-    window.location = "../index.html";
+    window.location = "../dashboard/dashboard-init.html";
     sessionStorage.clear();
 
   }
@@ -486,7 +491,7 @@
     } else if (email.length < 6) {
       alert("Email muito curto!")
       ax_erro = true;
-    } else if (telefone.length <= 6 && telefone.length > 15) {
+    } else if (telefone.length <= 6 && telefone.length >= 14) {
       alert("Telefone invalido!")
       ax_erro = true;
 
@@ -512,7 +517,11 @@
         console.log("resposta: ", resposta);
         if (resposta.ok) {
 
-          alert("Cadastro realizado com sucesso!");
+          menssagem.style.display = "block";
+          menssagem.innerHTML = "Cadastro realizado com sucesso!";
+          setTimeout(() => {
+            menssagem.style.display = "none";
+          }, "4000")
           setTimeout(() => {
             window.location = "empresa.html";
           }, "2000")
@@ -637,31 +646,36 @@
       return false;
     } else if (alt_cnpj.value.length < 10) {
       alert("CNPJ invalido!")
+      return false;
     } else if (!emailNovo || emailNovo.indexOf('@') == -1 || emailNovo.length <= 10) {
       alert("Insira um email válido com @ ou mais longo!");
+      return false;
     } else if (razaoSocialNovo.length <= 2 || razaoSocialNovo.length >= 25) {
       alert("Razao social não pode ser muito curta ou muito longa")
+      return false;
     } else if (responsavelNovo.length < 3 || responsavelNovo.length > 25) {
       alert("Razao social não pode ser muito curta ou muito longa!")
+      return false;
     } else if (emailNovo.length < 6) {
       alert("Email muito curto!")
-    } else if (telefoneNovo.length <= 6 && telefoneNovo.length > 15) {
+      return false;
+      return false;
+    } else if (telefoneNovo.length <= 6 && telefoneNovo.length >= 14) {
       alert("Telefone invalido!")
+      return false;
     } else if (alt_cnpj.value == sessionStorage.CNPJ_EMPRESACAD && alt_razao.value == sessionStorage.RAZAOSOCIAL_EMPRESACAD
-      && alt_responsavel.value == sessionStorage.RESPONSAVEL_EMPRESACAD && alt_email.value == sessionStorage.EMAIL_EMPRESACAD
-      && alt_telefone.value == sessionStorage.TELEFONE_EMPRESACAD) {
+    && alt_responsavel.value == sessionStorage.RESPONSAVEL_EMPRESACAD && alt_email.value == sessionStorage.EMAIL_EMPRESACAD
+    && alt_telefone.value == sessionStorage.TELEFONE_EMPRESACAD) {
       alert("Nenhuma alteração feita!")
+      return false;
     }
     else {
-      // Enviando o valor da nova input
       fetch("/empresa/alterar", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
           cnpjnovoServer: cnpjNovo,
           razaonovoServer: razaoSocialNovo,
           responsavelnovoServer: responsavelNovo,
@@ -892,9 +906,16 @@
         resposta.json().then(json => {
           console.log(json);
           console.log(JSON.stringify(json));
-          alert("Empresa deletada com sucesso!")
-          deletarEmp2.style.display = "none";
-          buscarDelete.style.display = "block";
+     
+
+          menssagem.style.display = "block";
+          menssagem.innerHTML = "Empresa deletada com sucesso!";
+          setTimeout(() => {
+            menssagem.style.display = "none";
+          }, "4000")
+          setTimeout(() => {
+            window.location = "empresa.html";
+          }, "2000")
         });
 
       } else {

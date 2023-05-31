@@ -3,7 +3,7 @@ var database = require("../database/config");
 function listar() {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-    select * from funcionario f join empresa e on f.fkEmpresa = e.id join funcionario g on f.fkGestor = g.id join setor s on f.fkSetor = s.id;
+    select f.id,f.nome, f.matricula, f.fkSetor, e.razaoSocial,f.fkEmpresa, s.nome as nomeSetor,f.fkGestor, g.nome as gestor from funcionario f join empresa e on f.fkEmpresa = e.id left join funcionario g on f.fkGestor = g.id join setor s on f.fkSetor = s.id;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -11,7 +11,7 @@ function listar() {
 
 function pegarFuncionario(matricula) {
     var instrucao = `
-        SELECT f.id,f.nome,f.matricula,f.fkSetor, f.fkEmpresa, fkGestor FROM funcionario f Left JOIN especificacaoMaquina m ON f.fkMaquina = m.id WHERE matricula = '${matricula}';
+    select f.id,f.nome, f.matricula, f.fkSetor, e.razaoSocial, f.fkEmpresa, s.nome as nomeSetor, f.fkGestor, g.nome as gestor from funcionario f join empresa e on f.fkEmpresa = e.id left join funcionario g on f.fkGestor = g.id join setor s on f.fkSetor = s.id WHERE f.matricula = '${matricula}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
