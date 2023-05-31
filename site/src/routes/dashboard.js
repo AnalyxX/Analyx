@@ -27,4 +27,12 @@ router.get("/getListFunc", function (req, res) {
     dashboardController.getListFunc(req, res);
 });
 
+router.get("/getArrayIdFuncf/:id", function (req, res) {
+    dashboardController.getArrayIdFunc(req, res);
+});
+
+router.get("/getArrayListFuncWithId/:id", function (req, res) {
+    dashboardController.getArrayListFuncWithId(req, res);
+});
+
 module.exports = router;

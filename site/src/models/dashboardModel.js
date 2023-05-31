@@ -125,9 +125,9 @@ function getListFunc() {
     a.fkMonitoramento,
     a.nivelGravidade 
     from funcionario f 
-        join [dbo].[especificacaoMaquina] em
+        join especificacaoMaquina em
         on f.fkMaquina = em.id
-        join [dbo].[monitoramento] m
+        join monitoramento m
         on m.fkMaquina = em.id
         join alerta a 
         on a.fkMonitoramento = m.id
@@ -136,8 +136,43 @@ function getListFunc() {
 	return database.executar(instrucao);
 }
 
+function getArrayListFuncWithId(id) {
+	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+	var instrucao = `
+	select TOP 3 f.id,
+    f.matricula,
+    f.nome,
+    a.fkTipoComponente,
+    a.fkMonitoramento,
+    a.nivelGravidade 
+    from funcionario f 
+        join especificacaoMaquina em
+        on f.fkMaquina = em.id
+        join monitoramento m
+        on m.fkMaquina = em.id
+        join alerta a 
+        on a.fkMonitoramento = m.id
+		where f.id = ${id}
+        order by m.id desc;
+	`;
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
+}
+
+function getArrayIdFunc(id) {
+	console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+	var instrucao = `
+	select f.id from funcionario
+	where fkGestor = ${id}
+	`;
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
+}
+
 
 module.exports = {
+	getArrayListFuncWithId,
+	getArrayIdFunc,
 	getUseCpuByFuncId,
 	getUseDiscByFuncId,
 	getUseRamByFuncId,
