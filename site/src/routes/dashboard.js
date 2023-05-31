@@ -27,7 +27,7 @@ router.get("/getListFunc", function (req, res) {
     dashboardController.getListFunc(req, res);
 });
 
-router.get("/getArrayIdFuncf/:id", function (req, res) {
+router.get("/getArrayIdFunc/:id", function (req, res) {
     dashboardController.getArrayIdFunc(req, res);
 });
 

@@ -163,10 +163,8 @@
     }
 
     function instance() {
-        getArrayIdFunc(1)
-        getWeek(1)
-        getSecondWeek(1)
-        getListFunc()
+        getArrayIdFunc(2)
+        // getListFunc()
     }
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
@@ -176,63 +174,6 @@
 
     let textPackage = document.getElementById("scroll_text");
 
-    function getWeek(idFunc) {
-        fetch(`/dashboard/getUseCpuByFuncId/${idFunc}`).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    const points = [];
-                    const labels = [];
-
-                    // TROUXE OS 5 DADOS OBTIDOS NOS ULTIMOS MINUTOS
-                    resposta.forEach((element, index) => {
-                        points.push(element.uso)
-                        labels.push(element.hora)
-                    });
-
-                    loadWeek(points, labels)
-
-                    setTimeout(() => {
-                        getWeek(idFunc)
-                    }, 60000)
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
-
-    function getSecondWeek(idFunc) {
-        fetch(`/dashboard/getUseCpuByFuncId/${idFunc}`).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    const points = [];
-                    const labels = [];
-
-                    // TROUXE OS 5 DADOS OBTIDOS NOS ULTIMOS MINUTOS
-                    resposta.forEach((element, index) => {
-                        points.push(element.uso)
-                        labels.push(element.hora)
-                    });
-
-                    loadSecondWeek(points, labels)
-
-                    setTimeout(() => {
-                        getSecondWeek(idFunc)
-                    }, 60000)
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
 
     function getArrayIdFunc(idFunc) {
 
@@ -240,11 +181,11 @@
             if (response.ok) {
                 response.json().then(function (resposta) {
 
-                    const arrayIdentifierFunc = {}
+                    const arrayIdentifierFunc = []
 
-                    arrayIdentifierFunc = resposta
+                    arrayIdentifierFunc.push(resposta)
 
-                    getListAlertFunc(arrayIdentifierFunc)
+                    setOnHtmlArrayAlerts(resposta)
 
                 });
             } else {
@@ -257,18 +198,100 @@
 
     }
 
+
     function setOnHtmlArrayAlerts(arrayIdentifierFunc) {
 
         const arrayFuncWithAlert = []
 
+        a = arrayIdentifierFunc;
+
         for (let index = 0; index < arrayIdentifierFunc.length; index++) {
-            
-            fetch(`/dashboard/getArrayListFuncWithId/${arrayIdentifierFunc[index]}`).then(function (response) {
+            debugger
+            fetch(`/dashboard/getArrayListFuncWithId/${arrayIdentifierFunc[index].id}`).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
-    
-                        arrayFuncWithAlert.push(resposta)
 
+                        debugger
+
+                        let maquinas
+                        const alert = {
+                            'Normal': 0,
+                            'Alerta': 0,
+                            'Crítico': 0,
+                        }
+
+                        const rsp = resposta.reduce((monitoramento, alerta) => {
+                            const { matricula } = alerta;
+                            monitoramento[matricula] = monitoramento[matricula] ?? [];
+                            monitoramento[matricula].push(alerta);
+                            return alerta
+                        }, {})
+
+                        let funcList = []
+                        if (rsp.length === undefined) {
+                            maquinas = []
+                            maquinas.push(rsp)
+                        } else maquinas = rsp
+
+                        maquinas.forEach((element) => {
+                            let nivelGravidade = '';
+                            const matriculas = resposta.filter(matricula => element.matricula === matricula.matricula);
+
+                            matriculas.forEach((matricula) => {
+                                if (nivelGravidade === '' || nivelGravidade === 'Normal') nivelGravidade = matricula.nivelGravidade
+                                else if (matricula.nivelGravidade === 'Alerta' && nivelGravidade !== 'Crítico') nivelGravidade = matricula.nivelGravidade
+                                else if (nivelGravidade === 'Alerta' && matricula.nivelGravidade === 'Crítico') nivelGravidade = matricula.nivelGravidade
+                            })
+
+                            alert[nivelGravidade]++
+
+                            let funcItem = {
+                                matricula: element.matricula,
+                                nome: element.nome,
+                                id: element.id,
+                                nivelGravidade
+                            }
+
+                            funcList.push(funcItem)
+                        });
+
+                        count_green.innerHTML = 0
+                        count_yellow.innerHTML = 2
+                        count_red.innerHTML = 3
+                        qtd_maquina.innerHTML = 5
+
+                        const map = {
+                            'Normal': 3,
+                            'Alerta': 2,
+                            'Crítico': 1,
+                        }
+
+                        funcList.sort((a, b) => map[a.nivelGravidade] - map[b.nivelGravidade])
+
+
+                        for (let i = 0; i < funcList.length; i++) {
+                            let icon
+
+                            if (funcList[i].nivelGravidade == 'Crítico') {
+                                icon = `<i id="cpu_alert" style="color: red;"
+                                class="fa-solid fa-circle-exclamation"></i>`
+
+                            } else if (funcList[i].nivelGravidade == 'Alerta') {
+                                icon = `<i id="cpu_alert" style="color: yellow;"
+                                class="fa-solid fa-circle-exclamation"></i>`
+
+                            } else if (funcList[i].nivelGravidade == 'Normal') {
+                                icon = `<i id="cpu_alert" style="color: green;"
+                                class="fa-solid fa-circle-check"></i>`
+                            }
+
+                            textPackage.innerHTML += `
+                            <div class="line-values" onclick="toSecondDash('${funcList[i].id}', '${funcList[i].nome}')">
+                                <p> ${funcList[i].matricula} </p>
+                                <p> ${funcList[i].nome} </p>
+                                <p> ${icon} </p>
+                            </div>`
+                        }
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
@@ -277,77 +300,14 @@
                 .catch(function (error) {
                     console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
                 });
-
         }
+
     }
 
     function getListFunc() {
         fetch(`/dashboard/getListFunc`).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-
-                    let funcList = []
-                    let machine = 0
-                    let red = 0
-                    let yellow = 0
-                    let green = 0
-
-
-
-                    resposta.forEach((element) => {
-
-                        let funcItem = {
-                            matricula: element.matricula,
-                            nome: element.nome,
-                            id: element.id,
-                            nivelGravidade: element.nivelGravidade
-                        }
-
-    
-
-                        machine++
-
-                        if (element.nivelGravidade == "Crítico") {
-                            red++
-                        } else if (element.nivelGravidade == "Alerta") {
-                            yellow++
-                        } else {
-                            green++
-                        }
-
-
-                        funcList.push(funcItem)
-                    });
-
-                    count_green.innerHTML = green;
-                    count_yellow.innerHTML = yellow;
-                    count_red.innerHTML = red;
-                    qtd_maquina.innerHTML = machine;
-
-
-                    for (let i = 0; i < funcList.length; i++) {
-                        let icon
-
-                        if (funcList[i].nivelGravidade == 'Crítico') {
-                            icon = `<i id="cpu_alert" style="color: red;"
-                                class="fa-solid fa-circle-exclamation"></i>`
-
-                        } else if (funcList[i].nivelGravidade == 'Alerta') {
-                            icon = `<i id="cpu_alert" style="color: yellow;"
-                                class="fa-solid fa-circle-exclamation"></i>`
-
-                        } else if (funcList[i].nivelGravidade == 'Normal') {
-                            icon = `<i id="cpu_alert" style="color: green;"
-                                class="fa-solid fa-circle-check"></i>`
-                        }
-
-                        textPackage.innerHTML += `
-                            <div class="line-values" onclick="toSecondDash('${funcList[i].id}', '${funcList[i].nome}')">
-                                <p> ${funcList[i].matricula} </p>
-                                <p> ${funcList[i].nome} </p>
-                                <p> ${icon} </p>
-                            </div>`
-                    }
 
                     setTimeout(() => {
                         getListFunc()
