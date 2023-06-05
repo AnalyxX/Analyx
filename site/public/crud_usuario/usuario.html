@@ -163,7 +163,7 @@
         </div>
 
         <div id="deletarUsu2" class="deletarUsu2" style="display:none;">
-          <h3>Tem certeza que deseja excluir essa usuario ?</h3>
+          <h3>Tem certeza que deseja excluir esse usuario ?</h3>
           <li>EMAIL:<span id="del_email"></span></li>
           <li>Senha:<span id="del_senha"></span></li>
           <!-- <li>Tipo:<span id="del_tipo"></span></li> -->
@@ -516,7 +516,7 @@
 
             alt_email.value = sessionStorage.EMAIL_USUARIOALT;
             alt_senha.value = sessionStorage.SENHA_USUARIOALT;
-         //    alt_tipo.value = sessionStorage.TIPO_USUARIOALT;
+            //    alt_tipo.value = sessionStorage.TIPO_USUARIOALT;
             alt_funcionario.value = sessionStorage.FUNCIONARIO_USUARIOALT;
 
             if (sessionStorage.EMAIL_USUARIOALT != null && sessionStorage.EMAIL_USUARIOALT != undefined) {
@@ -816,14 +816,15 @@
 
       if (resposta.ok) {
         console.log(resposta);
+        menssagem.style.display = "block";
+        menssagem.innerHTML = "Usuario deletado com sucesso!";
+        deletarUsu2.style.display = "none";
+        buscarDelete.style.display = "block";
+        setTimeout(() => {
+          window.location = "usuario.html";
+        }, "2000")
+        ;
 
-        resposta.json().then(json => {
-          console.log(json);
-          console.log(JSON.stringify(json));
-          alert("usuario deletado com sucesso!")
-          deletarUsu2.style.display = "none";
-          buscarDelete.style.display = "block";
-        });
 
       } else {
         alert("Ops! há um erro no sistema, já estamos tentando resolver.")

@@ -172,7 +172,7 @@
         </div>
 
         <div id="deletarFunc2" class="deletarFunc2" style="display:none;">
-          <h3>Tem certeza que deseja excluir essa empresa ?</h3>
+          <h3>Tem certeza que deseja excluir esse funcionario ?</h3>
           <li>Nome:<span id="del_nome"></span></li>
           <li>Matricula:<span id="del_matricula"></span></li>
           <li>Setor:<span id="del_setor"></span></li>
@@ -489,6 +489,7 @@
 
 
       }).catch(function (resposta) {
+        alert("Houve um erro ao tentar realizar o cadastro! Coloque os dados corretos!")
         console.log(`#ERRO: ${resposta}`);
       });
       return false;
@@ -721,7 +722,7 @@
             var registro = json[i];
             if (informacaoList >= 0) {
               if (i == informacaoList) {
-                if(registro.gestor == null){
+                if (registro.gestor == null) {
                   registro.gestor = 'Não tem gestor';
                 }
 
@@ -741,7 +742,7 @@
         });
 
       } else {
-        console.log("Houve um erro ao tentar encontrar empresas!");
+        console.log("Houve um erro ao tentar encontrar o funcionario!");
         resposta.text().then(texto => {
           console.error(texto);
         });
@@ -856,20 +857,15 @@
 
       if (resposta.ok) {
         console.log(resposta);
-
-        resposta.json().then(json => {
-          console.log(json);
-          console.log(JSON.stringify(json));
-          menssagem.style.display = "block";
-          menssagem.innerHTML = "Funcionario deletado com sucesso!";
-          setTimeout(() => {
-            menssagem.style.display = "none";
-          }, "4000")
-          setTimeout(() => {
-            window.location = "funcionario.html";
-          }, "2000")
-        });
-
+        menssagem.style.display = "block";
+        menssagem.innerHTML = "Funcionario deletado com sucesso!";
+        setTimeout(() => {
+          menssagem.style.display = "none";
+        }, "2000")
+        setTimeout(() => {
+          window.location = "funcionario.html";
+        }, "2000")
+          ;
       } else {
         alert("Ops! há um erro no sistema, já estamos tentando resolver.")
 

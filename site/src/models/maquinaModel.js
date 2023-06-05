@@ -3,7 +3,7 @@ var database = require("../database/config");
 function listar() {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-    select * from especificacaoMaquina e join cpu c on e.fkCpu = c.id join ram r on e.fkRam = r.id join disco d on e.fkDisco = d.id;
+    select e.id, e.hostName, e.fkCpu, e.fkDisco, e.fkRam, c.modeloCPU, r.total, d.volume from especificacaoMaquina e join cpu c on e.fkCpu = c.id join ram r on e.fkRam = r.id join disco d on e.fkDisco = d.id;
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -12,7 +12,7 @@ function listar() {
 
 function getMaquina(hostName) {
     var instrucao = `
-    select * from especificacaoMaquina e join cpu c on e.fkCpu = c.id join ram r on e.fkRam = r.id join disco d on e.fkDisco = d.id WHERE hostName = '${hostName}';
+    select e.id, e.hostName, e.fkCpu, e.fkDisco, e.fkRam, c.modeloCPU, r.total, d.volume from especificacaoMaquina e join cpu c on e.fkCpu = c.id join ram r on e.fkRam = r.id join disco d on e.fkDisco = d.id WHERE hostName = '${hostName}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

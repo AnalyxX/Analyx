@@ -121,6 +121,7 @@ function cadastrar(req, res) {
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
+                    res.status(500).send('cadastro errado, coloque os dados correto!');
                 }
             );
     }
