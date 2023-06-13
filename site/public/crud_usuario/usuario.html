@@ -667,9 +667,11 @@
           if (listarUmaVez == false) {
             for (i = 0; i < json.length; i++) {
               var registro = json[i];
+              if(registro.fkEmpresa == sessionStorage.ID_EMPRESA){
               usuario_lista.innerHTML += `<li onclick="listUsuarios(${i})">${registro.email}</li>`;
               listarUmaVez = true;
             }
+          }
           }
 
 

@@ -713,8 +713,10 @@
 
             for (i = 0; i < json.length; i++) {
               var registro = json[i];
+              if(registro.fkEmpresa == sessionStorage.ID_EMPRESA){
               funcionarios_lista.innerHTML += `<li onclick="listFuncionarios(${i})">${registro.matricula}</li>`;
               listarUmaVez = true;
+              }
             }
           }
 

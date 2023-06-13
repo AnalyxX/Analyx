@@ -473,7 +473,7 @@
       //cardErro.style.display = "block"
       alert("Por favor, preencha todos os campos!")
       ax_erro = true;
-    } else if (ipt_cnpj.value.length > 17 || ipt_cnpj.value.length < 7) {
+    } else if (ipt_cnpj.value.length > 17 || ipt_cnpj.value.length < 13) {
       alert("CNPJ invalido!")
       ax_erro = true;
     } else if (email.indexOf('@') == -1) {
@@ -643,7 +643,7 @@
 
 
       return false;
-    } else if (alt_cnpj.value.length < 10) {
+    } else if (alt_cnpj.value.length < 13) {
       alert("CNPJ invalido!")
       return false;
     } else if (!emailNovo || emailNovo.indexOf('@') == -1 || emailNovo.length <= 10) {
